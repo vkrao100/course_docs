@@ -1,0 +1,26 @@
+Read Chapter 2.
+
+Complete book problem 2.1.
+
+You must turn in both the circuit and its environment code.
+
+Be sure that your environment code tests your code well enough to convince us that your circuit works. Your environment should generate random values to load, and it should randomly decide when and what to shift in or to be done shifting. Finally, your environment should check the result.
+
+Complete Problem 2.5.
+
+Original source code is available here (Links to an external site.)Links to an external site..
+
+Code for a simple minimips assembler (minimips.tarPreview the documentView in a new window).
+
+A link to some useful information about std_logic (Links to an external site.)Links to an external site..
+Turn in a modified version of imem.vhd which includes instructions to test your new in- structions. Note that there is a minimips assembler on the course website (see README for instructions on how to compile and use).
+
+Turn in any other files which you had to modify to support the new instructions. You do not need to turn in files that you did not modify.
+
+ECE/CS 5750 Students: Modify either version of the MiniMIPS.
+
+ECE/CS 6750 Students: Modify the pipelined version of the MiniMIPS.
+
+In your turnin, please send all vhd files that you used as well as a README file that gives a one line description of all your files and any instructions for compilation and simulation.
+
+Code that does not compile will receive only minimal credit. 

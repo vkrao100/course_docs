@@ -1,0 +1,153 @@
+# Benchmark "mas_3eqn" written by ABC on Thu Sep 20 14:52:32 2018
+.model mas_3eqn
+.inputs a_0_ a_1_ a_2_ b_0_ b_1_ b_2_
+.outputs z_0_ z_1_ z_2_
+.names a_2_ b_1_ n10
+11 1
+.names b_0_ b_2_ n11
+00 1
+.names b_0_ b_2_ n12
+11 1
+.names n11 n12 n13
+00 1
+.names a_0_ n13 n14
+10 1
+.names a_0_ b_2_ n15
+00 1
+.names n14 n15 n16
+00 1
+.names n10 n16 n17
+00 1
+.names b_0_ n15 n18
+11 1
+.names n10 n18 n19
+10 1
+.names n14 n19 n20
+01 1
+.names a_1_ n20 n21
+10 1
+.names n17 n21 n22
+01 1
+.names a_0_ a_2_ n23
+01 1
+.names b_0_ n23 n24
+01 1
+.names a_1_ b_1_ n25
+11 1
+.names n24 n25 n26
+11 1
+.names a_0_ b_0_ n27
+11 1
+.names a_2_ n27 n28
+11 1
+.names n10 n27 n29
+00 1
+.names a_1_ n28 n30
+00 1
+.names n29 n30 n31
+01 1
+.names n26 n31 n32
+00 1
+.names n22 n32 z_0_
+01 0
+.names a_0_ a_1_ n34
+10 1
+.names b_1_ n34 n35
+11 1
+.names a_0_ a_1_ n36
+01 1
+.names n13 n36 n37
+11 1
+.names n35 n37 n38
+00 1
+.names a_2_ n38 n39
+00 1
+.names b_2_ n26 n40
+01 1
+.names b_0_ b_1_ n41
+10 1
+.names n36 n41 n42
+11 1
+.names b_0_ b_2_ n43
+01 1
+.names n34 n43 n44
+11 1
+.names n42 n44 n45
+00 1
+.names a_2_ n45 n46
+10 1
+.names b_1_ b_2_ n47
+00 1
+.names b_1_ b_2_ n48
+11 1
+.names n47 n48 n49
+00 1
+.names a_0_ b_0_ n50
+10 1
+.names a_2_ n50 n51
+00 1
+.names a_2_ n50 n52
+11 1
+.names n34 n36 n53
+00 1
+.names n49 n53 n54
+11 1
+.names n51 n52 n55
+00 1
+.names n54 n55 n56
+11 1
+.names a_1_ n10 n57
+00 1
+.names n27 n49 n58
+10 1
+.names n57 n58 n59
+01 1
+.names n40 n46 n60
+00 1
+.names n56 n59 n61
+00 1
+.names n60 n61 n62
+11 1
+.names n39 n62 z_1_
+01 0
+.names a_0_ a_2_ n64
+10 1
+.names n24 n64 n65
+00 1
+.names b_2_ n65 n66
+00 1
+.names n12 n23 n67
+11 1
+.names n66 n67 n68
+00 1
+.names n25 n68 n69
+10 1
+.names b_1_ n27 n70
+00 1
+.names n10 n50 n71
+10 1
+.names a_1_ n64 n72
+10 1
+.names n70 n72 n73
+01 1
+.names n71 n73 n74
+01 1
+.names b_2_ n25 n75
+10 1
+.names n65 n75 n76
+01 1
+.names a_2_ n25 n77
+10 1
+.names n18 n77 n78
+11 1
+.names n34 n71 n79
+11 1
+.names n78 n79 n80
+00 1
+.names n74 n80 n81
+01 1
+.names n76 n81 n82
+01 1
+.names n69 n82 z_2_
+01 0
+.end

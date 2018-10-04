@@ -1,0 +1,87 @@
+//ring r = (2, x), (t, ym0, ym2, ym1, y0, y2, yn2, y1, x10, x11, xn11, x6, x7, x8, x9, x0, x1, x2, x3, x4, x5), lp;
+ring r = (2, x), (t, ym0, ym2, ym1, y0, y2, yn2, y1, x10, x11, xn11, x6, x7, x8, x9, x0, x1, x2, x3, x4, x5), lp;
+
+proc orgate(poly g, poly h)
+{
+	return(g+h+g*h);
+}
+
+proc andgate(poly g, poly h)
+{
+	return(g*h);
+}
+
+proc xorgate(poly g, poly h)
+{
+	return(g+h);
+}
+
+proc invgate(poly g)
+{
+	return(1+g);
+}
+
+//circuit implementation
+poly f1 = x6 + invgate(x1);
+poly f2 = x7 + orgate(x1,orgate(x3,x4));
+poly f3 = x8 + andgate(x1,andgate(x2,x0));
+poly f4 = x9 + invgate(x0);
+poly f5 = x10 + andgate(x7,x8);
+poly f6 = x11 + xorgate(x7,x8);
+poly f60 = x11;
+poly f61 = x11 + 1;
+poly f7 = y1 + orgate(x7,x9);
+poly f8 = y0 + orgate(x6,x10);
+poly f9 = y2 + orgate(x5,x11);
+
+//new circuit specification - and gate at x11 instead of xorgate
+poly n6 = xn11 + andgate(x7,x8);
+poly n9 = yn2 + orgate(x5,xn11);
+
+//vanishing polynomials
+poly v0 = y0^2 - y0;
+poly v1 = y1^2 - y1;
+poly v2 = y2^2 - y2;
+poly v3 = yn2^2 - yn2;
+
+
+poly v4 = x6^2 - x6;
+poly v5 = x7^2 - x7;
+poly v6 = x8^2 - x8;
+poly v7 = x9^2 - x9;
+poly v8 = x10^2 - x10;
+poly v9 = x11^2 - x11;
+poly v10 = xn11^2 - xn11;
+
+poly v11 = t^2 - t;
+
+poly v12 = ym0^2 - ym0;
+poly v13 = ym1^2 - ym1;
+poly v14 = ym2^2 - ym2;
+
+poly v15 = x0^2 + x0;
+poly v16 = x1^2 + x1;
+poly v17 = x2^2 + x2;
+poly v18 = x3^2 + x3;
+poly v19 = x4^2 + x4;
+poly v20 = x5^2 + x5;
+ideal J0 = v0,v1,v2,v3,v4,v5,v6,v7,v8,v9,v10,v11,v12,v13,v14,v15,v16,v17,v18,v19,v20;
+
+//miter for outputs
+poly m0 = ym0 + xorgate(y0,y0);
+poly m1 = ym1 + xorgate(y1,y1);
+poly m2 = ym2 + xorgate(y2,yn2);
+
+poly miter = t*(orgate(ym2,orgate(ym0,ym1)))-1;
+
+ideal Il = f1,f2,f3,f4,f5,f60,f7,f8,f9,n6,n9,miter,m0,m1,m2;
+ideal Ih = f1,f2,f3,f4,f5,f61,f7,f8,f9,n6,n9,miter,m0,m1,m2;
+
+//groebner((subst(imple,x11,0))+(subst(imple,x11,1)));
+ideal g1 = groebner(Il+J0);
+ideal g2 = groebner(Ih+J0);
+g1;
+g2;
+ideal g3 = g2[1],g2[2],g2[3],g2[4],g2[5],g2[6],g2[7],g2[9],g2[10],g1[1],g1[2],g1[3],g1[4],g1[5],g1[6],g1[8],g1[9];
+//groebner((subst(Il,x11,0)));
+//groebner((subst(Ih,x11,1)));

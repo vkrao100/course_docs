@@ -1,0 +1,37 @@
+# Benchmark "ppa3.eqn" written by ABC on Thu Nov 10 15:15:41 2016
+.model ppa3.eqn
+.inputs b2 a2 b1 a1 b0 a0
+.outputs s3 s2 s1 s0
+.gate NAND2X1 A=b2 B=a2 Y=n11
+.gate INVX1   A=a2 Y=n12
+.gate NAND2X1 A=b2 B=n12 Y=n13
+.gate INVX1   A=b2 Y=n14
+.gate NAND2X1 A=a2 B=n14 Y=n15
+.gate NAND2X1 A=n13 B=n15 Y=n16
+.gate NAND2X1 A=b1 B=a1 Y=n17
+.gate NAND2X1 A=b0 B=a0 Y=n18
+.gate INVX1   A=n18 Y=n19
+.gate INVX1   A=a1 Y=n20
+.gate NAND2X1 A=b1 B=n20 Y=n21
+.gate INVX1   A=b1 Y=n22
+.gate NAND2X1 A=a1 B=n22 Y=n23
+.gate NAND2X1 A=n21 B=n23 Y=n24
+.gate NAND2X1 A=n19 B=n24 Y=n25
+.gate NAND2X1 A=n17 B=n25 Y=n26
+.gate NAND2X1 A=n16 B=n26 Y=n27
+.gate NAND2X1 A=n11 B=n27 Y=s3
+.gate INVX1   A=n16 Y=n29
+.gate NAND2X1 A=n29 B=n26 Y=n30
+.gate INVX1   A=n26 Y=n31
+.gate NAND2X1 A=n16 B=n31 Y=n32
+.gate NAND2X1 A=n30 B=n32 Y=s2
+.gate NAND2X1 A=n18 B=n24 Y=n34
+.gate INVX1   A=n24 Y=n35
+.gate NAND2X1 A=n19 B=n35 Y=n36
+.gate NAND2X1 A=n34 B=n36 Y=s1
+.gate INVX1   A=a0 Y=n38
+.gate NAND2X1 A=b0 B=n38 Y=n39
+.gate INVX1   A=b0 Y=n40
+.gate NAND2X1 A=a0 B=n40 Y=n41
+.gate NAND2X1 A=n39 B=n41 Y=s0
+.end

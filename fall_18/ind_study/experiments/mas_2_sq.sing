@@ -1,0 +1,46 @@
+LIB "linalg.lib";
+LIB "dmodapp.lib";
+//LIB "my_proc.lib";
+
+ring R = (2, x), (Z, A, B, z_0, z_1, r_0, s_0, s_3, s_1, s_2, a_0, a_1, b_0, b_1), lp; 
+
+minpoly = x^2 + x + 1;
+
+proc xorgate(poly g, poly h)
+{
+	return(g+h);
+}
+
+//circuit -  2 bit mastrovito multiplier poly's
+//correct implementation
+poly f1 = s_0 + a_0*b_0;
+poly f2 = s_3 + a_1*b_1;
+poly f3 = s_2 + a_1*b_0;
+poly f4 = s_1 + a_0*b_1;
+poly f5 = r_0 + xorgate(s_1,s_2);
+poly f6 = z_0 + xorgate(s_0,s_3);
+poly f7 = z_1 + xorgate(r_0,s_3);
+poly f8 = A + a_0 + a_1*x;
+poly f9 = B + b_0 + b_1*x;
+poly f10= Z + z_0 + z_1*x;
+
+poly f11=a_0 + b_0;
+poly f12=a_1 + b_1;
+
+//vanishing polynomials
+poly f13 = a_0^2 - a_0;
+poly f14 = a_1^2 - a_1;
+poly f15 = b_0^2 - b_0;
+poly f16 = b_1^2 - b_1;
+
+poly f17 = Z^4 - Z;
+poly f18 = A^4 - A;
+poly f19 = B^4 - B;
+
+//word level spec
+poly spec = Z + A*B;
+
+ideal J = f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12;
+ideal J0 = f13,f14,f15,f16;
+
+reduce(spec,J+J0);

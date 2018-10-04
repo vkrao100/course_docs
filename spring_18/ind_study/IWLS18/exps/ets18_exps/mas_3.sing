@@ -1,0 +1,93 @@
+LIB "primdec.lib";
+
+ring r = (2, x), (Z, A, B, z_2, z_1, z_0, f_0, e_0, e_1, e_2, e_3, e_4, d_0, d_1, d_2, d_3, d_4, d_5, d_6, d_7, d_8, d_9, d_10, d_11, a_0, b_0, a_1, b_1, a_2, b_2), lp;
+
+minpoly = x^3 + x + 1;
+
+proc xorgate(poly g, poly h)
+{
+	return(g+h);
+}
+proc andgate(poly g, poly h)
+{
+	return(g*h);
+}
+//circuit -  3 bit mastrovito multiplier poly's
+//correct implementation
+poly f1 = A + a_0 + a_1*x + a_2*x^2;
+poly f2 = B + b_0 + b_1*x + b_2*x^2;
+poly f3 = d_0 + andgate(a_0,b_0);
+poly f4 = d_1 + andgate(a_1,b_2);
+poly f5 = d_2 + andgate(a_2,b_1);
+poly f6 = d_3 + andgate(a_0,b_1);
+poly f7 = d_4 + andgate(a_1,b_0);
+poly f8 = d_5 + andgate(a_1,b_2);
+poly f9 = d_6 + andgate(a_2,b_1);
+poly f10 = d_7 + andgate(a_2,b_2);
+poly f11 = d_8 + andgate(a_0,b_2);
+poly f12 = d_9 + andgate(a_1,b_1);
+poly f13 = d_10 + andgate(a_2,b_0);
+poly f14 = d_11 + andgate(a_2,b_2);
+poly f15 = e_0 + xorgate(d_0,d_1);
+poly f16 = e_1 + xorgate(d_3,d_4);
+poly f17 = e_2 + xorgate(d_5,d_6);
+poly f18 = e_3 + xorgate(d_8,d_9);
+poly f19 = e_4 + xorgate(d_10,d_11);
+poly f20 = f_0 + xorgate(e_1,e_2);
+poly f21 = z_0 + xorgate(e_0,d_2);
+poly f22 = z_1 + xorgate(f_0,d_7);
+poly f23 = z_2 + xorgate(e_3,e_4);
+
+//buggy implementation
+//introducing bug - AND gate instead of XOR gate
+poly fb20 = f_0 + andgate(e_1,e_2);
+//rem - (x)*a_0*a_1*b_1*b_2+(x)*a_0*b_1*a_2+(x)*a_0*b_1+(x)*b_0*a_1*b_1*a_2+(x)*b_0*a_1*b_2+(x)*b_0*a_1+(x)*a_1*b_2+(x)*b_1*a_2
+
+//introducing a wire replacement bug - changing one of the input wires
+poly fw20 = f_0 + xorgate(e_1,e_3);
+
+//vanishing polynomials
+poly f24 = A^8 - A;
+poly f25 = B^8 - B;
+poly f26 = Z^8 - Z;
+
+poly f27 = a_0^2 - a_0;
+poly f28 = a_1^2 - a_1;
+poly f29 = b_0^2 - b_0;
+poly f30 = b_1^2 - b_1;
+poly f31 = a_2^2 - a_2;
+poly f32 = b_2^2 - b_2;
+
+poly f33 = d_0^2 - d_0;
+poly f34 = d_1^2 - d_1;
+poly f35 = d_2^2 - d_2;
+poly f36 = d_3^2 - d_3;
+poly f37 = d_4^2 - d_4;
+poly f38 = d_5^2 - d_5;
+poly f39 = d_6^2 - d_6;
+poly f40 = d_7^2 - d_7;
+poly f41 = d_8^2 - d_8;
+poly f42 = d_9^2 - d_9;
+poly f43 = d_10^2 - d_10;
+poly f44 = d_11^2 - d_11;
+
+poly f45 = e_0^2 - e_0;
+poly f46 = e_1^2 - e_1;
+poly f47 = e_2^2 - e_2;
+poly f48 = e_3^2 - e_3;
+poly f49 = e_4^2 - e_4;
+
+poly f50 = f_0^2 - f_0;
+
+poly f51 = z_0^2 - z_0;
+poly f52 = z_1^2 - z_1;
+poly f53 = z_2^2 - z_2;
+
+poly f54= Z + z_0 + z_1*x + z_2*x^2;
+
+//word level spec
+poly spec = Z + A*B;
+
+//list of polynomials for GB calculation
+ideal CI  = f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12, f13, f14, f15, f16, f17, f18, f19, f20, f21, f22, f23, f24, f25, f26, f27, f28, f29, f30, f31, f32, f33, f34, f35, f36, f37, f38, f39, f40, f41, f42, f43, f44, f45, f46, f47, f48, f49, f50, f51, f52, f53, f54;
+ideal BI  = f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12, f13, f14, f15, f16, f17, f18, f19, fw20, f21, f22, f23, f24, f25, f26, f27, f28, f29, f30, f31, f32, f33, f34, f35, f36, f37, f38, f39, f40, f41, f42, f43, f44, f45, f46, f47, f48, f49, f50, f51, f52, f53, f54;

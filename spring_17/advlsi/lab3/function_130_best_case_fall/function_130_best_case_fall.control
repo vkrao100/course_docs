@@ -1,0 +1,50 @@
+130nm FO5 Function Simulation
+
+*** include the circuit
+.include 'function_130.sp'
+
+*** include the transistor models
+.include 'asu130nm.bsim3'
+
+*** ".option post" generates the outputs for cscope
+.option acct=1 post
+
+*** set up our power and ground sources
+VCC vdd 0 DC 1.8
+
+*** Input waveform as piecewise linear saturated ramps
+VIN  ina 0 PWL 0p 1.8 40p 1.8 80p 0 120p 0
+VIN1 inb 0 PWL 0p 1.8 40p 1.8 80p 0 120p 0
+VIN2 inc 0 PWL 0p 1.8 40p 1.8 80p 0 120p 0
+VIN3 ind 0 PWL 0p 1.8 40p 1.8 80p 0 120p 0
+VIN4 ine 0 PWL 0p 1.8 40p 1.8 80p 0 120p 0
+
+*** run a transient analysis for two clock cycles
+.TRAN 200f 400p START=0ps 
+.save type=nodeset level=all 
+
+*** plot transient voltages
+*.PLOT TRAN V(ina) V(out) (0,1.8)
+*.PLOT TRAN V(inb) V(out) (0,1.8)
+*.PLOT TRAN V(inc) V(out) (0,1.8)
+*.PLOT TRAN V(ind) V(out) (0,1.8)
+*.PLOT TRAN V(ine) V(out) (0,1.8)
+*.PLOT TRAN I(VCC)
+
+* measure the power
+.MEAS TRAN pwr avg power from=0ps to 400ps 
+* measure MIS gate delays and rise times (20-80%)
+.MEAS TRAN falldel TRIG V(ina) VAL=0.9 FALL=1 TARG V(out) VAL=0.9 FALL=1
+.MEAS TRAN risedel TRIG V(ina) VAL=0.9 RISE=1 TARG V(out) VAL=0.9 RISE=1
+.MEAS TRAN falldel1 TRIG V(inb) VAL=0.9 FALL=1 TARG V(out) VAL=0.9 FALL=1
+.MEAS TRAN risedel1 TRIG V(inb) VAL=0.9 RISE=1 TARG V(out) VAL=0.9 RISE=1
+.MEAS TRAN falldel2 TRIG V(inc) VAL=0.9 FALL=1 TARG V(out) VAL=0.9 FALL=1
+.MEAS TRAN risedel2 TRIG V(inc) VAL=0.9 RISE=1 TARG V(out) VAL=0.9 RISE=1
+.MEAS TRAN falldel3 TRIG V(ind) VAL=0.9 FALL=1 TARG V(out) VAL=0.9 FALL=1
+.MEAS TRAN risedel3 TRIG V(ind) VAL=0.9 RISE=1 TARG V(out) VAL=0.9 RISE=1
+.MEAS TRAN falldel4 TRIG V(ine) VAL=0.9 FALL=1 TARG V(out) VAL=0.9 FALL=1
+.MEAS TRAN risedel4 TRIG V(ine) VAL=0.9 RISE=1 TARG V(out) VAL=0.9 RISE=1
+.MEAS TRAN fall TRIG V(out) VAL=1.44 FALL=1 TARG V(out) VAL=0.36 FALL=1
+.MEAS TRAN rise TRIG V(out) VAL=0.36 RISE=1 TARG V(out) VAL=1.44 RISE=1
+
+.end

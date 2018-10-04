@@ -1,0 +1,149 @@
+\documentclass[a4paper, 11pt]{exam}
+\usepackage{titling}
+\newcommand{\subtitle}[1]{%
+  \posttitle{%
+    \par\end{center}
+    \begin{center}\large#1\end{center}
+    }%
+}
+
+\usepackage{url}
+\usepackage{amsmath,amsthm,enumitem,amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\renewcommand{\labelenumii}{\roman{enumii}}
+
+\title{Homework Assignment 2}
+\subtitle{CS/ECE 6810: Computer Architecture \\
+Jan 31,2018}
+
+\author{ \\
+\textbf{Pipelining}}
+\date{Due Date: Feb 13, 2018.\\
+90 points}
+
+\begin{document}
+\maketitle
+\begin{center}
+\fbox{\fbox{\parbox{5.9in}{\centering
+Important Notes:
+\begin{itemize}
+\item Solutions turned in must be your own. Please, mention references (if any) at the end of each question. Please refrain from cheating.
+\item All solutions must be accompanied by the equations used/logic/intermediate steps. Writing only the final answer will receive \textbf{zero} credit.
+\item All units must be mentioned wherever required.
+\item Late submissions \textbf{(after 11:59 pm on 02/13/2018)} will not be accepted
+\item All submissions must be in PDF only. Scanned copies of handwritten solutions will not be accepted as a valid submission.
+\end{itemize}
+}}}
+\end{center}
+\vspace{0.2in}
+
+\begin{enumerate}
+	\item \textbf {Pipelining Performance}
+    Consider a single-cycle processor in which the execution of
+every instruction completes in 10 ns. The goal is to execute a user application that consists of 1000 instructions.
+	\begin{enumerate}
+    \item If the single cycle processor can execute one instruction per cycle, find the CPU time. \textbf{(5 points)}
+    
+\fbox{\parbox{5.5in}{
+    \textbf{Answer}
+    \vspace{0.2in} 
+    
+    }}
+    \newline
+    
+   
+    \item Assuming a 1ns additional delay for pipeline registers and perfect circuit partitioning and pipelining, find the speedup gained by making the processor 10- stage pipelined. Assume that 2 bubbles (NOPs) are necessary every 10 cycles for load and branch instructions. \textbf{(15 points)}
+    
+\fbox{\parbox{5.5in}{
+    \textbf{Answer}
+    \vspace{0.2in} 
+        
+    }}
+	\newline
+    
+	\end{enumerate}
+    
+    \item \textbf{Control Hazards} Consider an in-order five-stage pipeline that determines the branch
+target by the end of the 3rd pipeline stage (i.e., the execute stage). To avoid branch related stalls, the instruction set architecture (ISA) defines two branch delay slots. Assume that (a) all stalls in the processor are branch-related, (b) $20\%$ of all instructions are branches, (c) a branch is taken $60\%$ of the time, and (d) you could move two instructions from the taken side into the branch delay slot. What is the expected CPI for
+this processor? \textbf{(15 points)} 
+
+\fbox{\parbox{5.8in}{
+    \textbf{Answer}
+    \vspace{0.2in} 
+    }}
+	\newline
+    
+	\item \textbf{Multi-cycle Instructions} A pipelined architecture comprises instruction fetch (IF), instruction issue (IS), register read (RR), execute (EX), and write-back (WB) stages. Except EX, each stage requires one clock cycle to complete. The EX stage includes 4
+functional units, each of which can perform a floating-point operation —e.g., ADD, SUB, MULT, DIV, load, and store. The table below shows the latency of the operations in terms of the number of clock cycles. The pipeline implements all necessary forwarding paths for the ALU operations.
+
+\begin{center}
+\begin{tabular}{ |c|c|c|c|c|c|c| } 
+ \hline
+  & ADD & SUB & MULT & DIV & Load & Store \\ 
+  \hline
+ Latency & 1 & 1 & 3 & 4 & 1 & 1 \\ 
+ \hline
+\end{tabular}
+\end{center}
+
+\begin{enumerate}
+\item Create a timing diagram for the following code showing the execution of the code in time (clock cycles). \textbf{(15 points)}
+
+\fbox{\parbox{5.5in}{
+    \textbf{Answer}
+    \vspace{0.2in} 
+    }}
+	\newline
+
+\item Identify all structural and data hazards in the following code. \textbf {(20 points)}
+
+\fbox{\parbox{5.5in}{
+    \textbf{Answer}
+    \vspace{0.2in} 
+    }}
+	\newline
+
+\begin {center}
+Load F6, 20(R5) 
+
+Load F2, 28(R5)
+
+MUL F0, F2, F4
+
+SUB F8, F6, F3
+
+DIV F10, F0, F6
+
+ADD F6, F8, F2
+
+Store F8, 50(R5)
+
+\end {center}
+
+\end{enumerate}
+
+\item \textbf{Points of Production and Consumption} n. Consider an un-pipelined processor where it takes 36 ns to go through the circuits and 0.5 ns for the latch overhead. Assume that the point of production and point of consumption in the unpipelined processor are separated by 12 ns. Assume that half the instructions do not introduce a data hazard and half the
+instructions depend on their preceding instruction
+
+\begin{enumerate}
+\item What is the throughput of the processor with the un-pipelined architecture \textbf{(10 points)}
+
+\fbox{\parbox{5.5in}{
+    \textbf{Answer}
+    \vspace{0.2in} 
+    }}
+	\newline
+\item What is the throughput of the processor with a 12-stage pipeline? \textbf {(10 points)}
+
+\fbox{\parbox{5.5in}{
+    \textbf{Answer}
+    \vspace{0.2in} 
+    }}
+	\newline
+
+\end{enumerate}
+\end{enumerate}
+
+
+\end{document}

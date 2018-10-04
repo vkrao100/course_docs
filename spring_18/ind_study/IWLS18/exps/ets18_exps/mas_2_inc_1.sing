@@ -1,0 +1,119 @@
+LIB "primdec.lib";
+ring r = (2, x), (Z, Zs, Zi, A, B, zs_0, zs_1, zi_0, zi_1, rs_0, ri_0, ss_0, ss_3, ss_1, ss_2, si_0, si_3, si_1, si_2, a_0, b_0, a_1, b_1, x_1, x_2, x_3, x_4), lp;
+//ring r = (2, x), (Z, Zs, Zi, A, B, zs_0, zs_1, zi_0, zi_1, ri_0, ss_0, ss_3, si_0, si_3, si_1, si_2, a_0, b_0, a_1, b_1, x_1, x_2, x_3, x_4, rs_0, ss_1, ss_2), lp;
+
+minpoly = x^2 + x + 1;
+
+proc xorgate(poly g, poly h)
+{
+	return(g+h);
+}
+proc mux(poly g, poly h, poly i, poly j, poly k, poly l)
+{
+	return(i*invgate(g)*invgate(h) + k*invgate(g)*h + j*g*invgate(h) + l*g*h);
+}
+
+//circuit -  2 bit mastrovito multiplier poly's
+//correct specification
+poly fs3 = ss_0 + a_0*b_0;
+poly fs4 = ss_1 + a_0*b_1;
+poly fs5 = ss_2 + a_1*b_0;
+poly fs6 = ss_3 + a_1*b_1;
+poly fs7 = rs_0 + xorgate(ss_1,ss_2);
+poly fs8 = zs_0 + xorgate(ss_0,ss_3);
+poly fs9 = zs_1 + xorgate(rs_0,ss_3);
+
+//unknown implementation
+//adding a mux in place of r0 XORgate
+poly fi3 = si_0 + a_0*b_0;
+poly fi4 = si_1 + a_0*b_1;
+poly fi5 = si_2 + a_1*b_0;
+poly fi6 = si_3 + a_1*b_1;
+poly fib7 = ri_0 + mux(si_1, si_2, x_1, x_2, x_3, x_4);
+//poly fib7 = ri_0 + si_1*si_2;
+poly fi8 = zi_0 + xorgate(si_0,si_3);
+poly fi9 = zi_1 + xorgate(ri_0,si_3);
+
+//word level specification
+poly f1 = A + a_0 + a_1*x;
+poly f2 = B + b_0 + b_1*x;
+
+poly fs18= Zs + zs_0 + zs_1*x;
+poly fi22= Zi + zi_0 + zi_1*x;
+
+//vanishing polynomials
+poly f10 = A^4 - A;
+poly f11 = B^4 - B;
+poly f12 = Z^2 - Z;
+
+poly f13 = a_0^2 - a_0;
+poly f14 = a_1^2 - a_1;
+poly f15 = b_0^2 - b_0;
+poly f16 = b_1^2 - b_1;
+
+poly fs10 = ss_0^2 - ss_0;
+poly fs11 = ss_1^2 - ss_1;
+poly fs12 = ss_2^2 - ss_2;
+poly fs13 = ss_3^2 - ss_3;
+poly fs14 = rs_0^2 - rs_0;
+poly fs15 = zs_0^2 - zs_0;
+poly fs16 = zs_1^2 - zs_1;
+poly fs17 = Zs^4 - Zs;
+
+poly fi10 = si_0^2 - si_0;
+poly fi11 = si_1^2 - si_1;
+poly fi12 = si_2^2 - si_2;
+poly fi13 = si_3^2 - si_3;
+poly fi14 = ri_0^2 - ri_0;
+poly fi15 = zi_0^2 - zi_0;
+poly fi16 = zi_1^2 - zi_1;
+poly fi17 = x_1^2 - x_1;
+poly fi18 = x_2^2 - x_2;
+poly fi19 = x_3^2 - x_3;
+poly fi20 = x_4^2 - x_4;
+poly fi21 = Zi^4 - Zi;
+
+poly fm = Z*(Zs-Zi)-1;
+
+//standard monomial list
+//poly f25 = 1;
+//poly f26 = a_0;
+//poly f27 = a_1;
+//poly f28 = b_0;
+//poly f29 = b_1;
+//poly f30 = a_0*b_0;
+//poly f31 = a_0*b_1;
+//poly f32 = a_1*b_0;
+//poly f33 = a_1*b_1;
+//poly f34 = a_0*a_1;
+//poly f35 = b_0*b_1;
+//poly f36 = a_0*b_0*a_1;
+//poly f37 = a_0*b_0*b_1;
+//poly f38 = a_0*b_1*a_1;
+//poly f39 = a_1*b_0*b_1;
+//poly f40 = a_0*a_1*b_0*b_1;
+//
+////word level spec
+poly spec = Zs + A*B;
+
+ideal J0 = f10, f11, f13, f14, f15, f16;
+//ideal J0 = f10, f11, f12, f13, f14, f15, f16;
+ideal Js = f1, f2, fs3, fs4, fs5 ,fs6, fs7, fs8, fs9, fs18,fs10, fs11, fs12, fs13, fs14, fs15, fs16, fs17;
+ideal Ji = f1, f2, fi3, fi4, fi5 ,fi6, fib7, fi8, fi9, fi22, fi10, fi11, fi12, fi13, fi14, fi15, fi16, fi17, fi18, fi19, fi20, fi21;
+
+//ideal gsu = spec, f1, f2, fs3, fs4, fs5 ,fs6, fs8, fs9, fs18;
+
+//ideal Jgsu = groebner(gsu + J0);
+//string grobner  = "grobner for given polynomials:";
+//grobner, Jgsu;
+
+//ideal SM = f25,f26,f27,f28,f29,f30,f31,f32,f33,f34,f35,f36,f37,f38,f39,f40;
+//ideal SMB = f30,f31,f33,f36,f37,f39,f40;
+
+//poly rr = (x)*a_0*b_1+(x)*a_0+(x)*b_1;
+
+ideal miter = J0 + spec + Ji + fm;
+
+//list gb = groebner(miter);
+//string grobner  = "grobner for given polynomials:";
+//grobner, gb;

@@ -1,0 +1,30 @@
+\section{The Search for Rectification Target Nets}
+
+In principle, once a bug is detected by computing
+$f\xrightarrow{f_1,\dots,f_s}_+r_{\neq 0}$, a correction based on $r$
+can always be added at the primary outputs of the circuit. This is,
+however, not very desirable as this may not help in identifying the
+cause of the bug, and the added correction logic may unacceptably
+increase the size of the circuit. Our objective is to identify a subset
+$\mathcal{N} \subseteq \{x_1,\dots,x_n\}$ of nets closer to the
+primary inputs of the circuit such that the circuit {\it may or may
+  not be} rectifiable at the nets in $\mathcal{N}$. We present a
+heuristic approach that analyzes the non-zero remainder of the
+\Grobner basis reduction $f\xrightarrow{F,F_{0}^{PI}}_+r$, and
+constructs the set $\mathcal{N}$. Should the circuit admit a
+single-fix rectification (at any number of nets), our heurustic will
+ensure that at least one of these rectifiable locations will be
+present in $\mathcal{N}$. Once the set $\mathcal{N}$ is computed, we
+describe techniques in the next section to unequivocally confirm
+whether or not a net $x_i \in \mathcal{N}$ admits a single-fix
+rectification so that $C$ matches the specification $f$. 
+
+Note that as the circuit has $k$-bit operands, the output $Z =
+\sum_{i=0}^{k-1} z_i \alpha^i$. Then the non-zero remainder $r$ can
+also be re-expressed according to powers of $\alpha$:
+
+\begin{align}
+r = \alpha^0 (r_0) + \alpha^1 (r_1) + \dots + \alpha^{k-1} (r_{k-1})\\
+\end{align}
+
+Here $r_0,\dots, r_{k-1}$ are polynomials

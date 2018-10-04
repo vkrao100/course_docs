@@ -1,0 +1,223 @@
+LIB "my_proc.lib";
+LIB "control.lib";
+LIB "dmodapp.lib";
+LIB "linalg.lib";
+LIB "numerAlg.lib";
+
+// RTTO 
+//ring R = (2, x), (Z, A, B, z_0_, z_1_, r_0, e_0, e_1, e_2, e_3, s_5, s_4, s_3, s_2, s_1, s_0, a_0_, a_1_, b_1_, b_0_), lp;
+ring R = (2, x), (Z, A, B, z_0_, z_1_, r_0, e_0, e_1,  e_3, s_5, s_4, s_3, s_2, s_0, a_0_, a_1_, b_1_, b_0_, e_2, s_1), lp;
+
+// RATO
+//ring r = (2, x), (zz_0_, zz_1_, z_0_, z_1_, s_6, r_0, e_0, e_1, e_2, e_3, s_5, s_4, s_3, s_2, s_1, s_0, a_0_, a_1_, b_1_, b_0_,Z, A, B), lp; 
+
+//elimination order
+//ring r = (2, x), (Z, A, B, z_0_, z_1_, r_0, e_0, e_1, e_2, e_3, s_0, s_1, s_2, s_4, s_5, a_0_, a_1_, b_1_, s_3, b_0_), lp; 
+
+minpoly = x^2 + x + 1;
+
+proc xorgate(poly g, poly h)
+{
+	return(g+h);
+}
+
+proc andgate(poly g, poly h)
+{
+	return(g*h);
+}
+
+//circuit -  2 bit mastrovito multiplier poly's
+//correct implementation
+poly f1 = Z + z_0_ + z_1_*x;
+//poly f1 = Z + zz_0_ + zz_1_*x;
+poly f2 = A + a_0_ + a_1_*x;
+poly f3 = B + b_0_ + b_1_*x;
+poly f4 = z_0_ + xorgate(s_0,e_0);
+poly f5 = z_1_ + xorgate(e_0,r_0);
+poly f6 = r_0 + xorgate(e_1,s_5);
+poly f7 = e_0 + s_1*e_2;
+poly f8 = e_1 + s_2*e_2;
+poly f9 = e_2 + xorgate(e_3,s_4);
+poly f10 = e_3 + b_0_*s_3; //b_0_ + s_3; //b_0_*s_3;
+poly f11 = s_0 + a_0_*b_0_;
+poly f12 = s_1 + a_1_*b_1_;
+poly f13 = s_2 + a_1_*b_0_;
+poly f14 = s_3 + a_0_ + b_0_ + a_0_*b_0_;
+poly f15 = s_4 + b_0_ + 1;
+poly f16 = s_5 + a_0_*b_1_;
+
+// Adding an extra minterm: {a_1_, a_0_ = 0,1} and {b_1_,b_0_ = 1,1}
+//poly f21 = s_6 + (1+a_1_)*a_0_*b_1_*b_0_;
+//poly f22 = zz_0_ + z_0_ + s_6;
+//poly f23 = zz_1_ + z_1_ + s_6;
+
+
+//vanishing polynomials
+poly f17 = a_0_^2 - a_0_;
+poly f18 = a_1_^2 - a_1_;
+poly f19 = b_0_^2 - b_0_;
+poly f20 = b_1_^2 - b_1_;
+/*poly f21 = s_0^2 - s_0;
+poly f22 = s_1^2 - s_1;
+poly f23 = s_2^2 - s_2;
+poly f24 = s_3^2 - s_3;
+poly f25 = s_4^2 - s_4;
+poly f26 = s_5^2 - s_5;
+poly f27 = r_0^2 - r_0;
+poly f28 = z_0_^2 - z_0_;
+poly f29 = z_1_^2 - z_1_;
+poly f30 = e_0^2 - e_0;
+poly f31 = e_1^2 - e_1;
+poly f32 = e_2^2 - e_2;
+poly f33 = e_3^2 - e_3;
+
+poly f34 = Z^4 - Z;
+poly f35 = A^4 - A;
+poly f36 = B^4 - B;*/
+
+// RATO given spec
+poly spec = Z+(x+1)*A^3*B^3+(x)*A^3*B^2+A^3*B+(x+1)*A^2*B^3+(x)*A^2*B^2+A^2*B+(x+1)*A*B^3+(x)*A*B^2;
+
+int dps = 2;
+//poly spec = Z + A*B;
+
+ideal J1 = f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12,f13,f14,f15,f16;
+ideal J0 = f17,f18,f19,f20;
+
+//check if the circuit indeed implements specification
+poly rema = reduce(spec,J1+J0);
+if (rema == 0)
+{
+	"circuit implements specification, exiting";
+	quit;
+}
+else
+{
+	//"remainder",rema;
+	"circuit doesn't implement specification, attempting rectification";
+}
+
+//list coneTips =  remainder_partition(rema,dps);
+
+//list rectCheck = prune_logical_cone(coneTips[1],J1);
+list rectCheck = e_0;
+
+ideal Jf = f1,f2,f3,f4,f5,f6;
+ideal Js = f8,f9,f10,f11,f12,f13,f14,f15,f16;
+
+int rectified = 0;
+
+for(int rect=1; rect<=size(rectCheck);rect++)
+{	
+	if (rectified == 0)
+	{
+		//rectifying at location rf
+		poly rf = rectCheck[rect];
+		"checking for rectification at", rf;
+		ideal ckt_imp = J1;
+		
+		int ind_r = get_index(ckt_imp, rf);
+		int ind_Z = get_index(ckt_imp, Z);
+		
+		ideal IL = ckt_imp;
+		IL[ind_r] = rf+1;
+		ideal IH = ckt_imp;
+		IH[ind_r] = rf;
+		
+		poly rL = reduce(spec,IL+J0);
+		poly rH = reduce(spec,IH+J0);
+		
+		//"rL",rL;
+		//"rH",rH;
+		ideal rlh = groebner((rL*rH)+J0);
+		//"ideal rlh is",rlh;
+
+		/*ideal Ql = quotient(J0,rL);
+		ideal Qh = quotient(J0,rH);		
+
+		"Quotient(rL)=",Ql;
+		"Quotient(rH)=",Qh;
+		ideal Qln = intersect((rL + J0),(rH + J0));
+		ideal Qhn = groebner(Qln);
+		"ideal Qhn is", Qhn;
+		ideal Gr = groebner(Ql+Qh+J0);
+		"groebner(Ql+Qh+J0)=",Gr;
+		if(Gr == 1)*/
+		//def W=Equal(rlh,J0);
+		if (size(rlh)==size(J0))
+		{	
+			int lenI = size(ckt_imp);
+			ideal Jf = ckt_imp[1..(ind_r-1)];
+			ideal Js = ckt_imp[(ind_r+1)..lenI];
+			poly quo;
+			poly rem;
+			poly prem;
+		
+			prem = reduce(spec,Jf);
+			rem, quo = multivariate_burg(prem,lead(rf),J0);
+			if (quo == 0)
+			{ 
+				"Circuit not Rectifiable at location",rf;
+			}
+			else
+			{
+				"Circuit Rectifiable at location",rf;
+				"remainder",rem;
+				"quotient",quo;
+			
+				ideal dec = variables(quo);
+				ideal JCp = quo,Js;
+				if (size(dec)>=1)
+				{
+					"quotient is not a constant";
+					ideal JG = slimgb(JCp);
+					matrix V = lift(JG,rem);
+					matrix Vt = transpose(V);
+					//Vt;
+					matrix U = lift(JCp,JG);
+					//U;
+					poly sol;
+					int i;
+					for(i=1;i<=size(JG);i++)
+					{
+						sol = sol + (Vt[1,i]*U[1,i]);
+					}
+				}
+				else
+				{	
+					"quotient is a constant";
+					if (quo != 1)
+					{
+						matrix quoi = inverse(quo);
+					}
+					else
+					{
+						matrix quoi = 1;
+					}
+					poly irem   = quoi[1,1]*rem;
+					poly sol    = reduce(irem,Js+J0);	
+				}
+				"solution for P is",sol;
+
+				poly correc = rf+sol;
+				poly corem = reduce(spec, Jf+Js+correc+J0);
+			
+				"applying correction to circuit at",rf,"with solution",sol,":remainder after reduction is", corem;
+				rectified = 0;
+			}
+		}
+		else
+		{
+			"Circuit not rectifiable at location",rf;
+		}
+	}
+}
+
+poly quo = (x+1);
+poly sol = a_0_*a_1_*b_1_*b_0_+a_0_*b_1_*b_0_+a_1_*b_1_;
+poly correc = rf+sol;
+option(redSB);
+ideal colon = quotient((Js+J0),quo);
+ideal colont = colon+correc;
+ideal colong = groebner(colont);
+"colon",colong;

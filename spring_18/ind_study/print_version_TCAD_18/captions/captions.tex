@@ -1,0 +1,152 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                   %
+% Latex File for the Captions       %
+%                                   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\documentclass[10pt, twocolumn]{IEEEtran}
+\documentclass[journal, onecolumn]{IEEEtran}
+
+\RequirePackage{times}
+\usepackage{epsfig}
+\DeclareMathAlphabet{\mathtsl}{OT1}{ptm}{m}{sl}
+
+
+\usepackage{helvet}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{subfig}
+\usepackage{comment}
+\usepackage{mathtools}
+\usepackage{color}
+
+
+
+\begin{document}
+
+%%%%%%%%%%%% Macro definitions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{Definition}{Definition}[section]
+\newtheorem{Example}{Example}[section]
+\newtheorem{Lemma}{Lemma}[section]
+%%
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\ov}{\overline}
+\newcommand{\xor}{\bigoplus}
+%% Tabs
+\def\tabnote#1{{\small{#1}}}
+%% Algorithm
+\def\algorithm{\bgroup\obeylines\obeyspaces\def\ {\quad}
+\footnotesize\tt\leftskip=1pc\vskip4pt\relax}
+\def\endalgorithm{\vskip4pt\egroup}
+%% Line spacing
+\newcommand{\ls}[1]
+    {\dimen0=\fontdimen6\the\font
+     \lineskip=#1\dimen0
+     \advance\lineskip.5\fontdimen5\the\font
+     \advance\lineskip-\dimen0
+     \lineskiplimit=.9\lineskip
+     \baselineskip=\lineskip
+     \advance\baselineskip\dimen0
+     \normallineskip\lineskip
+     \normallineskiplimit\lineskiplimit
+     \normalbaselineskip\baselineskip
+     \ignorespaces
+    }
+%% Bibliography related
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em1
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+\setcounter{page}{1}
+
+\begin{figure*}[p]
+\caption{\small A 2-bit modulo Multiplier circuit.}
+\label{fig:mul2bit}
+\end{figure*}
+
+\begin{figure*}[p]
+\caption{\small {Polynomials of the circuit under RTTO constitute a GB.
+}}
+\label{fig:rel_prime_lt}
+\end{figure*}
+
+\begin{figure*}[p]
+\caption{ZDD for the polynomial $r_1 = yd + y + d$.} 
+\label{r1}
+\end{figure*}
+
+\begin{figure*}[p]
+\caption{A chain of OR gates.}   
+\label{ChainOrGate}
+\end{figure*}
+
+\begin{figure*}[p]
+\caption{Reduction of output of the circuit in Fig. \ref{ChainOrGate} by $f_1,f_2,f_3$.}
+\label{red_steps}
+\end{figure*}
+
+\begin{figure*}[p]
+\caption{{$f+g\pmod 2$ using ZDDs}}
+\label{mod2sumfig}
+\end{figure*}
+
+\begin{figure*}[p]
+\caption{ZDDs for polynomial $r_1$ and $f_2$.}
+\label{f2}
+\end{figure*}
+
+\begin{figure*}[p]
+\caption{Montgomery multiplication.}
+\label{montfig}
+\end{figure*}
+
+\begin{figure*}[p]
+\caption{Integer multiplier circuit}
+\label{intmult}
+\end{figure*}
+
+\begin{table*}[p]
+\caption{Mastrovito Multipliers (Time in seconds);  $k$ = Datapath Size, \#Gates = No. of gates, \#T = No. of threads, Time-Out = 30 hrs, (P): Parallel Execution, (S): Sequential Execution, K = $10^3$, M = $10^6$, PB: PolyBori, ZR: Algorithm~\ref{multimon}} 
+\label{masmmsyn}
+\end{table*}
+
+\begin{table*}[p]
+\caption{Montgomery Multipliers (Time in seconds); $k$ = Datapath Size, \#Gates = No. of gates, \#T = No. of threads, Time-Out = 30 hrs, (P): Parallel Execution, (S): Sequential Execution, K = $10^3$, M = $10^6$, PB: PolyBori, ZR: Algorithm~\ref{multimon}}  
+\label{montmmsyn}
+\end{table*}
+
+\begin{table*}[p]
+\caption{Montgomery Blocks (Time in seconds); $k$ = Datapath Size, \#Gates = No. of gates, Time-Out = 30 hrs, 
+Red. = time for reduction, Coll. = time to reduce across the 4 levels. 
+K = $10^3$, M = $10^6$, PB: PolyBori, ZR: Algorithm~\ref{multimon}} 
+\label{montblockmm}
+\end{table*}
+
+
+\begin{table*}[p]
+\caption{Point Addition Circuits (Time in seconds); $k$ = Datapath Size, \#Gates = No. of gates, Time-Out = 30 hrs, K = $10^3$, M = $10^6$,
+PB: PolyBori, ZR: Algorithm~\ref{multimon}} 
+\label{pointadd}
+\end{table*}
+
+
+\begin{table*}[p]
+\caption{RH-SMPO Multipliers (Time in seconds); $k$ = Datapath Size, \#Gates = No. of gates, Time-Out = 30 hrs, K = $10^3$,
+PB: PolyBori, ZR: Algorithm~\ref{multimon}}   
+\label{rhsmpo}
+\end{table*}
+
+\begin{table*}[p]
+\caption{AG-SMPO Multipliers (Time in seconds); $k$ = Datapath Size, \#Gates = No. of gates, Time-Out = 30 hrs, K = $10^3$,
+PB: PolyBori, ZR: Algorithm~\ref{multimon}}   
+\label{agsmpo}
+\end{table*}
+
+\end{document}

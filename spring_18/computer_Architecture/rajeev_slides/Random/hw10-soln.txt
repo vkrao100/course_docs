@@ -1,0 +1,105 @@
+Consistency Models (40 points)
+For the multi-threaded program below, what are all the valid outputs (printed value of A) for a sequentially consistent execution of the program? Before these threads start executing, A and B are both initialized to zero. Assume that each line of code below corresponds to one assembly instruction.
+
+Thread 1 
+B = 10; 
+A = 30; 
+
+Thread 2 
+if (B-A > 5) 
+then A = A + B; 
+print A; 
+
+What are possible valid outputs if the code in each thread is encapsulated within lock and unlock statements as shown below (again assuming a sequentially consistent processor)?
+
+Thread 1 
+lock(L1); 
+B = 10; 
+A = 30; 
+unlock(L1); 
+
+Thread 2 
+lock(L1); 
+if (B-A > 5) 
+then A = A + B; 
+print A; 
+unlock(L1); 
+
+Consistency Models (20 points)
+As a programmer, how can you (largely) escape dealing with a processor's consistency model?
+
+Synchronization (20 points)
+Consider the code below that acquires a lock and updates a counter value. Can you come up with a more efficient version of this code that uses the concept of optimistic concurrency?
+
+lockit: LL R1, 0(R2) 
+BNEZ R1, lockit 
+DADDUI R1, R0, #1 
+SC R1, 0(R2) 
+BEQZ R1, lockit 
+LD R3, 0(R4) 
+DADDUI R3, R3, #1 
+ST R3, 0(R4) 
+ST 0(R2), #0 
+
+Transactional Memory (20 points)
+How can a lazy-lazy transactional memory implementation cause starvation in some programs? How can this problem be alleviated?
+
+
+
+HW 10 solution.
+
+Q1.
+
+In a sequentially consistent execution, the operations from the two threads
+can be interleaved in an arbitrary fashion. There are many such valid
+interleavings. (If you wrote a program to generate these interleavings,
+you receive extra brownie points!)
+
+Assume that Thread-1's instructions are p, q  and Thread-2's instructions
+are P, Q, R (Q's execution is conditional).  Like the problem in class,
+there are 5 choose 2 possible interleavings.  Let's examine each of these
+10 cases:
+
+pqPQR: print 12
+pPqQR: print 4 (Q does not execute)
+pPQqR: print 4 (Q does not execute)
+pPQRq: print 0 (Q does not execute)
+PpqQR: print 4 (Q does not execute)
+PpQqR: print 4 (Q does not execute)
+PpQRq: print 0 (Q does not execute)
+PQpqR: print 4 (Q does not execute)
+PQpRq: print 0 (Q does not execute)
+PQRpq: print 0 (Q does not execute)
+
+
+Possible outputs: 0, 4, and 12.
+
+
+For the lock-based version of the code, two possibilities arise. Either T1
+acquires the lock first or T2 acquires the lock first. If T1 acquires the lock
+first, 12 is printed.  If T2 acquires the lock first, 0 is printed.
+
+
+Q2.
+
+Modern processors provide sequential consistency if the programmer or
+compiler has demarcated racy code with appropriate locks or fences.  For
+such code, the fences are slow, but we are able to do out-of-order
+execution between fences.  Thus, we are able to get results that are
+sequentially consistent and fast.
+
+If a modern processor is fed code with races, the results are not
+sequentially consistent.
+
+
+Q3.
+
+In a lazy-lazy system, the first finishing transaction acquires the
+commit token from the arbiter.  A long transaction may get repeatedly
+aborted by a loop of short transactions that keep finishing quickly,
+acquring the token, and broadcasting a write that conflicts with the
+long transaction.  This is an example of starvation.  The problem
+can be alleviated by detecting repeated aborts and forcibly acquiring the
+commit token from the arbiter even before the long transaction has
+finished.
+

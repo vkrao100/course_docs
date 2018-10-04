@@ -1,0 +1,45 @@
+/*procedure to calculate spoly to support grobner basis calculation
+
+Author - Vikas Rao
+Date   - 10-23-2016
+
+*/
+LIB "poly.lib";
+LIB "multivariate_division.lib";
+
+proc syzygy_helper(list l, list B, list G, poly spd, int ot, int new)
+{
+   int decision = 0;
+   int csg, csb;
+   int c1 = 1;
+   int i;
+   if (new != 0)
+   {  
+      csg = size(G);
+      csb = size(B);
+      poly g1 = lead(l[1]);
+      poly g2 = lead(l[2]);
+      poly lc = lcm(g1, g2);
+      poly lp = (g1*g2);
+      if (lc != lp)
+      {
+         c1 = 0;
+      }
+      poly ld = lead(spd);
+      poly temp = multivariate_division(lc, ld);
+      if (temp == 0)
+      {
+         int c2 = 0;
+         G   = delete(G, csg);
+         csg = size(G);
+         for(i=csb;i>((csb-csg)or size(B));i=i-1)
+         {   
+            B  = delete(B, i);
+         }
+         new = 0;
+         decision = (c1 and c2);
+      }
+   }
+   return(decision, new, G, B);
+
+} 

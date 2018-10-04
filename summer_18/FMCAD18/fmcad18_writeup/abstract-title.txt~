@@ -1,0 +1,27 @@
+Debugging and Automatic Correction of Finite Field Arithmetic Circuits using Computer Algebra Methods
+
+In formal verification of arithmetic circuits, it is required to check
+whether or not a gate-level circuit implements a given specification model. In cases where this equivalence check fails -- i.e. a
+counterexample to equivalence is detected -- it is required to: i) debug
+the circuit, ii) identify a set of nets (signals) where the circuit
+can be rectified, and iii) compute the corresponding rectification
+functions at those rectifiable locations. This paper addresses the
+problem of post-verification debugging and correction of finite field
+arithmetic circuits. We assume that the specification polynomial and
+the circuit implementation may differ at any number of points;
+however, the circuit can be rectified at one location --
+i.e. single-fix rectification. The setup is modeled by means of a
+polynomial ideal in finite fields, where the equivalence test is
+formulated as an ideal membership test in commutative
+algebra. Subsequent to verification failure, we analyze the
+disequivalence proof and present an algorithm to identify rectifiable
+locations and subsequently derive the rectification function. Our
+approach is based upon the Groebner basis algorithm, which we use both
+as a decision procedure (for equivalence test) as well as a
+quantification procedure (for computing the rectification
+function). Experiments are performed over various finite field
+arithmetic circuits (both bit-level and word-level) that demonstrate
+the efficacy of our approach. While contemporary SAT-based approaches
+are efficient in proving disequivalence (detecting bugs), they are
+infeasible in debugging and computing the rectification function for
+arithmetic circuits. 

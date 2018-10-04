@@ -1,0 +1,74 @@
+Memory access times (50 points)
+Consider a processor and a program that would have an IPC of 1 with a perfect 1-cycle L1 cache. Assume that each additional cycle for cache/memory access causes program execution time to increase by one cycle. Assume the following MPKIs and latencies for the following caches: 
+L1: 32 KB: 1-cycle: 80 MPKI
+L2: 256 KB: 10-cycle: 50 MPKI
+L3: 2 MB: 30-cycle: 20 MPKI
+L4: 32 MB: 100-cycle: 5 MPKI
+Memory: 250-cycles
+Estimate the program execution times for the following cache configurations:
+L1-L2-L3-L4
+L1-L2-L3
+L2-L3-L4
+L1-L2-L4
+Cache Organization (25 points)
+A 64 MB L3 cache has a 128 byte line (block) size and is 32-way set-associative. How many sets does the cache have? How many bits are used for the offset, index, and tag, assuming that the CPU provides 48-bit addresses? How large is the tag array? (If you do not explain your steps, you will not receive partial credit for an incorrect answer.)
+
+Cache Miss Rates (25 points)
+For the following access pattern, (i) indicate if each access is a hit or miss. (ii) What is the hit rate? Assume that the cache has 2 sets and is 2-way set-associative. Assume that block A maps to set 0, B to set 1, C to set 0, D to set 1, E to set 0, F to set 1. Assume an LRU replacement policy.
+
+Does the hit rate improve if you assume a fully-associative cache of the same size (again, indicate if each access is a hit or a miss)?
+
+Access pattern: ABCBABECADBCAFDBCEA
+
+Q1.  
+
+  1. We start off by needing at least 1000 cycles for 1000 instructions
+     (with a hypothetical perfect L1).  So each 1-cycle L1 hit doesn't 
+     cost us additional cycles.  But of those 1000 instructions, 70 are
+     going to miss and will require 10 cycles each to look up the L2 (an
+     extra 700 cycles).  Of those L2 lookups, 60 will miss and will require
+     an additional 40-cycle L3 lookup (another 2400 cycles).  Of these L3
+     look-ups, 40 will miss and require an 80-cycle L4 lookup (3200 cycles).
+     Of these L4 lookups, 20 will miss and require 200-cycle memory access
+     (4000 cycles).  So the total execution time =
+     1000 + 700 + 2400 + 3200 + 4000 = 11,300 cycles
+
+   2. For the L1-L2-L3 hierarchy, the answer would be
+      1000 + 700 + 2400 + (40*200) = 12,100 cycles
+
+   3. Every LD/ST, instead of accessing a 1-cycle L1, has to now access
+      a 10-cycle cache.  So each LD/ST will now slow the program down by
+      9 cycles (since anything more than a 1-cycle look-up hurts my
+      execution time).
+      The problem does not specify how many LD/STs there are in 1000
+      instructions.  Let's make some assumption, say, 400.  The total
+      execution time would be
+      1000 + (400*9) + (60*40) + (40*80) + (20*200) = 14,200 cycles
+
+   4. For the L1-L2-L4 hierarchy, the execution time would be
+      1000 + 700 + (60*80) + 4000 = 10,500 cycles
+
+
+Q2.
+    The cache has 16MB/64B blocks = 256K blocks.  If there are 16 ways,
+    there are 256K/16 = 16K sets.  We'll therefore need 14 index bits
+    (since there are 2^14 sets), 6 offset bits (since the block size is 64),
+    and (48-6-14) 28 tag bits.  Each block needs a 28-bit tag.  There are
+    256K blocks, so the tag array needs 256K*28b = 896KB.
+
+
+Q3.
+    For the 2-set 2-way cache, the hit/miss information is as below:
+    ACCBAECDBAFDCEA 
+    MMHMHMMMHMMMHMM
+    Hit rate is 4/15 = 27%.
+
+    For the 1-set 4-way cache (fully-associative), the hit/miss info is:
+    ACCBAECDBAFDCEA 
+    MMHMHMHMMMMHMMM
+
+    Hit rate is 4/15 = 27%.  Typically, a fully-associative cache will increase
+    the hit rate.  But because of the LRU heuristic, there may be occasions
+    when the hit rate remains the same or even reduces.
+
+

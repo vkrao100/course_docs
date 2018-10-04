@@ -1,0 +1,1 @@
+Mast_3_MontFlat3_5.cnf:1: missing or invalid 'p cnf <variables> <clauses>' header

@@ -1,0 +1,1808 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Modeltech_pe_edu_10.4a/examples
+vcyclonev_and1
+Z0 !s110 1535471250
+!i10b 1
+!s100 5kPgQ`AK=LAR1F=08F@dh0
+IRobU5]WMNh;ozmM?N3RIS3
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+Z2 dC:/Users/vikas/Documents/course_docs/spring_18/ECE_6750/HW3/adder_ckt/4_1_bit_adder
+Z3 w1524646478
+Z4 8C:/intelFPGA_lite/18.0/quartus/3710_lab/simulation/modelsim/cyclonev_atoms.v
+Z5 FC:/intelFPGA_lite/18.0/quartus/3710_lab/simulation/modelsim/cyclonev_atoms.v
+L0 299
+Z6 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z7 !s108 1535471250.000000
+Z8 !s107 C:/intelFPGA_lite/18.0/quartus/3710_lab/simulation/modelsim/cyclonev_atoms.v|
+Z9 !s90 -reportprogress|300|-work|work|C:/intelFPGA_lite/18.0/quartus/3710_lab/simulation/modelsim/cyclonev_atoms.v|
+!i113 1
+Z10 o-work work
+Z11 tCvgOpt 0
+vcyclonev_and16
+R0
+!i10b 1
+!s100 HEbjaM1L[@`8B7>8IPd8N1
+I]1:iDDeXJR[OXeZ:jXD9k1
+R1
+R2
+R3
+R4
+R5
+L0 312
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_asmiblock
+R0
+!i10b 1
+!s100 Lchi[ZBRE>e_eR314ORz33
+IM=9bE9ULz:b6I=`eEKU8]2
+R1
+R2
+R3
+R4
+R5
+L0 3743
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_b17mux21
+R0
+!i10b 1
+!s100 Zh=H3z:FaiUUXCWH[N2Oe3
+ITXbgKTiK8OjCEVGMVAnl[1
+R1
+R2
+R3
+R4
+R5
+L0 352
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_b5mux21
+R0
+!i10b 1
+!s100 8HVO_@R6>BmzI0AbdS8oj1
+I1e?fa<UK9kz>2CVCU9Q=X3
+R1
+R2
+R3
+R4
+R5
+L0 373
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_bias_block
+R0
+!i10b 1
+!s100 GnS2SFSZYa]X8^_kF?<_E3
+I4a]1b98nQo5b?YjQg2H@:0
+R1
+R2
+R3
+R4
+R5
+L0 2387
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_bias_generator
+R0
+!i10b 1
+!s100 [698WB;6eQNDZf^55kKzg1
+IC1d3agkXDTjdVdO[]zCig1
+R1
+R2
+R3
+R4
+R5
+L0 2301
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_bias_logic
+R0
+!i10b 1
+!s100 RXW5d_if0OH4@f4D@lYP<1
+IMc9Xc05DGg>NHE>NYh`3n2
+R1
+R2
+R3
+R4
+R5
+L0 2215
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_bmux21
+R0
+!i10b 1
+!s100 [0EKz2U]gYinz=kUO;BQN0
+IcXn`:3cYR[F>M;UTPn7a61
+R1
+R2
+R3
+R4
+R5
+L0 341
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_chipidblock
+R0
+!i10b 1
+!s100 lzJ?<34L92OkU?;4N5:jn3
+IeJHEf2:alEnHbT]J8JB7e1
+R1
+R2
+R3
+R4
+R5
+L0 3815
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_clk_phase_select
+R0
+!i10b 1
+!s100 k@0]PVQMR0NWC^ez7lchT0
+I93k0<H4?g`IV@]oXo`m:Y2
+R1
+R2
+R3
+R4
+R5
+L0 2452
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_clkena
+R0
+!i10b 1
+!s100 FUCGjLn]oDl4j65:WOSg80
+I9K5`<Z5Ucneb[Yd?h5Y@F3
+R1
+R2
+R3
+R4
+R5
+L0 2488
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_clkselect
+R0
+!i10b 1
+!s100 5z]1L01Bk9iiW`j_N_;YL0
+I9b2B8Yo4e?09IceoXfe8f2
+R1
+R2
+R3
+R4
+R5
+L0 2524
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_controller
+R0
+!i10b 1
+!s100 04nP_aeC[L9CeAVQSeJ`71
+IZnlP9zNajXB8B[iogizRn1
+R1
+R2
+R3
+R4
+R5
+L0 3838
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_crcblock
+R0
+!i10b 1
+!s100 `ab];0JcnkH^20kR?F0ef0
+I`?m8Fiil`;n`[ZfGRD_QB2
+R1
+R2
+R3
+R4
+R5
+L0 3854
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_ddio_in
+R0
+!i10b 1
+!s100 PJF4lm[leckLiX<jBbYQC2
+ICe5J5YNgkT`QfXFdDOkka1
+R1
+R2
+R3
+R4
+R5
+L0 1942
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_ddio_oe
+R0
+!i10b 1
+!s100 JWnYe59dMhT`0Vf0U21Mj3
+Iii0el?m5mnREz@WATbCR71
+R1
+R2
+R3
+R4
+R5
+L0 1779
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_ddio_out
+R0
+!i10b 1
+!s100 UTdMmd;HiMV<6n8Om8`e:0
+ID4I<NWaX@LaXeUI76G=7o0
+R1
+R2
+R3
+R4
+R5
+L0 1535
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_delay_chain
+R0
+!i10b 1
+!s100 @0c8LX^IZOnKoS8A2@K:L3
+I`NH<Y?LD]^2I?W5:><<QD2
+R1
+R2
+R3
+R4
+R5
+L0 2549
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_dffe
+R0
+!i10b 1
+!s100 T=Ebi<Hh23INUzMSJBIXU2
+I09OeAT8cDALzhl9kZEO:j0
+R1
+R2
+R3
+R4
+R5
+L0 181
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_dll
+R0
+!i10b 1
+!s100 DoHz^m6E^0J;THC7aAgIW1
+IkhbK7<>5?V8IUI1h:hi^L2
+R1
+R2
+R3
+R4
+R5
+L0 2616
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_dll_offset_ctrl
+R0
+!i10b 1
+!s100 6S]De^_2R?jN^KcQ=XJLB1
+IMzCOWFcl6^V<8OB5`Dz>G0
+R1
+R2
+R3
+R4
+R5
+L0 2578
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_dqs_config
+R0
+!i10b 1
+!s100 Bzha3LNhA56dLIH@A`P=m3
+IHKPaJ[hmGjhgiX:QI8A8B3
+R1
+R2
+R3
+R4
+R5
+L0 2689
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_dqs_delay_chain
+R0
+!i10b 1
+!s100 OF]CLKNkmR30;ElNJRV7N3
+I1?>d=IRkeK?HofVZmOnO33
+R1
+R2
+R3
+R4
+R5
+L0 2742
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_dqs_enable_ctrl
+R0
+!i10b 1
+!s100 9W<1b1k]<<`n7o;4[lEke1
+Igg74W7ISWc;mIzCIi3z343
+R1
+R2
+R3
+R4
+R5
+L0 2794
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_duty_cycle_adjustment
+R0
+!i10b 1
+!s100 JWPTm[LUlF49ETWmXV[[l1
+I4JeDVbme4:Jkz7nPc71M>1
+R1
+R2
+R3
+R4
+R5
+L0 2829
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_ff
+R0
+!i10b 1
+!s100 RY<zF7Y3]YJZ4GJ3P0_CK0
+ILX>NjJFgQ[KmEijQ7nKZf1
+R1
+R2
+R3
+R4
+R5
+L0 394
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_fractional_pll
+R0
+!i10b 1
+!s100 513GS67;RK9<WnU;ZOW7G2
+IJ>bWETgK?iL6z[5BIC>G^2
+R1
+R2
+R3
+R4
+R5
+L0 2857
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_half_rate_input
+R0
+!i10b 1
+!s100 ;BZ`QC9[@nKBY[?@d?cLh1
+Im_oD;GVbVMMNOfdPG5HP02
+R1
+R2
+R3
+R4
+R5
+L0 3065
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_hps_interface_fpga2sdram
+R0
+!i10b 1
+!s100 =VLWJ2a>^C976`58;eBcz2
+I7n]EZkniiHX<IOaBkZ1Z;3
+R1
+R2
+R3
+R4
+R5
+L0 4919
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_input_phase_alignment
+R0
+!i10b 1
+!s100 UeT1K@dQ5YNfkNVGZT8RK1
+I`1J^ZHiC>R8VSPF>GLg[j2
+R1
+R2
+R3
+R4
+R5
+L0 3103
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_io_clock_divider
+R0
+!i10b 1
+!s100 edQT5N_JNE`zKEJe?bM]P2
+Idj[OfX5Z@dcGKJZZG24?i0
+R1
+R2
+R3
+R4
+R5
+L0 3156
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_io_config
+R0
+!i10b 1
+!s100 B2VO1dS^=2KI>j]PA[O`W0
+ILdOazk>6FkCBHYjm?UFGm0
+R1
+R2
+R3
+R4
+R5
+L0 3190
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_io_ibuf
+R0
+!i10b 1
+!s100 4R@YOW2mT5LgLO3P8n?^G1
+IJ<KY^K_C[1QBQ6O674_U61
+R1
+R2
+R3
+R4
+R5
+L0 1320
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_io_obuf
+R0
+!i10b 1
+!s100 Nc;OF[<OELle_NL7Z]Ja83
+I71MzMEhX9FW_jiT_:[mmU2
+R1
+R2
+R3
+R4
+R5
+L0 1412
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_io_pad
+R0
+!i10b 1
+!s100 goh_0I9ZRPA4=FCL0_e:L0
+IzRmh=CdYC]U8QUeK0e<8h1
+R1
+R2
+R3
+R4
+R5
+L0 2116
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_ir_fifo_userdes
+R0
+!i10b 1
+!s100 ezd==_FJTn99RH8JPI=f>3
+I96ifacPb>b61ehYd[dDZC3
+R1
+R2
+R3
+R4
+R5
+L0 4169
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_jtag
+R0
+!i10b 1
+!s100 :OcAJjlHII:KD;FhEDIAB3
+IGW1fbUc0Q3Kk0DcQfzmZC0
+R1
+R2
+R3
+R4
+R5
+L0 3893
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_lcell_comb
+R0
+!i10b 1
+!s100 B[^]J22P2SL<]]9PW7Nc13
+I7G^J4i3LFUYYd9WdMld531
+R1
+R2
+R3
+R4
+R5
+L0 567
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_leveling_delay_chain
+R0
+!i10b 1
+!s100 ZoMX2VBP4jkN=G<XP:]O02
+IjT2GC`M]e^]Y`En0AO3VJ3
+R1
+R2
+R3
+R4
+R5
+L0 3235
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_lfifo
+R0
+!i10b 1
+!s100 C7fOJHc062ED5?R=nLLGE3
+I6Y]N<]WgTW:FCQ3D=I2aX0
+R1
+R2
+R3
+R4
+R5
+L0 4272
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_mac
+R0
+!i10b 1
+!s100 PHYHCmkM@EKoWDUmC?3g02
+IjJan9TDO0VM;d<PJSm8KD0
+R1
+R2
+R3
+R4
+R5
+L0 4323
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_mem_phy
+R0
+!i10b 1
+!s100 4YoFo5HZ2eVPVBQfGSmLk2
+ISG7ieI[o2j<Gk^lzad?Io3
+R1
+R2
+R3
+R4
+R5
+L0 4539
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_mlab_cell
+R0
+!i10b 1
+!s100 m3EF5VcP2<N<9_FZlYk^A3
+I^?C2ERLWP26fL=deZN59n0
+R1
+R2
+R3
+R4
+R5
+L0 1208
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_mux21
+R0
+!i10b 1
+!s100 FCg6JER2?e7MIkG;eYNGm3
+IaCagMJNRLB<=OmT^f0^KU3
+R1
+R2
+R3
+R4
+R5
+L0 231
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_mux41
+R0
+!i10b 1
+!s100 7zFLA8h00<ZeH]>D=DiPf2
+IBB23dCZ=F1OjRNz_LYCeI2
+R1
+R2
+R3
+R4
+R5
+L0 258
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_nmux21
+R0
+!i10b 1
+!s100 ch^?Jj8QHDBe46gN`zZdT1
+Id0=9O3kGD8P[WC`:QiJEM3
+R1
+R2
+R3
+R4
+R5
+L0 363
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_oscillator
+R0
+!i10b 1
+!s100 iMDQN`jzz:0N3ANCBD2j`3
+I>9FDNgQbkkAOn8@?H?jKJ1
+R1
+R2
+R3
+R4
+R5
+L0 4902
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_phy_clkbuf
+R0
+!i10b 1
+!s100 6cl6M<09107hC:_D3QS9@2
+IOgETTfEPCUhEhUV`5mGIo2
+R1
+R2
+R3
+R4
+R5
+L0 4155
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_pll_dll_output
+R0
+!i10b 1
+!s100 m=P^8Nnd0ENA?5dkP55lm0
+I[dR9PHMm8Wo=_Qz@k93JJ2
+R1
+R2
+R3
+R4
+R5
+L0 3261
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_pll_dpa_output
+R0
+!i10b 1
+!s100 :Y@dSW;__hU??`Lk^X8Oj3
+IZD_he7:1D03[Z`meLlZ;P2
+R1
+R2
+R3
+R4
+R5
+L0 3285
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_pll_extclk_output
+R0
+!i10b 1
+!s100 bYHOCY]n_U@Lle^:=Lnjm0
+IaEXm]d7:F^ZlDOEJjmoC91
+R1
+R2
+R3
+R4
+R5
+L0 3311
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_pll_lvds_output
+R0
+!i10b 1
+!s100 IX5aIcXdo6UDiHbemLWM@1
+I8^RZOKIG0;kXGbEfBbDU01
+R1
+R2
+R3
+R4
+R5
+L0 3343
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_pll_output_counter
+R0
+!i10b 1
+!s100 ]E?[FdVmgF@J2Lc08Cmo@1
+I]KUNj`QlV3f6>^:bYGX^C1
+R1
+R2
+R3
+R4
+R5
+L0 3377
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_pll_reconfig
+R0
+!i10b 1
+!s100 E6A`ka2TGn3KBOnC<<S290
+IN<2Y3XOGmZ1I7kdkH<8jB0
+R1
+R2
+R3
+R4
+R5
+L0 3444
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_pll_refclk_select
+R0
+!i10b 1
+!s100 b2CYiFBa:XhEc:Vd8J`Ql2
+IkbcIDKSMKA2^UQBb=Jj<12
+R1
+R2
+R3
+R4
+R5
+L0 3530
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_prblock
+R0
+!i10b 1
+!s100 XADEL3M5MFeTYfDBH[hLh3
+I@]b9`S=jW^XdS1f::`E;^0
+R1
+R2
+R3
+R4
+R5
+L0 3972
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+UCYCLONEV_PRIM_DFFE
+R0
+!i10b 1
+!s100 zjSnWO_Z14RBOTzNi[57E2
+IkJ^V9T<j:bYofD8mmF;0j1
+R1
+R2
+R3
+R4
+R5
+L0 32
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+n@c@y@c@l@o@n@e@v_@p@r@i@m_@d@f@f@e
+UCYCLONEV_PRIM_DFFEAS
+R0
+!i10b 1
+!s100 JfUY[LnCh@0CdjjHDa03h0
+Io5:TzJII=l=H9zN>K]QV22
+R1
+R2
+R3
+R4
+R5
+L0 105
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+n@c@y@c@l@o@n@e@v_@p@r@i@m_@d@f@f@e@a@s
+UCYCLONEV_PRIM_DFFEAS_HIGH
+R0
+!i10b 1
+!s100 [Ki92`c]P>ET4VLg3Bl=m1
+Im:fiDV_XAi1nRVDIK5[Qd2
+R1
+R2
+R3
+R4
+R5
+L0 143
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+n@c@y@c@l@o@n@e@v_@p@r@i@m_@d@f@f@e@a@s_@h@i@g@h
+vcyclonev_pseudo_diff_out
+R0
+!i10b 1
+!s100 <TL0K1OHEKK>ZPVi`aKc62
+I3QhkS0ozKIjk_59M5IQcQ3
+R1
+R2
+R3
+R4
+R5
+L0 2148
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_ram_block
+R0
+!i10b 1
+!s100 Rh4P`>Gg1Y1;6TcY?M^_j3
+Ih:UHh@53Z<BEfASPkJCW=2
+R1
+R2
+R3
+R4
+R5
+L0 961
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_read_fifo
+R0
+!i10b 1
+!s100 F5o@Tk8PNiKT^CWXbNzkY3
+IehMR>fL@icUK73_@NVlBP1
+R1
+R2
+R3
+R4
+R5
+L0 4085
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_read_fifo_read_clock_select
+R0
+!i10b 1
+!s100 9h6A02oOYcK;AUFB;[^WX3
+I]d=eeFeP8_SAQ?J9=jNlE3
+R1
+R2
+R3
+R4
+R5
+L0 4259
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_read_fifo_read_enable
+R0
+!i10b 1
+!s100 1CDaYTa]`K>I8YSHdW^3f3
+I>FZWZf4=bQ11Qf9oRL[MC3
+R1
+R2
+R3
+R4
+R5
+L0 4124
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_routing_wire
+R0
+!i10b 1
+!s100 Diz7H8?UGEN:o=9oCdJ>g1
+ImZ?g3zEg6gKcznC:BY5JB3
+R1
+R2
+R3
+R4
+R5
+L0 924
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_rublock
+R0
+!i10b 1
+!s100 XFRD4@XU?hKXeK5H`WDO81
+IQT8UNEZO=neCm=2FHD:B?2
+R1
+R2
+R3
+R4
+R5
+L0 4009
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_termination
+R0
+!i10b 1
+!s100 W<0^0GFGS?J_[n;>gmzDI1
+IC=;X1I?g[6?RYiCO3oIdM3
+R1
+R2
+R3
+R4
+R5
+L0 3632
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_termination_logic
+R0
+!i10b 1
+!s100 WVcJBFWEdTDmYLiB3SE?E3
+I91nl2681[CMC9oG35j]SU3
+R1
+R2
+R3
+R4
+R5
+L0 3593
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_tsdblock
+R0
+!i10b 1
+!s100 U^0j3bSd?D6>9d:`@F8Nm1
+IONmnU0CQ8Z^Kz^mo[7U5M2
+R1
+R2
+R3
+R4
+R5
+L0 4051
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vcyclonev_vfifo
+R0
+!i10b 1
+!s100 o2Sz7lAAHcY>WSFo_3m]D1
+I6>LnG488O;7KR42amBQd;0
+R1
+R2
+R3
+R4
+R5
+L0 4300
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+Efour_onebitadder_dualrail_core
+Z12 w1518129704
+Z13 DPx4 work 9 handshake 0 22 Z5RlTAa9UdB]LJazFb`SY1
+Z14 DPx4 ieee 9 math_real 0 22 Sk6CSihbPL<f[^Shm]=KX0
+Z15 DPx4 work 14 nondeterminism 0 22 7K5:S;ok3W69^L4oBCBgm0
+Z16 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
+Z17 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
+Z18 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z19 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+R2
+Z20 8C:/Users/vikas/Documents/course_docs/spring_18/ECE_6750/HW3/adder_ckt/4_1_bit_adder/4_1_bit_adder_core.vhdl
+Z21 FC:/Users/vikas/Documents/course_docs/spring_18/ECE_6750/HW3/adder_ckt/4_1_bit_adder/4_1_bit_adder_core.vhdl
+l0
+L17
+V8FigTFBT[3[GzOjDgRSLO1
+!s100 QQgXQZ6O@T1A<M^[^gk`N1
+Z22 OP;C;10.4a;61
+32
+Z23 !s110 1518205639
+!i10b 1
+Z24 !s108 1518205639.000000
+Z25 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/vikas/Documents/course_docs/spring_18/ECE_6750/HW3/adder_ckt/4_1_bit_adder/4_1_bit_adder_core.vhdl|
+Z26 !s107 C:/Users/vikas/Documents/course_docs/spring_18/ECE_6750/HW3/adder_ckt/4_1_bit_adder/4_1_bit_adder_core.vhdl|
+!i113 1
+Z27 o-work work -2002 -explicit -O0
+Z28 tExplicit 1
+Astructure
+R13
+R14
+R15
+R16
+R17
+R18
+R19
+DEx4 work 30 four_onebitadder_dualrail_core 0 22 8FigTFBT[3[GzOjDgRSLO1
+l37
+L36
+VW>nEDC7M9Y4;LdDlfgP^H0
+!s100 ATQ5oY4PYZF@dz>T6>`@z3
+R22
+32
+R23
+!i10b 1
+R24
+R25
+R26
+!i113 1
+R27
+R28
+Efour_onebitadder_dualrail_env
+Z29 w1518205637
+R13
+R14
+R15
+R16
+R17
+R18
+R19
+R2
+Z30 8C:/Users/vikas/Documents/course_docs/spring_18/ECE_6750/HW3/adder_ckt/4_1_bit_adder/4_1_bit_adder_env.vhdl
+Z31 FC:/Users/vikas/Documents/course_docs/spring_18/ECE_6750/HW3/adder_ckt/4_1_bit_adder/4_1_bit_adder_env.vhdl
+l0
+L15
+VIY:87_ezP6NinnKVm;aS_3
+!s100 moA;4j0e[bPd4mdmkX9kX3
+R22
+32
+Z32 !s110 1518205640
+!i10b 1
+R24
+Z33 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/vikas/Documents/course_docs/spring_18/ECE_6750/HW3/adder_ckt/4_1_bit_adder/4_1_bit_adder_env.vhdl|
+Z34 !s107 C:/Users/vikas/Documents/course_docs/spring_18/ECE_6750/HW3/adder_ckt/4_1_bit_adder/4_1_bit_adder_env.vhdl|
+!i113 1
+R27
+R28
+Astructure
+R13
+R14
+R15
+R16
+R17
+R18
+R19
+DEx4 work 29 four_onebitadder_dualrail_env 0 22 IY:87_ezP6NinnKVm;aS_3
+l67
+L61
+Vk89L:l:JSJb3WKRIKQ[Hh0
+!s100 Z5CicCX5]UUeW=ZR93Oom2
+R22
+32
+R32
+!i10b 1
+R24
+R33
+R34
+!i113 1
+R27
+R28
+Efour_onebitadder_dualrail_top
+Z35 w1518203840
+R13
+R14
+R15
+R16
+R17
+R18
+R19
+R2
+Z36 8C:/Users/vikas/Documents/course_docs/spring_18/ECE_6750/HW3/adder_ckt/4_1_bit_adder/4_1_bit_adder_top.vhdl
+Z37 FC:/Users/vikas/Documents/course_docs/spring_18/ECE_6750/HW3/adder_ckt/4_1_bit_adder/4_1_bit_adder_top.vhdl
+l0
+L14
+VT^c[Z?DK01:P7m<9ZJSWG2
+!s100 DC]LnDYTMVV1lz<1;SKX<2
+R22
+32
+R23
+!i10b 1
+R24
+Z38 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/vikas/Documents/course_docs/spring_18/ECE_6750/HW3/adder_ckt/4_1_bit_adder/4_1_bit_adder_top.vhdl|
+Z39 !s107 C:/Users/vikas/Documents/course_docs/spring_18/ECE_6750/HW3/adder_ckt/4_1_bit_adder/4_1_bit_adder_top.vhdl|
+!i113 1
+R27
+R28
+Astructure
+R13
+R14
+R15
+R16
+R17
+R18
+R19
+DEx4 work 29 four_onebitadder_dualrail_top 0 22 T^c[Z?DK01:P7m<9ZJSWG2
+l133
+L18
+V1fi_z[1QOj_?ObV1D<hL<0
+!s100 1lA[<[GdoJN5kRiH7BW]_3
+R22
+32
+R23
+!i10b 1
+R24
+R38
+R39
+!i113 1
+R27
+R28
+Phandshake
+R17
+R14
+R15
+R18
+R19
+Z40 w1517418251
+R2
+Z41 8C:/Users/vikas/Documents/course_docs/spring_18/ECE_6750/HW2/adder_ckt/handshake.vhd
+Z42 FC:/Users/vikas/Documents/course_docs/spring_18/ECE_6750/HW2/adder_ckt/handshake.vhd
+l0
+L6
+VZ5RlTAa9UdB]LJazFb`SY1
+!s100 7EBEh_>YgG`0z909>gGYj2
+R22
+32
+b1
+R32
+!i10b 1
+Z43 !s108 1518205640.000000
+Z44 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/vikas/Documents/course_docs/spring_18/ECE_6750/HW2/adder_ckt/handshake.vhd|
+Z45 !s107 C:/Users/vikas/Documents/course_docs/spring_18/ECE_6750/HW2/adder_ckt/handshake.vhd|
+!i113 1
+R27
+R28
+Bbody
+R13
+R17
+R14
+R15
+R18
+R19
+l0
+L55
+VJ8lPFIf[:ae;75:RC134O1
+!s100 49CTU52zT?blVS_`8aM3:1
+R22
+32
+R32
+!i10b 1
+R43
+R44
+R45
+!i113 1
+R27
+R28
+Z46 nbody
+vhexTo7Seg
+Z47 !s110 1535471251
+!i10b 1
+!s100 29zn4AGOi3=c=lE661`Rm3
+IOeJPW<o<;>82ROWV28ozB2
+R1
+R2
+w1535469496
+8C:/intelFPGA_lite/18.0/quartus/3710_lab/simulation/modelsim/hexTo7Seg.vo
+FC:/intelFPGA_lite/18.0/quartus/3710_lab/simulation/modelsim/hexTo7Seg.vo
+L0 31
+R6
+r1
+!s85 0
+31
+Z48 !s108 1535471251.000000
+!s107 C:/intelFPGA_lite/18.0/quartus/3710_lab/simulation/modelsim/hexTo7Seg.vo|
+!s90 -reportprogress|30|-work|work|C:/intelFPGA_lite/18.0/quartus/3710_lab/simulation/modelsim/hexTo7Seg.vo|
+!i113 1
+R10
+R11
+nhex@to7@seg
+vhexTo7Seg_vlg_tst
+!s110 1535471209
+!i10b 1
+!s100 ]a1cGCYX702?i3fbB@mbm2
+Igg=W1[WJ6FV8E4`jgHJj30
+R1
+R2
+w1535438233
+8C:/intelFPGA_lite/18.0/quartus/3710_lab/simulation/modelsim/hexTo7Seg.vt
+FC:/intelFPGA_lite/18.0/quartus/3710_lab/simulation/modelsim/hexTo7Seg.vt
+L0 28
+R6
+r1
+!s85 0
+31
+!s108 1535471209.000000
+!s107 C:/intelFPGA_lite/18.0/quartus/3710_lab/simulation/modelsim/hexTo7Seg.vt|
+!s90 -reportprogress|30|-work|work|C:/intelFPGA_lite/18.0/quartus/3710_lab/simulation/modelsim/hexTo7Seg.vt|
+!i113 1
+R10
+R11
+nhex@to7@seg_vlg_tst
+Pnondeterminism
+R17
+R18
+R19
+R14
+Z49 w1517418250
+R2
+Z50 8C:/Users/vikas/Documents/course_docs/spring_18/ECE_6750/HW2/adder_ckt/nondeterminism.vhd
+Z51 FC:/Users/vikas/Documents/course_docs/spring_18/ECE_6750/HW2/adder_ckt/nondeterminism.vhd
+l0
+L7
+V7K5:S;ok3W69^L4oBCBgm0
+!s100 8J1fRN?4CDF8@W]F;>ej:3
+R22
+32
+b1
+R32
+!i10b 1
+R43
+Z52 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/vikas/Documents/course_docs/spring_18/ECE_6750/HW2/adder_ckt/nondeterminism.vhd|
+Z53 !s107 C:/Users/vikas/Documents/course_docs/spring_18/ECE_6750/HW2/adder_ckt/nondeterminism.vhd|
+!i113 1
+R27
+R28
+Bbody
+R15
+R17
+R18
+R19
+R14
+l0
+L23
+VM0Sf<::k@EUzEbZo0::hX2
+!s100 2fI9?z<imL4_T>oSPO?ZM3
+R22
+32
+R32
+!i10b 1
+R43
+R52
+R53
+!i113 1
+R27
+R28
+R46
+vstimulus
+R47
+!i10b 1
+!s100 UOk0E@9SjL?]bf8>7SlAS0
+IL1Pi;BBN]`1=eXBJj8HgB0
+R1
+R2
+w1532731799
+8C:/intelFPGA_lite/18.0/quartus/3710_lab/simulation/modelsim/tb_hexTo7Seg.v
+FC:/intelFPGA_lite/18.0/quartus/3710_lab/simulation/modelsim/tb_hexTo7Seg.v
+L0 2
+R6
+r1
+!s85 0
+31
+R48
+!s107 C:/intelFPGA_lite/18.0/quartus/3710_lab/simulation/modelsim/tb_hexTo7Seg.v|
+!s90 -reportprogress|30|-work|work|C:/intelFPGA_lite/18.0/quartus/3710_lab/simulation/modelsim/tb_hexTo7Seg.v|
+!i113 1
+R10
+R11

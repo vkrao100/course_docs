@@ -1,0 +1,105 @@
+utk7@algebra:~/Tools/CUDDs/cudd-3.0.0/EXP_INT_IMP/EXP$ sis
+UC Berkeley, SIS 1.3 (compiled 2004-04-04 18:58:04)
+sis> read_blif ppa3_mapped_AND_OR.blif
+"ppa3_mapped_AND_OR.blif", line 5: cannot process .gate without a library
+sis> read_library cadence.genlib
+"cadence.genlib", line 5: bad character
+sis> read_library lib2_mod_cad.genlib
+sis> read_blif file:///home/utk7/Workspace/SIS/Sweep_Simple/sis_2/lib2_mod_cad.g      
+file:///home/utk7/Workspace/SIS/Sweep: No such file or directory
+sis> 
+sis> 
+sis> 
+sis> 
+sis> 
+sis> read_blif ppa3_mapped_AND_OR.blif
+sis> read_library lib2_and_xor_inv.genlib
+sis> map
+WARNING: uses as primary input drive the value (4.71,3.60)
+WARNING: uses as primary input arrival the value (0.00,0.00)
+WARNING: uses as primary input max load limit the value (999.00)
+WARNING: uses as primary output required the value (0.00,0.00)
+WARNING: uses as primary output load the value 0.05
+sis> read_library lib2_and_xor_inv.genlib
+sis> map
+sis> write_eqn
+INORDER = b2 a2 b1 a1 b0 a0;
+OUTORDER = s3 s2 s1 s0;
+n11 = b2*a2;
+[452] = !n11;
+[401] = !b2;
+[203] = [401]*a2;
+[454] = ![203];
+[402] = !a2;
+[206] = [402]*b2;
+[457] = ![206];
+n16 = [454]*[457];
+[460] = !n16;
+n17 = b1*a1;
+[463] = !n17;
+[466] = a1*!b1 + !a1*b1;
+n23 = b0*a0;
+n24 = [466]*n23;
+[473] = !n24;
+[231] = [463]*[473];
+[475] = ![231];
+[234] = [460]*[475];
+[478] = ![234];
+[98] = [452]*[478];
+s3 = ![98];
+n29 = [454]*[457];
+n30 = [475]*n29;
+[482] = !n30;
+[409] = a1*!b1 + !a1*b1;
+n36 = [409]*n23;
+[487] = !n36;
+[164] = [463]*[487];
+[251] = [460]*[164];
+[491] = ![251];
+[97] = [482]*[491];
+s2 = ![97];
+[485] = ![409];
+[161] = b0*a0;
+[411] = ![161];
+[253] = [485]*[161];
+[496] = ![253];
+n41 = [466]*[411];
+[498] = !n41;
+[96] = [496]*[498];
+s1 = ![96];
+s0 = a0*!b0 + !a0*b0;
+sis> sweep
+sis> resub -a
+sis> write_eqn
+INORDER = b2 a2 b1 a1 b0 a0;
+OUTORDER = s3 s2 s1 s0;
+n11 = b2*a2;
+[203] = !b2*a2;
+[206] = b2*!a2;
+n16 = n29;
+n17 = b1*a1;
+[466] = [409];
+n23 = [161];
+n24 = n36;
+[231] = [164];
+[234] = !n16*![231];
+[98] = !n11*![234];
+s3 = ![98];
+n29 = ![203]*![206];
+n30 = n16*![231];
+[409] = a1*!b1 + !a1*b1;
+n36 = [466]*n23;
+[164] = !n17*!n24;
+[251] = !n16*[231];
+[97] = !n30*![251];
+s2 = ![97];
+[161] = b0*a0;
+[253] = ![466]*n23;
+n41 = [466]*!n23;
+[96] = ![253]*!n41;
+s1 = ![96];
+s0 = a0*!b0 + !a0*b0;
+sis> write_blif -n ppa3_and_xor_inv.blif
+sis> map 
+sis> write_blif -n ppa3_and_xor_inv.blif               
+sis> 

@@ -1,0 +1,26 @@
+\begin{thebibliography}{1}
+
+\bibitem{SHA-256}
+``Descriptions of sha-256, sha-384, and sha-512.''
+\newblock
+  \url{http://www.iwar.org.uk/comsec/resources/cipher/sha256-384-512.pdf}.
+
+\bibitem{FPGA}
+P.~Dotemoto, ``Fpga based bitcoin mining,'' 2014.
+\newblock
+  \url{http://digitalcommons.calpoly.edu/cgi/viewcontent.cgi?article=1285&context=eesp}.
+
+\bibitem{area1}
+L.~Bai and S.~Li, ``Vlsi implementation of high-speed sha-256,'' in {\em 2009
+  IEEE 8th International Conference on ASIC}, pp.~131--134, Oct 2009.
+
+\bibitem{area2}
+Marsgod, ``Secure hash algorithm,'' 2004.
+\newblock \url{http://www.opencores.org}.
+
+\bibitem{Newcastle}
+A.~K. James~Docherty, ``Hardware implementation of sha-1 and sha-2 hash
+  functions.''
+\newblock \url{http://async.org.uk/tech-reports/NCL-EECE-MSD-TR-2011-170.pdf}.
+
+\end{thebibliography}

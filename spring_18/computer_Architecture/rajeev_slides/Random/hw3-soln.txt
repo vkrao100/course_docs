@@ -1,0 +1,41 @@
+HW3 solutions
+
+
+Q1. 
+
+  1.  Every branch has 3 stall cycles associated with it.  So the CPI will
+      be = 0.8*1 + 0.2*(1+3) = 1.6.
+
+  2.  There are 3 lost cycles for every taken branch.  So the CPI will
+      be = 0.8*1 + 0.2*(1+0.4*3) = 1.24.
+
+  3.1. Every branch results in 3 stall cycles.  So CPI = 1.6.
+
+  3.2. Three useful instructions in the branch delay slot, so no stall
+       cycles and CPI = 1.
+
+  3.3. When the branch is taken, you do 3 useful instrs, so
+       0 stall cycles.  If the branch is not-taken, you lose 3 cycles. 
+       So the CPI = 0.8*1 + 0.2*(1+0.6*3) = 1.36.
+
+  3.4. When the branch is taken, you lose 3 cycles.  When the branch
+       is not-taken, you do 1 useful instr and 2 No-ops, so there are 2 stall
+       cycles. So the CPI = 0.8*1 + 0.2*(1+0.4*3+0.6*2)
+       = 1.48.
+
+
+Q2.
+  (i) For an unpipelined processor, the clock speed is 1/8.1 = 0.123 GHz
+      The IPC is 1 (no stalls).  So the throughput in BIPS = clock speed * IPC
+      = 0.123 BIPS.
+
+  (ii) For a 10-stage pipline, the clock speed = 1/(0.8+0.1)ns = 1.11 GHz.
+      Dependent instructions will be separated by 4ns worth of work, i.e.,
+      5 pipeline stages (since each stage does 0.8ns worth of work).  This
+      means that every dependence produces 4 stall cycles.  Independent
+      instructions will be separated by 1 pipeline stage, i.e., no stall.
+      So the CPI = 0.67*1 + 0.33*5 = 2.33.  IPC = 0.43.  So BIPS = 0.476.
+
+   (iii) For the 20-stage pipeline, the clock speed = 1/0.5ns = 2 GHz.
+      Dependent instrs are separated by 10 stages.  Independent instrs are
+      separated by 1 stage.  CPI = 0.67*1 + 0.33*10 = 4.  BIPS = 0.5.

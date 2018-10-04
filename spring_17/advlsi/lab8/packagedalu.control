@@ -1,0 +1,106 @@
+Simulation of ALU block including Micron Package for noise analysis
+
+*** use ".option post" to generate the outputs for cscope
+.option post
+*** makes spice write out all nodes to the .tr0 file
+.save type=nodeset level=all 
+*** Set HSIMPLUS parameters:
+.param HSIMPARPRECISION = 2 HSIMVDD = 1.0 HSIMALLOWEDDV = 0.10
+
+*** include our circuit
+.include 'v2lvs.sp'
+*** include the single layer Micron package
+.include '../v48c_x8_production_11704_DQs_pkg.inc'
+
+*** include the spice version of the library
+.include '/uusoc/facility/cad_common/Artisan/GF/cmos65g/aci/sc-adv12/lvs_netlist/cmos10sfrvt_a12.cdl'
+
+*** include the transistor models
+.lib     '/uusoc/facility/cad_common/Artisan/GF/cmos65g/HSPICE/models/skew.file' stats
+.include '/uusoc/facility/cad_common/Artisan/GF/cmos65g/HSPICE/models/fixed_corner'
+.include '/uusoc/facility/cad_common/Artisan/GF/cmos65g/HSPICE/models/hspice_example.param'
+.lib     '/uusoc/facility/cad_common/Artisan/GF/cmos65g/HSPICE/models/lib.models.10sf' 10sf_models
+
+
+*** INCLUDE DESIGNS:
+
+
+*** Use the Micron package in this design
+*** You will modify this slightly to pull out a single power/ground
+*** pin for the second control file and simulation set.
+
+X0 PCB_D00 PCB_D01 PCB_D02 PCB_D03 PCB_D04 PCB_D05 PCB_D06 PCB_D07 
++  PCB_D08 PCB_D09 PCB_D10 PCB_D11
++ PCB_GND PCB_GND PCB_GND PCB_GND PCB_GND PCB_GND PCB_GND PCB_GND PCB_GND
++ PCB_GND PCB_GND PCB_GND
++ PCB_PWR PCB_PWR PCB_PWR PCB_PWR PCB_PWR PCB_PWR PCB_PWR
++ PCB_GND PCB_GND PCB_GND PCB_GND PCB_GND PCB_GND PCB_GND PCB_GND PCB_GND
++ PCB_GND PCB_GND PCB_GND PCB_GND
++ PCB_PWR PCB_PWR PCB_PWR PCB_PWR PCB_PWR PCB_PWR PCB_PWR PCB_PWR PCB_PWR
++ PCB_PWR PCB_PWR PCB_PWR PCB_PWR
++ CHIP_GND CHIP_GND CHIP_GND CHIP_GND CHIP_GND CHIP_GND
++ CHIP_PWR CHIP_PWR CHIP_PWR CHIP_PWR
++ CHIP_GND CHIP_GND CHIP_GND CHIP_GND CHIP_GND
++ CHIP_PWR CHIP_PWR CHIP_PWR CHIP_PWR
++ CHIP_GND CHIP_GND CHIP_GND CHIP_GND CHIP_GND
++ CHIP_PWR CHIP_PWR CHIP_PWR CHIP_PWR
++ CHIP_D11 CHIP_D10 CHIP_D09 CHIP_D08
++ CHIP_D07 CHIP_D06 CHIP_D05 CHIP_D04 CHIP_D03 CHIP_D02 CHIP_D01 CHIP_D00
++ v48c-11704-dq-str-pwrs-unmer_wrapper
+
+
+*** Define the RC values between the package and chip.
+*** These emulate the pads and decoupling caps
+
+R00 CHIP_D00 CHIP_D00R 0.300k
+*... 
+
+C00 CHIP_D00R 0  75f
+*...
+
+
+*** Include your ALU chip here
+*X1 ...
+
+
+
+*** define input waveforms
+VA0  PCB_D00 0 PULSE (0 1.0  100ps 10ps 10ps  500ps 1000ps)
+VA1  PCB_D01 0 PULSE (0 1.0 1100ps 10ps 10ps  500ps 1000ps)
+VA2  PCB_D02 0 PULSE (0 1.0 2100ps 10ps 10ps 1000ps 2000ps)
+VA3  PCB_D03 0 PULSE (0 1.0 4100ps 10ps 10ps 1000ps 2000ps)
+VA4  PCB_D04 0 PULSE (0 1.0 8100ps 10ps 10ps 1500ps 3000ps)
+VA5  PCB_D05 0 PWL (0 0)
+VA6  PCB_D06 0 PWL (0 0)
+VA7  PCB_D07 0 PWL (0 0)
+VRST PCB_D10 0 PWL (0 1.0 1300ps 1.0 1325ps 0)
+VCLK PCB_D11 0 PULSE (0 1.0 500ps 10ps 10ps 500ps 1000ps)
+
+*** Define power and ground
+VCC PCB_PWR 0 DC 1.0
+VSS PCB_GND 0 DC 0
+
+
+* run a transitent analysis for two clock cycles
+.TRAN 1p 4000ps START=0ps
+
+* For HSimPlus you need to explicitly define signals to view:
+.PLOT TRAN I(VCC) I(VSS)
+.PLOT TRAN V(CHIP_PWR) V(CHIP_GND)
+.PLOT TRAN V(CHIP_D00) V(CHIP_D01) V(CHIP_D02) V(CHIP_D03) V(CHIP_D04)
+.PLOT TRAN V(CHIP_D05) V(CHIP_D06) V(CHIP_D07) V(CHIP_D08) V(CHIP_D09)
+.PLOT TRAN V(CHIP_D10) V(CHIP_D11)
+.PLOT TRAN V(CHIP_D00R) V(CHIP_D01R) V(CHIP_D02R) V(CHIP_D03R) V(CHIP_D04R)
+.PLOT TRAN V(CHIP_D05R) V(CHIP_D06R) V(CHIP_D07R) V(CHIP_D08R) V(CHIP_D09R)
+.PLOT TRAN V(CHIP_D10R) V(CHIP_D11R)
+.PLOT TRAN V(out15) V(out14) V(out13) V(out12) V(out11) V(out10) V(out09)
+.PLOT TRAN V(out08) V(out07) V(out06) V(out05) V(out04) V(out03) V(out02)
+.PLOT TRAN V(PCB_PWR) V(PCB_GND)
+.PLOT TRAN V(PCB_D00) V(PCB_D01) V(PCB_D02) V(PCB_D03) V(PCB_D04)
+.PLOT TRAN V(PCB_D05) V(PCB_D06) V(PCB_D07) V(PCB_D08) V(PCB_D09)
+.PLOT TRAN V(PCB_D10) V(PCB_D11)
+
+* measure the power
+*.MEAS  rmsen rms I(VCC) from = 0ps to 7000ps
+
+.end

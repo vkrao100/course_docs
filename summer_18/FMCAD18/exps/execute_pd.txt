@@ -1,0 +1,12 @@
+point_addition/8-bit/8-bit_ni/pointAdd_D_8.sing
+point_addition/8-bit/8-bit_nm/pointAdd_D_8.sing
+point_addition/8-bit/8-bit_no/pointAdd_D_8.sing
+point_addition/16-bit/16-bit_ni/PD_16.sing
+point_addition/16-bit/16-bit_nm/PD_16.sing
+point_addition/16-bit/16-bit_no/PD_16.sing
+point_addition/32-bit/32-bit_ni/PD_32.sing
+point_addition/32-bit/32-bit_nm/PD_32.sing
+point_addition/32-bit/32-bit_no/PD_32.sing
+point_addition/64-bit/64-bit_ni/PD_64.sing
+point_addition/64-bit/64-bit_nm/PD_64.sing
+point_addition/64-bit/64-bit_no/PD_64.sing

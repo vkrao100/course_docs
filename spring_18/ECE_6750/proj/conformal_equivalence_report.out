@@ -1,0 +1,10 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Scope and Objective}{}% 2
+\BOOKMARK [1][-]{section.3}{Preliminaries}{}% 3
+\BOOKMARK [2][-]{subsection.3.1}{Labeled Petri-nets}{section.3}% 4
+\BOOKMARK [2][-]{subsection.3.2}{State Graphs}{section.3}% 5
+\BOOKMARK [1][-]{section.4}{Implementation}{}% 6
+\BOOKMARK [2][-]{subsection.4.1}{Circuit Cubes and State Graph}{section.4}% 7
+\BOOKMARK [2][-]{subsection.4.2}{Redirecting/Pruning edges}{section.4}% 8
+\BOOKMARK [2][-]{subsection.4.3}{Progress}{section.4}% 9
+\BOOKMARK [1][-]{section*.4}{References}{}% 10

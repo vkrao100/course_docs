@@ -1,0 +1,31 @@
+.model ppa3.eqn
+.inputs b2 a2 b1 a1 b0 a0
+.outputs s3 s2 s1 s0
+.default_input_arrival 0.00 0.00 
+.default_output_required 0.00 0.00 
+.default_input_drive 4.71 3.60 
+.default_output_load 0.05 
+.default_max_input_load 999.00 
+.gate AND2X1 A=b2 B=a2 Y=n11
+.gate XOR2X1 A=b2 B=a2 Y=wire580
+.gate AND2X1 A=b1 B=a1 Y=n17
+.gate XOR2X1 A=b1 B=a1 Y=wire583
+.gate AND2X1 A=b0 B=a0 Y=wire382
+.gate AND2X1 A=wire583 B=wire382 Y=n36
+.gate OR2X1 A=n17 B=n36 Y=wire587
+.gate AND2X1 A=wire580 B=wire587 Y=wire449
+.gate OR2X1 A=n11 B=wire449 Y=s3
+.gate INVX1 A=wire580 Y=wire630
+.gate AND2X1 A=wire587 B=wire630 Y=n30
+.gate INVX1 A=wire587 Y=wire642
+.gate AND2X1 A=wire580 B=wire642 Y=wire462
+.gate OR2X1 A=n30 B=wire462 Y=s2
+.gate INVX1 A=b0 Y=wire584
+.gate INVX1 A=a0 Y=wire585
+.gate OR2X1 A=wire584 B=wire585 Y=wire586
+.gate OR2X1 A=wire583 B=wire586 Y=wire651
+.gate INVX1 A=wire651 Y=wire652
+.gate AND2X1 A=wire583 B=wire586 Y=n41
+.gate OR2X1 A=wire652 B=n41 Y=s1
+.gate XOR2X1 A=b0 B=a0 Y=s0
+.end

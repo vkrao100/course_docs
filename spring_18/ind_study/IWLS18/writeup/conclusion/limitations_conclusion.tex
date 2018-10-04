@@ -1,0 +1,27 @@
+\section{Conclusion and future work}
+This paper has presented an approach based on \Grobner basis reductions and ideal
+membership test to compute a function implemented by an unknown component in a circuit which models
+a given specification. 
+% We presented a procedure to systematically use \Grobner basis based reduction and ideal membership testing to arrive at a 
+% solution, such that the resulting logic function of the circuit conforms to the reference specification. 
+The paper also utilizes the concept of quotient of ideals to derive multiple solutions
+for the unknown component. The experimental results demonstrate the efficiency of our approach 
+for finite field arithmetic circuits where we achieve several orders of 
+magnitude improvement as compared to recent SAT-based approach. 
+We also present the theory for exploring the solution for the unknown 
+component in terms of its immediate inputs.  
+% The most desired solution which is in terms of immediate support 
+% variables of the unknown component relies on expensive \Grobner basis re-computation 
+% with a different term order. 
+% As part of our future work, we are exploring heuristics 
+% in order to arrive at a guided, simple implementable solutions set for $P$.
+% The current set-up deals with one unknown 
+% component or sub-circuit, 
+As part of our future work, we are working on exploring the approach mentioned in this paper  
+to integer arithmetic circuits which is currently restrained by the complicated division process for integer rings. We are also looking into
+extending the current approach towards
+multiple independent/dependent bugs in the design along
+with identifying the potential locations where the circuit can be rectified.
+% Also, identifying the bug location, 
+% which is the primary concern in the overall scope of automated debugging 
+% needs to be addressed as well. 

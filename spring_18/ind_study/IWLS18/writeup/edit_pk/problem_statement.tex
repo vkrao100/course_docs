@@ -1,0 +1,22 @@
+\section{Problem Statement}
+\label{sec:prstmnt}
+
+Under symbolic algebra environment, a given specification and its
+circuit implementation are modeled as a set of polynomials. The
+verification problem is then formulated as {\it membership
+  testing} ~\cite{gb_book} and which can prove/disprove that the
+circuit implements the specification. In the case of buggy circuits
+the verification fails; faulty gate(s) are identified and a correction
+is computed to rectify the circuit. The paper considers a single gate
+fault model i.e., exactly one of the gates in the circuit is
+incorrectly synthesized thereby implementing a wrong function at its
+output. For example, an AND gate replaced with an XOR gate. Once a
+particular gate has been identified as buggy, we label this gate as
+the {\it unknown component}. We propose an approach to realize a
+correction function which can be implemented at the output of this 
+{\it unknown component}, such that the entire circuit implementation
+conforms to the specification. Identifying the buggy gate in a given
+circuit implementation is a much harder problem and is in the future
+scope of our work. This paper puts forth the underlying theory on
+realizing and exploring the solution space for correction functions,
+and outlines the future verification challenges. 

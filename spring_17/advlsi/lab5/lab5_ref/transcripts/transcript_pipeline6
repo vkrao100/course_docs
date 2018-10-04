@@ -1,0 +1,109 @@
+# //  ModelSim SE-64 10.5c Jul 20 2016Linux 3.10.0-514.10.2.el7.x86_64
+# //
+# //  Copyright 1991-2016 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  ModelSim SE-64 and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading project lab5_6770
+# Compile of cmos10sfrvt_a12_neg.v was successful.
+# Compile of designs_new.v was successful.
+# Compile of pipeline-testbench.v was successful.
+# 3 compiles, 0 failed with no errors.
+vsim -novopt work.testbench
+# vsim -novopt work.testbench 
+# Start time: 12:44:30 on Mar 17,2017
+# ** Warning: (vsim-8891) All optimizations are turned off because the -novopt switch is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features please see the User's Manual section on Preserving Object Visibility with vopt.
+# Refreshing /home/nori/Downloads/AVLSI/lab5/work.testbench
+# Loading work.testbench
+# Refreshing /home/nori/Downloads/AVLSI/lab5/work.LHS
+# Loading work.LHS
+# Refreshing /home/nori/Downloads/AVLSI/lab5/work.LC_BM
+# Loading work.LC_BM
+# Refreshing /home/nori/Downloads/AVLSI/lab5/work.INVX1A12TR
+# Loading work.INVX1A12TR
+# Refreshing /home/nori/Downloads/AVLSI/lab5/work.AOI32X1A12TR
+# Loading work.AOI32X1A12TR
+# Refreshing /home/nori/Downloads/AVLSI/lab5/work.NOR2X1A12TR
+# Loading work.NOR2X1A12TR
+# Refreshing /home/nori/Downloads/AVLSI/lab5/work.C_ELEMENT
+# Loading work.C_ELEMENT
+# Refreshing /home/nori/Downloads/AVLSI/lab5/work.NAND2X1A12TR
+# Loading work.NAND2X1A12TR
+# Refreshing /home/nori/Downloads/AVLSI/lab5/work.NAND3X1A12TR
+# Loading work.NAND3X1A12TR
+# Refreshing /home/nori/Downloads/AVLSI/lab5/work.delay1
+# Loading work.delay1
+# Refreshing /home/nori/Downloads/AVLSI/lab5/work.LC_C
+# Loading work.LC_C
+# Refreshing /home/nori/Downloads/AVLSI/lab5/work.delay3
+# Loading work.delay3
+# Refreshing /home/nori/Downloads/AVLSI/lab5/work.delay5
+# Loading work.delay5
+# Refreshing /home/nori/Downloads/AVLSI/lab5/work.RHS
+# Loading work.RHS
+do async-testbench_new.tcl
+# 30 ns
+# Breaking loop - three times max cycle without another req
+# 
+# Buffering depth:          3
+# Forward Latency Delay:    8500 ps
+# Backward Latency Delay:   0
+# Max Cycle Time:           10500 ps
+# 
+# 100 ns
+# 
+# Buffering depth:          3
+# Forward Latency Delay:    8500 ps
+# Backward Latency Delay:   22500 ps
+# Max Cycle Time:           10500 ps
+# 
+# Run Time:                 197 ns
+vsim -novopt work.test
+# End time: 12:45:19 on Mar 17,2017, Elapsed time: 0:00:49
+# Errors: 0, Warnings: 1
+# vsim -novopt work.test 
+# Start time: 12:45:19 on Mar 17,2017
+# ** Warning: (vsim-8891) All optimizations are turned off because the -novopt switch is in effect. This will cause your simulation to run very slowly. If you are using this switch to preserve visibility for Debug or PLI features please see the User's Manual section on Preserving Object Visibility with vopt.
+# Refreshing /home/nori/Downloads/AVLSI/lab5/work.test
+# Loading work.test
+# Loading work.testbench
+# Loading work.LHS
+# Loading work.LC_BM
+# Loading work.INVX1A12TR
+# Loading work.AOI32X1A12TR
+# Loading work.NOR2X1A12TR
+# Loading work.C_ELEMENT
+# Loading work.NAND2X1A12TR
+# Loading work.NAND3X1A12TR
+# Loading work.delay1
+# Loading work.LC_C
+# Loading work.delay3
+# Loading work.delay5
+# Loading work.RHS
+add wave -position insertpoint sim:/test/p1/*
+run -all
+# cycle time set to        6000
+# cycle time set to       10500
+# Breaking loop - three times max cycle without another req
+# 1
+# Buffering depth:           3
+# Forward Latency Delay:        8500
+# Backward Latency Delay:          0 
+# Max Cycle Time:      10500
+#     100000
+# Buffering depth:           3
+# Forward Latency Delay:        8500
+# Backward Latency Delay:      22500 
+# Max Cycle Time:      10500
+# Run Time:     197000
+# Break key hit
+# Break in Module AOI32X1A12TR in file /home/nori/Downloads/AVLSI/lab5/cmos10sfrvt_a12_neg.v
+# End time: 12:47:22 on Mar 17,2017, Elapsed time: 0:02:03
+# Errors: 0, Warnings: 1

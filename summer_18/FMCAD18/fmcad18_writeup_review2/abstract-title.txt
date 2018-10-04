@@ -1,0 +1,31 @@
+Post-Verification Debugging and Rectification of Finite Field
+Arithmetic Circuits using Computer Algebra Techniques
+
+Vikas, Utkarsh, Irina, Arpitha, Priyank and Florian
+
+In formal verification of arithmetic circuits, it is required to check
+whether or not a gate-level circuit correctly implements a given
+specification model. In cases where this equivalence check fails --
+i.e. a counterexample to equivalence is detected -- it is required to:
+i) debug the circuit, ii) identify a set of nets (signals) where the
+circuit might be rectified, and iii) compute the corresponding
+rectification functions at those locations. This paper addresses the
+problem of post-verification debugging and correction (rectification)
+of finite field arithmetic circuits. The specification model and the
+circuit implementation may differ at any number of inputs. We present
+techniques that determine whether the circuit can be rectified at one
+particular net (gate output) -- i.e. single-fix rectification.
+
+Starting from an equivalence checking setup modeled as a polynomial
+ideal membership test, we analyze the ideal membership residue to
+identify potential single-fix rectification locations. Subsequently,
+we use Nullstellensatz principles to ascertain if indeed a single-fix
+rectification can be applied at any of these locations. If a
+single-fix rectification exists, we derive a rectification function by
+modeling it as the synthesis of an unknown component problem. Our
+approach is based upon the Groebner basis algorithm, which we use both
+as a decision procedure (for rectification test) as well as a
+quantification procedure (for computing a rectification
+function). Experiments are performed over various finite field
+arithmetic circuits that demonstrate the efficacy of our approach. 
+

@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# main executable 
+filename=$1
+oname=$2
+
+#\rm ${filename}.bench
+
+./blif2bench.sh $filename
+./bench2poly.pl ${filename}.bench 
+# \rm ${filename}.bench
+
+cat template.part1 > tmp.sing
+cat ${filename}.bench.sing >> tmp.sing
+cat template.part2 >> tmp.sing
+\rm ${filename}.bench.sing
+
+edges=$(wc -l ${filename}.bench.graph|awk '{print $1}')
+#echo "edges:$edges" > LOGFILE
+let edges-=2
+tail -n 1 ${filename}.bench.graph > tmp.graph
+echo $edges >> tmp.graph
+#echo -e "\n" >>tmp.graph
+let edges+=1
+#echo "New edges:$edges" >> LOGFILE
+head -n $edges ${filename}.bench.graph >>tmp.graph
+\rm ${filename}.bench.graph
+
+
+./revtopo tmp.graph
+\rm tmp.graph
+
+vars=$(cat tmp.order)
+sed "s/DUMMY_VARLIST/${vars}/" tmp.sing > tmp2.sing
+\rm tmp.sing
+Singular tmp2.sing
+\rm tmp2.sing
+
+cat tmp.order > ${filename}.alg1
+echo -e ";" >> ${filename}.alg1
+cat tmp.fanout >> ${filename}.alg1
+echo -e ";\nZ;\nX^2+X+1;\n${oname};" >> ${filename}.alg1
+cat tmp.poly >> ${filename}.alg1
+\rm tmp.order 
+\rm tmp.poly
+\rm tmp.fanout

@@ -1,0 +1,43 @@
+LIB "primdec.lib";
+ring r = (2, x), (Z, A, B, z_0, z_1, r_0, s_0, s_1, s_2, s_3, a_0, b_0, a_1, b_1), lp; 
+//ring r = (2, x), (Z, A, B, z_0, z_1, r_0, s_0, s_1, s_2, s_3, a_0, b_0, a_1, b_1), lp; 
+
+minpoly = x^2 + x + 1;
+
+poly rr = (x)*a_0*b_0*a_1*b_1+(x)*a_0*b_1+(x)*b_0*a_1;
+
+poly f1  =b_1^2+b_1;
+poly f2  =a_1*b_1+a_1+b_1+1;
+poly f3  =a_1^2+a_1;
+poly f4  =b_0*b_1+b_0+b_1+1;
+poly f5  =b_0^2+b_0;
+poly f6  =a_0*a_1+a_0+a_1+1;
+poly f7  =a_0*b_0+a_0+b_0+1;
+poly f8  =a_0^2+a_0;
+poly f9  =s_3+a_1+b_1+1;
+poly f10 =s_2+b_0*a_1;
+poly f11 =s_1+a_0*b_1;
+poly f12 =s_0+a_0+b_0+1;
+poly f13 =r_0+s_1*s_2;
+poly f14 =z_1+r_0+s_3;
+poly f15 =z_0+s_0+s_3;
+poly f16 =B+b_0+(x)*b_1;
+poly f17 =A+a_0+(x)*a_1;
+poly f18 =Z+(x)*r_0+s_0+(x+1)*s_3;
+
+//vanishing polynomials
+poly f19 = A^4 - A;
+poly f20 = B^4 - B;
+poly f21 = Z^4 - Z;
+poly f22 = s_0^2 - s_0;
+poly f23 = s_1^2 - s_1;
+poly f24 = s_2^2 - s_2;
+poly f25 = s_3^2 - s_3;
+poly f26 = r_0^2 - r_0;
+poly f27 = z_0^2 - z_0;
+poly f28 = z_1^2 - z_1;
+
+//word level spec
+poly spec = Z + A*B;
+
+ideal BI  = f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12, f13, f14, f15, f16, f17, f18, f19, f20, f21, f22, f23, f24, f25, f26, f27, f28;

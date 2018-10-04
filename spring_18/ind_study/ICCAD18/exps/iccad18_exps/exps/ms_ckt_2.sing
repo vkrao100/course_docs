@@ -1,0 +1,65 @@
+ring r = (2, x), (t, y2, yn2, x8, xn8, x6, x7, x0, x1, x2, x3, x4, x5), lp;
+
+proc orgate(poly g, poly h)
+{
+	return(g+h+g*h);
+}
+
+proc andgate(poly g, poly h)
+{
+	return(g*h);
+}
+
+proc xorgate(poly g, poly h)
+{
+	return(g+h);
+}
+
+proc invgate(poly g)
+{
+	return(1+g);
+}
+
+//circuit implementation
+poly f1 = x6 + orgate(x1,orgate(x3,x4));
+poly f2 = x7 + andgate(x1,andgate(x2,x0));
+poly f3 = x8 + xorgate(x6,x7); //setting x8=r=0
+poly f4 = y2 + orgate(x5,x8);
+
+//on-set
+poly f30 = x8;
+
+//off-set
+poly f31 = x8 + 1;
+
+//new circuit specification - and gate at x11 instead of xorgate
+poly n3 = xn8 + andgate(x6,x7);
+poly n4 = yn2 + orgate(x5,xn8);
+
+//vanishing polynomials
+poly v1 = t^2 - t;
+poly v2 = y2^2 - y2;
+poly v3 = yn2^2 - yn2;
+
+poly v4 = x6^2 - x6;
+poly v5 = x7^2 - x7;
+poly v6 = x8^2 - x8;
+poly v7 = x0^2 - x0;
+poly v8 = x1^2 - x1;
+poly v9 = x2^2 - x2;
+poly v10 = x3^2 - x3;
+poly v11 = x4^2 - x4;
+poly v12 = x5^2 - x5;
+
+ideal J0 = v1,v2,v3,v4,v5,v6,v7,v8,v9,v10,v11,v12;
+
+//miter for outputs
+poly miter = t*(yn2-y2)+1;
+
+ideal onset = f1,f2,f3,f30,f4,n3,n4,miter,J0;
+ideal offset = f1,f2,f3,f31,f4,n3,n4,miter,J0;
+
+//spec
+poly y2ospec = orgate(x5,xorgate(orgate(x1,orgate(x3,x4)),andgate(x1,andgate(x0,x2))));//x0*x1*x2*x5+x0*x1*x2+x1*x3*x4*x5+x1*x3*x4+x1*x3*x5+x1*x3+x1*x4*x5+x1*x4+x1*x5+x1+x3*x4*x5+x3*x4+x3*x5+x3+x4*x5+x4+x5
+poly y2nspec = orgate(x5,andgate(orgate(x1,orgate(x3,x4)),andgate(x1,andgate(x0,x2))));// x0*x1*x2*x5+x0*x1*x2+x5
+

@@ -1,0 +1,113 @@
+% \documentclass{article}
+% \documentclass[twocolumn]{IEEEtran}
+\documentclass{llncs}
+
+% Proof already defined in llncs so I am 
+% relaxing it for amsthm
+\let\proof\relax
+\let\endproof\relax
+
+
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+\RequirePackage{amssymb, mathptm}
+\usepackage{amsbsy}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{helvet}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{subfig}
+\usepackage{comment}
+\usepackage{cases}
+\usepackage{xcolor}
+\usepackage{epstopdf}
+\usepackage[normalem]{ulem}
+\usepackage{diagbox}
+\usepackage{bm}
+\usepackage{hhline}
+\usepackage{caption}
+% \bibliographystyle{plain}
+\input{myformulae.tex}
+
+% \newtheoremstyle{mystyle}
+%   {\topsep}   % ABOVESPACE
+%   {\topsep}   % BELOWSPACE
+%   {\itshape}  % BODYFONT
+%   {0pt}       % INDENT (empty value is the same as 0pt)
+%   {\bf} % HEADFONT
+%   {.}         % HEADPUNCT
+%   {5pt plus 1pt minus 1pt} % HEADSPACE
+%   {}          % CUSTOM-HEAD-SPEC
+
+% \theoremstyle{plain}
+\theoremstyle{definition}
+% \theoremstyle{remark}
+% \theoremstyle{mystyle}
+
+\newtheorem{Algorithm}{Algorithm}[section]
+
+\newtheorem{Definition}{Definition}[section]
+\numberwithin{Definition}{section}
+
+\newtheorem{Example}{Example}[section]
+\numberwithin{Example}{section}
+
+\newtheorem{Proposition}{Proposition}[section]
+
+\newtheorem{Lemma}{Lemma}[section]
+\numberwithin{Lemma}{section}
+
+\newtheorem{Theorem}{Theorem}[section]
+\numberwithin{Theorem}{section}
+
+\newtheorem{Corollary}{Corollary}[section]
+\newtheorem{Conjecture}{Conjecture}[section]
+\newtheorem{Problem}{Problem}[section]
+\newtheorem{Notation}{Notation}[section]
+\newtheorem{Setup}{Problem Setup}[section]
+
+\begin{document}
+
+\title{Craig Interpolants in Finite Fields using Algebraic Geometry:
+  Theory and Algorithms\thanks{This research is funded in part by the
+    US National Science Foundation grants CCF-1619370 and
+    CCF-1320385.}} 
+
+\author{Utkarsh Gupta$^1$ \and Irina Ilioaea$^2$ \and Priyank Kalla$^1$ \and Florian Enescu$^2$\\
+$^1$Electrical and Computer Engineering, University of Utah, Salt Lake City UT, USA \\
+$^2$Mathematics and Statistics, Georgia State University, Atlanta GA, USA
+}
+
+\institute{}
+\maketitle
+
+\thispagestyle{plain}
+\pagestyle{plain}
+
+
+
+\input{abstract.tex}
+\input{intro.tex}
+\input{prelim.tex}
+\input{theory.tex}
+\input{find_interpolants.tex}
+\input{conclusion.tex}
+
+%%%%%%%%%%%%%%%%%%%% The bibliography %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\bibliographystyle{splncs03}
+\bibliographystyle{IEEEtran}
+%\bibliography{cf}
+\bibliography{utkarsh,xiaojun,tim,logic,oldlogic,cnfsat,condrat_ms}
+% \begin{thebibliography}{1}
+% \bibliography{fmcad17}
+% \end{thebibliography}
+
+% \bibliography{utkarsh}
+
+
+\end{document}

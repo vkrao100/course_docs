@@ -1,0 +1,153 @@
+\section{Introduction}
+Verifying functional correctness of gate-level arithmetic circuits is
+still a significant challenge owing to increasing design size and
+functional complexity. In cases where verification detects the
+presence of a bug, considerable amount of manual intervention is
+required to localize the  bug and introduce a correction, thus making
+it a resource intensive process. Traditional automated debugging
+techniques based on simulation, decision procedures such as Binary
+Decision Diagrams (BDDs)~\cite{bryant:1} and SAT
+solvers~\cite{alanmi:2006}, demand bit-blasting of the circuit and are
+hence considered inefficient models to verify complex datapath
+designs. Due to the inherent algebraic nature of computations in such
+designs, symbolic algebra algorithms are considered more appropriate
+for their verification.  
+
+Within a symbolic algebra environment, a given circuit implementation
+is modeled as a set of polynomials that generate an ideal. The
+verification goal here is then to prove that this polynomial ideal
+satisfies a given golden specification. This is solved using an ideal
+membership test by performing a series of \Grobner basis reductions
+under a defined term order. If verification fails, we deem the circuit
+as buggy and go on to find the faulty gate in order to rectify it. The
+current challenge and scope of this paper is to realize the correct
+implementation for this buggy component. Identifying the buggy gate is
+a much harder problem to solve; it is part of future work, and beyond
+the scope of this paper. Once a particular gate has been identified as
+corrupted and rectifiable, we label the gate as {\it an unknown
+  component} and go on to find the correct functionality to be
+implemented by this component such that the entire circuit conforms to
+the given reference specification.  
+% \vspace{-0.1in}
+\subsection{Previous work}
+
+The most recent and relevant approach~\cite{fujita:2015},~\cite{fujita:2012} resolves the unknown component problem using an incremental $SAT$ formulation. The paper models the unknown component in a given circuit($Ckt$) as a LUT by using transformation variables($X$). The solution to these variables implements the desired logic function so that the resulting circuit becomes logically equivalent to a given specification $Spec()$. Let $Ckt(X,In)$ be the formula corresponding to the given circuit with possible transformations, where $In$ is the set of all primary inputs to the circuit. This can be formulated naturally as a two-level QBF with an existential quantifier followed by a universal quantifier as shown below:
+\vspace{0.1in}
+\begin{align}
+\exists \textit{X}.\forall \textit{In. Ckt(X,In) = Spec(In)}:    
+\end{align}
+
+The two level QBF is then solved by repeatedly applying the below SAT formulation:
+  
+\begin{enumerate}
+	\item Let Target=($Ckt(X,In)\neq spec(In))$. Let $k$ be the num-ber of test vectors, initialized to zero. Let $TestSet$ be the set of all generated test patterns, initialized to the empty set.
+	\item Check if Target is satisfiable.
+	\item If SAT, $k=k+1$ and record the solution as $TestSet = TestSet \cup in_k$. Update Target = (Target($X,In))\land(Ckt(X,in_k)=Spec(in_k))$, and then go to step 2.
+    \item If UNSAT, we have all the required test set patterns $\{in_1$ $\dots in_k\}$. Now, check if: $(Ckt(X,in_1) = Spec(in_1)) \land (Ckt(X,in_2) = Spec(in_2)) \land \dots (Ckt(X,in_k) = Spec$ $(in_k))$ is satisfiable.
+    \item If SAT, then any solution $X$ is a correct set of transformation, while an UNSAT result proves that there does not exist a correct set of transformation.
+\end{enumerate}
+
+% By experiment, the approach shows that if the circuit is correct under these input patterns($in_k$), it is guaranteed to be correct for all of $2^{In}$ input patterns.
+The work in~\cite{maciej:2017} poses the unknown component formulation
+as a camouflaged circuit model and tries to de-obfuscate several types
+of camouflaging techniques using incremental SAT solving. The approach
+used in~\cite{andreas:2005} inserts logic corrector MUXs on the
+unknown sub-circuits and relies on SAT solvers to realize the
+functionality. 
+
+Despite using state-of-the-art SAT solvers, all the above approaches
+fail to verify large and complex finite field arithmetic circuits. The
+solvers still model the problem as decision procedures and, as
+demonstrated by our experimental results, are shown to be inefficient
+in solving verification problems on multiplier circuits beyond
+12-bits.  
+
+The technique from Farahmandi et al.~\cite{farimah:2016} deals with
+automatic debugging and correction using computer algebra
+concepts. The authors use function extraction~\cite{maciej:2015:1}
+with a specific term order~\cite{lv} to do equivalence checking,
+subsequently generating a remainder in case of failure. The approach
+then finds all possible assignments to variables of the remainder such
+that it generates a non-zero value. This test set helps arrive at a
+pruned gate list for bug localization. The procedure then takes every
+gate in the pruned list, starting from primary inputs, and tries to
+match the appeared remainders pattern. It does so by computing the
+difference between the polynomial computed at the output of the
+suspicious gate against the polynomial computed by a probable set of
+gate corrections. The coefficient computation~\cite{maciej:2015:2}
+during pattern matching relies heavily on the half-adder based circuit
+structure. The paper doesn't discuss the ambiguities in weight
+calculations when the gate structure differs from the given
+topology. The approach is not complete in the case when there are
+redundant gates in the circuit as we found through our
+experiments. The authors of paper \cite{maciej:2018} present an approach to 
+diagnose and rectify finite field multipliers using a forward topological 
+order. The approach is topologically constrained for the finite field 
+multipliers. The approach presented in this paper makes no such assumption 
+about the circuit topology. The authors in~\cite{scholl:2} present a QBF 
+formulation for answering whether a partial implementation can be extended 
+to a complete design that models a given specification. In contrast, the approach 
+presented in this paper finds a solution to an unknown component in the 
+circuit given that an appropriate function for unknown component exists.
+%The approach also doesn't talk about finite field
+%arithmetic circuits as the experiments are illustrated with only
+%integer arithmetic circuits. 
+
+% and hence The approach also fails to arrive at a conclusive solution when the circuit is tweaked with some redundancy and hence lacks completeness. 
+
+% While theorem provers require extensive manual intervention and expertise. 
+
+% Additional constraint relating floating signals to fanouts in the circuit must be satisfied for the result to be trusted; however the computation to verify this condition can be expensive. For this reason, this method becomes inefficient if the number of logic gates dominates the HA network. Also, the circuit would need to be partitioned into linear and non-linear portions, which is a non-trivial task.
+
+\subsection{Contribution}
+% by extending it to random logic circuits. 
+%The paper discusses a single gate replacement error model as the
+%target design i.e., only one gate in the design incorrectly replaced,
+%for example an AND gate replaced with an XOR/OR gate.
+We are given a gate-level circuit $C$, with one of the gates
+$\mathcal{G}_i \in C$ marked as unknown component. The problem is to
+compute the function implemented by this gate such that it matches a
+given specification polynomial $f$ or a given golden reference model
+circuit $C_s$. We utilize concepts from symbolic computer algebra to
+realize the function implemented by this unknown component. The
+circuit is modeled by a set of polynomials $F=\{f_1,\dots,f_s\}$, with
+$f_i$ being the unknown polynomial corresponding to the gate
+$\mathcal{G}_i$. 
+% The
+%reference golden model can either be a specification polynomial $f$ or
+%a different circuit $C_1$ implementing the same function as circuit
+%$C$.
+We consider the ideal generated by these polynomials $F$, and exploit
+concepts from ideal membership testing to 
+%For a given specification polynomial $f$, we do polynomial
+%reduction until the unknown component gate and arrive at
+compute the function implemented by the unknown component.
+Using the concepts of ideal membership, elimination ideals,
+quotients of ideals -- and their computation using the \Grobner basis 
+algorithm -- we show how multiple functions for the unknown component
+can be explored.
+%% For the case where
+%% the specification is given in terms of a different implementation
+%% $C_1$, we use \Grobner basis based reduction on a miter setup to
+%% arrive at a solution.
+%, and apply $\it{Nullstellensatz}$ principles
+%to verify the function implemented by the
+               %component% 
+This paper seeks to put forth the underlying theory, outline the
+verification challenges, and present a complete approach to resolve an
+unknown component in finite field arithmetic circuits. We also discuss
+some experimental results and draw a comparison to the SAT-based
+approach.    
+
+So far, the theory is developed and validated only for finite field
+arithmetic circuits. We believe that our approach is also
+applicable to integer arithmetic circuits. However, we do not yet have a
+{\it provably complete} algorithmic approach as a quantification
+procedure over integer rings, though we expect to have it resolved
+by the time the workshop will be held. So our claims, approach and
+experiments are restricted to finite field arithmetic circuits. 
+
+% The paper will address both the notions by analyzing the circuit polynomials using concepts from computer algebra\cite{gb_book}\cite{ideals:book} such as \Grobner basis reduction, projection of variety, elimination ideal, ideal membership testing, and weak $\it{Nullstellensatz}$.
+
+%Extra
+% Partial synthesis required for logic optimization and Engineering Change Order(ECO). Design is treated as a combinatorial black box, and in order to determine the logic function realized by the design, it is necessary to constraint the circuit topologically. A set of sub-circuits considered as vacant with fixed inputs are treated used for transformation to realize the function implemented by the unknown component.

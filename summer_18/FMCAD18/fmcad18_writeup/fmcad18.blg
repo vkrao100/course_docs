@@ -1,0 +1,97 @@
+This is BibTeX, Version 0.99d (TeX Live 2017)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: fmcad18.aux
+The style file: IEEEtran.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: vikas.bib
+Repeated entry---line 100 of file vikas.bib
+ : @inproceedings{farimah:2017:1
+ :                              ,
+I'm skipping whatever remains of this entry
+Database file #2: utkarsh.bib
+Repeated entry---line 251 of file utkarsh.bib
+ : @inproceedings{rolf:2016
+ :                         ,
+I'm skipping whatever remains of this entry
+Database file #3: tim.bib
+Repeated entry---line 430 of file tim.bib
+ : @article{acar:1998
+ :                   ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 475 of file tim.bib
+ : @article {DGPS
+ :               ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 838 of file tim.bib
+ : @book{gb_book
+ :              ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1060 of file tim.bib
+ : @inproceedings{lv:tcad2013
+ :                           ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1528 of file tim.bib
+ : @article{wu:2002
+ :                 ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1775 of file tim.bib
+ : @inproceedings{Knezevic:2008
+ :                             ,
+I'm skipping whatever remains of this entry
+Database file #4: xiaojun.bib
+Repeated entry---line 769 of file xiaojun.bib
+ : @misc {DGPS
+ :            ,
+I'm skipping whatever remains of this entry
+-- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+Warning--empty journal in DGPS
+
+Done.
+You've used 30 entries,
+            4087 wiz_defined-function locations,
+            982 strings with 12617 characters,
+and the built_in function-call counts, 19275 in all, are:
+= -- 1430
+> -- 496
+< -- 105
++ -- 264
+- -- 97
+* -- 884
+:= -- 2888
+add.period$ -- 60
+call.type$ -- 30
+change.case$ -- 29
+chr.to.int$ -- 252
+cite$ -- 31
+duplicate$ -- 1463
+empty$ -- 1804
+format.name$ -- 121
+if$ -- 4552
+int.to.chr$ -- 0
+int.to.str$ -- 30
+missing$ -- 275
+newline$ -- 113
+num.names$ -- 30
+pop$ -- 715
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 2
+skip$ -- 1520
+stack$ -- 0
+substring$ -- 617
+swap$ -- 1025
+text.length$ -- 21
+text.prefix$ -- 0
+top$ -- 5
+type$ -- 30
+warning$ -- 1
+while$ -- 70
+width$ -- 32
+write$ -- 282
+(There were 9 error messages)

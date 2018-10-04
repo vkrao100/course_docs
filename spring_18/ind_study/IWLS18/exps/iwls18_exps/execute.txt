@@ -1,0 +1,12 @@
+#tiankai_ex/tianka_d0_uc.sing
+#point_addition/PD_4.sing
+#point_addition/PD_8.sing
+#to_vkr/test_unroll_18.sing
+#point_addition/PD_16.sing
+to_vkr/test_unroll_33.sing
+to_vkr/test_unroll_51.sing
+to_vkr/test_unroll_89.sing
+to_vkr/test_unroll_99.sing
+point_addition/PD_32.sing
+point_addition/PD_64.sing
+point_addition/PD_128.sing

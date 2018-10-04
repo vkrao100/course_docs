@@ -1,0 +1,128 @@
+\documentclass{article}
+\usepackage[a4paper, margin=1in]{geometry}%lmargin=1in, rmargin=1in, tmargin=1in, bmargin=1in]{geometry}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{svg}
+\usepackage{xcolor}
+\usepackage{multirow}
+\usepackage{booktabs}
+\bibliographystyle{plain}
+\usepackage{float}
+\usepackage{boldline}
+\usepackage{pbox}
+
+\begin{document}
+
+\begin{table}
+\centering
+\caption{Mastrovito Multipliers (Time in seconds)}
+\begin{tabular}{| c | c | c | c | c | c |} \hline
+%\multirow{2}{*}{\textbf{Input}} & \multirow{2}{*}{\textbf{Abstraction}} & \multicolumn{3}{ c |}{\textbf{ZBDD reduction(ZR)}}  &  \multirow{2}{*}{\textbf{ZR improved}}\\ \cline{3-5}
+% & &Building ZBDDs&Reduction&Total&\\ \hline
+\textbf{Datapath Size} & \textbf{Abstraction} & \textbf{PolyBori} &\textbf{ZBDD Reductions} & \textbf{ZBDD/Remainder} & \textbf{CS}\\ \hline
+163 & 1,443 &70& 10 & 811/765 & 153,243\\ \hline 
+233 & 1,913 &105& 14 & 772/699& 167,803\\ \hline
+283 & 11,116 &316& 45 & 1413/1,402&399,687\\ \hline
+409 & 17,848 &596& 75 & 1313/1,227&508,507\\ \hline
+571 & 192,032 &CR& 616 & 2849/2,840&1,628,169\\ \hline 
+
+
+\end{tabular}
+\end{table}
+
+
+
+\begin{table}
+\centering
+\caption{Montgomery Flat Multipliers (Time in seconds)}
+\begin{tabular}{| c | c | c | c | c | c |} \hline
+%\multirow{2}{*}{\textbf{Input Bit-width}} & \multirow{2}{*}{\textbf{Abstraction}} & \multicolumn{3}{ c |}{\textbf{ZBDD reduction(ZR)}}  &  \multirow{2}{*}{\textbf{ZR improved}} \\ \cline{3-5}
+% & &Building ZBDDs&Reduction&Total& \\ \hline
+\textbf{Input Size} & \textbf{Abstraction} & \textbf{PolyBori} &\textbf{ZBDD Reductions} & \textbf{ZBDD/Remainder} & \textbf{CS}\\ \hline
+163 & 6,897 &9294&9,595 & 39,380/765 & 823,532,290\\ \hline 
+233 & 63,805 &1749&1,452&4,411/699 & 186,078,425\\ \hline
+283 & TO &TO& 247,837 &117,359/1,402 &8,788,000,132\\ \hline
+409 & TO & RN& 32,226 &9,534/1,227 &1,378,051,033\\ \hline
+571 & TO &CR& 96,348& TO/2849 & TO\\ \hline 
+
+\end{tabular}
+\end{table}
+
+
+\begin{table}
+\centering
+\caption{Montgomery Blocks  Max Nodes / Remainder}
+\begin{tabular}{| c | c | c | c | c | c | c |} \hline
+\textbf{Input/Blocks} &&  \textbf{163} & \textbf{233} &\textbf{283} & \textbf{409} & \textbf{571} \\ \hline
+\multirow{2}{*}{Block A} &MN/MR&64/9&10/5&155/10&11/5& 296/9\\ \cline{2-7}
+& CS&300,887 & 98,457& 2,267,183 & 344,594 & \\ \hline
+\multirow{2}{*}{Block B} &MN/MR&64/9&10/5&155/10&11/5& 296/9\\ \cline{2-7}
+& CS& 300,887 & 98,457&  2,267,183& 344,594 & \\ \hline
+\multirow{2}{*}{Block C} &MN/MR&3,263/3,210&705/701&13,344/10,307&1,235/1,229& 82,532/82,148\\ \cline{2-7}
+& CS& 300,887& 98,457&  2,267,183&344,594 & \\ \hline
+\multirow{2}{*}{Block D} &MN/MR&112/58&12/7&292/147&14/8& 578/291\\ \cline{2-7}
+& CS& 300,887& 98,457&  2,267,183& 344,594& \\ \hline
+\multirow{2}{*}{Collapse} &MN/MR&18,024/765&1,485/699&42,055/1,402&3,013/1,227& 166,979/2,840\\ \cline{2-7}
+& CS& 1,779,192& 320,808 & &1,270,459 &95,506,620 \\ \hline
+\end{tabular}
+\end{table}
+
+%&&&&&&&&&& \\ \hline
+
+
+\begin{table}
+\centering
+\caption{Montgomery Blocks(Time in seconds)}
+\begin{tabular}{| c | c | c | c | c | c | c |} \hline
+\multirow{2}{*}{\textbf{Input Bit-width}} &\multirow{2}{*}{\textbf{Block}}& \multirow{2}{*}{\textbf{F4}} &  \multicolumn{2}{ c |}{\textbf{ZR}} & \multicolumn{2}{ c |}{\textbf{PB}}  \\ \cline{4-7}
+  & & &Reduction & Collapse  &Reduction & Collapse  \\ \hline
+\multirow{4}{*}{163} & Block A & 25&1 &\multirow{4}{*}{33} & 12 & \multirow{4}{*}{}\\  \cline{2-4} \cline{6-6}
+ & Block B &25 & 1 & & 12  &  \\  \cline{2-4} \cline{6-6}
+ &Block Mid &73 & 12 && 18  &  \\  \cline{2-4} \cline{6-6}
+ &Block Out &24 & 1 & & 13 & \\ \cline{2-7}
+ & Total & 73  &   \multicolumn{2}{ c |}{45} & \multicolumn{2}{ c |}{}\\ \noalign{\hrule height 1.5pt}
+\multirow{4}{*}{233}&Block A  &142  & $<$1 & \multirow{4}{*}{9} & 34 & \multirow{4}{*}{}\\  \cline{2-4} \cline{6-6}
+ & Block B &141 & $<$1 && 36  &  \\  \cline{2-4} \cline{6-6}
+ &Block Mid &408 & 13 & & 39  &  \\  \cline{2-4} \cline{6-6}
+ &Block Out & 140& $<$1 && 33 & \\ \cline{2-7}
+ & Total & 408  &   \multicolumn{2}{ c |}{22} & \multicolumn{2}{ c |}{}\\ \noalign{\hrule height 1.5pt}
+\multirow{4}{*}{283}&Block A & 330 & 28 & \multirow{4}{*}{158} & 98 & \multirow{4}{*}{}\\  \cline{2-4} \cline{6-6}
+ & Block B &329 & 29 && 101  &  \\  \cline{2-4} \cline{6-6}
+ &Block Mid &883 & 254 && 202  &  \\  \cline{2-4} \cline{6-6}
+ &Block Out &321 & 30 && 92 & \\ \cline{2-7}
+ & Total & 883  &   \multicolumn{2}{ c |}{412} & \multicolumn{2}{ c |}{}\\ \noalign{\hrule height 1.5pt}
+\multirow{4}{*}{409}&Block A & 1,322 &$<$1  &\multirow{4}{*}{58} & 188 & \multirow{4}{*}{}\\  \cline{2-4} \cline{6-6}
+ & Block B &1,335 & $<$1 && 189  &  \\  \cline{2-4} \cline{6-6}
+ &Block Mid &4,471 & 117 && 200  &  \\  \cline{2-4} \cline{6-6}
+ &Block Out &1,338 & $<$1 && 191 & \\ \cline{2-7}
+ & Total & 4,471  &   \multicolumn{2}{ c |}{175} & \multicolumn{2}{ c |}{}\\ \noalign{\hrule height 1.5pt}
+\multirow{4}{*}{571}&Block A &5,371 & 725& \multirow{4}{*}{1,516} & 1620 & \multirow{4}{*}{}\\  \cline{2-4} \cline{6-6}
+ & Block B &5,421 & 752 && 1843  &  \\  \cline{2-4} \cline{6-6}
+ &Block Mid &37,804 & 4,164 && 5445  &  \\  \cline{2-4} \cline{6-6}
+ &Block Out &5,539 & 747 && 1831 & \\ \cline{2-7}
+ & Total & 37,804  &   \multicolumn{2}{ c |}{5680} & \multicolumn{2}{ c |}{}\\ \noalign{\hrule height 1.5pt}
+
+
+\end{tabular}
+\end{table}
+
+
+\iffalse
+
+\begin{table}
+\centering
+\caption{Montgomery Blocks(Time in seconds)}
+\begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | } \hline
+\multirow{2}{*}{\textbf{Input/Blocks}} & \multicolumn{3}{ c |}{\textbf{163}} & \multicolumn{3}{ c |}{\textbf{233}} & \multicolumn{3}{ c |}{\textbf{283}} & \multicolumn{3}{ c |}{\textbf{409}} & \multicolumn{3}{ c |}{\textbf{571}} \\ \cline{2-11}
+&ABS&PB&ZR&ABS&PB&ZR&ABS&PB&ZR&ABS&PB&ZR&ABS&PB&ZR  \\ \hline
+Block A &25&1&142&$<1$&330&28&1,322&$<1$&5,371&725 &&&&&\\ \hline
+Block B &25&1&141&$<1$&329&29&1,335&$<1$&5,421&752 &&&&&\\ \hline
+Block C &73&12&408&13&883&254&4,471&117&37,804&4,164 &&&&&\\ \hline
+Block D &24&1&140&$<1$&321&30&1,338&$<1$&5,539&747 &&&&&\\ \hline
+Collapse &$<1$&33&$<1$&9&$<1$&158&$<1$&58&$<1$&1,516 &&&&&\\ \hline 
+Total &&&&&&&&&& &&&&&\\ \hline
+\end{tabular}
+\end{table}
+ \fi
+
+\end{document} 

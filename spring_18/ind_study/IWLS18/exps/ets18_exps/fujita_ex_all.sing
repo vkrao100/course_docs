@@ -1,0 +1,94 @@
+//1 -bit adder circuit from Prof. Fujita's presentation
+ring r = (2, x), (t, Z, Z_1, s_s, s_i, c_s, c_i, f_s, f_i, e_s, e_i, d_s, d_i, a, b, c, x11, x12, x13, x14, x21, x22, x23, x24, x31, x32, x33, x34, x41, x42, x43, x44, x51, x52, x53, x54), lp; 
+
+minpoly = x^2 + x + 1;
+
+proc orgate(poly g, poly h)
+{
+	return(g+h+g*h);
+}
+proc xorgate(poly g, poly h)
+{
+	return(g+h);
+}
+proc andgate(poly g, poly h)
+{
+	return(g*h);
+}
+proc invgate(poly g)
+{
+	return(1+g);
+}
+proc mux(poly g, poly h, poly i, poly j, poly k, poly l)
+{
+	return(i*invgate(g)*invgate(h) + j*invgate(g)*h + k*g*invgate(h) + l*g*h);
+}
+ 
+poly fs1 = d_s + xorgate(a,b);
+poly fs2 = e_s + andgate(a,b);
+poly fs3 = f_s + andgate(d_s,c);
+poly fs4 = s_s + xorgate(d_s,c);
+poly fs5 = c_s + orgate(e_s,f_s);
+poly fs6 = Z + s_s + c_s*x; 
+
+//circuit -  1 bit adder using LUT
+//poly fi1 = d_i + xorgate(a,b);
+poly fi1 = d_i + mux(a, b, x11, x12, x13, x14);
+poly fi2 = e_i + andgate(a,b);
+//poly fi2 = e_i + mux(a, b, x21, x22, x23, x24);
+poly fi3 = f_i + andgate(d_i,c);
+//poly fi3 = f_i + mux(d_i, c, x31, x32, x33, x34);
+//poly fi4 = s_i + xorgate(d_i,c);
+poly fi4 = s_i + mux(d_i, c, x41, x42, x43, x44);
+poly fi5 = c_i + orgate(e_i,f_i);
+//poly fi5 = c_i + mux(e_i, f_i, x51, x52, x53, x54);
+poly fi6 = Z_1 + s_i + c_i*x;
+
+//circuit- 1 - bit adder
+poly fm = t*(Z_1 - Z)-1;
+
+
+poly f10 = Z_1^4 - Z_1;
+poly f11 = Z^4 - Z;
+poly f12 = t^2 - t;
+poly f13 = a^2 - a;
+poly f14 = b^2 - b;
+poly f15 = c^2 - c;
+poly f16 = d_s^2 - d_s;
+poly f17 = e_s^2 - e_s;
+poly f18 = f_s^2 - f_s;
+
+poly f19 = d_i^2 - d_i;
+poly f20 = e_i^2 - e_i;
+poly f21 = f_i^2 - f_i;
+
+poly f22 = x11^2 - x11;
+poly f23 = x12^2 - x12;
+poly f24 = x13^2 - x13;
+poly f25 = x14^2 - x14;
+poly f26 = x21^2 - x21;
+poly f27 = x22^2 - x22;
+poly f28 = x23^2 - x23;
+poly f29 = x24^2 - x24;
+poly f30 = x31^2 - x31;
+poly f31 = x32^2 - x32;
+poly f32 = x33^2 - x33;
+poly f33 = x34^2 - x34;
+poly f34 = x41^2 - x41;
+poly f35 = x42^2 - x42;
+poly f36 = x43^2 - x43;
+poly f37 = x44^2 - x44;
+poly f38 = x51^2 - x51;
+poly f39 = x52^2 - x52;
+poly f40 = x53^2 - x53;
+poly f41 = x54^2 - x54;
+
+//list ho = J + J0;
+ideal spec   =  fs1, fs2, fs3, fs4, fs5, fs6, f10, f11, f12, f13, f14, f15, f16, f17, f18;
+ideal imple  =  fi1, fi2, fi3, fi4, fi5, fi6, f10, f11, f12, f13, f14, f15, f19, f20, f21, f22, f23, f24, f25, f26, f27, f28, f29, f30, f31, f32, f33, f34, f35, f36, f37, f38, f39, f40, f41;
+
+ideal miter = spec + imple + fm;
+
+ideal gb = groebner(miter);
+string grobner  = "grobner for given polynomials:";
+grobner, gb;

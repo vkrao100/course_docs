@@ -1,0 +1,134 @@
+\section{Experimental Setup}
+\label{section:setup}
+
+%We evaluate the area, frequency, and power overheads of DESC by implementing it in Verilog HDL, and synthesizing the proposed hardware.
+%
+We evaluate the area, frequency, and power overheads of FADE-Basic, FADE-LLC, and FADE-DDR by synthesizing the proposed hardware. To assess the energy and performance potentials of FADE-DDR, we use CACTI IO~\cite{CACTI,jouppi2015cacti}, Micron power calculator~\cite{micron-ddr,micron-lpddr}, and DRAMPower~\cite{chandrasekar2012drampower}. We simulate 14 memory-intensive parallel applications as well as 5 sequential SPEC2006 applications, running on a heavily modified version of the ESESC simulator~\cite{ESESC}.
+Using McPAT~\cite{McPat}, we estimate the overall processor power.
+
+\subsection{Design Space Exploration}
+A modified version of CACTI 6.5~\cite{CACTI} is used to find the best suitable configuration for L2 and L3 caches for full swing interconnects, as well as FADE-Basic and FADE-LLC interfaces. The cache sizes of L2 and L3 are fixed to 256KB and 8MB respectively and the number of banks is fixed to 8. Design space for full swing wires (64 wires) is explored by varying between ITRS high performance(HP), ITRS low standby power(LSTP) and ITRS low power(LOP) devices~\cite{NUCA}, whereas for FADE-Basic (76 wires) and FADE-LLC (80 wires) interfacess, a range of reduced voltages are applied on ITRS-HP, ITRS-LSTP and ITRS-LOP to find the most energy efficient peripheral circuitry for the SRAM cells. We scale the delay of low power wires, making use of delay model illustrated in ~\cite{scalingfactor}. Energy metric Energy Delay Product~\cite{edp} is used to determine the most energy efficient configuration.
+
+\subsection{Methodology}
+Besides FADE, we evaluate and compare other existing encoding techniques such as Bus invert coding~\cite{bus-invert}, DESC~\cite{desc}, BD encoding~\cite{bdencoding} and CAFO~\cite{CAFO}. These encoding techniques are evaluated against conventional binary encoding. Similar to FADE, for a single core system we apply all the encoding techniques only to the last level cache, whereas for multi core system we apply it to both L2 and L3. Conventional binary encoding with both normal and reduced voltages are applied to DDR interface and cache. Reduced voltage conventional binary encoding includes utilization of low power wires at cache level and LPDDR3 as DRAM technology. Bus invert coding is applied to cache levels while data bus invert is applied to the DDR interface. DESC is applied only to the cache levels as it restricts its application to DDR interface due to varying burst lengths. BD encoding exploits data similarity in cache block and reduces number of ones and bit flips. A 64 and 32 entry recent data table is opted for DDR interface and cache respectively for BD encoding. A smaller entry size is chosen for cache due to the large area overhead introduced by a 64 size entry table. CAFO, a two dimensional DBI technique, is applied to both DDR interface and cache levels.
+
+\subsection{Architecture}
+We modify the ESESC simulator~\cite{ESESC} to model a multicore and a single core computer systems.
+The multicore system comprises four OoO cores with private L1 and L2 caches and a shared 8MB LLC, interfaces to two DDR4-3200 DRAM channels.
+The single core system consists of two cache levels, interfaced with a DDR4-3200 DRAM channel.
+Table~\ref{table:para} shows the simulation parameters.
+
+\begin{table}[h!]
+	\centerline{
+		{\scriptsize\begin{tabular}{|c|c|c|}
+				\hline
+				& \textbf{Multithreaded} & \textbf{Single-threaded} \\
+				\hline
+				& four 4-issue OoO cores,    & a 4-issue OoO core, \\
+				\textbf{Core}       	 & 128 ROB entries,    & 128 ROB entries,  \\
+												& 3.2 GHz        & 3.2 GHz  \\
+				\hline
+				& 32KB, 4-way, LRU, & 32KB, 4-way, LRU, \\
+				\textbf{IL1/DL1 cache}   & 64B block,           & 64B block, \\
+				\textbf{(per core)}  & hit/miss delay 2/2   & hit/miss delay 2/2 \\
+				\hline
+				& 256KB, 8-way, LRU,     & 8MB, 8-way, LRU, \\
+				\textbf{L2 cache}   & 64B block,           & 64B block, \\
+				\textbf{(per core)}  & hit/miss delay 2/5,  & hit/miss delay 10/5, \\
+				& MESI protocol        & MESI protocol \\
+				\hline
+				\textbf{L3 cache}    & 8MB, 8-way, LRU, 64B block, & -- \\
+				\textbf{(shared)}    & hit/miss delay 10/5 & -- \\
+				\hline
+				\textbf{Temperature} & \multicolumn{2}{c|}{$350\,^{\circ}{\rm K}$ ($77\,^{\circ}{\rm C}$)} \\
+				\hline
+				\textbf{DRAM}        & 2 DDR4-3200, FR-FCFS & 1 DDR4-3200, FR-FCFS \\
+				\hline
+		\end{tabular}}
+	}
+	\vspace{-1ex}
+	\caption{Simulation parameters.\label{table:para}}
+	\vspace{-1ex}
+\end{table}
+
+%cache: (1) a Niagara-like eight-core processor, and (2) a single-threaded out-of-order processor.
+%Both systems have an 8MB L2 cache, interfaced to two DDR3-1066 DRAM channels.
+%
+%FADE is assessed on L1 cache size of 32KB, L2 of 1 MB and L3 of 8MB. In case of a single core, the last level cache is L2 with 8MB size. A two channel DDR system is used with LPDDR3's unterminated interface. Caches of very large size has a major impact on the energy dissipated by it. There is a lot of leakage energy in SRAM cells and peripheral circuitry that needs to be optimized. Apart from increased power consumption in case of large caches, there is a huge impact on performance. Because of its large size, it takes several additional cycles to fetch a cache block.
+%
+%A sensitivity study to explore the design space of L2 and L3 caches is carried out using CACTI 6.5. This study results in the most energy efficient system configuration with respect to both SRAM cells and its peripheral circuitry. For both L2 and L3, the design space is explored for various bank counts alongside a variation in the output width. A wide range of ITRS High performance wires(HP), ITRS low power (LOP) and ITRS low standby power(LSTP), without altering their threshold voltages is considered in the design exploration to achieve an energy efficient system. The results show that using a LSTP technology for cell type and LOP for peripheral  resulted in a configuration with minimal performance degradation and power consumption. The most energy efficient cache configuration for L2 and L3 is achieved for 8 banks with 64 wires. High performance wires are used for L1 cache as it is very sensitive to delays.  
+
+%ESESC is modified to incorporate conventional binary encoding technique, bus-invert coding~\cite{bus-invert}, BD encoding~\cite{bdencoding}, CAFO~\cite{CAFO} and FADE for both cache and DRAM interface. Also, DESC~\cite{desc} is included for only cache. The number of segments for bus invert coding is decided based on a sensitivity test, to find out the best value for number of segments, as bus invert coding is sensitive to the segments. Zero skipping is included in DESC, which further brings down the number of transitions in this scheme. 
+
+\subsection{Applications}
+A mix of 14 parallel benchmarks from Phoenix, SPALSH-2~\cite{Splash2}, and NAS~\cite{NAS} suites is used to evaluate the impact of FADE codes on memory intensive benchmarks.
+The valuated single threaded applications are from SPEC2006~\cite{spec2006} suite running on the single core processor.
+Table~\ref{table:applications} summarizes the evaluated benchmarks and their input sets.
+%All the applications (Table~\ref{applications}) are run on ESESC with the necessary input files.
+
+\begin{table}[h!]
+	\vspace{-1.5ex}
+	\centerline
+	{\scriptsize\setlength\tabcolsep{1.5pt}
+		\begin{tabular}{|c|c|c|c|}
+			\hline
+			&\textbf{Benchmarks}  & \textbf{Suite} &\textbf{Input} \\
+			\hline
+			\parbox[t]{2mm}{\multirow{14}{*}{\rotatebox[origin=c]{90}{\textbf{Parallel}}}}
+			& Linear Regression & Phoenix &  100MB key file \\
+			& Matrix Multiplication  & Phoenix & Matrix length = 1000 \\
+		    & Parallel Cache Assignment & Phoenix & 1000x 2000 matrix\\
+		    & Rindex & Phoenix &  \\ 
+		  	& String Match & Phoenix & 500MB key file  \\ 
+		  	& Wordcount & Phoenix & 100MB word text file  \\ 
+		  	& kmeans & Phoenix & 3 Dimension-1000 each,\\
+		  	& & &  points =100000\\ 
+		  	\cline{2-4}
+		   	& Fourier Transform & NAS OpenMP & Class A \\ 
+		   	& Integer Sort & NAS OpenMP & Class A \\ 
+		   	& Multi-Grid on a sequence of meshes & NAS OpenMP & Class A \\ 
+		  	& Conjugate Gradient & NAS OpenMP & Class A \\ 
+		  	\cline{2-4}
+		   	& Radix & SPLASH-2 & 2M integers \\ 
+		  	& Ocean-C & SPLASH-2 & 514x514 ocean \\ 
+		   	& Cholesky & SPLASH-2 & tk29.0 \\ 
+		    \hline
+		    \parbox[t]{2mm}{\multirow{5}{*}{\rotatebox[origin=c]{90}{\textbf{Single-threaded}}}}
+		     & BZip2 & SPECint 2006 & reference \\
+		    & Hmmer & SPECint 2006 & reference \\ 
+		    & MCF & SPECint 2006 & reference \\
+		    \cline{2-4} 
+		    & Lattice Boltzmann Method & SPECfp 2006 & reference \\ 
+		    & Simplex Linear Program (LP) Solver & SPECfp 2006 & reference  \\ 
+		    & & & \\
+		    \hline    
+		   \end{tabular}
+	}
+	\vspace{-1.5ex}
+	\caption{Application and data sets.\label{table:applications}}
+	\vspace{-1.5ex}
+\end{table}
+
+%Dimension-3 each 1000, cluster- 100, points =100000 
+%~\hspace{-\normalbaselineskip}
+\subsection{Synthesis}
+The area, delay, and power for the FADE encoders and decoders are based on FreePDK~\cite{FreePDK45} at 45nm, which are then scaled to 22nm using~\cite{45nmto22nm1,45nmto22nm2}.
+% Table~\ref{synthesis}. The encoders and decoders for both the cache and DDR is designed to have minimal area overhead.
+
+%\begin{table}[h!]
+%	\vspace{-1.5ex}
+%	\centerline
+%	{\scriptsize\setlength\tabcolsep{1.5pt}
+%		\begin{tabular}{|c|c|c|}
+%			\hline
+%			\textbf{Technology}  & \textbf{Voltage} &\textbf{FO4 Delay} \\
+%			\hline
+%			45nm & 1.1 V & 20.25ps \\
+%			22nm & 0.83 V & 11.75ps \\
+%			\hline    
+%		\end{tabular}
+%	}
+%	\vspace{-1.5ex}
+%	\caption{Technology Parameters.\label{synthesis}}
+%	\vspace{-1.5ex}
+%\end{table}

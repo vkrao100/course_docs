@@ -1,0 +1,136 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This is the template for submission to ISCA 2017
+% The cls file is a modified from  'sig-alternate.cls'
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\documentclass{sig-alternate} 
+\documentclass[journal]{IEEEtran}
+\usepackage{mathptmx} % This is Times font
+%\newcommand{\ignore}[1]{}
+\usepackage{fancyhdr}
+\usepackage[normalem]{ulem}
+\usepackage[hyphens]{url}
+\usepackage{hyperref}
+\usepackage{epsfig}
+\usepackage{multirow}
+
+%%%%%%%%%%%---SETME-----%%%%%%%%%%%%%
+%\newcommand{\iscasubmissionnumber}{461}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\fancypagestyle{firstpage}{
+%	\fancyhf{}
+%	\setlength{\headheight}{50pt}
+%	\renewcommand{\headrulewidth}{0pt}
+%	\fancyhead[C]{\normalsize{ISCA 2017 Submission
+%			\textbf{\#\iscasubmissionnumber} \\ Confidential Draft: DO NOT DISTRIBUTE}} 
+%	\pagenumbering{arabic}
+%}  
+
+% This package is used to write algorithms (see Buchberger's algorithm
+% in the text). File algorithm2e.sty included in the directory
+\usepackage[ruled]{algorithm2e}
+%%for algorithm2e package, label has to be following caption in the same line!!!
+\renewcommand{\algorithmcfname}{ALGORITHM}
+\SetAlFnt{\small}
+\SetAlCapFnt{\small}
+\SetAlCapNameFnt{\small}
+\SetAlCapHSkip{0pt}
+\IncMargin{-\parindent}
+
+
+% These packages will help you with Math and Figures
+\usepackage{helvet}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{subfig}
+\usepackage{comment}
+\usepackage{mathtools}
+%\usepackage{algorithm}
+%%indent in algorithm
+
+\setcounter{page}{1}
+
+
+% New command for the table notes.
+\def\tabnote#1{{\small{#1}}}
+% New command for the line spacing.
+\newtheorem{Algorithm}{Algorithm}[section]
+%\newtheorem{Definition}{Definition}[section]
+%\newtheorem{Example}{Example}[section]
+%\newtheorem{Proposition}{Proposition}[section]
+%\newtheorem{Lemma}{Lemma}[section]
+%\newtheorem{Theorem}{Theorem}[section]
+%\newtheorem{Corollary}{Corollary}[section]
+%\newtheorem{Proof}{Proof}
+
+
+%%% These are my macros that I use for math symbols
+\newcommand{\B}{{\mathbb{B}}}
+\newcommand{\Z}{{\mathbb{Z}}}
+\newcommand{\R}{{\mathbb{R}}}
+\newcommand{\Q}{{\mathbb{Q}}}
+\newcommand{\N}{{\mathbb{N}}}
+\newcommand{\C}{{\mathbb{C}}}
+\newcommand{\Zn}{{\mathbb{Z}}_{n}}
+\newcommand{\Zp}{{\mathbb{Z}}_{p}}
+\newcommand{\F}{{\mathbb{F}}}
+\newcommand{\Fbar}{{\overline{\mathbb{F}}}}
+\newcommand{\Fq}{{\mathbb{F}}_{q}}
+\newcommand{\Fqbar}{{\overline{{\mathbb{F}}_q}}}
+\newcommand{\Fkk}{{\mathbb{F}}_{2^k}}
+\newcommand{\Zkk}{{\mathbb{Z}}_{2^k}}
+\newcommand{\Fkkx}[1][x]{\ensuremath{\mathbb{F}}_{2^k}[#1]\xspace}
+\newcommand{\Grobner}{Gr\"{o}bner\xspace}
+\newcommand{\bi}{\begin{itemize}}
+	\newcommand{\ei}{\end{itemize}}
+\newcommand{\idealj}{{J = \langle f_1, \dots, f_s\rangle}}
+\newcommand{\idealg}{{J = \langle g_1, \dots, g_t\rangle}}
+\newcommand{\vfqj}{{V_{\Fq}(J)}}
+
+
+%Page header
+
+%%%%%%%%%%%---SETME-----%%%%%%%%%%%%%
+
+%\title{Implementation of Bitcoin Hash using SHA-256 algorithm}
+%\author{Vikas Kumar Rao, Yomi Karthik Rupesh, Rajath Bindiganavile, Sreejita Saha \\
+%	Department of  Electrical and Computer Engineering\\
+%	University of Utah, Salt Lake City, UT-84112\\\{vikas.k.rao,yomikarthik.rupesh,\}@utah.edu }
+%\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\markboth{Bitcoin hashing using SHA-256}{Prof. Kalla is the best}
+\title{Implementation of Bitcoin Hash using SHA-256} 
+\author{Vikas Kumar Rao, Yomi Karthik Rupesh, Rajath Bindiganavile, Sreejita Saha \\
+	Department of  Electrical and Computer Engineering\\
+	University of Utah, Salt Lake City, UT-84112\\\{vikas.k.rao,yomikarthik.rupesh,Rajath.bindiganavile,sreejita.saha\}@utah.edu}
+\maketitle
+%\maketitle
+%s\thispagestyle{firstpage}
+
+%\pagestyle{plain}
+\input{abstract}
+%\input{introduction}
+\input{background}
+%\input{fade}
+%\input{cache}
+%\input{dram}
+%\input{setup}
+%\input{evaluation}
+%\input{related}
+%\input{conclusions}
+
+
+%%%%%%% -- PAPER CONTENT ENDS -- %%%%%%%%
+
+%%%%%%%%% -- BIB STYLE AND FILE -- %%%%%%%%
+\bibliographystyle{ieeetr}
+\bibliography{ref}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

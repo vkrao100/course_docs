@@ -1,0 +1,237 @@
+\documentclass{article}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{svg}
+\usepackage{xcolor}
+\usepackage{amsthm}
+\usepackage{float}
+\usepackage{sectsty}
+\usepackage{amsbsy}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{diagbox}
+\usepackage{bm}
+\usepackage{hhline}
+\usepackage{graphicx}
+\usepackage{helvet}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{subfig}
+\usepackage{comment}
+\usepackage{mathtools}
+\bibliographystyle{plain}
+
+\newtheorem{Algorithm}{Algorithm}[section]
+\newtheorem{Definition}{Definition}[section]
+\newtheorem{Example}{Example}[section]
+\newtheorem{Proposition}{Proposition}[section]
+\newtheorem{Lemma}{Lemma}[section]
+\newtheorem{Theorem}{Theorem}[section]
+\newtheorem{Corollary}{Corollary}[section]
+\newtheorem{Proof}{Proof}
+
+\newcommand{\B}{{\mathbb{B}}}
+\newcommand{\Z}{{\mathbb{Z}}}
+\newcommand{\R}{{\mathbb{R}}}
+\newcommand{\Q}{{\mathbb{Q}}}
+\newcommand{\N}{{\mathbb{N}}}
+\newcommand{\C}{{\mathbb{C}}}
+\newcommand{\Zn}{{\mathbb{Z}}_{n}}
+\newcommand{\Zp}{{\mathbb{Z}}_{p}}
+\newcommand{\F}{{\mathbb{F}}}
+\newcommand{\Fbar}{{\overline{\mathbb{F}}}}
+\newcommand{\Fq}{{\mathbb{F}}_{q}}
+\newcommand{\Jo}{J_1}
+\newcommand{\Jz}{J_0}
+\newcommand{\Jt}{J_2}
+\newcommand{\Joz}{J_1 + J_0}
+\newcommand{\Jtz}{J_2 + J_0}
+\newcommand{\Fqbar}{{\overline{{\mathbb{F}}_q}}}
+\newcommand{\Fkk}{{\mathbb{F}}_{2^k}}
+\newcommand{\Zkk}{{\mathbb{Z}}_{2^k}}
+\newcommand{\Fkkx}[1][x]{\ensuremath{\mathbb{F}}_{2^k}[#1]\xspace}
+\newcommand{\Grobner}{Gr\"{o}bner\xspace}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+
+\newcommand{\idealj}{{J = \langle f_1,f_2 \dots, f_s\rangle}}
+\newcommand{\idealg}{{J = \langle g_1, \dots, g_t\rangle}}
+\newcommand{\vfqj}{{V_{\Fq}(J)}}
+\newcommand{\vfqjo}{{V_{\Fq}(J_0)}}
+\newcommand{\vfbqj}{{V_{\overline{\Fq}}(J)}}
+\newcommand{\vfbqjo}{{V_{\overline{\Fq}}(J_0)}}
+\newcommand{\vfbqjjo}{{V_{\overline{\Fq}}(J+J_0)}}
+\newcommand{\vfkkj}{{V_{\Fkk}(J)}}
+% \newcommand{\v}{\vee}
+\newcommand{\acf}{\bar{F}_q}
+\newcommand{\Vacf}{V_{\bar{F}_q}}
+
+\sectionfont{\large}
+
+\title{Operations on Radical Ideals}
+\begin{document}
+
+\maketitle
+\section{preliminaries}
+Let $\Fqbar$ be the algebraic closure of $\Fq[x_1,..x_n]$. Let's consider $J_0 = \langle x_1^q-x_1..x_n^q-x_n \rangle$ as the set of all vanishing polynomials over this closure. Any arbitrary ideals $\Jo = \langle f_1,...,f_s\rangle$ \textit{and} $\Jt = \langle h_1,...,h_r \rangle$ when coupled with the vanishing polynomials, restrict the solutions to finite fields. The ideals, $\Joz$ and $\Jtz$ then become radical -
+\begin{align*}
+ \Joz = \sqrt{\Joz}\\
+ \Jtz = \sqrt{\Jtz}
+\end{align*}
+
+\section{Intersection of Radical Ideals}
+Definition 8 and proposition 9 from Chapter 4 $\cite{ideals:book}$ gives us the understanding of ideals with respect to intersection operation for finite fields.\\ 
+
+\begin{Theorem}
+\textit{If} $\Jo$ \textit{and} $\Jt$ \textit{are any given ideals in} $\Fq[x_1,...,x_n]$, \textit{ then} $\Jo \cap \Jt$ \textit{is also an ideal which is defined as the set of polynomials which belong to both} $\Jo$ \textit{and} $\Jt$.
+\begin{align}
+ \Jo \cap \Jt = \{ g : g \in \Jo\ and\ g \in \Jt\}  
+\end{align}
+\end{Theorem}
+
+For any two Radical ideals $\Joz$ and $\Jtz$, intersection operation is defined as
+\begin{align}
+ (\Joz) \cap (\Jtz) = (\Jo \cap \Jt) + \Jz
+\end{align}
+
+\begin{proof}
+We will prove this theorem by proving the inclusion in both the directions.
+Let \textit{f} be any arbitrary polynomial such that
+\begin{align}
+\textit{f} \in (\Joz) \cap (\Jtz)
+\end{align} 
+
+\quad from (1),
+\begin{align*}
+f \in \Joz\ and\ f \in \Jtz\\
+\end{align*}
+Let \textit{t} be an extra variable added to the ring $\Fq[x_1,..x_n]$ -
+\begin{gather*}
+t.f \in t(\Joz)\ and\ (1-t)f \in (1-t)(\Jtz)\\
+f = tf + (1-t)f \in t(\Joz) + (1-t)(\Jtz)\\
+f = tf + (1-t)f \in t(\Jo) + t(\Jz) + \Jt + \Jz -t(\Jt)-t(\Jz)\\
+\end{gather*}
+
+\begin{align}
+f = tf + (1-t)f \in t(\Jo) + (1-t)(\Jt) + \Jz
+\end{align}
+
+From chapter 4, Theorem 11$\cite{ideals:book}$, for any two given ideals $\Jo$ and $\Jt$ in $\Fq[x_1,...x_n]$ -
+\begin{align}
+\Jo\cap \Jt = (t\Jo+ (1-t)\Jt) \cap \Fq[x_1,...,x_n]
+\end{align}
+
+Adding field intersection to equation (4) - 
+\begin{align}
+f \in ((t(\Jo) + (1-t)(\Jt))\cap \Fq[x_1,...,x_n]) + (\Jz \cap \Fq[x_1,...,x_n])
+\end{align}
+
+From equations (5) and (6) -
+\begin{align}
+\textit{f} \in (\Jo\cap\Jt)+\Jz
+\end{align}
+
+To prove the inclusion in other direction, let's take \textit{f} to be any arbitrary polynomial such that
+\begin{align}
+\textit{f} \in (\Jo\cap\Jt)+\Jz
+\end{align}
+
+from equations (5) and (6)
+\begin{gather*}
+f \in ((t\Jo+ (1-t)\Jt) \cap \Fq[x_1,...,x_n]) + (\Jz \cap \Fq[x_1,...,x_n])\\
+f \in ((t\Jo+ (1-t)\Jt) \cap \Fq[x_1,...,x_n]) + \Jz
+\end{gather*}
+
+assigning \textit{t} = 0
+\begin{gather*}
+f \in ((0*\Jo+ (1-0)\Jt) \cap \Fq[x_1,...,x_n]) + \Jz\\
+f \in (\Jt \cap \Fq[x_1,...,x_n]) + \Jz
+\end{gather*}
+From chapter 4, Lemma 10$\cite{ideals:book}$ -
+\begin{align}
+f \in (\Jt + \Jz)
+\end{align}
+
+assigning \textit{t} = 1
+\begin{gather*}
+f \in ((1*\Jo+ (1-1)\Jt) \cap \Fq[x_1,...,x_n]) + \Jz\\
+f \in (\Jo \cap \Fq[x_1,...,x_n]) + \Jz
+\end{gather*}
+\begin{align}
+f \in (\Jo + \Jz)
+\end{align}
+
+
+From theorem 1.1, and using equations (9) and (10)
+\begin{align*}
+\textit{f} \in (\Joz) \cap (\Jtz)
+\end{align*} 
+\end{proof}
+
+\section{Product of Radical Ideals}
+\begin{Theorem}
+\textit{If} $\Jo = \langle f_1,...,f_s\rangle$ \textit{and} $\Jt = \langle h_1,...,h_r \rangle$ \textit{are any given ideals in} $\Fq[x_1,...,x_n]$, \textit{ then their product denoted} $\Jo.\Jt$, \textit{is defined to be the ideal generated by all polynomials f.g where f $\in \Jo\ and\ g \in \Jt$.}
+\begin{align*}
+\Jo.\Jt = \{ f_1h_1+..+f_sh_r : f_i \in \Jo\ and\ h_i \in \Jt\}  
+\end{align*}
+
+The generators of which are given as 
+\begin{align}
+\Jo.\Jt = \langle f_ih_j : 1 \le i \le s , 1 \le j \le r\rangle
+\end{align}
+\end{Theorem}
+
+For any two product ideals $\Jo$ and $\Jt$ coupled with vanishing polynomials(radical), the product intersection relation is defined as
+\begin{align*}
+ (\Jo.\Jt)+\Jz = (\Jo \cap \Jt) + \Jz
+\end{align*}
+\begin{proof}
+
+We know that for any two arbitrary ideals $\Jo$ and $\Jt$ -
+\begin{align}
+\sqrt{\Jo.\Jt} = \sqrt{\Jo\cap \Jt}
+\end{align}
+
+To prove the equality, we shall prove the inclusion in both directions. Let \textit{f} be any arbitrary polynomial such that
+\begin{align*}
+f \in \sqrt{(\Jo.\Jt)}
+\end{align*}
+
+Given the generators of \textit{f} from (11), we can easily see that it is composed of generator sets from both $\Jo$ and $\Jt$, hence
+\begin{align*}
+f \in \sqrt{\Jo}\ and \ f \in \sqrt{\Jt}
+\end{align*}
+
+From the definition of radical ideal, there exists some power of \textit{q} such that
+\begin{align*}
+f^q \in \Jo\ and \ f^q \in \Jt\\
+f^q \in \Jo \cap \Jt\\
+f \in \sqrt{\Jo \cap \Jt}
+\end{align*}
+
+To prove the inclusion in other direction, let's take \textit{f} to be any arbitrary polynomial such that
+\begin{align*}
+f \in \Jo \cap \Jt\\
+f^q \in \sqrt{\Jo\cap\Jt}\\
+f^q \in \sqrt{\Jo}\  and \ f^q \in \sqrt{\Jt}\\
+f^{2q} \in \Jo .\Jt\\
+f \in \sqrt{\Jo .\Jt}
+\end{align*}
+
+Now over finite fields, equation (12) can be written as - 
+\begin{align}
+ (\Jo.\Jt)+\Jz = (\Jo \cap \Jt) + \Jz
+\end{align}
+Since adding the vanishing polynomials make it radical.
+
+\end{proof}
+
+\bibliography{vikas}
+
+\end{document}

@@ -1,0 +1,189 @@
+\section{Computing a Rectification Function}
+\label{sec:unknown}
+
+After the confirmation that the circuit indeed admits a rectification
+function at net $x_i$, our objective is to compute a rectification
+function $x_i = U(X_{PI})$. We call $U$ the {\it unknown component}
+which has to be resolved. Due to the presence of internal {\it don't
+  care} conditions, there may exist one or more polynomial functions
+$U$ that may rectify the circuit. Our approach computes one of the
+candidate functions $U$, and proceeds as follows.
+
+
+Once again, we use RTTO $>$ to represent the set
+%$F=\{f_1,\dots,f_i,\dots,f_s\}$
+of polynomials of the circuit. {\it The polynomial corresponding to the
+target net $x_i$ is now replaced by the polynomial $f_i = x_i + U(X_{PI})$,
+where $lm(f_i) = x_i$ and $tail(f_i)=U(X_{PI})$}. In other words, the
+set $F$ is now updated to
+$F=\{f_1,\dots,f_i=x_i+U,\dots,f_s\}$. Notice that due to RTTO $>$, 
+the set $F$ still constitutes a \Grobner basis, as all 
+polynomials in $F$ have leading terms that are relatively
+prime. Moreover, by virtue of Prop. \ref{prop:rtto}, the set $F\cup
+F_{0}^{PI}$ also still constitutes a \Grobner basis. 
+Thus, for a correct implementation, the condition $f\xrightarrow{F\cup
+  F_{0}^{PI}}_+0$ still holds. Using Prop. 
+\ref{prop:imt} and Eqn. \ref{eqn:imt}, we can rewrite $f$ in terms of
+these generators as:    
+
+\begin{equation}\label{eqn1}
+f = h_1f_1 + h_2f_2 + \dots+h_if_i+\dots+h_sf_s + \sum_{x_l\in X_{PI}} H_l
+\cdot(x_l^2-x_l),
+\end{equation}
+where $h_1,\dots,h_s,H_l$ are arbitrary polynomials from the ring
+$R$. Substituting $f_i = x_i + U$ for the unknown component in
+Eqn. (\ref{eqn1}), we have: 
+
+\begin{eqnarray}
+  \begin{split}
+    & f  = h_1f_1 +\dots+h_{i-1}f_{i-1}+h_ix_i+h_iU+\dots+h_sf_s\\
+    & \quad +\sum_{x_l\in X_{PI}} H_l \cdot(x_l^2-x_l)
+  \end{split}\\  
+  \begin{split}
+    & f - h_1f_1 -\dots-h_{i-1}f_{i-1}-h_ix_i = h_iU+h_{i+1}f_{i+1}+\\
+    & \quad \dots+h_sf_s +\sum_{x_l\in X_{PI}} H_l \cdot (x_l^2-x_l) \label{eqn2}
+\end{split}
+\end{eqnarray}
+
+Notice that on the L.H.S. of Eqn. (\ref{eqn2}), the polynomials $f,
+f_1,\dots,f_{i-1}$ and the monomial $x_i$ are {\it known
+quantities/expressions}. Therefore, $f$ can be divided by
+$f_1,\dots,f_{i-1}$, and by $x_i$, to obtain the respective quotients
+of the division $h_1,\dots,h_i$ and a remainder $r$ where $r = f -
+h_1f_1 - \dots-h_ix_i$. After $h_i$ is computed (as the quotient of
+this division by $x_i$), the R.H.S. of Eqn. (\ref{eqn2}) consists of
+$h_i, f_{i+1}, \dots, f_s$ and all the vanishing polynomials
+$x_l^2-x_l$ as known expressions. This implies that: 
+
+\vspace{-0.13in}
+\begin{eqnarray}
+f - h_1f_1 - \dots-h_ix_i & \in \langle h_i,f_{i+1},\dots,f_s,  x_l^2-x_l\rangle\\
+r & \in \langle h_i,f_{i+1},\dots,f_s, x_l^2-x_l\rangle\label{eqn3}
+\end{eqnarray}
+\vspace{-0.1in}
+
+This ideal membership implies that $r$ can be written as some
+polynomial combination of the generators $h_i,f_{i+1},\dots,f_s,
+x_l^q-x_l$. This combination can be identified by first computing the
+\Grobner basis $G$ of the ideal $\langle
+h_i,f_{i+1},\dots,f_s,x_l^q-x_l\rangle$, and then performing the ideal
+membership test $r\xrightarrow{G}_+0$, while utilizing
+Eqns. (\ref{eqn:imt}) and (\ref{eqn:imt_orig}). As a result, we can
+write:
+\vspace{-0.1in}
+\begin{align}
+r & = h_i'h_i+h_{i+1}'f_{i+1}+\dots+h_s'f_s+ \sum H_l (x_l^2-x_l)
+\end{align}
+
+{\it Then $U = h_i'$ is a polynomial function that forms the solution
+  to the unknown component problem}. Algorithmically, as $U = h_i'$ is
+computed as a quotient of division, $U$ may contain any variables
+$X \subseteq \{x_1,\dots,x_n\}$ in its support. However, due to the
+imposition of RTTO $>$, $U$ will contain only those variables $x_j$
+in its support set that are less than $x_i$ in the reverse topological
+order. Once such a polynomial $U$ is obtained, it can be easily
+expressed in terms of the primary input variables. To achieve such a
+normalization, $U$ can be reduced modulo the set of polynomials
+$\{f_j=x_j + tail(f_j)\}$ such that $x_j$ lies in the fanin cone of
+$U$. Performing this division also in a reverse topological fashion
+results in $U$ being expressed in primary inputs only. In this
+fashion, the polynomial $f_i: x_i + U(X_{PI})$ can be identified to
+implement the function of a subcircuit at the net $x_i$ so that $C$
+correctly implements $f$.   
+
+Note that in Eqn. (\ref{eqn3}), while $\{f_{i+1},\dots,f_s\}$
+constitutes a GB under RTTO, the set $\{h_i,f_{i+1},\dots,f_s\}$
+may not. So a GB computation is required. On the other hand, we
+may also encounter situations when $h_i$ results as being a constant
+in the field $\Fq$. When a constant is a member of an ideal $J$, then
+$GB(J) = \{1\}$. To arrive at an implementable solution in this case,
+we multiply $r$ by the inverse of $h_i$ ($h_i^{-1}$) and reduce the
+result modulo the rest of the polynomials\{$f_{i+1},\dots,f_s$\}.  
+\vspace{-0.1in}
+\begin{align}
+r\cdot h_i^{-1}\xrightarrow[]{f_{i+1}}\xrightarrow[]{f_{i+2}}\dots\xrightarrow[]{f_s}_+U.
+\end{align}
+
+We now demonstrate the application of this approach on our running
+example.
+
+\begin{Example}
+In Ex. \ref{ex:3}, we showed that rectification is possible at the net
+$e_3$, i.e. there exists a polynomial $f_{10}: e_3 + U$ that can
+rectify the circuit. Using the same term order as in the previous
+examples, we mark $f_{10} = e_3 + U$ as the unknown component, and
+include it in the set $F=\{f_1,\dots,f_{10} = e_3+U,\dots,f_{16}\}$. Based
+on Eqns. (\ref{eqn2})-(\ref{eqn3}), we begin reducing the
+specification polynomial $f$ modulo the set $\{f_1,\dots,f_9,e_3\}
+\cup F_0$. The reduction order for $f$ based on RTTO $>$ is: 
+$f\xrightarrow[]{f_{1}}\xrightarrow[]{f_2}\xrightarrow[]{f_3}\xrightarrow[]{f_4}\xrightarrow[]{f_5}\xrightarrow[]{f_6}\xrightarrow[]{f_7}\xrightarrow[]{f_8}\xrightarrow[]{f_9}\xrightarrow[]{lt(f_{10})}r$.
+
+We will use the following notations to depict this reduction: '[]' to
+represent quotients of division $h_j$'s, '()' to represent the
+divisors $f_j$'s, and '\{\}' to represent the (partial) remainder
+$fp_j$ obtained after every reduction step.
+
+\begin{small}
+% \begin{split}
+$f\xrightarrow[]{f_{1}}[1](Z + z_0 +\al z_1)+\{ AB+z_0+\al z_1\}\rightarrow fp_1$
+
+$fp_1\xrightarrow[]{f_2}[B](A+a_0+\al a_1)+\{Ba_0+\al Ba_1+z_0+\al z_1\}\rightarrow fp_2$
+
+$fp_2\xrightarrow[]{f_3}[a_0+\al a_1](B+b_0+\al b_1)+\{z_0+\al z_1+\al a_0b_1+a_0b_0+ (\al+1)a_1b_1 + \al a_1b_0\}\rightarrow fp_3$
+
+$fp_3\xrightarrow[]{f_4}[1](z_0+e_0+s_0)+\{\al z_1+e_0+s_0+\al a_0b_1+a_0b_0+(\al+1)a_1b_1+\al a_1b_0\}\rightarrow fp_4$
+
+$fp_4\xrightarrow[]{f_5}[\al](z_1+r_0+e_0)+\{\al z_1+e_0+s_0+\al a_0b_1+a_0b_0+(\al+1)a_1b_1+\al a_1b_0\}\rightarrow fp_5$
+
+$fp_5\xrightarrow[]{f_6}[\al](r_0+e_1+s_5)+\{(\al+1)e_0+\al e_1+s_0+\al s_5+\al a_0b_1+a_0b_0+(\al+1)a_1b_1+\al a_1b_0\}\rightarrow fp_6$
+
+$fp_6\xrightarrow[]{f_7}[\al+1](e_0+e_2*s_1)+\{\al e_1+(\al+1)e_2s_1+s_0+\al s_5+\al a_0b_1+a_0b_0+(\al+1)a_1b_1+\al a_1b_0\}\rightarrow fp_7$
+
+$fp_7\xrightarrow[]{f_8}[\al](e_1+e_2*s_2)+\{(\al+1)e_2s_1+\al e_2s_2 + s_0+\al s_5+\al a_0b_1+a_0b_0+(\al+1)a_1b_1+\al a_1b_0\}\rightarrow fp_8$
+
+$fp_8\xrightarrow[]{f_9}[(\al+1)s_1 + \al s_2](e_2+e_3+s_4)+\{(\al+1)e_3s_1+ \al e_3s_2 +s_0+(\al+1)s_1s_4+\al s_2s_4+\al s_5+\al a_0b_1+a_0b_0+(\al+1)a_1b_1+\al a_1b_0\}\rightarrow fp_9$
+\end{small}
+
+Finally, the obtained remainder $fp_9$ is reduced by $lt(f_{10}) =
+e_3$ to obtain the quotient $h_{10}$ and the remainder $r$: 
+
+${ fp_9}\xrightarrow[]{{lt(f_{10})}}[\underbrace{{(\al+1)s_1+\al s_2}}_\text{$h_{10}$}]({e_3})+$ 
+
+$\{\underbrace{{\scriptstyle s_0+(\al+1)s_1s_4+\al s_2s_4+\al s_5+\al a_0b_1+a_0b_0+(\al+1)a_1b_1+\al a_1b_0\}}}_\text{$r$}$ 
+
+Now that we have $r,h_{10},f_{11},f_{12},f_{13},f_{14},f_{15},f_{16}$
+available as known expressions, the unknown component problem can be
+formulated as an ideal membership test using Eqn. \ref{eqn3} such that: 
+\begin{center}
+$r \in \langle h_{10},f_{11},f_{12},f_{13},f_{14},f_{15},f_{16}\rangle
+  + \langle F_{0}^{PI}\rangle$.
+\end{center}
+
+The above ideal membership can be solved by first computing the
+\Grobner basis of the generators and then expressing $r$ as a
+linear combination of the ideal members: % (Prop.~\ref{prop:imt}). 
+
+\begin{small}
+$r = U\cdot h_{10} + h_{11}f_{11} + h_{12}f_{12}+h_{13}f_{13}+h_{14}f_{14}+h_{15}f_{15}+h_{16}f_{16}$ 
+\end{small}
+
+In this case, the ideal membership test results in the polynomial $r$
+being expressed as: 
+
+
+\begin{small}
+$r = [b_0]h_{10}+[1]f_{11}+[\al+1]f_{12}+[\al s_4 +\al b_0]f_{13}+[0]f_{14}+[(\al+1)s_1+\al a_1b_0]f_{15}+[\al]f_{16}+[0]f_{17}+[0]f_{18}+[0]f_{19}+[0]f_{20}$;
+\end{small}
+
+Thus, $U=b_0$ is a solution to the \textit{unknown component}
+$f_{10}$, i.e. $f_{10} = e_3 + b_0$. This depicts that $e_3$ implements
+just the primary input net $b_0$, thus also identifying redundancy in
+the design. 
+
+\end{Example}
+
+In this fashion, a complete approach to post-verification debugging
+and single-fix rectification for buggy finite field arithmetic
+circuits is derived, which is based on the Strong Nullstellensatz and
+solved using ideal membership testing by means of \Grobner basis
+reductions. 

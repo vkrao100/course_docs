@@ -1,0 +1,337 @@
+\section{Introduction}
+
+Automated formal verification and equivalence checking of arithmetic
+datapath circuits is challenging. Conventional verification
+techniques, such as those based on binary  decision diagrams (BDDs)
+\cite{BRYA86}, And-Invert-Graph (AIG) based reductions with SAT or
+SMT-solvers \cite{alanmi:cec:iccad2006}, etc., are infeasible in
+verifying complex datapath designs. Such designs often implement
+algebraic computations over bit-vector operands, therefore finite
+integer rings \cite{wienand:cav08} \cite{wedler:date11} or finite
+fields \cite{lv:tcad2013} \cite{pruss:tcad}
+are considered appropriate models to devise decision
+procedures for verification. For this reason, the verification
+community has explored the use of algebraic geometry and symbolic
+algebra algorithms for verification. 
+
+
+In such a setting, the logic gates of the circuit are modeled by way
+of a set of multivariate polynomials $F=\{f_1,\dots,f_s\}$ in rings
+$R[x_1,\dots,x_n]$. Usually, the coefficients $R = \Z, \Zkk,$ or $\Fkk$,
+depending on whether the integer, finite integer ring
+$\pmod{2^k}$, or respectively the finite field (of $2^k$ elements)
+model is employed for verification. This set of polynomials $F$
+generates an ideal, and for verification it is required to compute a
+{\it \Grobner basis (GB)} \cite{gb_book} of this ideal. Reducing the
+primary \textcolor{red}{output polynomials (or variables)} of the circuit modulo this GB  results in a unique
+canonical polynomial expression, and it can be used for equivalence
+checking.  
+
+
+The GB problem exhibits high computational complexity. 
+Indeed, computing a GB (using Buchberger's \cite{buchberger_thesis} or
+the $F_4$ algorithm \cite{f4}) for large circuits is practically
+infeasible. Managing this complexity ought to be a major goal of any
+approach. 
+
+\subsubsection{State-of-the-art \& Limitations} Recent
+approaches \cite{wienand:cav08} \cite{lv:tcad2013} have discovered that
+particularly for circuit verification problems, the
+expensive GB computation can be avoided altogether. For arbitrary
+combinational \cite{wienand:cav08} \cite{lv:tcad2013} and sequential
+circuits \cite{xiaojun:hldvt2016}, a specialized term order 
+$>$ can be derived by analyzing the topology of the given 
+circuit. This term order is derived by performing a reverse
+topological traversal of the circuit, and in this manuscript we refer 
+to it as the {\it Reverse Topological Term Order} (RTTO). 
+Imposition of RTTO $>$ on the polynomial ring
+{\it renders the set of polynomials of the circuit itself a
+GB.} Subsequently, the verification problems can be solved solely by
+way of GB-reduction (using multi-variate polynomial division), without
+any need to explicitly compute a GB. It has now become standard
+practice to make use of RTTO-style term orders to solve various formal 
+verification problems on digital circuits 
+(see for example
+\cite{wienand:cav08,lv:tcad2013,wedler:date11,ciesielski:dac2015,farimah:micro2015,rolf:date16}), 
+where the early techniques of \cite{wienand:cav08} \cite{lv:tcad2013}
+have been extended and improved to verify integer and floating point
+arithmetic circuits \cite{ciesielski:dac2015,rolf:date16,rolf:fmcad17}. 
+
+
+%% For instance,
+%% \cite{ciesielski:dac2015} and \cite{rolf:date16} get more insights
+%% from the circuit structure that  dictate specific rules on the order of
+%% polynomials chosen in GB-reduction -- by accounting for topological
+%% levels, reconvergent fanouts, AND-XOR gates with common inputs,
+%% etc. 
+
+A common theme among all these relevant works is that {\it by virtue
+of RTTO, they move the complexity of verification from one of
+computing a GB to that of GB-reduction by way of multivariate
+polynomial division.} Moreover, since the \Grobner basis is derived
+from the logic gates of the circuit, {\it it comprises Boolean
+polynomials.} \textcolor{red}{Boolean polynomials (defined formally in Section \ref{sec:prelim}) 
+have the coefficients from the set $\{0,1\}$, and the
+monomials are product of variables where degree of each variable is also
+restricted to the set $\{0,1\}$.} For example, in the verification of finite field
+circuits, the overall problem is modeled over the ring
+$\Fkk[x_1,\dots,x_n]$; and
+%, where $\Fkk$ is the field of $2^k$ elements. 
+since $\Fkk \supset \Ftwo$, the approaches incorporate
+computations over many Boolean polynomials. Similarly, the techniques
+of \cite{wedler:date11} use a pseudo-Boolean model 
+ which also
+encompasses computations $\pmod{x^2=x}$; 
+\cite{wedler:date11} refers to it as arithmetic bit-level (ABL).
+\textcolor{red}{Pseudo-Boolean polynomials (defined later in Section \ref{sec:prelim})
+have the coefficients in integers and monomials are product of variables where
+degree of each variable is restricted to the set $\{0,1\}$.} All
+the aforementioned approaches will benefit greatly by a {\it dedicated, 
+domain-specific implementation of GB-reduction w.r.t. Boolean polynomials,
+carried out on the given circuit under RTTO $>$}. So far, the above
+techniques  
+\cite{wienand:cav08,pruss:tcad,lv:tcad2013,rolf:date16,ciesielski:dac2015,cunxi:aspdac17}
+use a general-purpose polynomial division approach, together with
+explicit representation, for this GB-reduction. 
+%While some of these
+%approaches %\cite{ciesielski:dac2015,rolf:date16} 
+%do perform the reduction in some specific ways -- e.g., mimicking
+%GB-reduction under RTTO $>$ by substitution \cite{rolf:date16}, or using
+%TEDs to perform input-output signature comparisons \cite{ciesielski:dac2015},
+%or the use of $F_4$-style GB-reduction on a coefficient matrix
+%\cite{lv:tcad2013} -- 
+Moreover, the overall concept of polynomial division is
+still utilized in its rudimentary form, involving iterative
+cancellation of monomials ``1-step at a time'' on explicit
+data-structures. Despite recent efforts, such GB-reductions can lead
+to {\it a worst-case size explosion problem}, which needs to be
+addressed. 
+
+
+\subsubsection{Objective \& Rationale} This paper addresses the
+problem of deriving canonical representations for datapath circuits
+as Boolean polynomials. These canonical Boolean polynomials are
+used for equivalence checking of datapath designs. The canonical
+representation requires a \Grobner basis reduction modulo a set of
+Boolean polynomials. This reduction can result in space and time
+explosion and make verification infeasible. To make this GB-reduction
+on circuits more efficient, this paper describes new techniques,
+algorithms and implementations, specifically targeted for 
+circuit verification under RTTO $>$.  Particularly, we make use of
+the {\it implicit} characteristic set representation for storing and
+manipulating Boolean polynomials using {\it Zero-Suppressed BDDs
+(ZBDDs)} \cite{zbdd}. By analyzing the {structure of ZBDDs} for 
+polynomial representation under RTTO $>$, we show how this 
+GB-reduction can be efficiently implemented using algorithms that
+specifically manipulate the ZBDD graph, by interpreting Boolean
+polynomial manipulation as the {\it algebra of unate cube sets.}
+
+The algebraic objects
+used to model the polynomial ideals derived from digital circuits are
+rings of Boolean polynomials.
+%generally of two types: (i) multi-variate polynomial
+%rings with coefficients from the finite fields ($\Fkk$) of $2^k$
+%elements, i.e. $\Fkk[x_1, \dots, x_n]$; and (ii)  quotient rings of the
+%type $\Zkk[x_1, \dots, x_n] \pmod{ \langle x_i^2 - x_i\rangle}$
+%corresponding to the pseudo-Boolean function models; here 
+%$\Zkk = \Z \pmod{ 2^k}$. Over circuits, both models incorporate
+%computations over {\it Boolean   polynomials}: (i) $\Ftwo (\equiv \B)
+%\subset \Fkk$; whereas (ii) also encompasses (pseudo-) Boolean
+%computations $\pmod{ x^2 = x}$.
+%; \cite{wienand:cav08} refer to it as ``arithmetic bit-level''. 
+When Boolean functions are represented in $\F_2$ (AND/XOR
+expressions), and that too as a canonical \Grobner basis, the
+representation tends to explode. 
+%(depicted later in Section \ref{sec:motiv}).  
+Polynomial representations employed in computer
+algebra tools, such as the {\it dense-distributive 
+data-structure} of the {\sc Singular} computer algebra tool
+\cite{DGPS}, are inefficient for this purpose. Since addition and
+multiplication $\pmod{2}$ are equivalent to XOR and AND operations,
+respectively, GB-reduction can be viewed as a polynomial analog of a
+specialized {\it AND/XOR Boolean decomposition} problem. Moreover,
+the monomials of a Boolean polynomial are a product of literals in
+positive polarity, which can be viewed as {\it unate cubes} in logic
+synthesis. Clearly, implicit Boolean set representations such as
+decision diagrams could be employed for \Grobner basis reductions over
+Boolean polynomials. 
+%The decision diagram of choice here is the ZBDD,
+%\cite{zbdd}, 
+%because of its power to represent and manipulate sparse
+%combinatorial problems -- particularly ``sets of combinations'' --
+%using the unate cube set algebra framework \cite{zbdd_unate}.  
+%Monomials of a Boolean polynomial can be
+%interpreted as {\it unate cubes} -- i.e. products of literals in
+%positive polarity. Each cube represents one combination, and each
+%literal represents an object chosen in the combination. Thus,
+%GB-reduction on circuits resembles a classical logic synthesis
+%problem, justifying the use of ZBDDs.
+
+
+\subsubsection{Technical Contributions} %First and foremost, 
+%% We address the problem of \Grobner basis reductions over Boolean
+%% polynomials to derive canonical representations for the functions
+%% implemented by datapath circuits. Our approach makes use of 
+
+
+%% For this we present new algorithms and
+
+We first describe when and how the GB-reduction encounters a
+term-explosion (exponential blow-up) under RTTO $>$, which cannot be
+easily overcome by explicit representations. We show that ZBDDs can
+avoid this exponential blow-up -- thereby justifying their use. We
+describe how Boolean polynomials can be represented using ZBDDs under
+the special term ordering constraint imposed due to RTTO $>$. The
+implementation of classical polynomial division algorithms that
+iteratively cancel one monomial in every step is described on ZBDDs.
+Subsequently, {\it we show that RTTO $>$ imposes 
+a special structure on ZBDDs that allows to implement reduction
+techniques that implicitly cancel multiple   monomials in every step
+of polynomial division}. Moreover, due to RTTO $>$,  the
+subexpressions that are required for polynomial division are also
+readily available as subgraphs in the ZBDDs. Our algorithm exploits
+this special structure, thus improving GB-reduction in both space and
+time. 
+%Moreover, we also implement the specialized
+%GB-reduction approach of \cite{rolf:date16} using our ZBDD
+%framework. 
+
+Using an implementation integrated with the CUDD \cite{cudd} package,
+we perform extensive experiments on datapath circuits for deriving the
+canonical representation of the functions implemented by them. The
+benchmark designs include various cryptography primitives, such as
+finite field multipliers, elliptic curve point addition circuits, and
+also  sequential finite field circuits. Experiments conducted on these
+benchmarks show {\it orders of magnitude improvement} using our
+implementation of GB-reduction, as compared against contemporary
+methods. In fact, for these benchmarks, our bit-level (Boolean)
+approach is much faster than the word-level approaches
+(e.g. \cite{pruss:tcad}). 
+
+We also describe the limitations of our approach when it is
+applied to integer arithmetic circuits. We analyze these limitations
+and show that for integer arithmetic circuits, a word-level symbolic
+reasoning engine is needed to control the monomial explosion
+problem. This is not a limitation of our 
+algorithms, but rather of the bit-level model in verifying integer
+arithmetic circuits. Finally, we are not concerned with equivalence
+checking of random logic circuits; AIG-based reductions for
+SAT-based verification techniques \cite{alanmi:cec:iccad2006} are more
+suitable and efficient for such applications. 
+
+
+
+\subsubsection{Paper Organization} The following section reviews
+relevant previous work on \Grobner basis based verification of
+datapath circuits, and the literature on Boolean \Grobner basis and
+applications. Section \ref{sec:prelim} describes the mathematical
+background on \Grobner basis reductions, the RTTO based term order
+$>$, and how these concepts are applied to datapath
+verification. Section \ref{sec:unate} motivates how and why the
+Boolean GB-reduction can be viewed as the unate cube set
+algebra. Section \ref{sec:theory} describes the theory, algorithms and
+implementations for GB-reduction for Boolean polynomials using
+ZBDDs. Section \ref{sec:exp} describes the experiments conducted for
+verification using our approach, and Sec \ref{sec:conc} concludes the
+paper. 
+
+
+\section{Related Previous Work}
+\label{sec:prev}
+
+In the past decade, computer algebra and algebraic geometry based
+datapath verification has received a lot of attention, where the
+verification problems are formulated in terms of ideal membership,
+canonical GB-reductions, or projections of
+varieties. The work of \cite{iccad05} used a GB-reduction
+approach to derive canonical representations of (word-level) RTL
+datapath descriptions over finite rings $\Zkk$. Using the same finite
+ring model, \cite{wienand:cav08} addressed data correctness properties
+of arithmetic bit-level implementations using a \Grobner basis
+formulation. This paper showed how an efficient term order $>$
+can be derived from the circuit to simplify the computation. 
+
+
+In
+\cite{lv:date2012} and \cite{lv:tcad2013}, the authors addressed formal
+verification of finite field arithmetic circuits using the Strong
+Nullstellensatz formulation over $\Fkk$. Using a set ($F$) of
+polynomials to describe the logic circuit, along with a set of
+vanishing polynomials ($F_0$) over the field $\Fkk$, the verification
+problem was formulated as a (radical) ideal membership test, requiring 
+a \Grobner basis. Drawing inspirations from \cite{wienand:cav08},
+the authors in \cite{lv:date2012} also exploited the same concept of deriving a
+specialized term order $>$ to simplify the ideal membership test. In
+particular, it was shown that $>$ could be derived by performing a
+{\it reverse topological traversal} on the circuit. Imposition of this
+term order $>$ rendered the set of polynomials $F\cup F_0$ itself a
+\Grobner basis, and verification was then performed simply by a
+GB-reduction. This GB-reduction was 
+subsequently formulated as Gaussian elimination on a coefficient
+matrix \cite{lv:tcad2013,pruss:tcad} in the style of the $F_4$
+algorithm; called $F_4$-style reduction in the sequel. 
+
+Formulations of a similar flavor (GB-reduction under the
+specialized term order $>$ derived from the circuit) were used
+and integrated with SMT-solvers \cite{wedler:date11} for verification
+using a pseudo-Boolean model (akin to $\Zkk[X] \pmod{X^2-X}$). More
+recently, these concepts have been applied to verify integer
+arithmetic \cite{ciesielski:dac2015,rolf:date16}, and also floating
+point circuits \cite{rolf:fmcad17}. The authors
+in~\cite{cunxi:aspdac17} show that the reduction process can be
+{\it parallelized} by performing reduction for each output bit
+independently.   
+
+%The above approaches exploit the
+%structure of the circuit to derive a term order $>$ that simplifies
+%verification to a (set of) \Grobner basis reductions, of which
+Polynomial division algorithms form the core computation in the above
+techniques. Almost all of the 
+aforementioned techniques use a classical polynomial division
+approach. While some of these approaches
+%\cite{ciesielski:dac2015,rolf:date16}  
+do perform the reduction in 
+some specific ways -- e.g., mimicking GB-reduction under RTTO $>$ by
+substitution \cite{rolf:date16}, or using TEDs to perform input-output
+signature comparisons \cite{ciesielski:flow}, or the use of
+$F_4$-style GB-reduction on a coefficient matrix
+\cite{lv:tcad2013,pruss:tcad} --  the overall concept of polynomial
+division is still utilized in its rudimentary form, involving
+iterative cancellation of monomials ``1-step at a time'' on explicit
+data-structures. 
+%In contrast, this paper improves the \Grobner basis
+%reduction under RTTO $>$ using an implicit data-structure and
+%algorithms that cancel multiple monomials 
+
+
+\subsection{Boolean \Grobner Basis} 
+The symbolic algebra community 
+has studied properties of Boolean \Grobner bases 
+\cite{michon:bool-ring2006} \cite{polybori:2009}. Boolean GB
+formulations have also been used for SAT solving \cite{CEI:stoc-96},
+e.g. to derive proof refutation, and for  model checking
+\cite{Avrunin:CAV} \cite{vardi-iasted07}. From among these, the work
+of PolyBori \cite{polybori:2009} comes closest to ours, and is a
+source of inspiration for this work. PolyBori proposed the use of
+ZBDDs to compute Gr\"obner bases for Boolean polynomials. PolyBori is
+a {\it generic} Boolean GB computational engine that caters to many
+permissible term orders. Its division algorithm is also generally
+based on the conventional concept of canceling one monomial in every
+step of reduction. In contrast, our algorithms are tailored for
+GB-reduction under the RTTO $>$. The efficiency of our approach stems
+from the observation that the RTTO $>$ imposes a special structure on
+the ZBDDs, which allows for multiple monomials to be canceled in one
+division-step, along with simplifying the search for
+divisors. Experiments show that our approach is an order of magnitude
+faster than PolyBori. 
+
+
+%% \underline{\it Paper Organization:} The following section describes
+%% our notation and preliminary concepts. Section \ref{sec:limit}
+%% describes the limitations of contemporary approaches and shows how
+%% ZBDDs may overcome these. Section \ref{sec:alg} describes our
+%% algorithms and implementations of GB-reduction on ZBDDs w.r.t the RTTO
+%% $>$. Section \ref{sec:integer} describes how the recent methodologies
+%% for integer multiplier circuits can be implemented and improved
+%% computationally using ZBDDs. Experiments are described in Section
+%% \ref{sec:exp}. Section \ref{sec:concl} concludes the paper. 

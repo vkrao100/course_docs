@@ -1,0 +1,9 @@
+INORDER a b c;
+OUTORDER z;
+z =z1*z2;
+z1 = e0 + d0;
+z2= d0 ^ e2;
+d0= c*e1;
+e2= !c;
+e1= b + c;
+e0= a ^ b;

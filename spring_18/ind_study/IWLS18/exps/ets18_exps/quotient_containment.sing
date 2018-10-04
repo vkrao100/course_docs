@@ -1,0 +1,46 @@
+LIB "primdec.lib";
+LIB "multivariate_division.lib";
+LIB "burg.lib";
+ring r = (2, a), (x,y), lp; 
+
+minpoly = a^2 + a + 1;
+
+//ideal I
+poly f1 = x2y + 1;
+//poly f2 = x + 1;
+//ideal J
+poly f3 = y2 + 1;
+//poly f4 = x + 1;
+//vanishing poly's
+poly f5 = x4 + x;
+poly f6 = y4 + y;
+
+ideal I = f1, f5, f6;
+ideal J = f3, f5, f6;
+
+list GR = groebner(I+J);
+"GB of the given ideals",GR;
+ideal G1 = groebner(I);
+"groebner of I - groebner(I)", G1;
+ideal G2 = groebner(J);
+"groebner of J - groebner(J)", G2;
+//list R2 = groebner(radical(J));
+//"radical of J - groebner(radical(J))", R2;
+ideal Q1 = quotient(I,J);
+"quotient of ideals when intersecting- I:J - groebner(quotient(I,J))",Q1;
+//list Q2 = groebner(quotient(I,J));
+//"groebner of quotient of ideals when intersecting- I:J - groebner(quotient(I,J))",Q2;
+//list l1 = multivariate(Q1[1],G1);
+//list l1 = multivariate_division(Q1[1],G1);
+//list l2 = multivariate_division(Q1[2],G1);
+//list l3 = multivariate_division(Q1[1],G2);
+//list l4 = multivariate_division(Q1[2],G2);
+list l1 = reduce(Q1[1],G1);
+list l1 = reduce(Q1[1],G1);
+list l2 = reduce(Q1[2],G1);
+list l3 = reduce(Q1[1],G2);
+list l4 = reduce(Q1[2],G2);
+l1;
+l2;
+l3;
+l4;

@@ -1,0 +1,91 @@
+Large Caches (20 points)
+Assume a large shared LLC that is tiled and distributed on the chip. Assume that the OS page size is 16KB. The entire LLC has a size of 32 MB, uses 64-byte blocks, and is 32-way set-associative. What is the maximum number of tiles such that the OS has full flexibility in placing a page in a tile of its choosing?
+
+Virtually Indexed Cache (10 points)
+Assume that the OS uses a minimum page size of 16 KB. Assume that your L1 cache must be 4-way set-associative. If you're trying to correctly implement a virtually indexed physically tagged cache (with no additional support from the OS), what is the largest L1 cache that you can design?
+
+Organizing Ranks (20 points)
+Consider a high-performance processor with three DDR3 memory channels. Each channel can accommodate up to four ranks. Assume that you can today purchase a DRAM chip with capacity of 1 to 8 Gb. Assume that these chips can have an output width of 4, 8, or 16. What is the maximum capacity that can be supported by this memory system, assuming that all three channels are in use?
+
+Memory Capacity (10 points)
+A basic memory mat has 512 rows and 512 columns. A bank has 2048 such mats, and a DRAM chip has 16 such banks. Such chips with x8 output width are used to construct the following memory system. What is the memory capacity in a server that has 2 processor sockets, 3 memory channels per socket, 2 DIMMs per channel, and 4 ranks per DIMM?
+
+Refresh (20 points)
+Consider a memory system that has a capacity of 256 GB, that is made up of 16 ranks, each rank having 8 banks. Assume that every refresh command triggers a parallel refresh in every bank in every rank. How many rows are refreshed in each bank on every refresh command? Assume it takes 50 ns on average to refresh each row in a bank. For what fraction of time is the memory system unavailable? Assume that a row in a bank has a capacity of 4 KB. Assume that every row must be refreshed within 64 ms and a refresh command is issued every 7.8 us.
+
+Row Buffers (20 points)
+For the following memory access pattern, estimate when each memory access completes for three different scheduling mechanisms: open-page policy, close-page policy, an oracular scheme that knows if another access to the same row is imminent. You are allowed to re-order requests already waiting in the memory controller. The access pattern only specifies the row being touched. All accesses are to the same bank. Assume that bus latencies are zero. Assume that the bank is already precharged at time 0. Assume that precharge takes 20 ns, loading a row buffer (Activate) takes 20 ns, and cache line transfer to output pins (Column-Rd) also takes 20 ns.
+Row being accessed	Arrival time at memory controller	Open-Page	Close-Page	Oracular
+X	20 ns			
+Y	70 ns			
+X	75 ns			
+Y	90 ns			
+X	210 ns			
+Y	260 ns			
+
+
+HW7
+---
+
+Q1.  A single set has a capacity of 1KB (16 ways x 64 bytes per block).
+     The LLC has 16K sets (16MB/1KB).  The LLC therefore has 6 offset bits
+     and 14 index bits.  Of these 14 index bits, some are used to determine
+     the tile number.  Since the page size is 4KB, the OS has control
+     over all physical address bits except the last 12 bits.  Since the index
+     bits extend until the 20th bit, the OS has control over 8 of the
+     index bits.  If the tile number required more than 8 bits, the OS
+     would not be able to fully control the tile number.  So the OS can
+     place a page in an arbitrary tile if there are 256 or fewer tiles.
+
+
+Q2.  The minimum page size is 8 KB, so we can expect 13 bits of page offset
+     at least.  Since I can't assume additional OS support, I have to make
+     sure that my index bits come from within these last 13 bits.  The block
+     offset bits also come from these last 13 bits.
+     
+     My cache size = #ways x #sets x blocksize = 4 x #sets x blocksize 
+     
+     The maximum cache size would use all 13 bits for index and block-offset.
+     How you allocate these 13 bits for index and block-offset doesn't matter
+     -- they all lead to the same cache size of 4 x 2^13 = 32 KB.
+
+
+Q3. The memory capacity per processor socket = #channels x #ranks-per-channel x #chips-per-rank x capacity-per-chip.
+
+    For a max capacity memory system, I'll try to pick the max value for each term.
+    Max capacity = 3 x 4 x 64 x 4Gb = 384 GB
+    Min capacity = 3 x 1 x 1  x 1Gb = 0.375 GB
+
+    Note that the max capacity system was constructed by using 64 x1 chips
+    and the min capacity system was constructed by using 1 x64 chip.
+
+
+Q4. The memory capacity on the server =
+    2 sockets x 3 channels x 2 DIMMs x 2 ranks x 8 chips x 16 banks x 2048 mats x 512 rows x 512 columns
+    = 1.5 Tb = 192 GB.
+
+
+Q5. The total memory system has 128 GB capacity and each row is 16 KB.  So
+    we have a total of 8 million rows.  In a 64 ms window, 8K refresh
+    commands are being issued (64ms/7.8us = 8192).  Each refresh command
+    is responsible for handling 8M / 8K rows = 1K rows.  The system has
+    128 banks (16 ranks x 8 banks/rank).  So each bank is responsible for 8
+    of these 1K rows.  Refreshing these 8 rows will take 400ns.  So in
+    every 7.8us window, the memory system is unavailable for 400ns, i.e.,
+    for 400/7800 = 5.1%.
+
+Q6.
+     Row    Arrival     OP	    CP	  Orac
+     X		20	  	    60	    60	    60
+     X		40		    80	    80	    80
+     Y		50	       160     160     160
+     X		70	       100     100     100
+     Y	    190	       210     230     210
+     X	    200	       270     310     270
+     Y	    220	       330     250     330	
+
+     Note that I assumed that the oracular policy can only look one access
+     ahead if it's idle.  If I had assumed that the oracular policy can
+     look one access ahead always, it would have waited for a row buffer
+     hit on Y before handling the row buffer miss on X.  Both solutions
+     are fine.

@@ -1,0 +1,60 @@
+LIB "lagrange.lib";
+ring r2 = (2, x), (Z_1, Z, A, z_2, z_1, z_0, s_2, s_1, s_0, a_2, a_1, a_0, t), lp; 
+
+minpoly = x^3 + x + 1;
+
+proc orgate(poly g, poly h)
+{
+	return(g+h+g*h);
+	//return(g+h);
+}
+
+poly re;
+list gb, mi, red;
+
+//circuit -  3 bit mastrovito multiplier poly's
+poly f1 = s_0 + a_1*(a_2+1);
+poly f2 = s_1 + a_0*a_2*(a_1+1);
+poly f3 = z_1 + s_0 + s_1 + s_0*s_1;
+poly f4 = s_2 + a_2*(a_0+1);
+poly f5 = z_2 + s_2 + a_1 + s_2*a_1;
+poly f6 = A + a_0 + a_1*x + a_2*x^2; 
+poly f7 = Z + z_0 + z_1*x + z_2*x^2;
+poly f8 = z_0 + orgate(orgate(a_0, a_1),a_2); 
+//vanishing polynomials
+poly f10 = A^8 - A;
+poly f11 = Z_1^8 - Z_1;
+poly f12 = Z^8 - Z;
+
+poly f13 = t^2 - t;
+
+poly f14 = a_0^2 - a_0;
+poly f15 = a_1^2 - a_1;
+poly f16 = a_2^2 - a_2;
+
+poly f17 = s_0^2 - s_0;
+poly f18 = s_1^2 - s_1;
+poly f19 = s_2^2 - s_2;
+
+poly f20 = z_0^2 - z_0;
+poly f21 = z_1^2 - z_1;
+poly f22 = z_2^2 - z_2;
+
+list input  = 0, 1, x, x+1, x^2, x^2 +1, x^2+x, x^2+x+1;
+list output = 0, 1, x^2+x+1, x^2+x+1, x^2+1, x+1, x^2+1, x^2+1;
+
+poly h=A;
+
+
+//specification
+poly f = Z_1 + lagrange(input, output, h);
+
+//miter 
+poly miter = t*(Z-Z_1)+1;
+
+//list of polynomials for GB calculation
+ideal l = f1, f2, f3, f4, f5, f6, f7, f8, f10, f11, f12, f13, f14, f15, f16, f17, f18, f19, f20, f21, f22, f, miter;
+
+gb = groebner(l);
+string grobner  = "grobner for given polynomials:";
+grobner, gb;

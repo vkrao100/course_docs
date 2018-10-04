@@ -1,0 +1,44 @@
+                     SINGULAR                                 /
+ A Computer Algebra System for Polynomial Computations       /   version 4.0.3
+                                                           0<
+ by: W. Decker, G.-M. Greuel, G. Pfister, H. Schoenemann     \   Jan 2016
+FB Mathematik der Universitaet, D-67653 Kaiserslautern        \  Debian 4.0.3+ds-1
+// ** loaded /usr/bin/../share/singular/LIB/linalg.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/general.lib (4.0.0.1,Jan_2014)
+// ** loaded /usr/bin/../share/singular/LIB/poly.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/inout.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/elim.lib (4.0.0.1,Jan_2014)
+// ** loaded /usr/bin/../share/singular/LIB/ring.lib (4.0.2.2,Jan_2016)
+// ** loaded /usr/bin/../share/singular/LIB/primdec.lib (4.0.2.0,Apr_2015)
+// ** loaded /usr/bin/../share/singular/LIB/absfact.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/triang.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/random.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/matrix.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/nctools.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/dmodapp.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/sing.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/qhmoduli.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/rinvar.lib (4.0.1.1,Jan_2015)
+// ** loaded /usr/bin/../share/singular/LIB/zeroset.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/primitiv.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/presolve.lib (4.0.2.2,Jan_2016)
+// ** loaded /usr/bin/../share/singular/LIB/gkdim.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/dmod.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/control.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/homolog.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/deform.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/gmssing.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/bfun.lib (4.0.0.0,Jun_2013)
+// ** redefining quot **
+// ** loaded my_proc.lib 
+// ** library my_proc.lib has old format. This format is still accepted,
+// ** but for functionality you may wish to change to the new
+// ** format. Please refer to the manual for further information.
+// ** loaded /usr/bin/../share/singular/LIB/teachstd.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/normaliz.lib (4.0.2.1,Sept_2015)
+// ** loaded /usr/bin/../share/singular/LIB/crypto.lib (4.0.0.1,Aug_2014)
+// ** loaded /usr/bin/../share/singular/LIB/atkins.lib (4.0.0.1,Jun_2014)
+// ** loaded /usr/bin/../share/singular/LIB/ntsolve.lib (4.0.0.0,Jun_2013)
+// ** Jf is no standard basis
+
+halt 2

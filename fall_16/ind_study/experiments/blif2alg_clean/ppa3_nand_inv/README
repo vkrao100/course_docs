@@ -1,0 +1,35 @@
+LEGAL ANNOUNCEMENT:
+
+No license required, no copyright withheld, no warranty!
+Created by Xiaojun Sun @2016;
+Use, Amend and Distribute freely;
+
+---------------------------------------------------------
+Usage:
+
+A synthesized circuit in BLIF format, with only 2-input 
+AND/NAND/OR/NOR/XOR and INV gates. Transform it to ALG
+form for polynomial calculus or ZDD construction, with
+a specific output signal.
+
+---------------------------------------------------------
+Requirements:
+
+Bash 4.1+
+g++ 4.8.2+
+Perl 5.012+
+Singular 3.1.2+
+
+---------------------------------------------------------
+Synopses:
+
+make
+./transmuter <BLIF file> <OUTPUT signal name> 
+(e.g. ./transmuter c6288.blif G6288)
+
+---------------------------------------------------------
+Notes:
+
+By excluding blif2bench.sh in transmuter, you can create
+another tool taking BENCH file as input, and there is no
+2-input gate limit for that! (5-input instead)

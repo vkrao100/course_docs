@@ -1,0 +1,196 @@
+LIB "primdec.lib";
+LIB "control.lib";
+LIB "my_proc.lib";
+LIB "multivariate_burg.lib";
+LIB "linalg.lib";
+
+ring r = (2, x), (t, Z, Zs, A, B, z_0, z_1, r_0, s_0, s_3, s_1, s_2, a_0, a_1, b_0, b_1), lp; 
+
+rtimer=0;
+system("--ticks-per-sec",1000);
+int t0 = rtimer;
+
+minpoly = x^2 + x + 1;
+
+proc xorgate(poly g, poly h)
+{
+	return(g+h);
+}
+
+//circuit -  2 bit mastrovito multiplier poly's
+//correct implementation
+//poly f10 = s_0 + a_0*b_0;
+poly f10 = s_0 + a_0+b_0;//bug
+poly f10L = s_0 + 1;
+poly f10H = s_0;
+poly f9 = s_3 + a_1*b_1;
+poly f8 = s_2 + a_1*b_0;
+poly f7 = s_1 + a_0*b_1;
+//poly f6 = r_0 + xorgate(s_1,s_2);
+poly f6 = r_0 + s_1*s_2;//bug
+poly f5 = z_0 + xorgate(s_0,s_3);
+poly f4 = z_1 + xorgate(r_0,s_3);
+poly f3 = A + a_0 + a_1*x;
+poly f2 = B + b_0 + b_1*x;
+poly f1= Z + z_0 + z_1*x;
+
+//vanishing polynomials
+poly f11 = a_0^2 - a_0;
+poly f12 = a_1^2 - a_1;
+poly f13 = b_0^2 - b_0;
+poly f14 = b_1^2 - b_1;
+poly f15 = s_0^2 - s_0;
+poly f16 = s_1^2 - s_1;
+poly f17 = s_2^2 - s_2;
+poly f18 = s_3^2 - s_3;
+poly f19 = r_0^2 - r_0;
+poly f20 = z_0^2 - z_0;
+poly f21 = z_1^2 - z_1;
+
+poly f22 = Z^4 - Z;
+poly f25 = Zs^4 - Zs;
+poly f23 = A^4 - A;
+poly f24 = B^4 - B;
+
+//word level spec
+poly spec = Zs + A*B;
+
+//list of polynomials for GB calculation
+ideal BI  = f1, f2, f3, f4, f5, f6, f7, f8, f9, f10;
+ideal J0 = f11, f12, f13, f14, f15, f16, f17, f18, f19, f20, f21, f22, f23, f24,f25;
+
+poly miter = t*(Z-Zs)-1;
+
+ideal BIL = f1, f2, f3, f4, f5, f6, f7, f8, f9, f10L, spec, miter;
+ideal BIH = f1, f2, f3, f4, f5, f6, f7, f8, f9, f10H, spec, miter;
+
+int t1;
+
+poly sp0 = spoly(miter,f1);
+poly rsp0 = reduce(sp0,BIL);
+ideal EL = elm_PI(slimgb(rsp0+J0),2);
+t1 = rtimer-t0;
+"EL computed",t1;
+
+t1 = rtimer;
+poly sp1 = spoly(miter,f1);
+poly rsp1 = reduce(sp1,BIH);
+ideal EH = elm_PI(slimgb(rsp1+J0),2);
+t1 = rtimer-t0;
+"EH computed",t1;
+
+//write(":w safe/EL.ideal",EL);
+//write(":w safe/EH.ideal",EH);
+
+ideal crp = slimgb(EL+EH);
+if(crp == 1)
+{
+	"Circuit Rectifiable at this location";
+	poly miter = t*(Z-Zs);
+	ideal J2 = f1,spec,f2,f3,f4,f5,f6,f7,f8,f9,;
+	poly uc = f10;
+	poly quo;
+	poly rem;
+	poly prem;
+
+	prem = reduce(miter,J2);
+
+	rem, quo = multivariate_burg(prem,lead(uc),J0); 
+
+	"remainder",rem;
+	"quotient",quo;
+
+	ideal dec = variables(quo);
+	ideal JCp = quo;
+	if (size(dec)>=1)
+	{
+		"quotient is not a constant";
+		ideal JG = slimgb(JCp);
+		matrix V = lift(JG,rem);
+		matrix Vt = transpose(V);
+		Vt;
+		matrix U = lift(JCp,JG);
+		U;
+		poly sol;
+		int i;
+		for(i=1;i<=size(JG);i++)
+		{
+			sol = sol + (Vt[1,i]*U[1,i]);
+		}
+	}
+	else
+	{	
+		"quotient is a constant";
+		if (quo != 1)
+		{
+			matrix quoi = inverse(quo);
+		}
+		else
+		{
+			matrix quoi = 1;
+		}
+		poly irem   = quoi[1,1]*rem;
+		poly sol    = reduce(irem,J0);	
+	}
+
+	"solution for P is ",sol; 
+}
+else
+{
+	"Circuit not rectifiable at this location";
+	poly miter = t*(Z-Zs);
+	ideal J2 = f1,spec,f2,f3,f4,f5,f6,f7,f8,f9;
+	poly uc = f10;
+	poly quo;
+	poly rem;
+	poly prem;
+
+	prem = reduce(miter,J2);
+
+	rem, quo = multivariate_burg(prem,lead(uc),J0); 
+
+	"remainder",rem;
+	"quotient",quo;
+
+	ideal dec = variables(quo);
+	ideal JCp = quo;
+	if (size(dec)>=1)
+	{
+		"quotient is not a constant";
+		ideal JG = slimgb(JCp);
+		matrix V = lift(JG,rem);
+		matrix Vt = transpose(V);
+		Vt;
+		matrix U = lift(JCp,JG);
+		U;
+		poly sol;
+		int i;
+		for(i=1;i<=size(JG);i++)
+		{
+			sol = sol + (Vt[1,i]*U[1,i]);
+		}
+	}
+	else
+	{	
+		"quotient is a constant";
+		if (quo != 1)
+		{
+			matrix quoi = inverse(quo);
+		}
+		else
+		{
+			matrix quoi = 1;
+		}
+		poly irem   = quoi[1,1]*rem;
+		poly sol    = reduce(irem,J0);	
+	}
+
+	"solution for P is ",sol;
+}
+"time here",rtimer-t0;
+
+poly correc = s_0 + (x)*a_0*a_1*b_0*b_1+a_0*b_0+(x)*a_0*b_1+(x)*a_1*b_0;
+ideal CI = f1, f2, f3, f4, f5, f6, f7, f8, f9, correc;
+
+reduce(miter, CI+spec+J0);
+reduce(miter, CI+spec+J0);

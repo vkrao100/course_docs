@@ -1,0 +1,48 @@
+LIB "primdec.lib";
+ring r = (2, x), ( Z, A, B, z0, z1, z2, z3, s, o, m, n, a_0, b_0, a_1, b_1), lp; 
+
+minpoly = x^16 + x^8 + x^5 + x^3 + x^2 + x + 1;
+
+number al = x^5;
+
+//correct implementation
+poly f1 = z0 + a_0*b_0;
+poly f2 = z1 + m + n;
+poly f3 = m  + a_1*b_0;
+poly f4 = n  + a_0*b_1;
+poly f5 = z2 + s + o;
+poly f6 = s  + m*n;
+poly f7 = o  + a_1*b_1;
+poly f8 = z3 + s*o;
+poly f9 = A + a_0 + a_1*al;
+poly f10 = B + b_0 + b_1*al;
+poly f11 = Z + z0 + z1*x + z2*x^2 + z3*x^3 ;
+
+//buggy implementation
+//introducing bug - OR gate instead of AND gate
+poly fb6 = s + m + n + m*n;
+
+//vanishing polynomials
+poly f12 = A^4 - A;
+poly f13 = B^4 - B;
+poly f14 = Z^16 - Z;
+poly f15  = a_0^2 - a_0;
+poly f16  = a_1^2 - a_1;
+poly f17  = b_0^2 - b_0;
+poly f18  = b_1^2 - b_1;
+poly f19  = z0^2 - z0;
+poly f20  = z2^2 - z2;
+poly f21  = z3^2 - z3;
+poly f22  = s^2 - s;
+poly f23  = o^2 - o;
+poly f24  = m^2 - m;
+poly f25  = n^2 - n;
+poly f26  = z1^2 - z1;
+
+poly spec = Z + A*B;
+
+ideal BI  = f1, f2, f3, f4, f5, fb6, f7, f8, f9, f10, f11, f12, f13, f14, f15, f16, f17, f18, f19, f20, f21, f22, f23, f24, f25, f26;
+ideal CI  = f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12, f13, f14, f15, f16, f17, f18, f19, f20, f21, f22, f23, f24, f25, f26;
+
+//stepwise reduced rr
+//(x^3+x^2)*a_0*b_0*a_1*b_1+(x^3)*a_0*a_1*b_1+(x^5+x^2+x)*a_0*b_1+(x^3)*b_0*a_1*b_1+(x^5+x^2+x)*b_0*a_1+(x^10+x^2)*a_1*b_1;

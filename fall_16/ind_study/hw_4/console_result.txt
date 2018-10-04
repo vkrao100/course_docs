@@ -1,0 +1,128 @@
+Q1 - result
+vkrao@starks:~/tools/singular/verification_assignments$ Singular
+                     SINGULAR                                 /
+ A Computer Algebra System for Polynomial Computations       /   version 4.0.3
+                                                           0<
+ by: W. Decker, G.-M. Greuel, G. Pfister, H. Schoenemann     \   Jan 2016
+FB Mathematik der Universitaet, D-67653 Kaiserslautern        \  Debian 4.0.3+ds-1
+> <"hw_4_mastrovito_sns.sing";
+// ** loaded multivariate_division.lib
+// ** library multivariate_division.lib has old format. This format is still accepted,
+// ** but for functionality you may wish to change to the new
+// ** format. Please refer to the manual for further information.
+// ** loaded grobner_calc.lib
+// ** library grobner_calc.lib has old format. This format is still accepted,
+// ** but for functionality you may wish to change to the new
+// ** format. Please refer to the manual for further information.
+// ** loaded spoly_calc.lib
+// ** library spoly_calc.lib has old format. This format is still accepted,
+// ** but for functionality you may wish to change to the new
+// ** format. Please refer to the manual for further information.
+// ** loaded /usr/bin/../share/singular/LIB/poly.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/ring.lib (4.0.2.2,Jan_2016)
+// ** loaded /usr/bin/../share/singular/LIB/primdec.lib (4.0.2.0,Apr_2015)
+// ** loaded /usr/bin/../share/singular/LIB/absfact.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/triang.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/matrix.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/nctools.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/random.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/elim.lib (4.0.0.1,Jan_2014)
+// ** loaded /usr/bin/../share/singular/LIB/inout.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/general.lib (4.0.0.1,Jan_2014)
+grobner for given polynomials: gb[1]=b_2^2+b_2
+gb[2]=a_2^2+a_2
+gb[3]=b_1^2+b_1
+gb[4]=a_1^2+a_1
+gb[5]=b_0^2+b_0
+gb[6]=a_0^2+a_0
+gb[7]=c_0+b_0*a_1
+gb[8]=c_1+a_0*b_1
+gb[9]=c_2+b_0+a_2
+gb[10]=c_3+a_0+b_2
+gb[11]=c_4+a_1+b_1
+gb[12]=c_5+b_1+a_2
+gb[13]=c_6+a_1+b_2
+gb[14]=s_4+a_2*b_2
+gb[15]=s_3+c_6+c_5
+gb[16]=s_2+c_4+c_3+c_2
+gb[17]=s_1+c_1+c_0
+gb[18]=s_0+a_0*b_0
+gb[19]=z_2+s_2+s_4
+gb[20]=z_1+s_1+s_3+s_4
+gb[21]=z_0+s_0+s_3
+gb[22]=B+b_0+(x)*b_1+(x^2)*b_2
+gb[23]=A+a_0+(x)*a_1+(x^2)*a_2
+gb[24]=Z+z_0+(x)*z_1+(x^2)*z_2
+gb[25]=Z_1+(x^2)*A*b_2+s_0+(x)*c_1+(x)*c_0+(x^2)*b_0*a_2+(x^2)*a_1*b_1+(x+1)*b_1*a_2
+// ** redefining q **
+// ** redefining q **
+remainder from division of given polynomials: 0
+
+Q2 - result
+vkrao@starks:~/tools/singular/verification_assignments$ Singular
+                     SINGULAR                                 /
+ A Computer Algebra System for Polynomial Computations       /   version 4.0.3
+                                                           0<
+ by: W. Decker, G.-M. Greuel, G. Pfister, H. Schoenemann     \   Jan 2016
+FB Mathematik der Universitaet, D-67653 Kaiserslautern        \  Debian 4.0.3+ds-1
+> <"hw_4_q2_lagrange.sing";
+// ** loaded lagrange.lib
+// ** library lagrange.lib has old format. This format is still accepted,
+// ** but for functionality you may wish to change to the new
+// ** format. Please refer to the manual for further information.
+// ** redefining j **
+// ** redefining j **
+// ** redefining j **
+// ** redefining j **
+// ** redefining j **
+// ** redefining j **
+// ** redefining j **
+(x^2+x+1)*A^7+(x^2+1)*A^6+(x)*A^5+(x+1)*A^4+(x^2+x+1)*A^3+(x^2+1)*A
+grobner for given polynomials: [1]:
+   _[1]=1
+   
+Q5 - result
+
+abc stats --
+UC Berkeley, ABC 1.01 (compiled Sep  3 2015 11:36:54)
+abc 01> miter MastrovitoF_q16.blif MontgomeryF_q16.blif
+abc 02> print_stats
+MastrovitoF_q16.eqn_MontgomeryF_q16.eqn_miter: i/o =   32/    1  lat =    0  and =   5166  lev =208
+abc 02> strash
+abc 03> ifraig -sv
+SimWords = 32. Rounds = 4. Mem = 0.63 MB.  Classes: Beg = 373. End = 373.
+Proof = 376. Counter-example = 0. Fail = 73. FailReal = 83. Zero = 64.
+Final = 4105. Miter = 5154. Total = 5166. Mux = 0. (Exor = 0.) SatVars = 3025.
+starts        :        719
+conflicts     :       5352
+decisions     :      19642
+propagations  :    1136003
+AIG simulation   =     0.00 sec
+AIG traversal    =     0.00 sec
+SAT solving      =     0.11 sec
+    Unsat        =     0.02 sec
+    Sat          =     0.00 sec
+    Fail         =     0.09 sec
+Class refining   =     0.00 sec
+TOTAL RUNTIME    =     0.12 sec
+abc 04> print_stats
+MastrovitoF_q16.eqn_MontgomeryF_q16.eqn_miter: i/o =   32/    1  lat =    0  and =   4105  lev =202
+
+abc solving blif using SAT --
+the sat never completes it's run and the problem is deemed UNSAT.
+abc 01> miter MontgomeryF_q16.blif MastrovitoF_q16.blif
+abc 02> sat
+
+
+Singular --
+vkrao@starks:~/tools/singular/verification_assignments$ Singular
+                     SINGULAR                                 /
+ A Computer Algebra System for Polynomial Computations       /   version 4.0.3
+                                                           0<
+ by: W. Decker, G.-M. Greuel, G. Pfister, H. Schoenemann     \   Jan 2016
+FB Mathematik der Universitaet, D-67653 Kaiserslautern        \  Debian 4.0.3+ds-1
+> <"miter16.sing";
+result[1]=1
+1870
+Runtime is: 1870 ms
+Auf Wiedersehen.

@@ -1,0 +1,16 @@
+\section{Conclusion}
+\label{sec:conc}
+This paper has presented an algebraic geometry notion of
+Craig interpolants for a pair of polynomial ideals  in finite fields with no common 
+solutions. An interpolant always exists in our setting as the variety of an 
+elimination ideal. In addition to defining the smallest and the largest
+interpolants, techniques are described to compute them using Gr\"obner basis concepts. 
+The total number of interpolants
+is also determined by counting the number of points in the 
+variety of difference of the largest and the smallest interpolants. Over the field $\F_2$,
+a technique is presented that can enumerate all the possible interpolants. 
+Given an interpolant, an algorithm is provided that 
+returns a list of progressively larger interpolants terminating in the largest
+one. As part of future work, we will be pursuing heuristic based 
+methods to compute interpolants and classify them according to 
+their capability of abstraction. 

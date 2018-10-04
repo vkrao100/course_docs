@@ -1,0 +1,39 @@
+LIB "primdec.lib";
+ring r = (2, a), (x,y), lp; 
+
+minpoly = a^2 + a + 1;
+
+//ideal I
+poly f1 = x2y + 1;
+poly f2 = x + 1;
+//ideal J
+poly f3 = xy2 + y;
+poly f6 = y2 + x;
+//vanishing poly's
+poly f4 = x4 + x;
+poly f5 = y4 + y;
+
+ideal Io = f1, f2;
+ideal J0 = f4, f5;
+ideal Jo = f3, f6;
+ideal I = Io + J0;
+ideal J = Jo + J0;
+
+list GR = groebner(I+J);
+"GB of the given ideals",GR;
+//list R1 = groebner(radical(I));
+//"radical of I - groebner(radical(I))", R1;
+//list R2 = groebner(radical(J));
+//"radical of J - groebner(radical(J))", R2;
+list C1 = groebner(radical(I)*radical(J));
+"product of radicals- condition 1- groebner(radical(I)*radical(J))",C1;
+list C2 = groebner(radical(I*J));
+"radical of products- condition 2- groebner(radical(I*J))", C2;
+list C3 = groebner(radical(radical(I)*radical(J)));
+"radical of product of radicals- condition 3 - groebner(radical(radical(I)*radical(J)))", C3;
+list C4 = groebner(intersect(I, J));
+"intersection of radical ideals - groebner(intersect(I, J))", C4;
+list C5 = groebner(intersect(Io, Jo)+J0);
+"intersection of non-radical ideals + vanishing polynomials - groebner(intersect(Io, Jo)+ J0)", C5;
+list C6 = groebner(groebner(Io*Jo)+J0);
+"product of non-radical ideals + vanishing polynomials - groebner((Io*Jo)+ J0)", C6;

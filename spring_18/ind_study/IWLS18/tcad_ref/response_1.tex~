@@ -1,0 +1,327 @@
+\documentclass[conference, onecolumn]{IEEEtran}
+\usepackage{helvet}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{subfig}
+\usepackage{comment}
+\usepackage{mathtools}
+\usepackage{xcolor}
+%\usepackage{algorithm}
+%%indent in algorithm
+
+
+%\setcounter{page}{0}
+\pagestyle{empty}
+%\thispagestyle{empty}
+
+
+% New command for the table notes.
+\def\tabnote#1{{\small{#1}}}
+
+% New command for the line spacing.
+\newcommand{\ls}[1]
+    {\dimen0=\fontdimen6\the\font
+     \lineskip=#1\dimen0
+     \advance\lineskip.5\fontdimen5\the\font
+     \advance\lineskip-\dimen0
+     \lineskiplimit=.9\lineskip
+     \baselineskip=\lineskip
+     \advance\baselineskip\dimen0
+     \normallineskip\lineskip
+     \normallineskiplimit\lineskiplimit
+     \normalbaselineskip\baselineskip
+     \ignorespaces
+    }
+
+
+
+
+%the following is for space before and after align or other equation environment.
+
+%%
+%\newtheorem{Algorithm}{Algorithm}[section]
+
+\newtheorem{Algorithm}{Algorithm}[section]
+\newtheorem{Definition}{Definition}[section]
+\newtheorem{Example}{Example}[section]
+\newtheorem{Proposition}{Proposition}[section]
+\newtheorem{Lemma}{Lemma}[section]
+\newtheorem{Theorem}{Theorem}[section]
+\newtheorem{Corollary}{Corollary}[section]
+
+
+\newcommand{\Fq}{{\mathbb{F}}_{q}}
+\newcommand{\Fkk}{{\mathbb{F}}_{2^k}}
+\newcommand{\Fkkx}[1][x]{\ensuremath{\mathbb{F}}_{2^k}[#1]\xspace}
+\newcommand{\Grobner}{Gr\"{o}bner\xspace}
+%%%
+
+\newcommand{\debug}[1]{\textcolor{gray}{[ #1 ]}}
+
+
+
+%%set spacing between table columns
+\setlength{\tabcolsep}{3pt}
+
+%% for larger matrices
+\setcounter{MaxMatrixCols}{15}
+\begin{document}
+
+
+% Page heads
+%\markboth{J. Lv et al.}{Formal Verification of Finite Field Arithmetic Circuits using Computer Algebra Techniques}
+
+
+%% \title{\large{\textsc{Formal Verification of Galois Field Arithmetic
+%%       Circuits using Computer Algebra Techniques }}}  
+
+\title{\Large \sc 
+Boolean Gr\"obner Basis Reductions on Finite Field Datapath Circuits using the Unate Cube Set Algebra
+}
+
+\author{
+
+\IEEEauthorblockN{Utkarsh Gupta,
+Priyank Kalla,
+Vikas K. Rao}
+
+\ \\
+%\IEEEauthorblockA{
+\IEEEauthorblockA{Electrical and Computer Engineering\\
+University of Utah, Salt Lake City, UT 84112\\
+utkarsh.gupta@utah.edu, kalla@ece.utah.edu, vikas.k.rao@utah.edu\\
+ }
+}
+
+\maketitle
+%%%%%%%%%%%%%%%%%%%% abstract %%%%%%%%%%%%%%%%%%%%%
+% \begin{center}
+% {\bf Designated Contact Author: Priyank Kalla}\\
+% Email: kalla@ece.utah.edu\\
+% \end{center}
+
+This manuscript is the revision of Manuscript ID TCAD-2017-0128.
+
+\begin{center}
+{\bf \Large Response to Reviewer's Comments}
+\end{center}
+\vspace{0.1in}
+We are thankful to the reviewers for the detailed comments and  
+the suggestions for improving our manuscript. We have made 
+appropriate revisions to the manuscript based on the comments:
+$i)$ corrected the typographical errors; $ii)$ changed the structure 
+of the section on limitations of our approach; $iii)$ furnished details to
+the theory as suggested; $iv)$ provided answers to questions related to experiments.
+The edits made in the manuscript are highlighted in
+\textcolor{red}{red} color.
+
+\par Following is the response to the reviewers and the description of
+the edits in the revision. 
+
+
+\begin{center}
+{\bf \large Response to Reviewer 1}
+\end{center}  
+\vspace{0.1in}
+\par A very well written paper that clearly explains and summarizes current computer algebra approach to formal verification of arithmetic circuits.
+\par The main contribution of the paper is the use of ZBDDs which, by imposing the reverse topological term order exposes useful divisors for polynomial reduction. This allows one to cancel multiple monomials at a time, hence contributing to increased efficiency.   The Experimental Results are strong, showing a number of good, practical designs. Here are my detailed comments.
+\par{\it Comment 1:} Definitions missing:
+The term ``Boolean polynomial'' is used several times before it is formally defined on page 3; this should be done earlier. Also, the paper does not define the term "pseudo-Boolean polynomial", used freely in the paper several times.
+\par{\it Response:} As defining these terms without the notations introduced in section III is difficult, we have provided informal definitions for these terms when they are first introduced in Section I. Later in Section III, definitions III.1 and III.2 formally define Boolean polynomials and pseudo-Boolean polynomials, 
+respectively.
+\par{\it Comment 2:} The only real weak part of the paper is Section VI E, page 12, "Limitations of the approach ...", which is difficult to grasp at the first reading. In particular, the following sentence (lines 52-55) should be rewritten:\\
+" Performing a detailed analysis reveals that for integer arithmetic datapath circuits, a bit-level reduction is not sufficient for verification efficiency, and a word-level approach is required."\\
+I don't think that "not sufficient" correctly explains the problem. It
+should basically say that it cannot be applied directly to integer
+arithmetic circuits, explain the reason (it performs reduction for
+each bit separately), and give your example.\\ 
+I think it would help if you just changed the structure of this
+section; first show how inadequate your approach, designed
+specifically for finite field circuits, is for integer arithmetic,
+citing the number of monomials.  Then, conclude that a better approach
+could be to perform the reduction on the word level, and show the
+reduction of word Z. 
+\par{\it Response:} We have changed the structure of this
+subsection. We have first described the reasoning behind the
+limitation of our GBR approach on integer arithmetic circuits. 
+We then summarize the experiment we performed on the 7x7 integer array
+multiplier providing the information on the number of monomials
+generated during the GBR of $z_{13}$ and $z_{12}$.  Lastly, we explain
+why a word-level approach is needed for integer arithmetic circuits as
+it can  cancel the non-linear terms early during GBR and avoid
+intermediate blow-up.  
+\par{\it Comment 3:} Page 4, Definition III.2: Replace "there exists $i \in {1,...t}$ such that ..." into "there exists $g_i \in {g_1,...g_t}$ such that ...". It is the existence of the polynomial $g_i$ and not its index that is important.
+\par{\it Response:} 
+% That was indeed the intention of the older definition. 
+We have made the revision as suggested.
+\par{\it Comment 4:} Page 4, line 26 right (below the theorem): the sentence "for all polynomials f" should read "for any polynomial f .." Here f is a single item, so it cannot be "polynomials".
+\par{\it Response:} We have made the correction.
+\par{\it Comment 5:} Similarly, on page 5, line 9 (in Proposition III.2), "Let C be any arbitrary circuit" should be changed to "Let C be an arbitrary circuit" or "Let C be any circuit" to avoid redundancy (any / arbitrary).
+\par{\it Response:} We have replaced the original sentence with ``Let C be an arbitrary circuit''.
+\par{\it Comment 6:} Page 4, line 34 (in Proposition III.1): "denote k-bit primary output variables" is incorrect. You probably meant "denote one-bit of the k-bit primary output (word) ...".
+\par{\it Response:} Yes, we meant one bit of $k$-bit primary output. We have made the appropriate correction.
+\par{\it Comment 7:} Page 7, Fig.6. It would be nice to show the final ZBDD; the current figure leaves the logical sum operation on the two subgraphs unfinished.
+\par{\it Response:} We have modified Fig. 6 to show the final ZBDD obtained from the sum operation.
+\par{\it Comment 8:} Page 7, line 52 right: "Reduction $f \rightarrow r$ requires to obtain" should be changed to "Reduction $f \rightarrow r$ requires one to obtain".
+\par{\it Response:} We have made the suggested correction.
+\par{\it Comment 9:} Page 8, lines 24-25 right. The statement "if indices of top-most nodes of ZBDDs of $z_i$ and $f_i$ are equal, then $lm(f_i)$ divides $lt(z_i)$". This is not obvious and should be formally proven, or at least you should provide intuition behind it.
+\par{\it Response:} Due to RTTO, the top-most nodes of $f_1,\dots,f_s$ are $x_1,\dots,x_s$ respectively. 
+In the first iteration, we reduce $z_i$ by $poly\_list[1]=f_1$ which results in
+the variable $x_1$ being replaced by $tail(f_1)$ in $z_i$. Notice that
+the variable $x_1$ cannot appear  
+again in $z_i$ at any further reduction step as $x_1$ is not in the support of 
+polynomials $poly\_list[2],\dots,poly\_list[s]$.
+During the reduction, let us assume that we have reduced $z_i$ by
+$f_1,f_2,\dots,f_{j-1}$. At this point $z_i$ will not to contain
+any of the variables $x_1,x_2,\dots,x_{j-1}$ as they have been canceled
+by the leading terms of $f_1,f_2,\dots,f_{j-1}$. The variable
+subsequent to $x_{j-1}$ in RTTO is $x_j$. Therefore, the top-most
+variable in the ZBDD of $z_i$ is $x_j$.
+%can be any variable $x_j,\dots,x_n$. It need to be just $x_j$ as all variables
+%may not be in the logical cone of $z_i$. Now, 
+If top-most variable of $z_i$ is equal to the top-most variable of
+$f_j$ (which is equivalent to comparing the indices of top-most nodes
+of $z_i$ and $f_j$), then $f_j$ divides $z_i$. 
+%Otherwise, 
+%the gate corresponding to the polynomial $f_j$ is not in the logical cone of $z_i$.
+% The equality of indices indicate that the top variables are the same (as indices are unique). In addition, as $f_i$ is guaranteed to 
+% have that variable only (leading term is a singleton with only one variable) in the leading term, $f_i$ can divide $z_i$. 
+We have furnished these details on pages 8 and 9 in the manuscript.
+\par{\it Comment 10:} Later on the same page, Example V2, you say:
+"As $index(top~var(f2)) = index(top~var(r1))$, $lm( f2) | lm(r1)$.
+In view of the earlier statement, you should have $lm( f2) | lt(r1)$,
+even if one understands that in Boolean polynomials, with coefficients
+in $F_2$, $lm(r1) = lt(r1)$. (Definition to the rescue !!) But to be
+mathematically precise, the notation should be consistent. 
+
+\par{\it Response:} We have changed the notation everywhere in the
+paper so that a polynomial $f$ is divisible by another polynomial $g$
+if $lm(g)|lm(f)$. 
+%The actual reduction is of course done as $f+\frac{lt(f)}{lt(g)}\cdot g$
+\par{\it Comment 11:} Page 1, lines 14-16 right: "Reducing the primary
+outputs ..." should probably read "Reducing the primary output
+polynomials ... 
+\par{\it Response:} Indeed, the primary output polynomials 
+%(which are actually just output variables $=0$ $i.e.$ $z_i = 0$) 
+are reduced by the mentioned GB. We have made the correction to indicate this.
+\par{\it Comment 12:} Equation on page 12, line 39 has an obvious typo:
+$4x_1 + 2x_2 + 2x + 3+ 4_4  \rightarrow  4x_1 + 2x_2 + 2x_3 + x_4$
+\par{\it Response:} We have made the correction.
+\par{\it Comment 13:} Page 1, Abstract: "we show that that imposition" $?\rightarrow$ "we show that (the) imposition".
+\par{\it Response:} We have made the suggested revision.
+
+\begin{center}
+{\bf \large Response to Reviewer 2}
+\end{center}  
+\vspace{0.1in}
+\par The paper presents a method for Boolean GB reduction using ZBDD that is ordered by the circuit reverse topological order of the gates.
+\par The paper is very well written and it is very easy to follow.
+\par The experimental results on some cryptography circuits shows the advantages of the method in those circuit.
+\par I have the following questions regarding the results:
+
+%% \par{\it Comment 1:} The circuits that are used in the experiments are first optimized with ABC and then the ZBDD is generated. My question is about the role of logic optimization in the efficiency of the method. Given two circuits for equivalency checking, one of them optimized and the other one non-optimized, to the method, how the runtime differs for the two circuits?
+%% \par{Response: } The benchmarks from [5] had lot of buffers and redundant variables. Since ZBDD is a complex data-structure, 
+%% defining these unnecessary variables increase the runtime and memory consumption of GBR. Secondly, as mentioned in [15], 
+%% the reduction of a output bit of a Galois field multiplier depends only on its logic cone, therefore, bit-level logic
+%% optimization reduces the GBR time. But optimization not only reduces GBR time for our approach but also for the approach in [15]
+%% and the PolyBori tool.  
+
+\par{\it Comment 1:} As the authors stated, the method may not work well in data path circuits based on integer arithmetics operations, and the reason seems having many XOR gates? I think it needs more discussion/elaboration.
+\par{\it Response:} The GBR approach introduced in the manuscript can
+be theoretically applied to the integer arithmetic circuits but is not  
+computationally effective. The presence of XOR gates is not the main
+reason for this. In fact, the finite-field circuits contain a large
+number of XOR gates. The actual reason lies in the respective
+capabilities of bit-level and word-level reduction methods.  
+
+\par The logic sharing among the output variables in the case of
+integer arithmetic circuits generates a large number of non-linear
+terms that leads to intermediate blow-up in the number of
+monomials. Our approach performs a bit-level reduction of the output
+variables independently and does not consider the effect of this logic
+sharing among the output variables. On the other hand, as explained
+using Fig. 9 in section VI.E, a word-level reduction can cancel these
+non-linear terms early in the GBR and controls the intermediate
+monomial explosion. 
+%This implies that even an implicit data-structure
+%cannot accommodate the large number of non-linear terms that result in
+%intermediate expression swell.  
+\par We have changed the structure of this subsection as also
+suggested by Reviewer 1 and it now does a better job of explaining the
+limitations of our approach and a possible solution.
+
+\begin{center}
+{\bf \large Reviewer 3}
+\end{center}  
+\vspace{0.1in}
+\par This paper explores the application of computer algebra techniques on verification problems. In particular, equivalence checking of (field) arithmetic circuits is considered. Such circuits form the basis of many of cryptographic applications and thus formal methods for proving their correctness are important. The arithmetic nature of these circuits makes their formal verification with standard formal methods ineffective.
+\par In recent years, methods based on computer algebra have shown promising results for these types of circuits and also the paper discussed here follows these lines. It chooses the usual approach of converting the circuit into a set of polynomials and choosing a term-order based on the topology of the circuit.
+\par Here the paper borrows results from the existing literature that “Gate-wise” translation of a circuit into polynomials under this term-order results in a set of polynomials that is already a Gröbner-Basis (GB) of its generated Ideal. In this manner decisions problems can be solved applying reduction algorithms directly without costly GB computations.
+\par Like the public domain tool PolyBori, a general purpose algebra tool for boolean field algebra, the paper uses ZBDDs to represent polynomials. The authors however, restrict themselves to the above mentioned term order and can thus come up with a simplified version of the reduction algorithm that outperforms the existing methods.
+\par The approach is evaluated on a comprehensive set of benchmarks and compared against PolyBori, prior work from the authors and a third approach using the Nullstellen-Satz. The experiments confirm that the simplified reduction technique outperforms existing algorithms.
+\par The paper is well written and gives the right credits to borrowed ideas from existing literature and thus may serve as an overview over the existing work in the field. The key new insight of the paper is the simplified reduction algorithm. Thus technically the paper is rather a small delta with nonetheless a substantial gain in performance.
+
+\begin{center}
+{\bf \large Response to Reviewer 4}
+\end{center}  
+\vspace{0.1in}
+\par In this paper, a novel approach is proposed to speed up the process of Groebner basis reduction in verification of Galois field arithmetic circuits. The authors take advantage of unate cube set and Boolean polynomials and convert all the operations on the polynomials to operations on ZBDDs. They have also proposed a new algorithm on ZBDDs to perform multiple divisions in just one step. They demonstrate their algorithms on several examples and finally provide an experimental evaluation on finite field multipliers which are highly relevant in crypto applications.
+\par The idea of the paper is very interesting and the paper is very well written. The experimental results show significant improvement compared to other state-of-the-art approaches. However, the following points should be improved:
+\par{\it Comment 1:} You have shown in the experimental results that the proposed method is only suitable for finite field (Galois field) arithmetic circuits and it fails for integer multipliers. Hence, I suggest to add "finite field datapath circuits" or "Galois field datapath circuits" explicitly to the title of the paper.
+\par{\it Response: } We have changed the title of the paper to ``Boolean Gr\"obner Basis Reductions on Finite Field Datapath Circuits using the Unate Cube Set Algebra''
+\par{\it Comment 2:} You mentioned in the paper, and it also can be concluded from Fig. 5, ZBDDs need less memory in comparison with classical presentation of polynomials. However, it would be nice to provide some (peak) memory number also in the experiments.
+\par{Response: } We have provided the memory consumption (range) for the cases of 64-bit and (to) 571-bit Mastrovito/Montgomery multipliers.
+These values are for the case of sequential execution and give an idea about the memory consumption of other multiplier benchmarks. 
+% In addition, these
+% values were also used to determine the number of parallel processes that can be executed simultaneously in the case of parallel execution.
+\par{\it Comment 3:} Page 9, eq (15): you develop/conclude this equation from an example. Why is it correct in the general case?
+\par{Response:} The equation is correct in general due to the
+structure of ZBDDs under RTTO. We have furnished further details in
+the manuscript and also reorganized section V.B.3 so that the
+structure of Eqn. (15) can be derived more generally.
+
+\par{\it Comment 4:} Page 10, right column, line 41, the range of 'k' is not correct.
+\par{\it Response:} This was a typo. The range is for $i$ and not $k$
+where $0 \leq i \leq k-1$. We have made the correction in the
+manuscript. 
+\par{\it Comment 5:} For the second experiment in Table III, the
+verification time for Montgomery multiplier with 283 bit data size is
+considerably higher than other testcases. Please clarify what is the
+reason and why the run-time of your proposed method is higher than
+[15] just for this benchmark. 
+\par{\it Response: } The verification time for some Montgomery
+benchmarks is not in accordance with their bit-widths. For example,
+the reduction of 163-bit  multiplier takes more time than that of
+233-bit. Similarly, reduction of 283-bit multiplier takes more time
+than that of 409-bit. This is also  observed for the reduction time
+when using the approach in [15] and the PolyBori tool. The reason is
+that  the bit-width of the circuit is not the only factor controlling
+the reduction cost. The choice of the irreducible polynomial $P(x)$
+used in constructing the field ${\mathbb{F}}_{2^k}$ also plays an 
+important role in the design of the multipliers, and consequently in
+the reduction as explained in [15].  
+
+% We have included this information 
+% in the Montgomery multiplier subsection of Experiments section.
+\par{\it Comment 6:} Table VI + VII: time unit is missing
+\par{\it Response:} We have updated the Table titles (VI and VII) to include the time units.
+\par{\it Comment 7:} Page 6, right column, line 54: number $\_$of$\_$ iterations
+\par{Response:} We have included the missing ``of''.
+\par{\it Comment 8:} Page 8, Example V.1 and Algorithm 3: use \textbackslash mathit\{ite\} for ``ite''
+\par{\it Response:} The updated algorithm and example now uses the
+\textbackslash mathit\{ite\} instead of just ``ite''. 
+
+
+%%%%%%%%%%%%%%%%%%%% Include your files here %%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%% The bibliography %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \bibliographystyle{IEEEtran}
+% \bibliography{logic}
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%  End of IEEEsample.tex  %%%%%%%%%%%%%%%%%%%%%%%%%%%

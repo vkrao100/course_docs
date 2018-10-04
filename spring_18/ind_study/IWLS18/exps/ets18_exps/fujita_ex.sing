@@ -1,0 +1,78 @@
+//1 -bit adder circuit from Prof. Fujita's presentation
+ring r = (2, x), (t, Z, Z_1, s_s, s_i, c_s, c_i, f_s, f_i, e_s, e_i, d_s, d_i, a, b, c, x1, x2, x3, x4), lp; 
+
+minpoly = x^2 + x + 1;
+
+proc orgate(poly g, poly h)
+{
+	return(g+h+g*h);
+}
+proc xorgate(poly g, poly h)
+{
+	return(g+h);
+}
+proc andgate(poly g, poly h)
+{
+	return(g*h);
+}
+proc invgate(poly g)
+{
+	return(1+g);
+}
+proc mux(poly g, poly h, poly i, poly j, poly k, poly l)
+{
+	return(i*invgate(g)*invgate(h) + j*invgate(g)*h + k*g*invgate(h) + l*g*h);
+}
+ 
+poly fs1 = d_s + xorgate(a,b);
+poly fs2 = e_s + andgate(a,b);
+poly fs3 = f_s + andgate(d_s,c);
+poly fs4 = s_s + xorgate(d_s,c);
+poly fs5 = c_s + orgate(e_s,f_s);
+poly fs6 = Z + s_s + c_s*x; 
+
+//circuit -  1 bit adder using LUT
+//poly fi1 = d_i + mux(a, b, x1, x2, x3, x4);
+poly fi1 = d_i + xorgate(a, b);
+poly fi2 = e_i + andgate(a,b);
+//poly fi3 = f_i + andgate(d_i,c);
+poly fi3 = f_i + mux(d_i,c, x1, x2, x3, x4);
+poly fi4 = s_i + xorgate(d_i,c);
+poly fi5 = c_i + orgate(e_i,f_i);
+//poly fi5 = c_i + mux(e_i, f_i, x1, x2, x3, x4);
+poly fi6 = Z_1 + s_i + c_i*x;
+
+//circuit- 1 - bit adder
+poly fm = t*(Z_1 - Z)-1;
+
+
+poly f10 = Z_1^4 - Z_1;
+poly f11 = Z^4 - Z;
+poly f12 = t^2 - t;
+poly f13 = a^2 - a;
+poly f14 = b^2 - b;
+poly f15 = c^2 - c;
+poly f16 = d_s^2 - d_s;
+poly f17 = e_s^2 - e_s;
+poly f18 = f_s^2 - f_s;
+
+poly f19 = d_i^2 - d_i;
+poly f20 = e_i^2 - e_i;
+poly f21 = f_i^2 - f_i;
+
+poly f22 = x1^2 - x1;
+poly f23 = x2^2 - x2;
+poly f24 = x3^2 - x3;
+poly f25 = x4^2 - x4;
+
+poly specp = Z + a + b + c;
+
+//list ho = J + J0;
+ideal spec   =  fs1, fs2, fs3, fs4, fs5, fs6, f10, f11, f12, f13, f14, f15, f16, f17, f18;
+ideal imple  =  fi1, fi2, fi3, fi4, fi5, fi6, f10, f11, f12, f13, f14, f15, f19, f20, f21, f22, f23, f24, f25;
+
+ideal miter = spec + imple + fm;
+
+ideal gb = groebner(miter);
+string grobner  = "grobner for given polynomials:";
+grobner, gb;

@@ -1,0 +1,1000 @@
+  999  clear
+ 1000  ls -a
+ 1001  cd .git/
+ 1002  ls
+ 1003  cd logs
+ 1004  ls
+ 1005  cd ..
+ 1006  gedit COMMIT_EDITMSG 
+ 1007  vi COMMIT_EDITMSG 
+ 1008  clera
+ 1009  clear
+ 1010  cd ..
+ 1011  ./script.sh 
+ 1012  clear
+ 1013  ./script.sh 
+ 1014  dot -Tpng rem.dot>rem.png
+ 1015  clear
+ 1016  ./script.sh 
+ 1017  dot -Tpng rem.dot>rem.png
+ 1018  ./script.sh 
+ 1019  dot -Tpng rem.dot>rem.png
+ 1020  ./script.sh 
+ 1021  dot -Tpng rem.dot>rem.png
+ 1022  ./script.sh 
+ 1023  dot -Tpng rem.dot>rem.png
+ 1024  ./script.sh 
+ 1025  dot -Tpng rem.dot>rem.png
+ 1026  clear
+ 1027  ./script.sh 
+ 1028  dot -Tpng rem.dot>z0.png
+ 1029  ./script.sh 
+ 1030  dot -Tpng rem.dot>z1.png
+ 1031  ./script.sh 
+ 1032  dot -Tpng rem.dot>z1.png
+ 1033  dot -Tpng rem.dot>z0.png
+ 1034  ./script.sh 
+ 1035  dot -Tpng rem.dot>z1.png
+ 1036  ./script.sh 
+ 1037  dot -Tpng rem.dot>z0.png
+ 1038  ./script.sh 
+ 1039  dot -Tpng rem.dot>z1.png
+ 1040  ./script.sh 
+ 1041  dot -Tpng rem.dot>z2.png
+ 1042  ./script.sh 
+ 1043  dot -Tpng rem.dot>z3.png
+ 1044  ./script.sh 
+ 1045  dot -Tpng rem.dot>z4.png
+ 1046  ./script.sh 
+ 1047  dot -Tpng rem.dot>z5.png
+ 1048  ./script.sh 
+ 1049  dot -Tpng rem.dot>z6.png
+ 1050  ./script.sh 
+ 1051  dot -Tpng rem.dot>z7.png
+ 1052  ./script.sh 
+ 1053  dot -Tpng rem.dot>rem.png
+ 1054  clear
+ 1055  ./script.sh 
+ 1056  clear
+ 1057  ./script.sh 
+ 1058  dot -Tpng rem.dot>after_z0.png
+ 1059  ./script.sh 
+ 1060  dot -Tpng rem.dot>after_z1.png
+ 1061  ./script.sh 
+ 1062  dot -Tpng rem.dot>after_z2.png
+ 1063  exit
+ 1064  clear
+ 1065  ./script.sh 
+ 1066  dot -Tpng rem.dot>rem.png
+ 1067  ./script.sh 
+ 1068  dot -Tpng rem.dot>prod_z2.png
+ 1069  ./script.sh 
+ 1070  dot -Tpng rem.dot>tail_z2.png
+ 1071  ./script.sh 
+ 1072  dot -Tpng rem.dot>p1_z2.png
+ 1073  ./script.sh 
+ 1074  dot -Tpng rem.dot>p2_z2.png
+ 1075  clear
+ 1076  gdb ./grobner
+ 1077  clear
+ 1078  grep DD_MAXREF *.h*
+ 1079  pdf2eps
+ 1080  ps2eps
+ 1081  git --help
+ 1082  clear
+ 1083  git config
+ 1084  git config --list
+ 1085  git config --global user.name "utk7"
+ 1086  git config --global user.name utkarshgpt71@gmail.com
+ 1087  git config --list
+ 1088  git config --global user.name "utk7"
+ 1089  git config --global user.email utkarshgpt71@gmail.com
+ 1090  git config --list
+ 1091  clear
+ 1092  git config --list
+ 1093  git config --global core.editor gvim
+ 1094  git config --list
+ 1095  clear
+ 1096  top
+ 1097  gvim grobner.c
+ 1098  clear
+ 1099  ./script.sh 
+ 1100  clear
+ 1101  ./script.sh 
+ 1102  clear
+ 1103  ./script.sh 
+ 1104  dot -Tpng rem.dot > reduced.png
+ 1105  exit
+ 1106  gvim check.c
+ 1107  clear
+ 1108  gcc check.c
+ 1109  clear
+ 1110  gcc check.c
+ 1111  ./a.out
+ 1112  exit
+ 1113  top
+ 1114  clear
+ 1115  logout
+ 1116  top
+ 1117  clear
+ 1118  exir
+ 1119  top
+ 1120  ./script.sh
+ 1121  clear
+ 1122  gcc -g grobner.c modfunc.c -o grobner -std=c99 -I ../include/ -L ../cudd/ -L ../util/ -L ../mtr/ -L ../st/ -L ../epd/ -L cuddZddFuncs.c -lcudd -lutil -lepd -lmtr -lst -lm
+ 1123  clear
+ 1124  gdb ./grobner
+ 1125  make
+ 1126  clera
+ 1127  cleracleaqr
+ 1128  clear
+ 1129  exit
+ 1130  top
+ 1131  gcc -g grobner.c modfunc.c -o grobner -std=c99 -I ../include/ -L ../cudd/ -L ../util/ -L ../mtr/ -L ../st/ -L ../epd/ -L cuddZddFuncs.c -lcudd -lutil -lepd -lmtr -lst -lm
+ 1132  gdb ./gronbner
+ 1133  clear
+ 1134  gdb ./grobner
+ 1135  clear
+ 1136  ./grobner 
+ 1137  clear
+ 1138  exit
+ 1139  top
+ 1140  exitgcc -g grobner.c modfunc.c -o grobner -std=c99 -I ../include/ -L ../cudd/ -L ../util/ -L ../mtr/ -L ../st/ -L ../epd/ -L cuddZddFuncs.c -lcudd -lutil -lepd -lmtr -lst -lm
+ 1141  gcc -g grobner.c modfunc.c -o grobner -std=c99 -I ../include/ -L ../cudd/ -L ../util/ -L ../mtr/ -L ../st/ -L ../epd/ -L cuddZddFuncs.c -lcudd -lutil -lepd -lmtr -lst -lm
+ 1142  ./grobner
+ 1143  clear
+ 1144  gcc -g grobner.c modfunc.c -o grobner -std=c99 -I ../include/ -L ../cudd/ -L ../util/ -L ../mtr/ -L ../st/ -L ../epd/ -L cuddZddFuncs.c -lcudd -lutil -lepd -lmtr -lst -lm
+ 1145  clear
+ 1146  ./grobner 
+ 1147  kill 2045
+ 1148  kill fox
+ 1149  top
+ 1150  git log
+ 1151  clear
+ 1152  git remove
+ 1153  git -h
+ 1154  git --help
+ 1155  git reset --hard
+ 1156  clear
+ 1157  git log
+ 1158  clear
+ 1159  git log
+ 1160  git reset --hard HEAD~1
+ 1161  git init
+ 1162  git log
+ 1163  clear
+ 1164  git commit --amend -m 'Sum verified'
+ 1165  clear
+ 1166  git log
+ 1167  clear
+ 1168  git status
+ 1169  clear
+ 1170  gvim modfunc.c
+ 1171  clear
+ 1172  ./script.sh 
+ 1173  clera
+ 1174  clear
+ 1175  ./script.sh 
+ 1176  clear
+ 1177  ./script.sh 
+ 1178  git status
+ 1179  git commit -a -m 'Product_Pseudo Verified'
+ 1180  clear
+ 1181  git log
+ 1182  claear
+ 1183  clkear
+ 1184  clear
+ 1185  ./script.sh 
+ 1186  clear
+ 1187  git status
+ 1188  clear
+ 1189  git commit -a -m 'Product verified'
+ 1190  clear
+ 1191  git log
+ 1192  clear
+ 1193  git status
+ 1194  git add *.h
+ 1195  clear
+ 1196  git status
+ 1197  git commit --amend -a 
+ 1198  clear
+ 1199  git status
+ 1200  'clear
+ 1201  claer
+ 1202  clear
+ 1203  git log
+ 1204  clear
+ 1205  git log -p
+ 1206  clear
+ 1207  ./script.sh 
+ 1208  clera
+ 1209  clear
+ 1210  ./script.sh 
+ 1211  clear
+ 1212  ./script.sh 
+ 1213  clear
+ 1214  ./script.sh 
+ 1215  clear
+ 1216  cleafr
+ 1217  clear
+ 1218  ./script.sh 
+ 1219  clear
+ 1220  ./script.sh 
+ 1221  git status
+ 1222  clear
+ 1223  vlaet
+ 1224  vlear
+ 1225  clear
+ 1226  git commit -a -m 'One Zero included in header'
+ 1227  clear
+ 1228  git log
+ 1229  clear
+ 1230  exit
+ 1231  ./grobner 
+ 1232  clear
+ 1233  mv *.png Misc_PNG/
+ 1234  clear
+ 1235  ./script.sh
+ 1236  clear
+ 1237  ./script.sh
+ 1238  claer
+ 1239  clear
+ 1240  ./script.sh
+ 1241  clera
+ 1242  clear
+ 1243  ./script.sh
+ 1244  clear
+ 1245  ./script.sh
+ 1246  clear
+ 1247  ./script.sh
+ 1248  clear
+ 1249  ./script.sh
+ 1250  clear
+ 1251  ./script.sh
+ 1252  clear
+ 1253  ./script.sh
+ 1254  clear
+ 1255  ./script.sh
+ 1256  clear
+ 1257  ./script.sh
+ 1258  clear
+ 1259  ./script.sh
+ 1260  clear
+ 1261  ./script.sh
+ 1262  clear
+ 1263  ./script.sh
+ 1264  clear
+ 1265  ./script.sh
+ 1266  ./grobner 
+ 1267  ./grobner
+ 1268  clear
+ 1269  ./script.sh
+ 1270  clear
+ 1271  ./script.sh
+ 1272  clear
+ 1273  ./script.sh
+ 1274  clear
+ 1275  ./script.sh
+ 1276  clear
+ 1277  ./script.sh
+ 1278  clear
+ 1279  ./script.sh
+ 1280  clear
+ 1281  ./script.sh
+ 1282  clear
+ 1283  ./script.sh
+ 1284  clear
+ 1285  ./script.sh
+ 1286  clear
+ 1287  ./script.sh
+ 1288  clear
+ 1289  clera
+ 1290  clear
+ 1291  ./script.sh
+ 1292  claer
+ 1293  clear
+ 1294  ./script.sh
+ 1295  clear
+ 1296  ./script.sh
+ 1297  clear
+ 1298  ./script.sh
+ 1299  clear
+ 1300  ./script.sh
+ 1301  clear
+ 1302  ./script.sh
+ 1303  clear
+ 1304  ./script.sh
+ 1305  clear
+ 1306  ./script.sh
+ 1307  clear
+ 1308  ./script.sh
+ 1309  clear
+ 1310  ./script.sh
+ 1311  claer
+ 1312  clera
+ 1313  clear
+ 1314  ./script.sh
+ 1315  cleafr
+ 1316  clear
+ 1317  ./script.sh
+ 1318  clear
+ 1319  ./script.sh
+ 1320  clear
+ 1321  ./script.sh
+ 1322  clear
+ 1323  ./script.sh
+ 1324  clear
+ 1325  ./script.sh
+ 1326  clear
+ 1327  ./script.sh
+ 1328  clear
+ 1329  ./script.sh
+ 1330  clear
+ 1331  ./script.sh
+ 1332  clear
+ 1333  ./script.sh
+ 1334  clear
+ 1335  ./script.sh
+ 1336  clear
+ 1337  ./script.sh
+ 1338  clewra
+ 1339  clear
+ 1340  ./script.sh
+ 1341  clear
+ 1342  ./script.sh
+ 1343  clear
+ 1344  clewar
+ 1345  clear
+ 1346  clewar
+ 1347  ./script.sh
+ 1348  clear
+ 1349  ./script.sh
+ 1350  clear
+ 1351  ./script.sh
+ 1352  clear
+ 1353  ./script.sh
+ 1354  clear
+ 1355  ./script.sh
+ 1356  clear
+ 1357  ./script.sh
+ 1358  clear
+ 1359  ./script.sh
+ 1360  clear
+ 1361  ./script.sh
+ 1362  clear
+ 1363  ./script.sh
+ 1364  clear
+ 1365  ./script.sh
+ 1366  claer
+ 1367  clear
+ 1368  ./script.sh
+ 1369  clear
+ 1370  ./script.sh
+ 1371  claercldear
+ 1372  clear
+ 1373  ./script.sh
+ 1374  clear
+ 1375  ./script.sh
+ 1376  clear
+ 1377  ./script.sh
+ 1378  clera
+ 1379  clear
+ 1380  clera
+ 1381  clear
+ 1382  ./script.sh
+ 1383  clear
+ 1384  ./script.sh
+ 1385  clear
+ 1386  ./script.sh
+ 1387  clear
+ 1388  ./script.sh
+ 1389  clear
+ 1390  ./script.sh
+ 1391  clear
+ 1392  ./script.sh
+ 1393  clear
+ 1394  ./script.sh
+ 1395  clear
+ 1396  ./script.sh
+ 1397  clear
+ 1398  ./script.sh
+ 1399  clear
+ 1400  ./script.sh
+ 1401  clear
+ 1402  ./script.sh
+ 1403  clear
+ 1404  ./script.sh
+ 1405  clear
+ 1406  ./script.sh
+ 1407  claer
+ 1408  clear
+ 1409  ./script.sh
+ 1410  clear
+ 1411  ./script.sh
+ 1412  clear
+ 1413  ./script.sh
+ 1414  cler
+ 1415  clear
+ 1416  ./script.sh
+ 1417  clear
+ 1418  ./script.sh
+ 1419  clear
+ 1420  ./script.sh
+ 1421  clear
+ 1422  ./script.sh
+ 1423  clear
+ 1424  ./script.sh
+ 1425  clear
+ 1426  git status
+ 1427  git log
+ 1428  git commit -a -m 'Semi stable 1'
+ 1429  clear
+ 1430  git log
+ 1431  clear
+ 1432  exit
+ 1433  ./script.sh
+ 1434  clear
+ 1435  ./script.sh
+ 1436  clear
+ 1437  ./script.sh
+ 1438  clear
+ 1439  ./script.sh
+ 1440  git commit --amend
+ 1441  clear
+ 1442  git status
+ 1443  git commit --amend -a 
+ 1444  git status
+ 1445  'clear
+ 1446  :q
+ 1447  q
+ 1448  clear
+ 1449  git status
+ 1450  clear
+ 1451  git log
+ 1452  clear
+ 1453  ./script.sh
+ 1454  ./grobner
+ 1455  clear
+ 1456  dot -Tpng rem.dot>rem.png
+ 1457  gcc grobner.c -o grobner -std=c99 -I ../include/ -L ../cudd/ -L ../util/ -L ../mtr/ -L ../st/ -L ../epd/ -L cuddZddFuncs.c -lcudd -lutil -lepd -lmtr -lst -lm
+ 1458  clear
+ 1459  gcc -g grobner.c modfunc.c -o grobner -std=c99 -I ../include/ -L ../cudd/ -L ../util/ -L ../mtr/ -L ../st/ -L ../epd/ -L cuddZddFuncs.c -lcudd -lutil -lepd -lmtr -lst -lm
+ 1460  clear
+ 1461  ./grobner 
+ 1462  clear
+ 1463  top
+ 1464  exit
+ 1465  ./grobner 
+ 1466  kill 2230
+ 1467  clear
+ 1468  exitr
+ 1469  exit
+ 1470  top
+ 1471  make
+ 1472  clear
+ 1473  ./cav Input/sm.sin
+ 1474  ./cav Input/sm.singular
+ 1475  claer
+ 1476  clear
+ 1477  ./cav Input/sm.singular
+ 1478  ./script.sh
+ 1479  clear
+ 1480  ./script.sh
+ 1481  clear
+ 1482  ./script.sh
+ 1483  clea
+ 1484  clear
+ 1485  ./script.sh
+ 1486  clear
+ 1487  ./script.sh
+ 1488  clear
+ 1489  ./script.sh
+ 1490  clear
+ 1491  ./script.sh
+ 1492  clear
+ 1493  ./script.sh
+ 1494  colear
+ 1495  clear
+ 1496  ./script.sh
+ 1497  ./script.sh 
+ 1498  exit
+ 1499  make
+ 1500  clear
+ 1501  ./cav Input/sm.singular
+ 1502  c,lear
+ 1503  clear
+ 1504  make
+ 1505  clear
+ 1506  ./cav Input/sm.singular
+ 1507  clear
+ 1508  ./cav Input/sm.singular
+ 1509  make
+ 1510  clear
+ 1511  ./cav Input/sm.singular
+ 1512  clear
+ 1513  ./cav Input/Mas32.alg
+ 1514  clear
+ 1515  ./cav Input/un_mult.alg
+ 1516  clear
+ 1517  ./script.sh 
+ 1518  clear
+ 1519  gdb ./grobner 
+ 1520  clear
+ 1521  ./script.sh 
+ 1522  clear
+ 1523  ./script.sh 
+ 1524  clear
+ 1525  time ./grobner
+ 1526  gcc grobner.c modfunc.c -o grobner -std=c99 -I ../include/ -L ../cudd/ -L ../util/ -L ../mtr/ -L ../st/ -L ../epd/ -L cuddZddFuncs.c -lcudd -lutil -lepd -lmtr -lst -lm
+ 1527  clear
+ 1528  ./grobner
+ 1529  time ./grobner
+ 1530  clear
+ 1531  gcc grobner.c modfunc.c -o grobner -std=c99 -I ../include/ -L ../cudd/ -L ../util/ -L ../mtr/ -L ../st/ -L ../epd/ -L cuddZddFuncs.c -lcudd -lutil -lepd -lmtr -lst -lm
+ 1532  clear
+ 1533  ./grobner
+ 1534  exit
+ 1535  gcc grobner.c modfunc.c -o grobner -std=c99 -I ../include/ -L ../cudd/ -L ../util/ -L ../mtr/ -L ../st/ -L ../epd/ -L cuddZddFuncs.c -lcudd -lutil -lepd -lmtr -lst -lm
+ 1536  clear
+ 1537  ./grobner 
+ 1538  clear
+ 1539  make
+ 1540  clear
+ 1541  ./cav Input/un_mult.alg
+ 1542  ./cav Input/sm.singular
+ 1543  ./cav Input/un_mult.alg
+ 1544  clear
+ 1545  ./cav Input/sm.singular
+ 1546  clear
+ 1547  ./cav Input/Mas32.alg
+ 1548  clear
+ 1549  top
+ 1550  exit
+ 1551  top
+ 1552  clear
+ 1553  exit
+ 1554  grep ithVar *.*
+ 1555  grep "ithVar" *.*
+ 1556  grep "zddIthVar" *.*
+ 1557  clear
+ 1558  gcc -g grobner.c modfunc.c -o grobner -std=c99 -I ../include/ -L ../cudd/ -L ../util/ -L ../mtr/ -L ../st/ -L ../epd/ -L cuddZddFuncs.c -lcudd -lutil -lepd -lmtr -lst -lm
+ 1559  clear
+ 1560  gdb ./grobner 
+ 1561  clear
+ 1562  exit
+ 1563  ./grobner
+ 1564  clear
+ 1565  gvim grobner
+ 1566  gvim grobner.c
+ 1567  top
+ 1568  kill 29872
+ 1569  clear
+ 1570  exit
+ 1571  ./cav Input/Mas163.alg 
+ 1572  clear
+ 1573  gvim inter.txt
+ 1574  top
+ 1575  exit
+ 1576  top
+ 1577  clear
+ 1578  exit
+ 1579  top
+ 1580  clear
+ 1581  exit
+ 1582  ./script.sh
+ 1583  clewR
+ 1584  clear
+ 1585  gvim grobner.c
+ 1586  exit
+ 1587  clear
+ 1588  gvim modfunc.c
+ 1589  clear
+ 1590  rm grobner
+ 1591  clear
+ 1592  gedit script.sh
+ 1593  gcc -g grobner.c modfunc.c -o grobner -std=c99 -I ../include/ -L ../cudd/ -L ../util/ -L ../mtr/ -L ../st/ -L ../epd/ -L cuddZddFuncs.c -lcudd -lutil -lepd -lmtr -lst -lm
+ 1594  clear
+ 1595  gdb ./grobner 
+ 1596  clear
+ 1597  exit
+ 1598  top
+ 1599  exit
+ 1600  top
+ 1601  top
+ 1602  gedit script.sh 
+ 1603  clear
+ 1604  gcc -g grobner.c modfunc.c -o grobner -std=c99 -I ../include/ -L ../cudd/ -L ../util/ -L ../mtr/ -L ../st/ -L ../epd/ -L cuddZddFuncs.c -lcudd -lutil -lepd -lmtr -lst -lm
+ 1605  clear
+ 1606  gcc -g grobner.c modfunc.c -o grobner -std=c99 -I ../include/ -L ../cudd/ -L ../util/ -L ../mtr/ -L ../st/ -L ../epd/ -L cuddZddFuncs.c -lcudd -lutil -lepd -lmtr -lst -lm
+ 1607  clear
+ 1608  exitr
+ 1609  exit
+ 1610  gdb ./grobner 
+ 1611  exit
+ 1612  top
+ 1613  exit
+ 1614  gcc -g grobner.c modfunc.c -o grobner -std=c99 -I ../include/ -L ../cudd/ -L ../util/ -L ../mtr/ -L ../st/ -L ../epd/ -L cuddZddFuncs.c -lcudd -lutil -lepd -lmtr -lst -lm
+ 1615  clear
+ 1616  exit
+ 1617  top
+ 1618  ./grobner
+ 1619  clear
+ 1620  exitr
+ 1621  exit
+ 1622  top
+ 1623  ./cav Input/c6288.alg 
+ 1624  clear
+ 1625  exit
+ 1626  gcc -g grobner.c modfunc.c -o grobner -std=c99 -I ../include/ -L ../cudd/ -L ../util/ -L ../mtr/ -L ../st/ -L ../epd/ -L cuddZddFuncs.c -lcudd -lutil -lepd -lmtr -lst -lm
+ 1627  clear
+ 1628  time ./grobner
+ 1629  clear
+ 1630  exit
+ 1631  gcc -g grobner.c modfunc.c -o grobner -std=c99 -I ../include/ -L ../cudd/ -L ../util/ -L ../mtr/ -L ../st/ -L ../epd/ -L cuddZddFuncs.c -lcudd -lutil -lepd -lmtr -lst -lm
+ 1632  clear
+ 1633  time ./grobner
+ 1634  clearexit
+ 1635  exit
+ 1636  ./grobner
+ 1637  dot -Tpng rem.dot>rem.png
+ 1638  clrea
+ 1639  clear
+ 1640  exit
+ 1641  exit
+ 1642  gcc -g grobner.c modfunc.c -o grobner -std=c99 -I ../include/ -L ../cudd/ -L ../util/ -L ../mtr/ -L ../st/ -L ../epd/ -L cuddZddFuncs.c -lcudd -lutil -lepd -lmtr -lst -lm
+ 1643  clear
+ 1644  exitr
+ 1645  exit
+ 1646  top
+ 1647  ssh -YX utkarshg@lab1-15.eng.utah.edu
+ 1648  clear
+ 1649  exit
+ 1650  time ./grobner
+ 1651  top
+ 1652  time ./grobner 
+ 1653  clera
+ 1654  clear
+ 1655  ./grobner 
+ 1656  clearexit
+ 1657  exit
+ 1658  time ./grobner
+ 1659  top
+ 1660  gop
+ 1661  top
+ 1662  ./grobner
+ 1663  clear
+ 1664  ./grobner
+ 1665  clear
+ 1666  ./grobner
+ 1667  clear
+ 1668  gdb ./grobner 
+ 1669  exit
+ 1670  top
+ 1671  exit
+ 1672  ./grobner 
+ 1673  clear
+ 1674  exit
+ 1675  gcc -g grobner.c modfunc.c -o grobner -std=c99 -I ../include/ -L ../cudd/ -L ../util/ -L ../mtr/ -L ../st/ -L ../epd/ -L cuddZddFuncs.c -lcudd -lutil -lepd -lmtr -lst -lm
+ 1676  clear
+ 1677  time ./grobner
+ 1678  clear
+ 1679  gcc -g grobner.c modfunc.c -o grobner -std=c99 -I ../include/ -L ../cudd/ -L ../util/ -L ../mtr/ -L ../st/ -L ../epd/ -L cuddZddFuncs.c -lcudd -lutil -lepd -lmtr -lst -lm
+ 1680  clear
+ 1681  ./grobner
+ 1682  clear
+ 1683  time ./grobner
+ 1684  clear
+ 1685  xeit
+ 1686  exit
+ 1687  clear
+ 1688  ./grobner 
+ 1689  clearexit
+ 1690  exit
+ 1691  ./cav Input/Mas192.alg 
+ 1692  clear
+ 1693  exit
+ 1694  top
+ 1695  kill 9746
+ 1696  top
+ 1697  exity
+ 1698  exit
+ 1699  top
+ 1700  kill 7999
+ 1701  top
+ 1702  compgen -u
+ 1703  compgen -g
+ 1704  getent group utk7
+ 1705  clear
+ 1706  sudo usermod -a -G groupName userName
+ 1707  sudo usermod -a -G utk7 xiaojuns
+ 1708  getent group utk7
+ 1709  clear
+ 1710  exit
+ 1711  compgen -u
+ 1712  exit
+ 1713  getent group tpruss
+ 1714  clear
+ 1715  exit
+ 1716  ls
+ 1717  cd utk7
+ 1718  cd Public
+ 1719  ls -a
+ 1720  clear
+ 1721  exit
+ 1722  cd Public
+ 1723  lt
+ 1724  sudo apt-get install looptools
+ 1725  lt
+ 1726  ls -t
+ 1727  ls
+ 1728  ls -h
+ 1729  ls --help
+ 1730  python
+ 1731  clear
+ 1732  exit
+ 1733  gcc -g grobner.c modfunc.c -o grobner -std=c99 -I ../include/ -L ../cudd/ -L ../util/ -L ../mtr/ -L ../st/ -L ../epd/ -L cuddZddFuncs.c -lcudd -lutil -lepd -lmtr -lst -lm
+ 1734  clear
+ 1735  ./grobner
+ 1736  clear
+ 1737  exit
+ 1738  top
+ 1739  ./cav Input/Mas192.alg 
+ 1740  Singular
+ 1741  clear
+ 1742  exit
+ 1743  top
+ 1744  sudo apt-remove sublime-text
+ 1745  sublime 
+ 1746  sudo apt-get remove --purge sublime
+ 1747  sudo apt-get remove --purge sublime-text
+ 1748  clear
+ 1749  sublime
+ 1750  ls
+ 1751  sudo add-apt-repository ppa:webupd8team/sublime-text-2
+ 1752  clear
+ 1753  sudo apt-get update
+ 1754  sudo apt-get install sublime-text
+ 1755  clear
+ 1756  exit
+ 1757  top
+ 1758  time gcc -g grobner.c modfunc.c -o grobner -std=c99 -I ../include/ -L ../cudd/ -L ../util/ -L ../mtr/ -L ../st/ -L ../epd/ -L cuddZddFuncs.c -lcudd -lutil -lepd -lmtr -lst -lm
+ 1759  clear
+ 1760  exit
+ 1761  kill 17378
+ 1762  top
+ 1763  top
+ 1764  python bcp.py
+ 1765  clear
+ 1766  chmod +x run.sh 
+ 1767  ./run.sh 
+ 1768  clear
+ 1769  exit
+ 1770  top
+ 1771  kill 5264 
+ 1772  top
+ 1773  exit
+ 1774  gcc -g grobner.c modfunc.c -o grobner -std=c99 -I ../include/ -L ../cudd/ -L ../util/ -L ../mtr/ -L ../st/ -L ../epd/ -L cuddZddFuncs.c -lcudd -lutil -lepd -lmtr -lst -lm
+ 1775  top
+ 1776  ./topo_2 
+ 1777  clear
+ 1778  ./topo_2 spec_ckt.blif 
+ 1779  clear
+ 1780  ./topo_2 spec_ckt.blif 
+ 1781  clear
+ 1782  exit
+ 1783  python -V
+ 1784  clera
+ 1785  clear
+ 1786  exit
+ 1787  clear
+ 1788  ./topo_2 spec_ckt.blif 
+ 1789  ./run.sh
+ 1790  clear
+ 1791  ./run.sh
+ 1792  clear
+ 1793  top
+ 1794  exit
+ 1795  minisat
+ 1796  sudo apt-get install minisat
+ 1797  clear
+ 1798  minisat
+ 1799  exit
+ 1800  minisat
+ 1801  minisat -V
+ 1802  minisat --help
+ 1803  minisat --help-verb
+ 1804  minisat --v
+ 1805  minisat --version
+ 1806  minisat -version
+ 1807  minisat -v
+ 1808  minisat --help-verb
+ 1809  clear
+ 1810  exit
+ 1811  minisat simple.txt 
+ 1812  gedit simple.cnf
+ 1813  minisat simple.cnf 
+ 1814  top
+ 1815  kill 27692
+ 1816  clear
+ 1817  sudo apt-get install autoconf libtool g++ bison flex zlib1g-dev
+ 1818  gcc -V
+ 1819  gcc -v
+ 1820  clear
+ 1821  autotools
+ 1822  libtool
+ 1823  clear
+ 1824  flex
+ 1825  clear
+ 1826  bison -v
+ 1827  bison -V
+ 1828  clear
+ 1829  zlib -v
+ 1830  zlib -V
+ 1831  clesar
+ 1832  clear
+ 1833  exit
+ 1834  cd /home/xiaojuns/tools/periplo/
+ 1835  l
+ 1836  cd build/
+ 1837  ls
+ 1838  less test.smt2 
+ 1839  ./periplo --config=default.conf test.smt2 
+ 1840  pwd
+ 1841  cd
+ 1842  less /home/xiaojuns/tools/periplo/build/test.smt2 
+ 1843  less /home/xiaojuns/tools/periplo/build/test2.smt2 
+ 1844  less /home/xiaojuns/tools/periplo/build/default.conf 
+ 1845  cd /home/xiaojuns/tools/periplo/build/
+ 1846  cp proof.dot ~/Documents/
+ 1847  cd ~/Documents/
+ 1848  dot -Tpng proof.dot 
+ 1849  dot -Tpng proof.dot > proof .png
+ 1850  dot -Tpng proof.dot > proof.png
+ 1851  clear
+ 1852  svn
+ 1853  sudo apt-get install subversion
+ 1854  clera
+ 1855  clear
+ 1856  svn checkout http://periplo.googlecode.com/svn/trunk/ periplo
+ 1857  clear
+ 1858  gmp
+ 1859  clear
+ 1860  wget ftp://ftp.gmplib.org/pub/gmp-5.1.1/gmp-5.1.1.tar.bz2
+ 1861  tar jxvf gmp-5.1.1.tar.bz2 
+ 1862  clear
+ 1863  cd gmp-5.1.1/
+ 1864  clear
+ 1865  ./configure  
+ 1866  make
+ 1867  make check
+ 1868  clear
+ 1869  sudo make install
+ 1870  clear
+ 1871  cd ../periplo/
+ 1872  clear
+ 1873  libtoolize
+ 1874  autoreconf --install --force
+ 1875  mkdir build
+ 1876  cd build/
+ 1877  clear
+ 1878  ../configure 
+ 1879  clera
+ 1880  clear
+ 1881  make
+ 1882  clear
+ 1883  cd ../..
+ 1884  exit
+ 1885  libtoolize
+ 1886  autoreconf --install --force
+ 1887  mkdir build
+ 1888  cd build/
+ 1889  clear
+ 1890  ../configure
+ 1891  make
+ 1892  clear
+ 1893  ./periplo --config=configure.txt example.smt2
+ 1894  ../configure --enable-proof
+ 1895  make
+ 1896  clear
+ 1897  ./periplo --config=configure.txt example.smt2
+ 1898  ../configure --enable-proof
+ 1899  make clean
+ 1900  make
+ 1901  ./periplo --config=configure.txt example.smt2
+ 1902  exit
+ 1903  cp /home/xiaojuns/tools/periplo/build/*.smt2 ~/Tools/periplo/build/
+ 1904  gedit bidecomp.smt2
+ 1905  gedit/home/xiaojuns/tools/periplo/build/config.status 
+ 1906  ls gedit/home/xiaojuns/tools/periplo/build/
+ 1907  ls /home/xiaojuns/tools/periplo/build/
+ 1908  ls gedit /home/xiaojuns/tools/periplo/build/default.conf 
+ 1909  exit
+ 1910  ./periplo --config=configure.txt bidecomp.smt2
+ 1911  dot -Tpng proof.dot > proof.png
+ 1912  ./periplo --config=configure.txt bidecomp.smt2
+ 1913  clera
+ 1914  clear
+ 1915  clera
+ 1916  ./periplo --config=configure.txt bidecomp.smt2
+ 1917  clear
+ 1918  ./periplo --config=configure.txt bidecomp.smt2
+ 1919  clear
+ 1920  ./periplo --config=configure.txt bidecomp.smt2
+ 1921  clear
+ 1922  ./periplo --config=configure.txt test2.smt2 
+ 1923  ./periplo --config=configure.txt test.smt2 
+ 1924  ./periplo --config=configure.txt bidecomp.smt2
+ 1925  ./periplo --config=configure.txt fA.smt2 
+ 1926  clear
+ 1927  ./periplo --config=configure.txt fB.smt2 
+ 1928  exit
+ 1929  python
+ 1930  clear
+ 1931  sudo apt-get install python-matplotlib
+ 1932  sudo apt-get install python-scipy
+ 1933  clear
+ 1934  easy_install matplotlib-venn
+ 1935  sudo easy_install matplotlib-venn
+ 1936  clear
+ 1937  python
+ 1938  clear
+ 1939  exit
+ 1940  sudo apt-get install update
+ 1941  sudo apt-get update
+ 1942  gedit venn.py
+ 1943  python venn.py 
+ 1944  clear
+ 1945  python venn.py 
+ 1946  clera
+ 1947  clear
+ 1948  gedit interpolation.tex
+ 1949  texworks
+ 1950  texworks 
+ 1951  top
+ 1952  to
+ 1953  top
+ 1954  abc
+ 1955  cleraq
+ 1956  clear
+ 1957  gedit or_3_remainder.eqn
+ 1958  dot -Tpng or_3_remainder.dot > or_3_remainder.png
+ 1959  gedit or_4_remainder.eqn
+ 1960  dot -Tpng or_4_remainder.dot > or_4_remainder.png
+ 1961  dot -Tpng or_5_remainder.dot > or_5_remainder.png
+ 1962  abc
+ 1963  clear
+ 1964  abc
+ 1965  claer
+ 1966  clera
+ 1967  clear
+ 1968  abc
+ 1969  clear
+ 1970  abc
+ 1971  clear
+ 1972  exit
+ 1973  ./script.sh 
+ 1974  gedit create.py
+ 1975  python create.py 
+ 1976  claer
+ 1977  clear
+ 1978  python create.py 
+ 1979  clear
+ 1980  python create.py 
+ 1981  python
+ 1982  clear
+ 1983  python create.py 
+ 1984  clear
+ 1985  python create.py 
+ 1986  ./grobner
+ 1987  clear
+ 1988  to
+ 1989  top
+ 1990  gcc -g grobner.c modfunc.c -o grobner -std=c99 -I ../include/ -L ../cudd/ -L ../util/ -L ../mtr/ -L ../st/ -L ../epd/ -L cuddZddFuncs.c -lcudd -lutil -lepd -lmtr -lst -lm
+ 1991  clear
+ 1992  ./grobner 
+ 1993  python create.py 
+ 1994  ./grobner
+ 1995  clear
+ 1996  exit
+ 1997  python
+ 1998  history>some.txt

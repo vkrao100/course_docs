@@ -1,0 +1,39 @@
+\begin{abstract}
+
+%Formal verification of arithmetic datapath circuits is a vital
+%component of the hardware design flow. Conventional verification
+%techniques based on SAT or SMT solvers are often infeasible for such
+%applications. 
+Recent developments in formal verification of arithmetic datapaths
+make efficient use of symbolic computer algebra algorithms. 
+The circuit is modeled as an ideal in polynomial rings, and  Gr\"obner
+basis (GB) reductions are performed over these polynomials to derive a
+canonical representation. As they model logic gates of the circuit,
+the ideals comprise largely of Boolean (or pseudo-Boolean)
+polynomials. GB reductions modulo these Boolean polynomials tend to
+cause intermediate expression swell (term explosion problem) -- often
+rendering the approach infeasible in a practical setting. 
+These problems can be overcome by using an implicit data-structure
+that represents these polynomials compactly, provides the algorithmic
+flexibility to perform GB-reduction implicitly, and allows to exploit
+the information derived from the topology of the circuits to improve
+symbolic computation. 
+
+This paper considers a logic synthesis analogue of GB reductions over
+Boolean polynomials, by interpreting symbolic algebra  as the unate
+cube set algebra over characteristic sets. By representing Boolean
+polynomials as characteristic sets using Zero-suppressed BDDs (ZBDDs),
+implicit algorithms are efficiently designed for GB-reduction for
+datapath circuits. While polynomial manipulation algorithms have been
+implemented on ZBDDs before, we show \textcolor{red}{that the imposition} of
+circuit-topology based monomial orders exposes a special structure on
+the ZBDD representation of the polynomials. The subexpressions
+employed in the GB-reduction are readily visible as subgraphs on the
+ZBDDs, which are directly used to compose the result. Our division
+algorithms effectively cancel multiple monomials implicitly in
+one-step, simplify the search for divisors, and avoid intermediate size
+explosion. Experiments performed over various arithmetic architectures
+demonstrate the efficiency of our algorithms and implementations; our
+approach is orders of magnitude faster as compared to conventional
+methods.  
+\end{abstract}

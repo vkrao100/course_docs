@@ -1,0 +1,213 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  IEEEsample.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%    More information: see the header of IEEEtran.sty
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%
+%%%%\documentclass[prodmode,acmtecs]{acmsmall}
+
+\documentclass[conference, onecolumn]{IEEEtran}
+
+%\usepackage[ruled]{./algorithm2e}
+%%for algorithm2e package, label has to be following caption in the same line!!!
+%% \renewcommand{\algorithmcfname}{ALGORITHM}
+%% \SetAlFnt{\small}
+%% \SetAlCapFnt{\small}
+%% \SetAlCapNameFnt{\small}
+%% \SetAlCapHSkip{0pt}
+%% \IncMargin{-\parindent}
+
+% Metadata Information
+%\acmVolume{X}
+%\acmNumber{X}
+%\acmArticle{39}
+%\acmYear{2010}
+%\acmMonth{3}
+
+
+\usepackage{helvet}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{subfig}
+\usepackage{comment}
+\usepackage{mathtools}
+%\usepackage{algorithm}
+%%indent in algorithm
+
+
+%\setcounter{page}{0}
+\pagestyle{empty}
+%\thispagestyle{empty}
+
+
+% New command for the table notes.
+\def\tabnote#1{{\small{#1}}}
+
+% New command for the line spacing.
+\newcommand{\ls}[1]
+    {\dimen0=\fontdimen6\the\font
+     \lineskip=#1\dimen0
+     \advance\lineskip.5\fontdimen5\the\font
+     \advance\lineskip-\dimen0
+     \lineskiplimit=.9\lineskip
+     \baselineskip=\lineskip
+     \advance\baselineskip\dimen0
+     \normallineskip\lineskip
+     \normallineskiplimit\lineskiplimit
+     \normalbaselineskip\baselineskip
+     \ignorespaces
+    }
+
+
+
+
+%the following is for space before and after align or other equation environment.
+
+%%
+%\newtheorem{Algorithm}{Algorithm}[section]
+
+\newtheorem{Algorithm}{Algorithm}[section]
+\newtheorem{Definition}{Definition}[section]
+\newtheorem{Example}{Example}[section]
+\newtheorem{Proposition}{Proposition}[section]
+\newtheorem{Lemma}{Lemma}[section]
+\newtheorem{Theorem}{Theorem}[section]
+\newtheorem{Corollary}{Corollary}[section]
+
+
+\newcommand{\Fq}{{\mathbb{F}}_{q}}
+\newcommand{\Fkk}{{\mathbb{F}}_{2^k}}
+\newcommand{\Fkkx}[1][x]{\ensuremath{\mathbb{F}}_{2^k}[#1]\xspace}
+\newcommand{\Grobner}{Gr\"{o}bner\xspace}
+%%%
+
+\newcommand{\debug}[1]{\textcolor{gray}{[ #1 ]}}
+
+
+
+%%set spacing between table columns
+\setlength{\tabcolsep}{3pt}
+
+%% for larger matrices
+\setcounter{MaxMatrixCols}{15}
+\begin{document}
+
+
+% Page heads
+%\markboth{J. Lv et al.}{Formal Verification of Finite Field Arithmetic Circuits using Computer Algebra Techniques}
+
+
+%% \title{\large{\textsc{Formal Verification of Galois Field Arithmetic
+%%       Circuits using Computer Algebra Techniques }}}  
+
+\title{\large \sc 
+Efficient Symbolic Computation for Word-Level Abstraction from
+  Combinational Circuits for Verification over Galois Fields
+}
+
+\author{
+
+\IEEEauthorblockN{Tim Pruss\IEEEauthorrefmark{1},
+Priyank Kalla\IEEEauthorrefmark{1},
+Florian Enescu\IEEEauthorrefmark{2}}
+
+\ \\
+%\IEEEauthorblockA{
+\IEEEauthorblockA{\IEEEauthorrefmark{1}Electrical and Computer Engineering\\
+University of Utah, Salt Lake City, UT 84112\\
+pruss@eng.utah.edu, kalla@ece.utah.edu\\
+ }
+%\and
+%\IEEEauthorblockN{Florian Enescu} 
+\ \\
+\IEEEauthorblockA{\IEEEauthorrefmark{2}Mathematics and Statistics\\
+ Georgia State University,  Atlanta, GA 30302\\
+fenescu@gsu.edu\\
+}
+}
+
+\maketitle
+%%%%%%%%%%%%%%%%%%%% abstract %%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+{\bf Designated Contact Author: Priyank Kalla}\\
+Email: kalla@ece.utah.edu\\
+
+
+\vspace{1in}
+{\bf A note to the editor and reviewers:}
+\end{center}
+
+This paper is a significantly extended version of a conference paper
+published by the same authors at the Design Automation Conference
+(DAC) 2014. The DAC 2014 paper is referenced as:  
+T. Pruss, P. Kalla, F. Enescu, ``{\it
+Equivalence Verification of Large Galois Field Arithmetic Circuits
+using Word-Level Abstraction via Gr\"obner Bases}, pp. 1-6, Proc. DAC
+2014. 
+
+In the DAC paper, we addressed the problem of formal verification of
+Galois field multiplier circuits using a computer algebra based
+word-level abstraction approach. The approach derives a unique,
+canonical polynomial representation 
+$Z=\mathcal{F}(A, B)$ from the circuit, where $Z, A, B$ are word-level
+operands. We formulated the problem using the Strong Nullstellensatz
+over Galois fields $\mathbb{F}_{2^k}$  and Gr\"obner bases. In 
+order to derive the abstraction polynomial, we had to rely on a
+reduced Gr\"obner basis computation, which exhibits high computational
+complexity. While we presented an approach to overcome the complexity
+of Gr\"obner bases, by operating on a subset of the polynomials of the
+circuit, it still required the computation of a reduced Gr\"obner
+basis. Therefore, in the DAC paper, we were able to perform
+abstraction for only up to 409-bit bug-free circuits. Moreover, in the
+presence of bugs, the DAC 2014 approach was infeasible. Also, the
+approach was restricted to circuits with  uniform $k$-bit input and
+output bit-vector sizes. 
+
+This journal version, presents not just significant extensions but
+rather an altogether new approach, as compared to the DAC paper. 
+In this paper:
+\begin{itemize}
+\item The problem formulation for abstraction is extended from a
+  circuit with $k$-bit inputs and outputs
+  ($f:\mathbb{B}^k\rightarrow\mathbb{B}^k$) to model any
+  arbitrary combinational logic circuit, i.e. functions of the type
+  $f:\mathbb{B}^n\rightarrow\mathbb{B}^m$. Therefore Section IV.C is
+  a new contribution.
+\item There is also more complete/detailed exposition of the problem
+  formulation, theory and proofs of the results.
+\item Section V is a completely new contribution. It essentially
+  proposes a new method to derive polynomials in the Gr\"obner basis
+  of an elimination ideal, without actually computing a {\it reduced}
+  Gr\"obner basis. The structure of the circuit, properties
+  of Galois fields $\Fkk$, symbolic computation algorithms and
+  concepts from algebraic geometry are all put together to derive the
+  abstraction. 
+\item Limitations of our approach are also analyzed. 
+\item A new custom tool is engineered that, given a combinational
+  circuit, derives a word-level   polynomial abstraction $Z =
+  \mathcal{F}(A)$ over the Galois field $\Fkk$. The design of this
+  new tool is described in Section VI.A.
+\item These new theoretical, algorithmic and practical (tool
+  implementation) advances enable us to perform canonical function
+  abstraction and verification of NIST-standard cryptography
+  primitives. Moreover, due to these new developments, we are also
+  able to perform abstraction over composite field arithmetic circuits
+  of the type $\Fkk \equiv {\mathbb{F}_{(2^m)^n}}$, for up to $k =
+  1024$ bit operands. 
+\end{itemize}
+
+
+
+%%%%%%%%%%%%%%%%%%%% Include your files here %%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%% The bibliography %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{IEEEtran}
+\bibliography{logic}
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%  End of IEEEsample.tex  %%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -1,0 +1,74 @@
+ring R = (2,X), (y), lp;
+minpoly = X^4 + X + 1;
+
+proc find_bz(list L, int dps) //dps: datapath size; for 32 bit multiplier, dps=32
+{
+	string fac,sub;
+	int i,j,k,t;
+	list exp;
+	list bout;
+	list to_del;
+    
+	for(i=0; i<dps; i++) //making list of all exponents
+	{
+		exp = exp + list(i);
+	}
+
+	for(i=1; i<=size(L); i++)
+	{
+		to_del = list();
+		fac = string(L[i]);
+		// fac;
+		for(j=1; j<=size(exp); j++) //checking in the current exp
+		{	
+			if(exp[j] != 1) //exp = 0
+			{	
+				if(exp[j] == 0)
+				{sub = "1";}
+				else
+				{sub = parstr(R)+string(exp[j]);}
+				
+				if(find(fac,sub) != 0) // if substring present
+				{	
+				bout = bout + list(exp[j]); //out buggy
+				to_del = to_del + list(j);//no need to check for it in next factor
+				}
+			} 
+			else 
+			{
+				sub = parstr(R)+"+";
+				t = find(fac,sub);
+				// fac;t;
+				if(t != 0)
+				{
+					bout = bout + list(exp[j]); //out buggy
+					to_del = to_del + list(j);//no need to check for it in next factor
+					// continue;
+				}
+				sub = parstr(R)+")";
+				t = find(fac,sub);
+				// fac;t;
+				if(t != 0)
+				{
+					bout = bout + list(exp[j]); //out buggy
+					to_del = to_del + list(j);//no need to check for it in next factor
+				} 
+			}
+		}
+		for(k=size(to_del); k>0; k--) //deleting already checked exponents
+		{
+				exp = delete(exp,to_del[k]);
+		}	
+	}
+	return(bout);
+}
+
+list L = 
+X^2,
+X^3+X,
+1;
+
+list bot;
+bot = find_bz(L,4);
+bot; 
+quit;

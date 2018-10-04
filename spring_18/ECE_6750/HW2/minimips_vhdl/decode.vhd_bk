@@ -1,0 +1,84 @@
+--\begin{algorithm}
+--\small
+---------------------
+-- decode.vhd
+---------------------
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_arith.all;
+use ieee.std_logic_unsigned.all; 
+use work.nondeterminism.all;
+use work.channel.all;
+
+entity decode is
+  port(decode_instr:inout channel:=init_channel;
+       execute_op:inout channel:=init_channel;
+       execute_rs:inout channel:=init_channel;
+       execute_rt:inout channel:=init_channel;
+       execute_rd:inout channel:=init_channel;
+       execute_func:inout channel:=init_channel;
+       execute_offset:inout channel:=init_channel;
+       dmem_datain:inout channel:=init_channel;
+       dmem_dataout:inout channel:=init_channel);
+end decode;
+
+architecture behavior of decode is 
+  type registers is array (0 to 7) of
+    std_logic_vector(31 downto 0);
+  signal instr:std_logic_vector(31 downto 0);
+  alias op:std_logic_vector(5 downto 0) is
+    instr(31 downto 26);
+  alias rs:std_logic_vector(2 downto 0) is
+    instr(23 downto 21);
+  alias rt:std_logic_vector(2 downto 0) is
+    instr(18 downto 16);
+  alias rd:std_logic_vector(2 downto 0) is
+    instr(13 downto 11);
+  alias func:std_logic_vector(5 downto 0) is
+    instr(5 downto 0);
+  alias offset:std_logic_vector(15 downto 0) is
+    instr(15 downto 0);
+  signal reg:registers:=(X"00000000",
+                         X"11111111",
+                         X"22222222",
+                         X"33333333",
+                         X"44444444",
+                         X"55555555",
+                         X"66666666",
+                         X"77777777");
+  signal reg_rs:std_logic_vector(31 downto 0);
+  signal reg_rt:std_logic_vector(31 downto 0);
+  signal reg_rd:std_logic_vector(31 downto 0);
+begin
+process
+begin
+  receive(decode_instr,instr);
+  reg_rs <= reg(conv_integer(rs));
+  reg_rt <= reg(conv_integer(rt));
+  wait for delay(5,10);
+  send(execute_op,op);
+  case op is
+  when "000000" => -- ALU op
+    send(execute_func,func,execute_rs,reg_rs,
+         execute_rt,reg_rt);
+    receive(execute_rd,reg_rd);
+    reg(conv_integer(rd)) <= reg_rd;
+    wait for delay(5,10);
+  when "000100" => -- beq
+    send(execute_rs,reg_rs,execute_rt,reg_rt);
+  when "100011" => -- lw
+    send(execute_rs,reg_rs,execute_offset,offset);
+    receive(dmem_dataout,reg_rt);
+    reg(conv_integer(rt)) <= reg_rt;
+    wait for delay(5,10);
+  when "101011" => -- sw
+    send(execute_rs,reg_rs,execute_offset,offset,
+         dmem_datain,reg_rt);
+  when others => -- undefined
+    assert false
+      report "Illegal instruction"
+      severity error;
+  end case;
+end process;
+end behavior;
+--\end{algorithm}

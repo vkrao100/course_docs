@@ -1,0 +1,31 @@
+import numpy
+
+def parse(file_name):
+	f = open(file_name,'r')
+
+	for line in f.readlines():
+		if line[0] == '.':
+			if(line[1] == 'e'):
+				print('Parsing Done')
+			elif(line[1:5] == 'rows'):
+				r = int(line[6:len(line)])
+			elif(line[1:5] == 'cols'):
+				c = int(line[6:len(line)])
+			elif(line[1:6] == 'names'):
+				x = ['-' for i in range(c)]
+				j = 7
+				for i in range(c):
+					x[i] = line[j]; j += 1;
+					while(line[j] != ' '):
+						x[i] += line[j]; j += 1;
+						if j == len(line):  break
+					j += 1;
+		else:
+			A = [['-' for x in range(r)] for x in range(c)]		
+
+	print(r); print(c); 
+	for i in range(c):
+		print(x[i])
+			
+
+

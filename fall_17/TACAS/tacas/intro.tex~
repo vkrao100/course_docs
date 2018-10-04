@@ -1,0 +1,206 @@
+\section{Introduction}
+
+Craig interpolation is a method to construct and refine abstractions
+of functions. It finds application in formal verification of hardware
+designs and software programs, in logic synthesis of Boolean
+functions, and also as a tool in proof complexity theory. It is a
+logical tool to extract concise explanations for the infeasibility of
+a mutually inconsistent set of statements. Craig
+\cite{craig-interpolate} showed that for a valid implication $A
+\implies B$, where $A, B$ are first order formulae containing no free
+variables, there is a formula $I$ such that $A \implies I$, $I
+\implies B$ and the non-logical symbols of $I$ appear in both $A$ and
+$B$. The formula $I$ is called the {\it Craig interpolant}, or
+interpolant for short. As  
+propositional logic also admits Craig interpolation, the formal
+verification community has extensively investigated interpolants and
+their computation from resolution proofs of CNF-SAT problems. In the
+propositional logic domain, the concept is stated with a slight
+modification.  
+
+\begin{Definition}\label{def:ci}
+Let $(A, B)$ be a pair of CNF formulae (sets of clauses) such that $A
+\w B$ is unsatisfiable. Then there exists a formula $I$ such that: (i)
+$A\implies I$; (ii) $I \w B$ is unsatisfiable; and (iii) $I$ refers
+only to the common variables of $A$ and $B$, i.e. $Var(I) \subseteq
+Var(A) \cap Var(B)$. The formula $I$ is called the {\bf interpolant}
+of $(A,B)$. 
+\end{Definition}
+
+Given the pair $(A, B)$ and their refutation proof, a procedure called
+the {\it interpolation system} constructs the interpolant in linear
+time and space in the size of the proof \cite{McMillan:CAV03}. As the
+abilities of SAT solvers for proof refutation have improved,
+interpolants have been exploited as abstractions in various problems
+that can be formulated as unsatisfiable instances, e.g. model checking
+\cite{McMillan:CAV03}, logic synthesis \cite{roland:bidecomp},
+etc. Their use as abstractions have also been replicated in other
+(combinations of) theories \cite{McMillan:TACAS04}
+\cite{Kapur:SIGSOFT06} \cite{Cimatti:TACAS08} \cite{Griggio:FMCAD11},
+etc.  
+%These concepts have been applied to various problems in
+%automated reasoning. 
+%; {\it e.g.} for the theory of linear
+%inequality \cite{McMillan:TACAS04}, data-type theories
+%\cite{Kapur:SIGSOFT06}, Linear arithmetic and difference logic
+%\cite{Cimatti:TACAS08}, Bit-vector theories \cite{Griggio:FMCAD11},
+%among others.  
+
+
+In this paper, we introduce the notion of {\it Craig interpolants in
+polynomial algebra over finite fields} ($\Fq$) of $q$ elements, where
+$q = p^k$ is a prime power. Given a mutually inconsistent pair of sets
+of polynomials with coefficients from $\Fq$ that have no common zeros,
+we show that Nullstellensatz over finite fields admits
+interpolation. We represent the sets $A, B$ (from Def. \ref{def:ci}) as
+{varieties of corresponding ideals}, and prove the existence of
+an interpolant for the pair $(A,B)$. In this setting, {\it interpolants
+correspond to varieties} -- subsets of the $n$-dimensional affine
+space $\Fq^n$ -- and are represented by polynomial ideals, more
+precisely, by a {\it Gr\"obner basis of corresponding ideals.}
+
+Intuitively, it should be apparent that polynomial algebra over finite
+fields would admit Craig interpolation (a first order theory over
+$\Fq$ definitely admits quantifier elimination \cite{gao:qe-gf-gb}).
+However, our literature search for interpolants and their computation
+with polynomials in arbitrary finite fields did not reveal much prior
+work in this area. %turned out to be unsuccessful. 
+%There is a need for the theory and algorithms for
+%interpolation in this domain. 
+Recent years have witnessed
+investigations in formal verification, abstraction and synthesis of
+datapath circuits with $k$-bit operands, where the problems have been
+modeled 
+%using algebraic geometry 
+over finite fields ($\Fkk$) \cite{pruss:tcad} \cite{xiaojun:hldvt2016}
+or over finite integer rings ($\Zkk$) \cite{sivaram:todaes}. 
+%Analogous to Boolean
+%function decomposition, 
+%there is also a need for polynomial (word-level) datapath synthesis
+Interpolants can be exploited as abstractions of functions
+($f:\Fkk\rightarrow\Fkk$) in this domain, and can make these
+approaches practical. Motivated by the above needs, this paper
+presents the theory of Craig interpolation in finite fields, and
+describes algorithms to compute them.  
+
+
+{\it Contributions:} Using the extensive machinery of algebraic
+geometry in finite fields,
+% -- including Nullstellensatz, projections of
+%varieties, elimination and extension theory, set operations on ideals
+%and varieties, etc. -- 
+this paper makes the following contributions: 
+1) Formally define the notion of interpolants in polynomial algebra
+  over finite fields $\Fq$, and prove their existence in this domain.
+2) Derive the relationship of interpolants with elimination ideals,
+  and show how to compute them using Gr\"obner bases. 
+3) Compute the {\it smallest} interpolant, i.e. the one
+  contained in every other interpolant. Analogously, compute the
+  {\it largest} interpolant, i.e. the one containing all
+  other interpolants. 
+4) Count the total number of all possible interpolants.
+5) We show how all interpolants can be enumerated in
+$\mathbb{F}_2$. However, as it is impractical to explore all possible
+interpolants, we present an algorithm to heuristically enumerate a few
+interpolants (explore the interpolant lattice): beginning with the
+smallest, progressively visiting larger ones,   and terminating at the
+largest interpolant.  
+
+{\it Paper Organization:} The following section briefly reviews prior
+work in Craig interpolation in various theories, and contrasts it
+against the concepts presented in this paper. Section \ref{sec:prelim} 
+describes the preliminary concepts of algebraic geometry and Gr\"obner
+bases in finite fields. Section \ref{sec:theory} describes the theory
+of interpolation in finite fields and shows how they can be computed
+using the Gr\"obner basis algorithm. Section \ref{sec:alg} describes
+techniques and an algorithm to enumerate the interpolants. 
+%All the concepts are also demonstrated by means of
+%examples. \debug{Section \ref{sec:dis} compares our results against
+%interpolant-classification in propositional logic. --  we will see
+%about this} 
+Section \ref{sec:exp} describes some of our experiments with unsat
+instances to generate the interpolants. Section
+\ref{sec:conc} concludes the paper.  The omitted proofs of
+the theorems and lemmas are contained in an appendix.
+
+\vspace{-0.1in}
+\section{Review of Previous Work}
+In the past decade or so, there has been an explosion in the study,
+classification and application of interpolants. In abstraction-based
+model checking, interpolants are used as over-approximate image
+operators \cite{McMillan:CAV03}. In Boolean function decomposition,
+given a function $F(A, B, C)$ with support variables partitioned into
+disjoint subsets $A, B, C$, it is required to decompose $F = G(A, C)
+\odot H(B,C)$, where $\odot$ denotes the Boolean $\vee, \wedge,
+\oplus$ operations. The existence of such a 
+decomposition with the given variable partition is formulated as a
+unsatisfiability checking problem. Craig interpolants can then be used
+to compute $G, H$ \cite{roland:bidecomp}
+\cite{roland:ashenhurst}. 
+%Conceptually, these problems 
+%have quantifiers and interpolants can be used in lieu of the more
+%expensive quantifier elimination. 
+In proof complexity, interpolants have been used as a tool to derive 
+lower bounds; {\it e.g.} by reasoning that if $A\implies B$ does not
+have a simple interpolant, then it cannot have a simple proof
+\cite{pudlak:ci}. The authors in \cite{PudlakPCFA1998} present
+an interpolation theorem for Nullstellensatz refutations and the
+polynomial calculus \cite{CEI:stoc-96} which can then be used for
+proving lower bounds. 
+
+The use of interpolants as abstractions has also been replicated in
+other combinations of theories. For example, the theory of linear
+inequality \cite{McMillan:TACAS04}, data-type theories
+\cite{Kapur:SIGSOFT06}, linear arithmetic and difference logic
+\cite{Cimatti:TACAS08}, bit-vector SMT theories
+\cite{Griggio:FMCAD11}, etc., are just a few of the many instances
+of the usage of interpolation in various domains outside of purely
+propositional logic. The aforementioned works derive interpolants from
+resolutions proofs obtained from SAT/SMT-solvers
+(\cite{Cimatti:TACAS08}), or generate them by solving constrains
+in the theories of linear arithmetic with uninterpreted functions
+(\cite{Rybalchenko:VMCAI-2007}),  or exploit their connection to
+quantifier elimination (\cite{Kapur:SIGSOFT06}), etc. As an 
+alternative to interpolation, \cite{Kovacs2009} suggests the use of
+local proofs and symbol eliminating inferences for invariant
+generation.  
+%%  to interpolation based on symbol
+%% elimination inferences is presented in  which can be 
+%% applied even for theories not having the interpolation property. 
+However, the problem has been insufficiently investigated over
+polynomial ideals in finite fields from an algebraic geometry
+perspective. 
+
+
+The works that come closest to ours are by Gao {\it et al.}
+\cite{gao:qe-gf-gb} and \cite{gao:gf-gb-ms}. While they do not
+address the interpolation problem per se, they do describe important
+results of Nullstellensatz, projections of varieties and quantifier
+elimination over finite fields that we extensively utilize in this
+paper.  
+
+The work of \cite{dsilva:vmcai2010} classifies (orders) the
+interpolants according to their logical strength for model 
+checking. They present a labeled interpolation system built on the
+resolution proof where each vertex of the proof is annotated with
+partially ordered labels.  Interpolants generated from different sets
+of labels have the same  order of strength as the order of the labels.
+This way a (sub-)lattice of interpolants is generated with the
+smallest interpolant being the same as obtained from the McMillan's
+system ($L_M$) \cite{McMillan:CAV03} and the largest being the
+complement of inverse of $L_M$. In contrast, we present a method for
+polynomials in $\F_2$ that can generate the complete lattice of
+interpolants with the absolute smallest and   absolute largest
+interpolants. The labeled interpolation system of
+\cite{dsilva:vmcai2010} is generalized  to support  propositional
+hyper-resolution proofs \cite{Weissenbacher2012}. 
+% They show how to transform a refutation proof to generate
+% interpolants of various strengths. 
+More recently, \cite{rummer:fmcad2013} presents the notion of
+interpolation abstraction, and describes a semantic framework for
+exploring interpolant lattices. In contrast to these works that
+qualitatively order the interpolants w.r.t. a given application
+(e.g. model checking),  we describe a method to explore interpolants
+based on the cardinality of the zero-sets of polynomial ideals, which
+in turn corresponds to the size of the abstraction.  
+

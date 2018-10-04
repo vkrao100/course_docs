@@ -1,0 +1,26 @@
+//////////////////////////////////////////////////////////
+//  lagrange's procedure function to derive the canonical 
+//  polynomial representation of function Z=FA
+//   author - Vikas Rao
+/////////////////////////////////////////////////////////
+
+proc lagrange(list inp, list out, poly P)
+{
+	poly g;
+	poly h;
+
+	for (int i=1; i<=8; i=i+1)
+	{
+	   g = 1;
+	   for (int j=1; j<=8; j=j+1)
+	   {
+	      if (j!=i)
+	      {
+	         g = g*((P-inp[j])/(inp[i]-inp[j]));
+	      }
+	   }
+       h = h + g*out[i];
+	}
+	h;
+	return(h);
+}

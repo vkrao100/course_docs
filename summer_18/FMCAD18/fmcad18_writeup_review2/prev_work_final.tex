@@ -1,0 +1,169 @@
+\section{Introduction}
+
+Past few years have seen extensive investigations into formal
+verification of arithmetic circuits. Circuits that implement
+polynomial computations over large bit-vector operands are hard to
+verify using methods such as SAT/SMT-solvers, decision diagrams,
+etc. Recent techniques have investigated the use of polynomial algebra
+and algebraic geometry techniques for their verification. These
+include verification of integer arithmetic circuits
+\cite{Armin2017ColumnWiseVO} \cite{maciej:2015} \cite{rolf:2016} and
+also finite field circuits \cite{lv:tcad2013}
+\cite{blueveri:fmsd}. While these are successful in proving
+correctness or detecting the presence of bugs, the problem of
+debugging and correction of arithmetic circuits has only just begun to
+be addressed \cite{farimah:2017:1,farimah:2016:1}. 
+
+In this paper, we address the problem of rectification of buggy finite
+field arithmetic circuits. A specification model ({\it Spec}) is given
+either as a  polynomial description $f_{}$ over a finite field, or as a
+golden model of a finite field arithmetic circuit. The finite field
+considered is the field of $2^k$ elements (denoted by $\Fkk$), where
+$k$ corresponds to the operand-width (bit-vector word length). An
+  implementation circuit $C$ is also given. Equivalence checking is performed between the {\it Spec} and the
+  circuit $C$, and the presence of a bug is detected. No restrictions
+  on the number, type, or locations of the bugs are assumed.
+
+We perform error-diagnosis and a subset   $\mathcal{N}$ of the nets of
+the circuit is identified as {\it potential rectification locations.}
+Given the {\it Spec}, the buggy implementation circuit $C$, and the set
+$\mathcal{N}$ of potential rectifiable locations, our objective is to determine
+whether or not the buggy circuit can be rectified at {\it one
+  particular net $x_i\in \mathcal{N}$}. This is called {\bf
+  single-fix rectification} in literature \cite{Huang:DAC2011}. If a
+single-fix rectification does exist at net $x_i$ in the buggy circuit,
+then our subsequent objective is to derive a polynomial function
+$U(X_{PI})$ in terms of the set of primary input variables
+$X_{PI}$. This polynomial can be translated (synthesized) into a logic
+subcircuit such that $x_i = U(X_{PI})$ acts as the rectification
+function for the buggy circuit $C$ so that $C$ matches the
+specification. 
+
+Our techniques and algorithms are based on symbolic computer algebra
+and algebraic geometry -- particularly on the concepts of the Strong
+Nullstellensatz and Gr\"obner bases \cite{gb_book}. We show how to
+apply our techniques to rectify finite field arithmetic circuits,
+where conventional SAT-solver based rectification approaches are
+infeasible.
+
+The paper is organized as follows: The following section reviews
+related previous work. Section III covers preliminary concepts. The
+formulation of the verification test is described in Section
+IV. Section V describes conditions for rectification at a particular
+net. Section VI describes how rectification function can be
+synthesized once single-fix rectification is deemed possible. Section
+VII describes our experimental results and Section VIII concludes the
+paper. 
+
+
+\section{Previous Work}
+Automated diagnosis and rectification of digital circuits
+has been addressed in \cite{Madre:ICCAD89,Liaw:ICCAD90}. The paper \cite{Sadowska:DAC95} presents 
+algorithms for synthesizing Engineering 
+Change Order (ECO) patches - an analogous problem to rectification. 
+The use of interpolation for ECO has been presented in \cite{Huang:DAC2011,roland:iccad10}.
+The single-fix rectification function approach in \cite{roland:iccad10} 
+has been extended in \cite{Huang:DAC2011} to generate multiple partial-fix functions.
+% The application of 
+% interpolants in finite fields, presented in Section \ref{sec:app}, is motivated by the formulation of 
+% circuit rectification problem and the use of interpolation in \cite{Huang:DAC2011}. 
+As these approaches are SAT based, they are not efficient for arithmetic circuits. In contrast to 
+these works, our work presents a word-level formulation for single-fix rectification.
+Computer algebra has been utilized for circuit debugging and rectification in
+\cite{farimah:2017:1,farimah:2016:1}. These approaches rely heavily on
+the structure of the arithmetic circuit for coefficient calculation. Moreover,
+if the arithmetic circuits contain redundancies, then we have shown
+that their approach is incomplete in that it cannot resolve the
+rectification question. We have uploaded an appendix at \cite{farimah_cex} for detailed discussion on these
+issues.
+
+
+%% the approach may not identify 
+%% the buggy gate due to ambiguity in coefficient values. On the other hand,
+%% our approach, although more efficient for finite field arithmetic circuits, 
+%% is applicable to any circuit in general.
+
+Once rectification is deemed feasible, the problem of finding the
+rectification function has been considered as a partial synthesis
+problem. The most recent and relevant
+approach~\cite{fujita:2015},~\cite{fujita:2012} resolves the unknown
+component problem using an incremental $SAT$ formulation. 
+% The solution to these variables
+% implements the desired logic function so that the resulting circuit
+% becomes logically equivalent to a given specification $Spec()$. Let
+% $Ckt(X,In)$ be the formula corresponding to the given circuit with
+% possible transformations, where $In$ is the set of all primary inputs
+% to the circuit. This can be formulated naturally as a two-level QBF
+% with an existential quantifier followed by a universal quantifier as
+% shown below: 
+% \vspace{0.1in}
+% \begin{align}
+% \exists \textit{X}.\forall \textit{In. Ckt(X,In) = Spec(In)}:    
+% \end{align}
+
+% The two level QBF is then solved by repeatedly applying a SAT solver. 
+  
+% %% \begin{enumerate}
+% %%   \item Let Target=($Ckt(X,In)\neq spec(In))$. Let $k$ be the num-ber of test vectors, initialized to zero. Let $TestSet$ be the set of all generated test patterns, initialized to the empty set.
+% %%   \item Check if Target is satisfiable.
+% %%   \item If SAT, $k=k+1$ and record the solution as $TestSet = TestSet \cup in_k$. Update Target = (Target($X,In))\land(Ckt(X,in_k)=Spec(in_k))$, and then go to step 2.
+% %%     \item If UNSAT, we have all the required test set patterns $\{in_1$ $\dots in_k\}$. Now, check if: $(Ckt(X,in_1) = Spec(in_1)) \land (Ckt(X,in_2) = Spec(in_2)) \land \dots (Ckt(X,in_k) = Spec$ $(in_k))$ is satisfiable.
+% %%     \item If SAT, then any solution $X$ is a correct set of transformation, while an UNSAT result proves that there does not exist a correct set of transformation.
+% %% \end{enumerate}
+
+% % By experiment, the approach shows that if the circuit is correct under these input patterns($in_k$), it is guaranteed to be correct for all of $2^{In}$ input patterns.
+% The work in~\cite{maciej:2017} poses the unknown component formulation
+% as a camouflaged circuit model and tries to de-obfuscate several types
+% of camouflaging techniques using incremental SAT solving. 
+The approach used in~\cite{andreas:2005} inserts logic corrector MUXs on the
+unknown sub-circuits and relies on SAT solvers to realize the
+functionality. The authors in~\cite{scholl:2} present a QBF 
+formulation for answering whether a partial implementation can be extended 
+to a complete design that models a given specification.
+
+Despite using state-of-the-art SAT solvers, all the above approaches
+fail to verify large and complex finite field arithmetic circuits. 
+We demonstrate the efficiency of our implementation by comparing the results against the most recent SAT based approach~\cite{fujita:2015}
+showing improvement by several orders of magnitude. 
+% The solvers still model the problem as decision procedures and, as
+% demonstrated by our experimental results, are shown to be inefficient
+% in solving verification problems on multiplier circuits beyond
+% 12-bits.  
+
+%% The technique from Farahmandi et al.~\cite{farimah:2016:1} deals with
+%% automatic debugging and correction using computer algebra
+%% concepts. The authors use function extraction~\cite{maciej:2015:1}
+%% with a specific term order~\cite{lv} to do equivalence checking,
+%% subsequently generating a remainder in case of failure. The approach
+%% then finds all possible assignments to variables of the remainder such
+%% that it generates a non-zero value. This test set helps arrive at a
+%% pruned gate list for bug localization. The procedure then takes every
+%% gate in the pruned list, starting from primary inputs, and tries to
+%% match the appeared remainders pattern. It does so by computing the
+%% difference between the polynomial computed at the output of the
+%% suspicious gate against the polynomial computed by a probable set of
+%% gate corrections. The coefficient computation~\cite{maciej:2015:2}
+%% during pattern matching relies heavily on the half-adder based circuit
+%% structure. The paper doesn't discuss the ambiguities in weight
+%% calculations when the gate structure differs from the given
+%% topology. The approach is not complete in the case when there are
+%% redundant gates in the circuit as we found through our
+%% experiments.
+
+%% The authors of paper \cite{maciej:2018} present an approach to 
+%% diagnose and rectify finite field multipliers using a forward topological 
+%% order. The approach is topologically constrained for the finite field 
+%% multipliers. The approach presented in this paper makes no such assumption 
+%% about the circuit topology.
+
+% In contrast, the approach 
+% presented in this paper finds a single-fix rectification solution,
+% modelled as an unknown component in the circuit, after it is found
+% that an appropriate function for unknown component exists. 
+
+%% We presented an approach to resolve the unknown component using \Grobner basis and ideal membership test. It also described a method to find multiple solutions for the unknown component. In this paper,
+%% we have improved the previous approach and extended it by finding locations in the circuit where rectifications are possible. The authors in \cite {} describe a procedure to ascertain that the circuit can be rectified at a certain location, and find a rectification function for the circuit using interpolants in finite fields. The part of our approach for finding potential rectification location can be supplemental to their work.
+
+% These drawbacks are resolved in our paper in addition to providng a complete solution to the unknown component problem.
+
+ 

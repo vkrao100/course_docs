@@ -1,0 +1,9 @@
+counter example for farimah - put it on archive(trammy) and refer it.
+point on comparison in prev work (end of prev work)
+remove buchbergers algo
+remove 14, 15, 23
+theorem 5.1 proof (check with prof florian)
+
+
+
+

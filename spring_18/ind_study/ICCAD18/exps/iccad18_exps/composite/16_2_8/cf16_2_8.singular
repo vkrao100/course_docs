@@ -1,0 +1,166 @@
+LIB "multivariate_burg.lib";
+LIB "primdec.lib";
+LIB "control.lib";
+LIB "linalg.lib";
+
+//k=16, m=2, n=8 -- k=m*n
+
+ring r = (2, X), (CCS,CCI,A,B,AA,BB,A0,B0,A1,B1,A2,B2,A3,B3,A4,B4,A5,B5,A6,B6,A7,B7,a_0_0_,b_0_0_,a_0_1_,b_0_1_,a_1_0_,b_1_0_,a_1_1_,b_1_1_,a_2_0_,b_2_0_,a_2_1_,b_2_1_,a_3_0_,b_3_0_,a_3_1_,b_3_1_,a_4_0_,b_4_0_,a_4_1_,b_4_1_,a_5_0_,b_5_0_,a_5_1_,b_5_1_,a_6_0_,b_6_0_,a_6_1_,b_6_1_,a_7_0_,b_7_0_,a_7_1_,b_7_1_,a0,b0,a1,b1,a2,b2,a3,b3,a4,b4,a5,b5,a6,b6,a7,b7,a8,b8,a9,b9,a10,b10,a11,b11,a12,b12,a13,b13,a14,b14,a15,b15),lp;
+//reordered 
+//ring r = (2, X), (CCS,CCI,A,B,AA,BB,A0,B0,A1,B1,A2,B2,A3,B3,A4,B4,A5,B5,A6,B6,A7,B7,a_0_0_,b_0_0_,a_0_1_,b_0_1_,a_1_0_,b_1_0_,a_1_1_,b_1_1_,a_2_0_,b_2_0_,a_2_1_,b_2_1_,a_3_0_,a_3_1_,a_4_0_,b_4_0_,a_4_1_,b_4_1_,a_5_0_,b_5_0_,a_5_1_,b_5_1_,a_6_0_,b_6_0_,a_6_1_,b_6_1_,a_7_0_,b_7_0_,a_7_1_,b_7_1_,a0,b0,a1,b1,a2,b2,a3,b3,a4,b4,a5,b5,a6,b6,a7,b7,a8,b8,a9,b9,a10,b10,a11,b11,a12,b12,a13,b13,a14,b14,a15,b15,b_3_0_,b_3_1_),lp;
+
+minpoly = X^16+X^15+X^7+X^2+1;
+
+ideal J1 =
+CCS+ A*B, 
+CCI+AA*BB,
+A+a0*X^0+a1*X^1+a2*X^2+a3*X^3+a4*X^4+a5*X^5+a6*X^6+a7*X^7+a8*X^8+a9*X^9+a10*X^10+a11*X^11+a12*X^12+a13*X^13+a14*X^14+a15*X^15,
+B+b0*X^0+b1*X^1+b2*X^2+b3*X^3+b4*X^4+b5*X^5+b6*X^6+b7*X^7+b8*X^8+b9*X^9+b10*X^10+b11*X^11+b12*X^12+b13*X^13+b14*X^14+b15*X^15,
+AA+A0*X^0+A1*X^1+A2*X^2+A3*X^3+A4*X^4+A5*X^5+A6*X^6+A7*X^7,
+BB+B0*X^0+B1*X^1+B2*X^2+B3*X^3+B4*X^4+B5*X^5+B6*X^6+B7*X^7,
+A0+a_0_0_+(X^14+X^10+X^8+X^7+X^6+X+1)*a_0_1_,
+B0+b_0_0_+(X^14+X^10+X^8+X^7+X^6+X+1)*b_0_1_,
+A1+a_1_0_+(X^14+X^10+X^8+X^7+X^6+X+1)*a_1_1_,
+B1+b_1_0_+(X^14+X^10+X^8+X^7+X^6+X+1)*b_1_1_,
+A2+a_2_0_+(X^14+X^10+X^8+X^7+X^6+X+1)*a_2_1_,
+B2+b_2_0_+(X^14+X^10+X^8+X^7+X^6+X+1)*b_2_1_,
+A3+a_3_0_+(X^14+X^10+X^8+X^7+X^6+X+1)*a_3_1_;
+
+poly uc = B3+b_3_0_+(X^14+X^10+X^8+X^7+X^6+X+1)*b_3_1_;
+
+ideal J2 = 
+A4+a_4_0_+(X^14+X^10+X^8+X^7+X^6+X+1)*a_4_1_,
+B4+b_4_0_+(X^14+X^10+X^8+X^7+X^6+X+1)*b_4_1_,
+A5+a_5_0_+(X^14+X^10+X^8+X^7+X^6+X+1)*a_5_1_,
+B5+b_5_0_+(X^14+X^10+X^8+X^7+X^6+X+1)*b_5_1_,
+A6+a_6_0_+(X^14+X^10+X^8+X^7+X^6+X+1)*a_6_1_,
+B6+b_6_0_+(X^14+X^10+X^8+X^7+X^6+X+1)*b_6_1_,
+A7+a_7_0_+(X^14+X^10+X^8+X^7+X^6+X+1)*a_7_1_,
+B7+b_7_0_+(X^14+X^10+X^8+X^7+X^6+X+1)*b_7_1_,
+a_0_0_+a0+a9+a11+a13+a14,
+b_0_0_+b0+b9+b11+b13+b14,
+a_0_1_+a8+a9,
+b_0_1_+b8+b9,
+a_1_0_+a1+a9+a10+a11+a12+a13+a15,
+b_1_0_+b1+b9+b10+b11+b12+b13+b15,
+a_1_1_+a8+a10,
+b_1_1_+b8+b10,
+a_2_0_+a2+a10+a11+a12+a13+a14,
+b_2_0_+b2+b10+b11+b12+b13+b14,
+a_2_1_+a9+a11,
+b_2_1_+b9+b11,
+a_3_0_+a3+a9+a12+a15,
+b_3_0_+b3+b9+b12+b15,
+a_3_1_+a8+a9+a10+a12,
+b_3_1_+b8+b9+b10+b12,
+a_4_0_+a4+a9+a10+a11+a14,
+b_4_0_+b4+b9+b10+b11+b14,
+a_4_1_+a8+a10+a11+a13,
+b_4_1_+b8+b10+b11+b13,
+a_5_0_+a5+a9+a10+a12+a13+a14+a15,
+b_5_0_+b5+b9+b10+b12+b13+b14+b15,
+a_5_1_+a8+a11+a12+a14,
+b_5_1_+b8+b11+b12+b14,
+a_6_0_+a6+a8+a9+a10+a11+a13+a14+a15,
+b_6_0_+b6+b8+b9+b10+b11+b13+b14+b15,
+a_6_1_+a8+a9+a11+a12+a14+a15,
+b_6_1_+b8+b9+b11+b12+b14+b15,
+a_7_0_+a7+a10+a12+a13+a15,
+b_7_0_+b7+b10+b12+b13+b15,
+a_7_1_+a8+a10+a12+a13+a15,
+b_7_1_+b8+b10+b12+b13+b15;
+
+ideal J0 =
+a0^2 + a0,
+a1^2 + a1,
+a2^2 + a2,
+a3^2 + a3,
+a4^2 + a4,
+a5^2 + a5,
+a6^2 + a6,
+a7^2 + a7,
+a8^2 + a8,
+a9^2 + a9,
+a10^2 + a10,
+a11^2 + a11,
+a12^2 + a12,
+a13^2 + a13,
+a14^2 + a14,
+a15^2 + a15,
+b0^2 + b0,
+b1^2 + b1,
+b2^2 + b2,
+b3^2 + b3,
+b4^2 + b4,
+b5^2 + b5,
+b6^2 + b6,
+b7^2 + b7,
+b8^2 + b8,
+b9^2 + b9,
+b10^2 + b10,
+b11^2 + b11,
+b12^2 + b12,
+b13^2 + b13,
+b14^2 + b14,
+b15^2 + b15; 
+
+//word level spec
+poly spec = CCS - CCI;
+
+reduce(spec,J1+J2+uc+J0);
+
+poly quo;
+poly rem;
+poly prem;
+
+prem = reduce(spec,J1);
+
+rem, quo = multivariate_burg(prem,lead(uc),J0); 
+
+"remainder",rem;
+"quotient",quo;
+
+ideal dec = variables(quo);
+ideal JCp = quo,J2;
+if (size(dec)>=1)
+{
+	"quotient is not a constant";
+	ideal JG = slimgb(JCp);
+	matrix V = lift(JG,rem);
+	matrix Vt = transpose(V);
+	Vt;
+	matrix U = lift(JCp,JG);
+	U;
+	poly sol;
+	int i;
+	for(i=1;i<=size(JG);i++)
+	{
+		sol = sol + (Vt[1,i]*U[1,i]);
+	}
+}
+else
+{	
+	"quotient is a constant";
+	if (quo != 1)
+	{
+		matrix quoi = inverse(quo);
+	}
+	else
+	{
+		matrix quoi = 1;
+	}
+	poly irem   = quoi[1,1]*rem;
+	poly sol    = reduce(irem,J2+J0);
+}
+
+"solution for P is ",sol;
+
+"actual solution in terms of word level abstraction", uc;
+
+"reduce solution from word level abstraction - reduce(uc,J2)", reduce(uc,J2);
+
+sol = B3+b3+(X^14+X^10+X^8+X^7+X^6+X+1)*b8+(X^14+X^10+X^8+X^7+X^6+X)*b9+(X^14+X^10+X^8+X^7+X^6+X+1)*b10+(X^14+X^10+X^8+X^7+X^6+X)*b12+b15;
+quo = (X^7)*A4+(X^8)*A5+(X^9)*A6+(X^10)*A7+(X^3)*a_0_0_+(X^15+X^13+X^11+X^10+X^9+X^8+X^7+X^4+X^2+X+1)*a_0_1_+(X^4)*a_1_0_+(X^15+X^14+X^12+X^11+X^10+X^9+X^8+X^7+X^5+X^3+X+1)*a_1_1_+(X^5)*a_2_0_+(X^13+X^12+X^11+X^10+X^9+X^8+X^7+X^6+X^4+X+1)*a_2_1_+(X^6)*a_3_0_+(X^14+X^13+X^12+X^11+X^10+X^9+X^8+X^7+X^5+X^2+X)*a_3_1_;
+
+ideal colon = quotient((J2+J0),quo);
+"colon",colon;

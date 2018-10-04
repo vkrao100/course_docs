@@ -1,0 +1,144 @@
+% This is how you write a comment in Latex
+
+\documentclass[journal]{IEEEtran}
+
+%If you need only single column, use this one:
+%\documentclass[journal, onecolumn]{IEEEtran}
+
+%% I have provided the IEEEtran.cls, IEEEtran.sty IEEEtran.bst style
+%% files in this directory.  
+
+%% If the above command does not work if your system does not have the
+%% IEEE transactions styles installed, then use the following 
+
+%\documentclass[11pt]{article}
+
+
+% This package is used to write algorithms (see Buchberger's algorithm
+% in the text). File algorithm2e.sty included in the directory
+\usepackage[ruled]{algorithm2e}
+%%for algorithm2e package, label has to be following caption in the same line!!!
+\renewcommand{\algorithmcfname}{ALGORITHM}
+\SetAlFnt{\small}
+\SetAlCapFnt{\small}
+\SetAlCapNameFnt{\small}
+\SetAlCapHSkip{0pt}
+\IncMargin{-\parindent}
+
+
+% These packages will help you with Math and Figures
+\usepackage{helvet}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{subfig}
+\usepackage{comment}
+\usepackage{mathtools}
+%\usepackage{algorithm}
+%%indent in algorithm
+
+
+\setcounter{page}{1}
+
+
+% New command for the table notes.
+\def\tabnote#1{{\small{#1}}}
+
+% New command for the line spacing.
+\newcommand{\ls}[1]
+    {\dimen0=\fontdimen6\the\font
+     \lineskip=#1\dimen0
+     \advance\lineskip.5\fontdimen5\the\font
+     \advance\lineskip-\dimen0
+     \lineskiplimit=.9\lineskip
+     \baselineskip=\lineskip
+     \advance\baselineskip\dimen0
+     \normallineskip\lineskip
+     \normallineskiplimit\lineskiplimit
+     \normalbaselineskip\baselineskip
+     \ignorespaces
+    }
+
+
+
+
+\newtheorem{Algorithm}{Algorithm}[section]
+\newtheorem{Definition}{Definition}[section]
+\newtheorem{Example}{Example}[section]
+\newtheorem{Proposition}{Proposition}[section]
+\newtheorem{Lemma}{Lemma}[section]
+\newtheorem{Theorem}{Theorem}[section]
+\newtheorem{Corollary}{Corollary}[section]
+\newtheorem{Proof}{Proof}
+
+
+%%% These are my macros that I use for math symbols
+
+\newcommand{\B}{{\mathbb{B}}}
+\newcommand{\Z}{{\mathbb{Z}}}
+\newcommand{\R}{{\mathbb{R}}}
+\newcommand{\Q}{{\mathbb{Q}}}
+\newcommand{\N}{{\mathbb{N}}}
+\newcommand{\C}{{\mathbb{C}}}
+\newcommand{\Zn}{{\mathbb{Z}}_{n}}
+\newcommand{\Zp}{{\mathbb{Z}}_{p}}
+\newcommand{\F}{{\mathbb{F}}}
+\newcommand{\Fbar}{{\overline{\mathbb{F}}}}
+\newcommand{\Fq}{{\mathbb{F}}_{q}}
+\newcommand{\Fqbar}{{\overline{{\mathbb{F}}_q}}}
+\newcommand{\Fkk}{{\mathbb{F}}_{2^k}}
+\newcommand{\Zkk}{{\mathbb{Z}}_{2^k}}
+\newcommand{\Fkkx}[1][x]{\ensuremath{\mathbb{F}}_{2^k}[#1]\xspace}
+\newcommand{\Grobner}{Gr\"{o}bner\xspace}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+
+\newcommand{\idealj}{{J = \langle f_1, \dots, f_s\rangle}}
+\newcommand{\idealg}{{J = \langle g_1, \dots, g_t\rangle}}
+\newcommand{\vfqj}{{V_{\Fq}(J)}}
+\newcommand{\vfkkj}{{V_{\Fkk}(J)}}
+
+
+\newcommand{\debug}[1]{\textcolor{red}{[ #1 ]}}
+
+%%set spacing between table columns
+\setlength{\tabcolsep}{3pt}
+
+%% for larger matrices
+\setcounter{MaxMatrixCols}{15}
+
+%\IEEEoverridecommandlockouts
+
+\begin{document}
+
+
+%Page header
+\markboth{Kalla wrote this document}{Prof. Kalla is the best}
+
+%% \title{\large{\textsc{Formal Verification of Galois Field Arithmetic
+%%       Circuits using Computer Algebra Techniques }}}  
+
+\title{Engineers Know How to Put Math to Work}
+\author{Student 1, Student 2\\
+Department of  Electrical and Computer Eng.\\
+University of Utah, Salt Lake City, UT-84112\\\{myemail\}@utah.edu }
+
+
+\maketitle
+
+
+%%%%%%%%%%%%%% Include your files here in separate files 
+\input{abs.tex}
+\input{intro.tex}
+\input{exp.tex}
+
+%%%%%%%%%%%%%%%%%%%% The bibliography %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% I am providing IEEE style bibliography formatting through the file IEEEtran.bst file
+\bibliographystyle{IEEEtran}
+\bibliography{ref}
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%  End of IEEEsample.tex  %%%%%%%%%%%%%%%%%%%%%%%%%%%

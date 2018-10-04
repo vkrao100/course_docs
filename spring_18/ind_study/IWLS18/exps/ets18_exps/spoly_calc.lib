@@ -1,0 +1,17 @@
+/*procedure to calculate spoly to support grobner basis calculation
+
+Author - Vikas Rao
+Date   - 10-03-2016
+
+*/
+LIB "poly.lib";
+
+proc spoly_calc(poly f1, poly f2)
+
+spoly
+{
+   poly lc = lcm(leadmonom(f1), leadmonom(f2));
+   poly S  = ((lc/lead(f1)) * f1) - ((lc/lead(f2))*f2);
+
+   return(S);
+} 

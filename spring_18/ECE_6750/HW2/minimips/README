@@ -1,0 +1,24 @@
+On a linux or unix machine, can build the assember with the command make.
+
+In the test directory, try this:
+
+[myers@jiaqi minimips]$ cd test
+[myers@jiaqi test]$ ../assembler
+MIPs Assembler compiled Sep  3 2004 10:51:36
+Department of Electrical Engineering
+(c)opyright 1998
+Enter file name to compile -> imem.as
+Enter output file name -> imem.out
+ 
+Completed in 0.000333 seconds.
+[myers@jiaqi test]$ more imem.out
+8c220000
+8c640000
+00a42020
+00642824
+ac640000
+00822022
+1080fff9
+08000005
+
+In the output file are your encoded instructions.

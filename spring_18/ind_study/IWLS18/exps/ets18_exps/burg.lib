@@ -1,0 +1,187 @@
+LIB "zeroset.lib";
+
+/* This function computes the univariant division of two polynomials. */
+proc univariateDivision(poly F, poly G)
+{
+	poly remainder = F; 
+	poly q;
+
+	q = 0;
+
+	while ( remainder != 0 && deg(remainder) >= deg(G))
+	{
+		q = q + (lead(remainder)/lead(G)); 
+		remainder = remainder - ((lead(remainder)/lead(G))*G); 
+	} 
+	return (q, remainder); 	
+}
+
+/* This function computes the euclidean gcd of two polynomials recursively. */
+proc euclidean(poly a, poly b)
+{
+	poly f; 
+	if (b == 0)
+	{
+		f = (a/leadcoef(a)); 
+		return (f); 
+	} 
+	else
+	{
+		poly q, r = univariateDivision(a, b); 
+		return (euclidean(b,r)); 
+	}
+}
+
+/* This function computes the extended euclidean of two polynomials, u1, u2 such that f = f1*u1+f2*u2. */
+proc extendedEuclidean(poly a, poly b)
+{
+	poly r0 = a;
+        poly r1 = b;
+        poly s0 = 1;
+        poly s1 = 0;
+        poly t0 = 0;
+        poly t1 = 1;
+	poly q, r2, s2, t2;
+
+        while(r1 != 0)
+        {
+                q, r2 = univariateDivision(r0, r1);
+                r0 = r1;
+                r1 = r2;
+                s2 = s0 - q*s1;
+                s0 = s1;
+                s1 = s2;
+                t2 = t0 - q*t1;
+                t0 = t1;
+                t1 = t2;
+        }
+        r0 = r0/leadcoef(r0);
+        return(r0, s0, t0);
+}
+
+/* This function computes the multivariant division of polynomials.*/
+proc multivariate(poly f, list #)
+{
+	list u; 
+	int index;
+	for(int i = 1; i <= size(#); i++)
+	{
+		u[i] = 0;
+	} 
+	poly r = 0;
+	poly h = f; 
+	while (h != 0 )
+	{
+		index =  isDivisible(h, #);
+		if(index != -1)
+		{
+			u[index] = u[index] + (lead(h)/lead(#[index]));
+			h = h - (lead(h)/lead(#[index]))*#[index]; 	
+		} 
+		else
+		{
+			r = r + lead(h); 
+			h = h - lead(h); 
+		}
+	} 
+	return (u, r);   	 
+}
+/* Checks if any polynomial in a given list can divide h */ 
+proc isDivisible(poly h, list #)
+{
+	poly r;
+	for(int i = 1; i <= size(#); i++)
+	{
+		r = division(leadmonom(h),leadmonom(#[i]))[2][1];
+		if(r == 0)
+		{
+			return (i); 
+		}
+	}
+	return (-1);
+}
+
+/*Computes the Grobner Basis. */
+proc buchberger(list #)
+{
+	poly r;
+	int i,j;
+	list q;  
+	list G = #;
+	list Gnot; 
+	int iteration = 0;
+	int nonzero_remainder = 0; 
+
+	while(size(G) != size(Gnot))
+	{
+		Gnot = G; 
+		iteration++;
+		for(i = 1; i<= size(Gnot); i++)
+		{
+			for(j = i; j<= size(Gnot); j++)
+			{
+				if( Gnot[i] != Gnot[j])
+				{
+					q, r = multivariate(S(Gnot[i], Gnot[j]), Gnot);
+					if( r != 0 )
+					{
+						G[size(G)+1] = r; 
+						nonzero_remainder++;
+					}
+				}
+			}
+		}		
+	}
+	return (G, iteration, nonzero_remainder); 
+}
+
+/* Returns S poly */
+proc S (poly f, poly g)
+{
+	poly L = lcm(leadmonom(f), leadmonom(g)); 
+	return	((L/lead(f))*f - (L/lead(g))*g); 
+}
+
+/*Computes the reduced form of the Grobner Basis. */
+proc reducedGrobner (list #)
+{
+	list result; 
+	int isDiv;
+	int i,j;
+	for(i=1; i<= size(#); i++)
+	{
+		isDiv = 0;
+		for(j = 1; j<= size(#); j++)
+		{
+			if( i != j)
+			{
+				if (division(leadmonom(#[i]), leadmonom(#[j]))[2][1] == 0) 
+				{
+					isDiv = 1; 	
+				} 
+			}	
+		}
+		if(isDiv == 0)
+		{
+			result[size(result)+1] = #[i];	
+		}
+	}
+	return (result); 
+}
+
+/* Ideal membership test */
+proc isContained (poly f, list #)
+{
+	int iteration, nonzero_remainder; 
+	list g; 
+	g, iteration, nonzero_remainder  = buchberger(f1, f2); 
+	list result; 
+	result = reducedGrobner(g);
+	poly remainder; 
+	g, remainder = multivariate(f, result); 
+	if(remainder == 0)
+	{
+		return (1); 
+	}
+	return (0); 
+}

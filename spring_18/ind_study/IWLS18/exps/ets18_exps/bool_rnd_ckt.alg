@@ -1,0 +1,12 @@
+z0,z1,s,o,m,n,a0,b0,a1,b1,Z,A,B;
+Z,A,B;
+X^2+X+1;
+Z+z0+z1*X;
+z0+o+s,
+z1+o+s+o*s,
+o+m*b0,
+s+n+b1+n*b1,
+m+a0+b0,
+n+a1+b1,
+A+a0+a1*X,
+B+b0+b1*X;

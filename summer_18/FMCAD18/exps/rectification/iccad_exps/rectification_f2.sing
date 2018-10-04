@@ -1,0 +1,120 @@
+LIB "my_proc.lib";
+// RTTO based order
+ring r = 2, (z, z2, z1, d0, e2, e1, e0, a, b, c), lp;
+
+//Trying with a different order, with degree-lex based order
+ring r = 2, (z, d0, e2, e1, e0, z2, z1, a, b, c), dp;
+
+//Forward topological order
+//ring R3 = 2, (a,b,c,e0,e1,e2,d0,z1,z2,z), lp;
+poly spec = z + a*c + a + b*c + b + c;
+
+poly f7 = z + z1*z2;
+poly f5 = z1 + e0 + d0 + e0*d0;
+poly f6 = z2 + d0 + e2;
+// f4 = correct AND gate
+poly f4 = d0 + e1*c;
+// f4b = buggy XOR gate
+poly f4b = d0 + e1 + c;
+poly f3 = e2 + c + 1;
+poly f2 = e1 + b*c + b + c;
+poly f1 = e0 + a + b;
+
+poly f8 = a^2 + a;
+poly f9 = b^2 + b;
+poly f10 = c^2 + c;
+poly f11 = e0^2 + e0;
+poly f12 = e1^2 + e1;
+poly f13 = e2^2 + e2;
+poly f14 = d0^2 + d0;
+poly f15 = z1^2 + z1;
+poly f16 = z2^2 + z2;
+poly f17 = z^2 + z;
+
+
+ideal J = f1, f2, f3, f4, f5, f6, f7;
+ideal J0 = f8, f9, f10, f11, f12, f13, f14, f15, f16, f17;
+// Jb = buggy ideal with f4b as the buggy polynomial
+ideal Jb = f1, f2, f3, f4b, f5, f6, f7;
+
+
+printf("reduce spec w.r.t. Jb + J0, gives remainder r:");
+poly r;
+r = reduce(spec, groebner(Jb+J0));
+r;
+
+poly f4L = d0 + 1;
+poly f4H = d0;
+
+ideal JL = f1, f2, f3, f4L, f5, f6, f7;
+ideal JH = f1, f2, f3, f4H, f5, f6, f7;
+
+printf("reduce spec mod JL + J0 gives rL");
+poly rL = reduce(spec, groebner(JL+J0));
+
+printf("rL:");
+rL;
+
+printf("reduce spec mod JH + J0 gives rH");
+poly rH = reduce(spec, groebner(JH+J0));
+
+printf("rH:");
+rH;
+
+ring r = 2, (z, z2, z1, d0, e2, e1, e0, a, b, c), lp;
+
+poly rL = a*c+e1+a+c;
+poly rH = c;
+
+poly f7 = z + z1*z2;
+poly f5 = z1 + e0 + d0 + e0*d0;
+poly f6 = z2 + d0 + e2;
+// f4 = correct AND gate
+poly f4 = d0 + e1*c;
+// f4b = buggy XOR gate
+poly f4b = d0 + e1 + c;
+poly f3 = e2 + c + 1;
+poly f2 = e1 + b*c + b + c;
+poly f1 = e0 + a + b;
+
+poly f8 = a^2 + a;
+poly f9 = b^2 + b;
+poly f10 = c^2 + c;
+poly f11 = e0^2 + e0;
+poly f12 = e1^2 + e1;
+poly f13 = e2^2 + e2;
+poly f14 = d0^2 + d0;
+poly f15 = z1^2 + z1;
+poly f16 = z2^2 + z2;
+poly f17 = z^2 + z;
+
+
+ideal J = f1, f2, f3, f4, f5, f6, f7;
+ideal J0 = f8, f9, f10, f11, f12, f13, f14, f15, f16, f17;
+
+//rL = reduce(rL,J);
+//rH = reduce(rH,J);
+
+// To Consider complements of varieties
+ideal rL_comp, rH_comp, irL, irH;
+irL = rL;
+irH = rH;
+rL_comp = quotient(J0, irL);
+rH_comp = quotient(J0, irH);
+
+printf("Ideal quotient J0:rL is:");
+rL_comp;
+
+printf("Ideal quotient J0:rH is:");
+rH_comp;
+
+ideal PI = a,b,c;
+ideal EL = elm_PI_list(slimgb(rL_comp),PI);
+ideal EH = elm_PI_list(slimgb(rH_comp),PI);
+
+EL;
+EH;
+
+printf("Their ideal sum rL_comp + rH_comp should contain unity");
+printf("Grobner basis of rL_comp + rH_comp is:");
+groebner(EL + EH);

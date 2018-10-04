@@ -1,0 +1,149 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  IEEEsample.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%    More information: see the header of IEEEtran.sty
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%
+%%%%\documentclass[prodmode,acmtecs]{acmsmall}
+
+\documentclass[conference, onecolumn]{IEEEtran}
+
+%\usepackage[ruled]{./algorithm2e}
+%%for algorithm2e package, label has to be following caption in the same line!!!
+%% \renewcommand{\algorithmcfname}{ALGORITHM}
+%% \SetAlFnt{\small}
+%% \SetAlCapFnt{\small}
+%% \SetAlCapNameFnt{\small}
+%% \SetAlCapHSkip{0pt}
+%% \IncMargin{-\parindent}
+
+% Metadata Information
+%\acmVolume{X}
+%\acmNumber{X}
+%\acmArticle{39}
+%\acmYear{2010}
+%\acmMonth{3}
+
+
+\usepackage{helvet}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{subfig}
+\usepackage{comment}
+\usepackage{mathtools}
+%\usepackage{algorithm}
+%%indent in algorithm
+
+
+%\setcounter{page}{0}
+\pagestyle{empty}
+%\thispagestyle{empty}
+
+
+% New command for the table notes.
+\def\tabnote#1{{\small{#1}}}
+
+% New command for the line spacing.
+\newcommand{\ls}[1]
+    {\dimen0=\fontdimen6\the\font
+     \lineskip=#1\dimen0
+     \advance\lineskip.5\fontdimen5\the\font
+     \advance\lineskip-\dimen0
+     \lineskiplimit=.9\lineskip
+     \baselineskip=\lineskip
+     \advance\baselineskip\dimen0
+     \normallineskip\lineskip
+     \normallineskiplimit\lineskiplimit
+     \normalbaselineskip\baselineskip
+     \ignorespaces
+    }
+
+
+
+
+%the following is for space before and after align or other equation environment.
+
+%%
+%\newtheorem{Algorithm}{Algorithm}[section]
+
+\newtheorem{Algorithm}{Algorithm}[section]
+\newtheorem{Definition}{Definition}[section]
+\newtheorem{Example}{Example}[section]
+\newtheorem{Proposition}{Proposition}[section]
+\newtheorem{Lemma}{Lemma}[section]
+\newtheorem{Theorem}{Theorem}[section]
+\newtheorem{Corollary}{Corollary}[section]
+
+
+\newcommand{\Fq}{{\mathbb{F}}_{q}}
+\newcommand{\Fkk}{{\mathbb{F}}_{2^k}}
+\newcommand{\Fkkx}[1][x]{\ensuremath{\mathbb{F}}_{2^k}[#1]\xspace}
+\newcommand{\Grobner}{Gr\"{o}bner\xspace}
+%%%
+
+\newcommand{\debug}[1]{\textcolor{gray}{[ #1 ]}}
+
+
+
+%%set spacing between table columns
+\setlength{\tabcolsep}{3pt}
+
+%% for larger matrices
+\setcounter{MaxMatrixCols}{15}
+\begin{document}
+
+
+% Page heads
+%\markboth{J. Lv et al.}{Formal Verification of Finite Field Arithmetic Circuits using Computer Algebra Techniques}
+
+
+%% \title{\large{\textsc{Formal Verification of Galois Field Arithmetic
+%%       Circuits using Computer Algebra Techniques }}}  
+
+\title{\Large \sc 
+Boolean Gr\"obner Basis Reductions on Datapath Circuits using the Unate Cube Set Algebra
+}
+
+\author{
+
+\IEEEauthorblockN{Utkarsh Gupta,
+Priyank Kalla,
+Vikas K. Rao}
+
+\ \\
+%\IEEEauthorblockA{
+\IEEEauthorblockA{Electrical and Computer Engineering\\
+University of Utah, Salt Lake City, UT 84112\\
+utkarsh.gupta@utah.edu, kalla@ece.utah.edu, vikas.k.rao@utah.edu\\
+ }
+}
+
+\maketitle
+%%%%%%%%%%%%%%%%%%%% abstract %%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+{\bf Designated Contact Author: Priyank Kalla}\\
+Email: kalla@ece.utah.edu\\
+\end{center}
+
+\ \\
+\ \\
+{\bf Prior Publication of this work:} This paper has not been
+published in any archival conference proceedings, not in any
+journals. The work is being submitted only to IEEE TCAD. 
+
+
+
+
+%%%%%%%%%%%%%%%%%%%% Include your files here %%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%% The bibliography %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{IEEEtran}
+\bibliography{logic}
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%  End of IEEEsample.tex  %%%%%%%%%%%%%%%%%%%%%%%%%%%

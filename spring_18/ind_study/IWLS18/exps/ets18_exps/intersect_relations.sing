@@ -1,0 +1,28 @@
+LIB "primdec.lib";
+ring r = (2, a), (x,y), lp; 
+
+minpoly = a^2 + a + 1;
+
+//ideal I
+poly f1 = x2y + 1;
+poly f2 = x + 1;
+//ideal J
+poly f3 = xy^2 + 1;
+//poly f4 = x + 1;
+//vanishing poly's
+poly f5 = x^4 + x;
+poly f6 = y^4 + y;
+
+ideal I = f1, f5, f6;
+ideal J = f3, f5, f6;
+
+list GR = groebner(I+J);
+"GB of the given ideals",GR;
+list I1 = groebner(radical(intersect(I,J)));
+//list I1 = radical(intersect(I,J));
+"radical of intersections - groebner(radical(intersect(I,J)))",I1;
+list I2 = groebner(intersect(radical(I),radical(J)));
+//list I2 = intersect(radical(I),radical(J));
+"radical of intersections - groebner(intersect(radical(I),radical(J)))",I2;
+list I3 = groebner(radical(I,J));
+"product of radicals - groebner(radical(I,J))",I3;

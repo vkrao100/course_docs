@@ -1,0 +1,50 @@
+/* singular script supporting library to implement multivariate polynomial division
+   Author - Vikas Rao
+   Date   - 10-03-2016
+   Hw     - #3 sub question - #3 
+*/
+
+proc multivariate_division(poly f, list l)
+
+multivariate
+{
+   poly q = 0;
+   poly rem = 0;
+   poly h = f;
+   list u;
+   poly m;
+   int i, j, k, divtrue;
+   for (k=1; k<=size(l);k=k+1)
+   {
+      for (j=1;j<=size(l[k]);j=j+1)
+      {  
+         u[j] = 0;
+      }
+   }
+   while (h!=00)
+   {
+      i = 1;
+      divtrue = 0;
+      while ((i<=size(l[1])) && !(divtrue))
+      {  
+         poly q = leadmonom(h)/leadmonom(l[1][i]);
+         if (leadmonom(h) - (leadmonom(l[1][i])*q) == 0)
+         {
+            u[i] = u[i] + (lead(h)/lead(l[1][i]));
+            h    = h - ((lead(h)/lead(l[1][i]))*l[1][i]);
+            divtrue = 1;
+         }
+         else
+         {
+            i = i+1;
+         }
+      }
+      if (!(divtrue))
+         {  
+            rem = rem + lead(h);
+            h   = h - lead(h);
+         }
+   }
+return (rem);
+} 
+

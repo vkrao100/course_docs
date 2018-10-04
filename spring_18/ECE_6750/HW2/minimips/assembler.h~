@@ -1,0 +1,15 @@
+#ifndef ASSEMBLER_H
+#define ASSEMBLER_H
+
+#include <sys/time.h>
+#include <unistd.h>
+#include <iostream.h>
+#include <String.h>
+#include <vector.h>
+#include <algo.h>
+#include <math.h>
+
+#include "mipsParser.h"
+#include "instruction.h"
+
+#endif

@@ -1,0 +1,181 @@
+\section{Identification of the Rectification Target}
+
+After the presence of a bug is detected, we address the problem of
+single-fix rectification of $C$. In this section, we present an
+approach that ascertains whether or not a single-fix rectification can
+be applied at a given (target) net $x_i$ in $C$. In principle, our
+approach can be applied at every net $x_i$ in $C$ to see if $C$ at all
+admits single-fix rectification. However, it is possible to 
+heuristically prune the search for these target nets $x_i$ by
+analyzing the non-zero remainder obtained by the \Grobner basis
+reduction $f\xrightarrow{F,F_{0}^{PI}}_+r$. We first briefly describe
+an approach that we have utilized in this paper to construct a subset
+$\mathcal{N}\subseteq \{x_1,\dots,x_n\}$ as possible rectification
+targets. This rectification target pruning approach is inspired from
+\cite{farimah:2016}. 
+Then we address the rectification theorem and the search for
+the rectification function --- the main contributions of this paper. 
+
+\subsubsection{Potential rectification target nets} The
+circuit $C$ has $k$-bit operands, and the output is expressed as $Z =
+\sum_{i=0}^{k-1} z_i \alpha^i$. Then the non-zero remainder $r$ can 
+be partitioned based on the coefficients of the monomials in $r$ and
+re-expressed as: %according to: % powers of $\alpha$: 
+
+\vspace{-0.1in}
+\begin{align}
+r = \alpha^0 (r_0) + \alpha^1 (r_1) + \dots + \alpha^{k-1} (r_{k-1})
+\end{align}
+
+Non-zero  terms $r_i$ (with coefficient $\alpha^i$) imply that the
+effect of the bug is observable at the bit-level output $z_i$. We
+consider the transitive fanin cones of logic of the output bits
+$z_i$. When a bug affects multiple outputs, a single-fix rectification
+might exist only at the nets that lie in the intersection of the
+respective fanin-cones of the affected outputs. In our experiments, we
+include these nets in $\mathcal{N}$ to check if any one of them admits
+a single-fix rectification.
+
+\begin{Example}
+As shown in Ex. \ref{ex:1}, $f\xrightarrow{F,F_{0}^{PI}}_+r =
+(\alpha+1)a_0a_1b_1b_0+(\alpha+1)a_0a_1b_1+(\alpha+1)a_1b_1b_0+(\alpha)a_1b_0$. We
+re-write the remainder $r = \alpha^0 r_0 + \alpha^1 r_1 = 
+\al\cdot (a_0a_1b_1b_0+a_0a_1b_1+a_1b_1b_0+a_1b_0) +
+1\cdot (a_0a_1b_1b_0+a_0a_1b_1+a_1b_1b_0)$. Since both $r_0$ and $r_1$ are
+non-zero, the bug affects both primary outputs $z_0, z_1$. By
+identifying the nets that lie in the intersection of the fanin cones
+of $z_0, z_1$, we construct $\mathcal{N} =
+\{s_4,s_3,s_2,s_1,e_3,e_2,e_0\}$ as potential rectifiable locations.
+\end{Example}
+
+\subsubsection{Confirming a rectification target} 
+After post-verification debugging is performed to identify a set of
+nets $\mathcal{N}\subseteq \{x_1,\dots,x_n\}$ that are potential
+rectification target nets, we now present an approach that {\it confirms}
+whether or not the circuit can indeed be single-fix-rectified at net
+$x_i$. {\it Single-fix-rectification at target net $x_i$ means that
+  \underline{there exists} a polynomial function $U(X_{PI})$ which,
+  when implemented at net $x_i$, ensures that the circuit $C$ would
+  correctly implement the specification $f$.} Note that
+$x_i=U(X_{PI})$ is a polynomial function of the type
+$\F_2^{|X_{PI}|}\rightarrow\F_2$ as it implements a subcircuit at net $x_i$.
+
+In the set of polynomials $F$, we replace $f_i = x_i+U(X_{PI})$ as the
+polynomial for the rectification function at $x_i$, where $U(X_{PI})$
+is a hitherto unknown/unresolved polynomial function component. In
+other words, $F$ is updated to $F = \{f_1,\dots, f_{i-1}, f_i=
+x_i+U(X_{PI}),f_{i+1},\dots,f_s\}$.  We state and prove the 
+{\it rectification theorem that checks for the existence of
+  $U(X_{PI})$ as a single-fix rectification function at $x_i$.}
+
+\begin{Theorem}[Rectification Theorem]
+Given the specification polynomial $f$, and the implementation circuit
+$C$, derive RTTO $>$ to represent the polynomials. Using RTTO $>$,
+construct two ideals:  
+\bi
+\item $J_L = \langle F_L\rangle$, where
+  $F_L=\{f_1,\dots,f_{i-1},f_i=x_i+1,f_{i+1},\dots,f_s\}$;
+\item $J_H = \langle F_H\rangle$, where
+  $F_H=\{f_1,\dots,f_{i-1},f_i=x_i,f_{i+1},\dots,f_s\}$;
+\ei
+where the polynomials $f_1,\dots,f_{i-1},f_{i+1},\dots,f_s$ are the
+same as in the generators of ideal $J$ (representing the circuit), and
+$f_i$ is replaced with $f_i = x+1$ in $J_L$ and $f_i = x_i$ in $J_H$,
+respectively. Perform the reductions: 
+\bi
+\item $f\xrightarrow{F_L, F_{0}^{PI}}_+r_L $
+\item $f\xrightarrow{F_H,F_{0}^{PI}}_+r_H $
+\ei
+
+Let $V_{\Fq}(r_L), V_{\Fq}(r_H)$ denote the varieties of $r_L$ and
+$r_H$, respectively, over the given field $\Fq$. Then the buggy
+circuit $C$ admits a single-fix rectification at the net (gate 
+output) $x_i$ if and only if $V_{\Fq}(r_L) \cup V_{\Fq}(r_H) =
+\Fq^{|X_{PI}|} = V(J_0^{PI})$.
+\end{Theorem}
+
+\begin{proof}
+As rectification at net $x_i$ makes the circuit $C$ match the
+specification $f$, $f$ should vanish on $V(J)$. Thus, the
+rectification condition can be equivalently stated as:
+``$f$ vanishes on $V_{\Fq}(J) \iff V_{\Fq}(rL) \cup V_{\Fq}(rH) =
+  \Fq^{|X_{PI}|}$.''
+
+(i) To prove $\Rightarrow$: Let $x_{PI} \in \Fq^{|X_{PI}|}$ be an
+assignment to the primary input variables of $C$. For every point
+$x_{PI}$, there exists a corresponding assignment $x_{int}$ to the
+rest of the variables of the circuit. For each primary input assignment,
+the target net $x_i$ evaluates to either $x_i = 0$ or $x_i = 1$. When
+$x_i = 0$, then $J_H$ vanishes on the point $(x_{PI},
+x_{int})$. Likewise, when $x_i = 1$, $J_L$ vanishes on $(x_{PI},
+x_{int})$. Since $f\xrightarrow{J_H,J_0}_+rH$ and
+$f\xrightarrow{J_L,J_0}_+rL$, and $f$ vanishes on the point
+$(x_{PI},x_{int})$, we obtain that either $rH(x_{PI}) = 0$ or
+$rL(x_{PI}) = 0$. In other words, for every 
+primary input assignment $x_{PI}$, either $rL$ or $rH$ vanish. This
+implies that $V(rL) \cup V(rH) = \Fq^{|X_{PI}|} = V(J_0^{PI})$.
+
+(ii) To prove ``$\Leftarrow$'': Say there exists an assignment to the
+primary inputs $x_{PI} \in \Fq^{|X_{PI}|}$ such that $rH$ vanishes on
+$x_{PI}$, i.e. $rH(x_{PI})=0$. Corresponding to $x_{PI}$, there exists
+an assignment to the rest of the variables of the circuit $x_{int}$. 
+As $f\xrightarrow{J_H, J_0}_+ rH$, we have that $f$ is a member of the
+ideal $J_H + J_0 + \langle rH \rangle$. Therefore, when
+$rH(x_{PI})=0$, the ideal $J_H$ also vanishes on $(x_{PI},x_{int})$,
+and $J_0$ by definition vanishes everywhere. This implies that
+$f(x_{PI},x_{int})=0$. Similarly, the argument also holds that when
+$rL(x_{PI})=0$, then $f(x_{PI},x_{int})=0$. This proves that for all
+primary inputs if $rL$ and $rH$ vanish, then $f$ vanishes too; and
+that completes the proof.
+
+
+  
+\end{proof}
+
+Note that the check ``Is $V_{\Fq}(r_L) \cup V_{\Fq}(r_H) =
+\Fq^{|X_{PI}|} = V(J_0^{PI})?$'' can be performed as shown below,
+where the union of varieties corresponds to the product of ideals.
+\begin{align}
+ V_{\Fq}(r_L) \cup V_{\Fq}(r_H)  =&V_{\Fq}(r_L\cdot r_H)\\
+  V_{\Fqbar}(\langle r_L\cdot r_H \rangle+ J_0^{PI}) =&V_{\Fq}(\langle r_L\cdot r_H \rangle+ J_0^{PI})
+\end{align}
+
+Thus, to check for single-fix rectification at the net $x_i$, we need
+to compute the \Grobner basis $G = GB(\{rL\cdot rH\}\cup F_{0}^{PI})$
+and see if $G$ exactly equals $F_{0}^{PI}$.  
+
+\begin{Example}
+\label{ex:3}
+Continuing with our running example, we demonstrate the rectification
+checks at nets $e_3, s_1$. As the bug was introduced at $e_3$, it is
+obvious that the circuit is rectifiable at $e_3$. For the
+rectification check at $e_3$, we mark the polynomial $f_{10}$ for
+modification:
+
+\bi
+\item $J_L = \langle F_L\rangle$, where $F_L=\{f_1,\dots, f_{10}=e_3+1,\dots, f_{16}\}$,
+\item $J_H = \langle F_H\rangle$, where $F_H = \{f_1,\dots, f_{10}=e_3,\dots, f_{16}\}$.
+\ei
+
+Reducing the specification $f: Z+A\cdot B$ modulo these ideals, we get:
+\bi
+\item $r_L = f \xrightarrow[]{F_L, F_{0}^{PI}}_+{(\alpha+1)a_1b_1b_0+(\alpha+1)a_1b_1}$
+\item $r_H = f \xrightarrow[]{F_H,F_{0}^{PI}}_+{(\alpha+1)a_1b_1b_0+(\alpha)a_1b_0}$
+\ei
+  
+When we compute the \Grobner basis $G = GB(rL\cdot rH, F_{0}^{PI})$,
+we obtain $G = \{a_0^2-a_0, a_1^2-a_1,b_0^2-b_0,b_1^2-b_1\}$,
+corresponding to the ideal of all vanishing polynomials in primary
+inputs. This implies the existence of a rectification function at
+$e_3$. 
+
+In fact, the rectification test also passes for the net $s_4$;
+implying that the bug at $e_3$ can indeed be rectified at a different
+gate which does not lie in the fanin cone of $e_3$. However, the
+rectification test  fails at net $s_1$. When the problem is formulated by 
+modifying the polynomial $f_{12}$ at net $s_1$, the corresponding
+computation for $G = GB(rL\cdot rH, F_{0}^{PI})$ results in
+$G=\{a_0^2-a_0,b_0^2-b_0,a_1^2-a_1,b_1^2-b_1, ~~a_1b_0, ~a_0a_1b_1 +
+(\alpha)a_0a_1b_0\}$. Due to the presence of the last 2 polynomials, 
+$G \neq F_0^{PI}$, and rectification is not possible at net $s_1$. 
+\end{Example}

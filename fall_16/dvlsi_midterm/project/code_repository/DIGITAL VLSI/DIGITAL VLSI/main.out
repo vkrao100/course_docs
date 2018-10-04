@@ -1,0 +1,16 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Motivation and Scope of the Project}{}% 2
+\BOOKMARK [1][-]{section.3}{Block Header Fields}{}% 3
+\BOOKMARK [1][-]{section.4}{Design Approach}{}% 4
+\BOOKMARK [2][-]{subsection.4.1}{Message padding and parsing}{section.4}% 5
+\BOOKMARK [2][-]{subsection.4.2}{Message expansion, constants, and scheduling}{section.4}% 6
+\BOOKMARK [2][-]{subsection.4.3}{Core message Compression}{section.4}% 7
+\BOOKMARK [2][-]{subsection.4.4}{Overview of Bitcoin mining implementation}{section.4}% 8
+\BOOKMARK [1][-]{section.5}{ASIC Implementation}{}% 9
+\BOOKMARK [2][-]{subsection.5.1}{RTL Approach}{section.5}% 10
+\BOOKMARK [2][-]{subsection.5.2}{Testbench Approach}{section.5}% 11
+\BOOKMARK [1][-]{section.6}{Hardware Implementation}{}% 12
+\BOOKMARK [1][-]{section.7}{Results}{}% 13
+\BOOKMARK [1][-]{section.8}{Further Optimizations Proposed}{}% 14
+\BOOKMARK [1][-]{section.9}{Conclusion}{}% 15
+\BOOKMARK [1][-]{section*.8}{References}{}% 16

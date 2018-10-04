@@ -1,0 +1,11 @@
+ring r = (2, x), (a), lp; 
+
+minpoly = x^6 + x^4 + x^3 + x + 1;
+
+number al = x^21;
+number be = x^9;
+
+//(x+al)*(x+al^2)*(x+al^4)*(x+al^8)*(x+al^16)*(x+al^32)*(x+al^64);
+(x+al)*(x+al^2);
+//(x+al)*(x+al^4)*(x+al^16);
+(x+be)*(x+be^2)*(x+be^4);

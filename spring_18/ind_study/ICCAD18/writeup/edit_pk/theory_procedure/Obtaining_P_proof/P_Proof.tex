@@ -1,0 +1,169 @@
+% \documentclass{article}
+\documentclass[twocolumn]{IEEEtran}
+% \documentclass{llncs}
+
+% Proof already defined in llncs so I am 
+% relaxing it for amsthm
+% \let\proof\relax
+% \let\endproof\relax
+
+\usepackage{hyperref}
+
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+\RequirePackage{amssymb, mathptm}
+\usepackage{amsbsy}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{helvet}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{subfig}
+\usepackage{comment}
+\usepackage{cases}
+\usepackage{xcolor}
+\usepackage{epstopdf}
+\usepackage[normalem]{ulem}
+\usepackage{diagbox}
+\usepackage{bm}
+\usepackage{hhline}
+\usepackage{caption}
+
+
+% \bibliographystyle{plain}
+\input{myformulae.tex}
+
+% \newtheoremstyle{mystyle}
+%   {\topsep}   % ABOVESPACE
+%   {\topsep}   % BELOWSPACE
+%   {\itshape}  % BODYFONT
+%   {0pt}       % INDENT (empty value is the same as 0pt)
+%   {\bf} % HEADFONT
+%   {.}         % HEADPUNCT
+%   {5pt plus 1pt minus 1pt} % HEADSPACE
+%   {}          % CUSTOM-HEAD-SPEC
+
+% \theoremstyle{plain}
+\theoremstyle{definition}
+% \theoremstyle{remark}
+% \theoremstyle{mystyle}
+
+\newtheorem{Algorithm}{Algorithm}[section]
+
+\newtheorem{Definition}{Definition}[section]
+% \numberwithin{Definition}{section}
+
+\newtheorem{Example}{Example}[section]
+% \numberwithin{Example}{section}
+
+\newtheorem{Proposition}{Proposition}[section]
+
+\newtheorem{Lemma}{Lemma}[section]
+% \numberwithin{Lemma}{section}
+
+\newtheorem{Theorem}{Theorem}[section]
+% \numberwithin{Theorem}{section}
+
+\newtheorem{Corollary}{Corollary}[section]
+\newtheorem{Conjecture}{Conjecture}[section]
+\newtheorem{Problem}{Problem}[section]
+\newtheorem{Notation}{Notation}[section]
+\newtheorem{Setup}{Problem Setup}[section]
+
+\begin{document}
+
+\title{Proof} 
+
+\author{}
+
+% \institute{}
+% \maketitle
+
+\thispagestyle{plain}
+\pagestyle{plain}
+
+Suppose the unknown component is the $i^{th}$ gate in the circuit with 
+the leading term $x_i$. Let the RTTO order for the circuit be $x_1>x_2>\dots>x_n$.
+Also assuming that the specification polynomial is $f_{spec}$, we can write
+\begin{align}
+\label{eqn:spec_red_fi_1}
+f_{spec} &= h_1f_1 + h_2f_2 + \dots + h_i(x_i + P) + h_{i+1}f_{i+1} +\dots+ h_nf_n
+\end{align}
+Since we know $f_{spec}$ polynomial and $f_1$ polynomial, we can obtain the polynomial $h_1$
+as the quotient of the reduction $f_{spec} \xrightarrow{f_1}_+$. The remainder of this
+reduction can be reduced by $f_2$ to obtain $h_2$. Performing quotient computations in 
+a similar fashion, we can obtain the polynomial $h_i$. Notice that we cannot obtain $h_{i+1}$ as the
+tail or $P$ part of the polynomial $f_i$ is unknown. We can rearrange the terms in Eqn. \ref{eqn:spec_red_fi_1}
+to obtain the following equation.
+\begin{align}
+\label{eqn:spec_red_fi_2}
+f_{spec}-h_1f_1-h_2f_2-\dots-h_ix_i&= h_iP+h_{i+1}f_{i+1} +\dots+ h_nf_n
+\end{align}
+In the Eqn. \ref{eqn:spec_red_fi_2}, the L.H.S. is known. We can compute the polynomial
+$P$ using the $lift$ operation in SINGULAR. The $lift$ operation returns a list of
+polynomial coefficients $T_1\dots T_s$ for a list of polynomials $p_1,\dots,p_s$ such that 
+the linear combination $T_1p_1+\cdots+T_sp_s$ is equal to some given polynomial $f$.
+Using the $lift$ operation with inputs $f_{spec}-h_1f_1-h_2f_2-\dots-h_ix_i$ as $f$
+and $h_i,f_{i+1},\dots,f_n$ as $p_1,\dots,p_s$, we can obtain the polynomial coefficients
+$T_1\dots T_s$ such that $T_1h_i+\cdots+T_sf_n = f_{spec}-h_1f_1-h_2f_2-\dots-h_ix_i$.
+Then the polynomial $T_1$ can be construed as the polynomial $P$ in our formulation.
+
+\par The computed polynomial $P$, can contain any variable $i.e.$ it can contain 
+the immediate input variables of the unknown component or it may even contain variables
+that are not the immediate inputs. In other words, there is no guarantee about the 
+variables that $P$ consists of. But we know from the circuit topology, that there
+must be at least one polynomial $P$ only in the immediate input variables of gate $i$, that can 
+be used in the polynomial $f_i = x_i+P$ to solve the problem. Let us denote this polynomial by $P'$.
+
+\par Using the Eqn. \ref{eqn:spec_red_fi_2}, we can write,
+\begin{align}
+\label{eqn:spec_red_fi_3}
+f_{spec}-h_1f_1-h_2f_2-\dots-h_ix_i&= h_iP'+h'_{i+1}f_{i+1} +\dots+ h'_nf_n
+\end{align}
+The polynomials $h'_{i+1}, \dots, h'_n$ in Eqn. \ref{eqn:spec_red_fi_3} need not be 
+same as $h_{i+1}, \dots, h_n$ in Eqn. \ref{eqn:spec_red_fi_2} as their computation is dependent on
+two different polynomials $P$ and $P'$ respectively. Subtracting the Eqn. \ref{eqn:spec_red_fi_2}
+and Eqn. \ref{eqn:spec_red_fi_3}, we get,
+\begin{align*}
+h_i(P'-P) &= (h_{i+1}-h'_{i+1})f_{i+1} +\dots+ (h_n-h'_n)f_n \\
+h_i(P'-P) &\in \langle f_{i+1},\dots,f_n \rangle \\
+P'-P &\in \langle f_{i+1},\dots,f_n \rangle:h_i
+\end{align*}
+We denote the quotient (or colon) ideal $\langle f_{i+1},\dots,f_n \rangle:h_i$
+by $C$. Therefore,
+\begin{align}
+\label{eqn:p'-p}
+P'-P \in C
+\end{align}
+From remainder arithmetic and Eqn. \ref{eqn:p'-p}, we can say that the remainder of the reduction
+$P\xrightarrow{GB(C)}_+$ and the remainder of the reduction $P'\xrightarrow{GB(C)}_+$ will be equal.
+Let this remainder be $r$. 
+\par Now consider a term order similar to RTTO where the variables $x_i$ (the 
+output of the unknown component) and the immediate inputs of gate $i$ are placed at the end
+in the lexicographic ordering. The $GB(C)$ with this order will contain the first few polynomials only in 
+the variables $x_i$ and immediate inputs of gate $i$ (as this term order is an elimination term order).
+So the reduction $P'\xrightarrow{GB(C)}_+r$ will produce $r$ consisting of only the immediate inputs
+of gate $i$. The reason is that $P'$ is assumed to contain only the immediate inputs of gate $i$, and therefore,
+it will only be reduced by the first few polynomials of GB(C) that contain the same variables as $P'$.
+After computing $P$ (using the $lift$ operation) and $GB(C)$ with the new term order, we can 
+perform the reduction $P\xrightarrow{C}_+$ to obtain $r$ which will only contain the immediate 
+inputs of gate $i$ as variables. Therefore, $x_i+r$ can used a replacement for the unknown component.
+
+ \par We can also pick a polynomial $p\in GB(C)$ such that $p$ contains only the immediate 
+ inputs of gate $i$ and use $x_i +(r+p)$ as another replacement for the unknown component. This
+ is due to the fact that $r+p \xrightarrow{GB(C)}_+r$.
+
+\bibliographystyle{IEEEtran}
+
+%\bibliography{cf}
+% \bibliography{utkarsh,xiaojun,tim,logic,oldlogic,cnfsat,condrat_ms}
+% \begin{thebibliography}{1}
+% \bibliography{fmcad17}
+% \end{thebibliography}
+
+% \bibliography{utkarsh}
+\end{document}

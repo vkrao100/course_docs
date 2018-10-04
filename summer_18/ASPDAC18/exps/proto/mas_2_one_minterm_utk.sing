@@ -1,0 +1,43 @@
+// RTTO 
+ring R = (2, x), (Z, A, B, z_0_, z_1_, r_0, e_0, e_1, e_2, e_3, s_5, s_4, s_3, s_2, s_1, s_0, a_0_, a_1_, b_1_, b_0_), lp;
+
+minpoly = x^2 + x + 1;
+
+proc xorgate(poly g, poly h)
+{
+	return(g+h);
+}
+
+proc andgate(poly g, poly h)
+{
+	return(g*h);
+}
+
+//circuit -  2 bit mastrovito multiplier poly's
+//correct implementation
+poly f1 = Z + z_0_ + z_1_*x;
+poly f2 = A + a_0_ + a_1_*x;
+poly f3 = B + b_0_ + b_1_*x;
+poly f4 = z_0_ + xorgate(s_0,e_0);
+poly f5 = z_1_ + xorgate(e_0,r_0);
+poly f6 = r_0 + xorgate(e_1,s_5);
+poly f7 = e_0 + s_1*e_2;
+poly f8 = e_1 + s_2*e_2;
+poly f9 = e_2 + xorgate(e_3,s_4);
+poly f10 = e_3 + b_0_*s_3;
+poly f11 = s_0 + a_0_*b_0_;
+poly f12 = s_1 + a_1_*b_1_;
+poly f13 = s_2 + a_1_*b_0_;
+poly f14 = s_3 + a_0_ + b_0_ + a_0_*b_0_;
+poly f15 = s_4 + b_0_ + 1;
+poly f16 = s_5 + a_0_*b_1_;
+
+
+//vanishing polynomials
+poly f17 = a_0_^2 - a_0_;
+poly f18 = a_1_^2 - a_1_;
+poly f19 = b_0_^2 - b_0_;
+poly f20 = b_1_^2 - b_1_;
+
+// RATO given spec
+poly spec = Z+(x+1)*A^3*B^3+(x)*A^3*B^2+A^3*B+(x+1)*A^2*B^3+(x)*A^2*B^2+A^2*B+(x+1)*A*B^3+(x)*A*B^2;

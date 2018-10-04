@@ -1,0 +1,12 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Previous work}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Contribution}{section.1}% 3
+\BOOKMARK [1][-]{section.2}{Preliminaries: Notation and Background}{}% 4
+\BOOKMARK [1][-]{section.3}{Theory and Procedure}{}% 5
+\BOOKMARK [2][-]{subsection.3.1}{Reference specification is polynomial f}{section.3}% 6
+\BOOKMARK [2][-]{subsection.3.2}{Circuit implementation as reference}{section.3}% 7
+\BOOKMARK [1][-]{section.4}{Experiments}{}% 8
+\BOOKMARK [2][-]{subsection.4.1}{Mastrovito Multipliers}{section.4}% 9
+\BOOKMARK [2][-]{subsection.4.2}{Montgomery Multipliers}{section.4}% 10
+\BOOKMARK [1][-]{section.5}{Conclusion and future work}{}% 11
+\BOOKMARK [1][-]{section*.4}{References}{}% 12

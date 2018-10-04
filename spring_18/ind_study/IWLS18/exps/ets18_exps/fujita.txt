@@ -1,0 +1,18 @@
+2
+a b c d_s e_s f_s s_s c_s x1 x2 x3 x4 d_i1 d_i2 d_i e_i f_i s_i c_i s c
+x(d_s, a, b) 
+a(e_s, a, b) 
+a(f_s, d_s, c) 
+x(s_s, d_s, c) 
+o(c_s, e_s, f_s)
+m(d_i1, a, x1, x2) 
+m(d_i2, a, x3, x4) 
+m(d_i, b, d_i1, d_i2) 
+a(e_i, a, b) 
+a(f_i, d_i, c) 
+x(s_i, d_i, c) 
+o(c_i, e_i, f_i)
+x(s, s_s, s_i)
+x(c, c_s, c_i)
+t s
+t c

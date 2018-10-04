@@ -1,0 +1,27 @@
+
+Groebner Basis Reductions on Datapath Circuits using the Unate Cube Set Algebra 
+
+Authors: Utkarsh Gupta and Priyank Kalla
+
+Abstract:
+
+Recent developments in formal datapath verification make efficient use 
+of symbolic computer algebra algorithms for formal verification. The
+circuit is modeled as a set of polynomials over Boolean (or
+pseudo-Boolean) rings, and  Groebner basis (GB) reductions are
+performed over these polynomials to derive a canonical
+representation. GB reductions tend to cause intermediate expression 
+swell (term explosion problem) -- often making the approach infeasible
+in a practical setting. To overcome these problems,  this paper
+describes a logic synthesis analogue of GB reductions over Boolean
+polynomials, using the unate cube set algebra over characteristic
+sets. By representing Boolean polynomials as characteristic sets using
+Zero-suppressed BDDs (ZBDDs), implicit algorithms can be efficiently
+designed for GB-reduction on digital circuits. We show that imposition
+of circuit-topology based monomial orders on ZBDDs enables an implicit
+implementation of polynomial division, canceling multiple monomials in
+one-step. Other recent strategies of GB-reduction on circuits can also
+be implemented efficiently on ZBDDs. Experiments performed over
+various Galois-field and integer arithmetic circuits demonstrate the
+efficiency of our algorithms and implementations as compared to
+conventional explicit methods.  

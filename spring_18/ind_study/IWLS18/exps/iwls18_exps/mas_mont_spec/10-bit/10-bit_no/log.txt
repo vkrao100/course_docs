@@ -1,0 +1,915 @@
+                     SINGULAR                                 /
+ A Computer Algebra System for Polynomial Computations       /   version 4.0.3
+                                                           0<
+ by: W. Decker, G.-M. Greuel, G. Pfister, H. Schoenemann     \   Jan 2016
+FB Mathematik der Universitaet, D-67653 Kaiserslautern        \  Debian 4.0.3+ds-1
+// ** loaded multivariate_burg.lib 
+// ** library multivariate_burg.lib has old format. This format is still accepted,
+// ** but for functionality you may wish to change to the new
+// ** format. Please refer to the manual for further information.
+// ** loaded /usr/bin/../share/singular/LIB/control.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/matrix.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/nctools.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/general.lib (4.0.0.1,Jan_2014)
+// ** loaded /usr/bin/../share/singular/LIB/random.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/ring.lib (4.0.2.2,Jan_2016)
+// ** loaded /usr/bin/../share/singular/LIB/inout.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/primdec.lib (4.0.2.0,Apr_2015)
+// ** loaded /usr/bin/../share/singular/LIB/absfact.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/triang.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/elim.lib (4.0.0.1,Jan_2014)
+// ** loaded /usr/bin/../share/singular/LIB/poly.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/homolog.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/deform.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/sing.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/linalg.lib (4.0.0.0,Jun_2013)
+// ** _ is no standard basis
+// ** j0 is no standard basis
+dividend- (X^3)*h0+(X^9)*g17+(X^9)*g16+(X^8)*g15+(X^8)*g14+(X^7)*g13+(X^7)*g12+(X^6)*g11+(X^6)*g10+(X^5)*g9+(X^5)*g8+(X^4)*g7+(X^4)*g6+(X^3)*g5+(X^2)*g2+(X)*g1+g0+(X^4)*f17+(X)*f5+f2+(X^2)*e15+(X^5)*d89+(X^8+X^4+X)*b_9_*a_9_+(X^7+X^3+1)*b_9_*a_8_+(X^9+X^6)*b_9_*a_7_+(X^8+X^5)*b_9_*a_6_+(X^7+X^4)*b_9_*a_5_+(X^6+X^3)*b_9_*a_4_+(X^5+X^2)*b_9_*a_3_+(X^4+X)*b_9_*a_2_+(X^3+1)*b_9_*a_1_+(X^9)*b_9_*a_0_+(X^7+X^3+1)*b_8_*a_9_+(X^9+X^6)*b_8_*a_8_+(X^8+X^5)*b_8_*a_7_+(X^7+X^4)*b_8_*a_6_+(X^6+X^3)*b_8_*a_5_+(X^5+X^2)*b_8_*a_4_+(X^4+X)*b_8_*a_3_+(X^3+1)*b_8_*a_2_+(X^9)*b_8_*a_1_+(X^8)*b_8_*a_0_+(X^9+X^6)*b_7_*a_9_+(X^8+X^5)*b_7_*a_8_+(X^7+X^4)*b_7_*a_7_+(X^6+X^3)*b_7_*a_6_+(X^5+X^2)*b_7_*a_5_+(X^4+X)*b_7_*a_4_+(X^3+1)*b_7_*a_3_+(X^9)*b_7_*a_2_+(X^8)*b_7_*a_1_+(X^7)*b_7_*a_0_+(X^8+X^5)*b_6_*a_9_+(X^7+X^4)*b_6_*a_8_+(X^6+X^3)*b_6_*a_7_+(X^5+X^2)*b_6_*a_6_+(X^4+X)*b_6_*a_5_+(X^3+1)*b_6_*a_4_+(X^9)*b_6_*a_3_+(X^8)*b_6_*a_2_+(X^7)*b_6_*a_1_+(X^6)*b_6_*a_0_+(X^7+X^4)*b_5_*a_9_+(X^6+X^3)*b_5_*a_8_+(X^5+X^2)*b_5_*a_7_+(X^4+X)*b_5_*a_6_+(X^3+1)*b_5_*a_5_+(X^9)*b_5_*a_4_+(X^8)*b_5_*a_3_+(X^7)*b_5_*a_2_+(X^6)*b_5_*a_1_+(X^5)*b_5_*a_0_+(X^6+X^3)*b_4_*a_9_+(X^5+X^2)*b_4_*a_8_+(X^4+X)*b_4_*a_7_+(X^3+1)*b_4_*a_6_+(X^9)*b_4_*a_5_+(X^8)*b_4_*a_4_+(X^7)*b_4_*a_3_+(X^6)*b_4_*a_2_+(X^5)*b_4_*a_1_+(X^4)*b_4_*a_0_+(X^5+X^2)*b_3_*a_9_+(X^4+X)*b_3_*a_8_+(X^3+1)*b_3_*a_7_+(X^9)*b_3_*a_6_+(X^8)*b_3_*a_5_+(X^7)*b_3_*a_4_+(X^6)*b_3_*a_3_+(X^5)*b_3_*a_2_+(X^4)*b_3_*a_1_+(X^3)*b_3_*a_0_+(X^4+X)*b_2_*a_9_+(X^3+1)*b_2_*a_8_+(X^9)*b_2_*a_7_+(X^8)*b_2_*a_6_+(X^7)*b_2_*a_5_+(X^6)*b_2_*a_4_+(X^5)*b_2_*a_3_+(X^4)*b_2_*a_2_+(X^3)*b_2_*a_1_+(X^2)*b_2_*a_0_+(X^3+1)*b_1_*a_9_+(X^9)*b_1_*a_8_+(X^8)*b_1_*a_7_+(X^7)*b_1_*a_6_+(X^6)*b_1_*a_5_+(X^5)*b_1_*a_4_+(X^4)*b_1_*a_3_+(X^3)*b_1_*a_2_+(X^2)*b_1_*a_1_+(X)*b_1_*a_0_+(X^9)*b_0_*a_9_+(X^8)*b_0_*a_8_+(X^7)*b_0_*a_7_+(X^6)*b_0_*a_6_+(X^5)*b_0_*a_5_+(X^4)*b_0_*a_4_+(X^3)*b_0_*a_3_+(X^2)*b_0_*a_2_+(X)*b_0_*a_1_+b_0_*a_0_
+quotient- (X^3)
+divisor- h0
+residue- (X^9)*g17+(X^9)*g16+(X^8)*g15+(X^8)*g14+(X^7)*g13+(X^7)*g12+(X^6)*g11+(X^6)*g10+(X^5)*g9+(X^5)*g8+(X^4)*g7+(X^4)*g6+(X^3)*g5+(X^2)*g2+(X)*g1+g0+(X^4)*f17+(X)*f5+f2+(X^2)*e15+(X^5)*d89+(X^8+X^4+X)*b_9_*a_9_+(X^7+X^3+1)*b_9_*a_8_+(X^9+X^6)*b_9_*a_7_+(X^8+X^5)*b_9_*a_6_+(X^7+X^4)*b_9_*a_5_+(X^6+X^3)*b_9_*a_4_+(X^5+X^2)*b_9_*a_3_+(X^4+X)*b_9_*a_2_+(X^3+1)*b_9_*a_1_+(X^9)*b_9_*a_0_+(X^7+X^3+1)*b_8_*a_9_+(X^9+X^6)*b_8_*a_8_+(X^8+X^5)*b_8_*a_7_+(X^7+X^4)*b_8_*a_6_+(X^6+X^3)*b_8_*a_5_+(X^5+X^2)*b_8_*a_4_+(X^4+X)*b_8_*a_3_+(X^3+1)*b_8_*a_2_+(X^9)*b_8_*a_1_+(X^8)*b_8_*a_0_+(X^9+X^6)*b_7_*a_9_+(X^8+X^5)*b_7_*a_8_+(X^7+X^4)*b_7_*a_7_+(X^6+X^3)*b_7_*a_6_+(X^5+X^2)*b_7_*a_5_+(X^4+X)*b_7_*a_4_+(X^3+1)*b_7_*a_3_+(X^9)*b_7_*a_2_+(X^8)*b_7_*a_1_+(X^7)*b_7_*a_0_+(X^8+X^5)*b_6_*a_9_+(X^7+X^4)*b_6_*a_8_+(X^6+X^3)*b_6_*a_7_+(X^5+X^2)*b_6_*a_6_+(X^4+X)*b_6_*a_5_+(X^3+1)*b_6_*a_4_+(X^9)*b_6_*a_3_+(X^8)*b_6_*a_2_+(X^7)*b_6_*a_1_+(X^6)*b_6_*a_0_+(X^7+X^4)*b_5_*a_9_+(X^6+X^3)*b_5_*a_8_+(X^5+X^2)*b_5_*a_7_+(X^4+X)*b_5_*a_6_+(X^3+1)*b_5_*a_5_+(X^9)*b_5_*a_4_+(X^8)*b_5_*a_3_+(X^7)*b_5_*a_2_+(X^6)*b_5_*a_1_+(X^5)*b_5_*a_0_+(X^6+X^3)*b_4_*a_9_+(X^5+X^2)*b_4_*a_8_+(X^4+X)*b_4_*a_7_+(X^3+1)*b_4_*a_6_+(X^9)*b_4_*a_5_+(X^8)*b_4_*a_4_+(X^7)*b_4_*a_3_+(X^6)*b_4_*a_2_+(X^5)*b_4_*a_1_+(X^4)*b_4_*a_0_+(X^5+X^2)*b_3_*a_9_+(X^4+X)*b_3_*a_8_+(X^3+1)*b_3_*a_7_+(X^9)*b_3_*a_6_+(X^8)*b_3_*a_5_+(X^7)*b_3_*a_4_+(X^6)*b_3_*a_3_+(X^5)*b_3_*a_2_+(X^4)*b_3_*a_1_+(X^3)*b_3_*a_0_+(X^4+X)*b_2_*a_9_+(X^3+1)*b_2_*a_8_+(X^9)*b_2_*a_7_+(X^8)*b_2_*a_6_+(X^7)*b_2_*a_5_+(X^6)*b_2_*a_4_+(X^5)*b_2_*a_3_+(X^4)*b_2_*a_2_+(X^3)*b_2_*a_1_+(X^2)*b_2_*a_0_+(X^3+1)*b_1_*a_9_+(X^9)*b_1_*a_8_+(X^8)*b_1_*a_7_+(X^7)*b_1_*a_6_+(X^6)*b_1_*a_5_+(X^5)*b_1_*a_4_+(X^4)*b_1_*a_3_+(X^3)*b_1_*a_2_+(X^2)*b_1_*a_1_+(X)*b_1_*a_0_+(X^9)*b_0_*a_9_+(X^8)*b_0_*a_8_+(X^7)*b_0_*a_7_+(X^6)*b_0_*a_6_+(X^5)*b_0_*a_5_+(X^4)*b_0_*a_4_+(X^3)*b_0_*a_3_+(X^2)*b_0_*a_2_+(X)*b_0_*a_1_+b_0_*a_0_
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+remainder (X^9)*g17+(X^9)*g16+(X^8)*g15+(X^8)*g14+(X^7)*g13+(X^7)*g12+(X^6)*g11+(X^6)*g10+(X^5)*g9+(X^5)*g8+(X^4)*g7+(X^4)*g6+(X^3)*g5+(X^2)*g2+(X)*g1+g0+(X^4)*f17+(X)*f5+f2+(X^2)*e15+(X^5)*d89+(X^8+X^4+X)*b_9_*a_9_+(X^7+X^3+1)*b_9_*a_8_+(X^9+X^6)*b_9_*a_7_+(X^8+X^5)*b_9_*a_6_+(X^7+X^4)*b_9_*a_5_+(X^6+X^3)*b_9_*a_4_+(X^5+X^2)*b_9_*a_3_+(X^4+X)*b_9_*a_2_+(X^3+1)*b_9_*a_1_+(X^9)*b_9_*a_0_+(X^7+X^3+1)*b_8_*a_9_+(X^9+X^6)*b_8_*a_8_+(X^8+X^5)*b_8_*a_7_+(X^7+X^4)*b_8_*a_6_+(X^6+X^3)*b_8_*a_5_+(X^5+X^2)*b_8_*a_4_+(X^4+X)*b_8_*a_3_+(X^3+1)*b_8_*a_2_+(X^9)*b_8_*a_1_+(X^8)*b_8_*a_0_+(X^9+X^6)*b_7_*a_9_+(X^8+X^5)*b_7_*a_8_+(X^7+X^4)*b_7_*a_7_+(X^6+X^3)*b_7_*a_6_+(X^5+X^2)*b_7_*a_5_+(X^4+X)*b_7_*a_4_+(X^3+1)*b_7_*a_3_+(X^9)*b_7_*a_2_+(X^8)*b_7_*a_1_+(X^7)*b_7_*a_0_+(X^8+X^5)*b_6_*a_9_+(X^7+X^4)*b_6_*a_8_+(X^6+X^3)*b_6_*a_7_+(X^5+X^2)*b_6_*a_6_+(X^4+X)*b_6_*a_5_+(X^3+1)*b_6_*a_4_+(X^9)*b_6_*a_3_+(X^8)*b_6_*a_2_+(X^7)*b_6_*a_1_+(X^6)*b_6_*a_0_+(X^7+X^4)*b_5_*a_9_+(X^6+X^3)*b_5_*a_8_+(X^5+X^2)*b_5_*a_7_+(X^4+X)*b_5_*a_6_+(X^3+1)*b_5_*a_5_+(X^9)*b_5_*a_4_+(X^8)*b_5_*a_3_+(X^7)*b_5_*a_2_+(X^6)*b_5_*a_1_+(X^5)*b_5_*a_0_+(X^6+X^3)*b_4_*a_9_+(X^5+X^2)*b_4_*a_8_+(X^4+X)*b_4_*a_7_+(X^3+1)*b_4_*a_6_+(X^9)*b_4_*a_5_+(X^8)*b_4_*a_4_+(X^7)*b_4_*a_3_+(X^6)*b_4_*a_2_+(X^5)*b_4_*a_1_+(X^4)*b_4_*a_0_+(X^5+X^2)*b_3_*a_9_+(X^4+X)*b_3_*a_8_+(X^3+1)*b_3_*a_7_+(X^9)*b_3_*a_6_+(X^8)*b_3_*a_5_+(X^7)*b_3_*a_4_+(X^6)*b_3_*a_3_+(X^5)*b_3_*a_2_+(X^4)*b_3_*a_1_+(X^3)*b_3_*a_0_+(X^4+X)*b_2_*a_9_+(X^3+1)*b_2_*a_8_+(X^9)*b_2_*a_7_+(X^8)*b_2_*a_6_+(X^7)*b_2_*a_5_+(X^6)*b_2_*a_4_+(X^5)*b_2_*a_3_+(X^4)*b_2_*a_2_+(X^3)*b_2_*a_1_+(X^2)*b_2_*a_0_+(X^3+1)*b_1_*a_9_+(X^9)*b_1_*a_8_+(X^8)*b_1_*a_7_+(X^7)*b_1_*a_6_+(X^6)*b_1_*a_5_+(X^5)*b_1_*a_4_+(X^4)*b_1_*a_3_+(X^3)*b_1_*a_2_+(X^2)*b_1_*a_1_+(X)*b_1_*a_0_+(X^9)*b_0_*a_9_+(X^8)*b_0_*a_8_+(X^7)*b_0_*a_7_+(X^6)*b_0_*a_6_+(X^5)*b_0_*a_5_+(X^4)*b_0_*a_4_+(X^3)*b_0_*a_3_+(X^2)*b_0_*a_2_+(X)*b_0_*a_1_+b_0_*a_0_
+quotient (X^3)
+quotient is a constant
+// ** J2 is no standard basis
+solution for P is  b_9_*a_4_+b_9_*a_1_+b_8_*a_5_+b_8_*a_2_+b_7_*a_6_+b_7_*a_3_+b_6_*a_4_+b_5_*a_5_+b_4_*a_6_+b_3_*a_7_+b_3_*a_0_+b_2_*a_8_+b_2_*a_1_+b_1_*a_9_+b_1_*a_2_+b_0_*a_3_
+Auf Wiedersehen.
+                     SINGULAR                                 /
+ A Computer Algebra System for Polynomial Computations       /   version 4.0.3
+                                                           0<
+ by: W. Decker, G.-M. Greuel, G. Pfister, H. Schoenemann     \   Jan 2016
+FB Mathematik der Universitaet, D-67653 Kaiserslautern        \  Debian 4.0.3+ds-1
+// ** loaded multivariate_burg.lib 
+// ** library multivariate_burg.lib has old format. This format is still accepted,
+// ** but for functionality you may wish to change to the new
+// ** format. Please refer to the manual for further information.
+// ** loaded /usr/bin/../share/singular/LIB/control.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/matrix.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/nctools.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/general.lib (4.0.0.1,Jan_2014)
+// ** loaded /usr/bin/../share/singular/LIB/random.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/ring.lib (4.0.2.2,Jan_2016)
+// ** loaded /usr/bin/../share/singular/LIB/inout.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/primdec.lib (4.0.2.0,Apr_2015)
+// ** loaded /usr/bin/../share/singular/LIB/absfact.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/triang.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/elim.lib (4.0.0.1,Jan_2014)
+// ** loaded /usr/bin/../share/singular/LIB/poly.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/homolog.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/deform.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/sing.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/linalg.lib (4.0.0.0,Jun_2013)
+// ** _ is no standard basis
+// ** j0 is no standard basis
+dividend- (X^3)*h0+(X^9)*g17+(X^9)*g16+(X^8)*g15+(X^8)*g14+(X^7)*g13+(X^7)*g12+(X^6)*g11+(X^6)*g10+(X^5)*g9+(X^5)*g8+(X^4)*g7+(X^4)*g6+(X^3)*g5+(X^2)*g2+(X)*g1+g0+(X^4)*f17+(X)*f5+f2+(X^2)*e15+(X^5)*d89+(X^8+X^4+X)*b_9_*a_9_+(X^7+X^3+1)*b_9_*a_8_+(X^9+X^6)*b_9_*a_7_+(X^8+X^5)*b_9_*a_6_+(X^7+X^4)*b_9_*a_5_+(X^6+X^3)*b_9_*a_4_+(X^5+X^2)*b_9_*a_3_+(X^4+X)*b_9_*a_2_+(X^3+1)*b_9_*a_1_+(X^9)*b_9_*a_0_+(X^7+X^3+1)*b_8_*a_9_+(X^9+X^6)*b_8_*a_8_+(X^8+X^5)*b_8_*a_7_+(X^7+X^4)*b_8_*a_6_+(X^6+X^3)*b_8_*a_5_+(X^5+X^2)*b_8_*a_4_+(X^4+X)*b_8_*a_3_+(X^3+1)*b_8_*a_2_+(X^9)*b_8_*a_1_+(X^8)*b_8_*a_0_+(X^9+X^6)*b_7_*a_9_+(X^8+X^5)*b_7_*a_8_+(X^7+X^4)*b_7_*a_7_+(X^6+X^3)*b_7_*a_6_+(X^5+X^2)*b_7_*a_5_+(X^4+X)*b_7_*a_4_+(X^3+1)*b_7_*a_3_+(X^9)*b_7_*a_2_+(X^8)*b_7_*a_1_+(X^7)*b_7_*a_0_+(X^8+X^5)*b_6_*a_9_+(X^7+X^4)*b_6_*a_8_+(X^6+X^3)*b_6_*a_7_+(X^5+X^2)*b_6_*a_6_+(X^4+X)*b_6_*a_5_+(X^3+1)*b_6_*a_4_+(X^9)*b_6_*a_3_+(X^8)*b_6_*a_2_+(X^7)*b_6_*a_1_+(X^6)*b_6_*a_0_+(X^7+X^4)*b_5_*a_9_+(X^6+X^3)*b_5_*a_8_+(X^5+X^2)*b_5_*a_7_+(X^4+X)*b_5_*a_6_+(X^3+1)*b_5_*a_5_+(X^9)*b_5_*a_4_+(X^8)*b_5_*a_3_+(X^7)*b_5_*a_2_+(X^6)*b_5_*a_1_+(X^5)*b_5_*a_0_+(X^6+X^3)*b_4_*a_9_+(X^5+X^2)*b_4_*a_8_+(X^4+X)*b_4_*a_7_+(X^3+1)*b_4_*a_6_+(X^9)*b_4_*a_5_+(X^8)*b_4_*a_4_+(X^7)*b_4_*a_3_+(X^6)*b_4_*a_2_+(X^5)*b_4_*a_1_+(X^4)*b_4_*a_0_+(X^5+X^2)*b_3_*a_9_+(X^4+X)*b_3_*a_8_+(X^3+1)*b_3_*a_7_+(X^9)*b_3_*a_6_+(X^8)*b_3_*a_5_+(X^7)*b_3_*a_4_+(X^6)*b_3_*a_3_+(X^5)*b_3_*a_2_+(X^4)*b_3_*a_1_+(X^3)*b_3_*a_0_+(X^4+X)*b_2_*a_9_+(X^3+1)*b_2_*a_8_+(X^9)*b_2_*a_7_+(X^8)*b_2_*a_6_+(X^7)*b_2_*a_5_+(X^6)*b_2_*a_4_+(X^5)*b_2_*a_3_+(X^4)*b_2_*a_2_+(X^3)*b_2_*a_1_+(X^2)*b_2_*a_0_+(X^3+1)*b_1_*a_9_+(X^9)*b_1_*a_8_+(X^8)*b_1_*a_7_+(X^7)*b_1_*a_6_+(X^6)*b_1_*a_5_+(X^5)*b_1_*a_4_+(X^4)*b_1_*a_3_+(X^3)*b_1_*a_2_+(X^2)*b_1_*a_1_+(X)*b_1_*a_0_+(X^9)*b_0_*a_9_+(X^8)*b_0_*a_8_+(X^7)*b_0_*a_7_+(X^6)*b_0_*a_6_+(X^5)*b_0_*a_5_+(X^4)*b_0_*a_4_+(X^3)*b_0_*a_3_+(X^2)*b_0_*a_2_+(X)*b_0_*a_1_+b_0_*a_0_
+quotient- (X^3)
+divisor- h0
+residue- (X^9)*g17+(X^9)*g16+(X^8)*g15+(X^8)*g14+(X^7)*g13+(X^7)*g12+(X^6)*g11+(X^6)*g10+(X^5)*g9+(X^5)*g8+(X^4)*g7+(X^4)*g6+(X^3)*g5+(X^2)*g2+(X)*g1+g0+(X^4)*f17+(X)*f5+f2+(X^2)*e15+(X^5)*d89+(X^8+X^4+X)*b_9_*a_9_+(X^7+X^3+1)*b_9_*a_8_+(X^9+X^6)*b_9_*a_7_+(X^8+X^5)*b_9_*a_6_+(X^7+X^4)*b_9_*a_5_+(X^6+X^3)*b_9_*a_4_+(X^5+X^2)*b_9_*a_3_+(X^4+X)*b_9_*a_2_+(X^3+1)*b_9_*a_1_+(X^9)*b_9_*a_0_+(X^7+X^3+1)*b_8_*a_9_+(X^9+X^6)*b_8_*a_8_+(X^8+X^5)*b_8_*a_7_+(X^7+X^4)*b_8_*a_6_+(X^6+X^3)*b_8_*a_5_+(X^5+X^2)*b_8_*a_4_+(X^4+X)*b_8_*a_3_+(X^3+1)*b_8_*a_2_+(X^9)*b_8_*a_1_+(X^8)*b_8_*a_0_+(X^9+X^6)*b_7_*a_9_+(X^8+X^5)*b_7_*a_8_+(X^7+X^4)*b_7_*a_7_+(X^6+X^3)*b_7_*a_6_+(X^5+X^2)*b_7_*a_5_+(X^4+X)*b_7_*a_4_+(X^3+1)*b_7_*a_3_+(X^9)*b_7_*a_2_+(X^8)*b_7_*a_1_+(X^7)*b_7_*a_0_+(X^8+X^5)*b_6_*a_9_+(X^7+X^4)*b_6_*a_8_+(X^6+X^3)*b_6_*a_7_+(X^5+X^2)*b_6_*a_6_+(X^4+X)*b_6_*a_5_+(X^3+1)*b_6_*a_4_+(X^9)*b_6_*a_3_+(X^8)*b_6_*a_2_+(X^7)*b_6_*a_1_+(X^6)*b_6_*a_0_+(X^7+X^4)*b_5_*a_9_+(X^6+X^3)*b_5_*a_8_+(X^5+X^2)*b_5_*a_7_+(X^4+X)*b_5_*a_6_+(X^3+1)*b_5_*a_5_+(X^9)*b_5_*a_4_+(X^8)*b_5_*a_3_+(X^7)*b_5_*a_2_+(X^6)*b_5_*a_1_+(X^5)*b_5_*a_0_+(X^6+X^3)*b_4_*a_9_+(X^5+X^2)*b_4_*a_8_+(X^4+X)*b_4_*a_7_+(X^3+1)*b_4_*a_6_+(X^9)*b_4_*a_5_+(X^8)*b_4_*a_4_+(X^7)*b_4_*a_3_+(X^6)*b_4_*a_2_+(X^5)*b_4_*a_1_+(X^4)*b_4_*a_0_+(X^5+X^2)*b_3_*a_9_+(X^4+X)*b_3_*a_8_+(X^3+1)*b_3_*a_7_+(X^9)*b_3_*a_6_+(X^8)*b_3_*a_5_+(X^7)*b_3_*a_4_+(X^6)*b_3_*a_3_+(X^5)*b_3_*a_2_+(X^4)*b_3_*a_1_+(X^3)*b_3_*a_0_+(X^4+X)*b_2_*a_9_+(X^3+1)*b_2_*a_8_+(X^9)*b_2_*a_7_+(X^8)*b_2_*a_6_+(X^7)*b_2_*a_5_+(X^6)*b_2_*a_4_+(X^5)*b_2_*a_3_+(X^4)*b_2_*a_2_+(X^3)*b_2_*a_1_+(X^2)*b_2_*a_0_+(X^3+1)*b_1_*a_9_+(X^9)*b_1_*a_8_+(X^8)*b_1_*a_7_+(X^7)*b_1_*a_6_+(X^6)*b_1_*a_5_+(X^5)*b_1_*a_4_+(X^4)*b_1_*a_3_+(X^3)*b_1_*a_2_+(X^2)*b_1_*a_1_+(X)*b_1_*a_0_+(X^9)*b_0_*a_9_+(X^8)*b_0_*a_8_+(X^7)*b_0_*a_7_+(X^6)*b_0_*a_6_+(X^5)*b_0_*a_5_+(X^4)*b_0_*a_4_+(X^3)*b_0_*a_3_+(X^2)*b_0_*a_2_+(X)*b_0_*a_1_+b_0_*a_0_
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+remainder (X^9)*g17+(X^9)*g16+(X^8)*g15+(X^8)*g14+(X^7)*g13+(X^7)*g12+(X^6)*g11+(X^6)*g10+(X^5)*g9+(X^5)*g8+(X^4)*g7+(X^4)*g6+(X^3)*g5+(X^2)*g2+(X)*g1+g0+(X^4)*f17+(X)*f5+f2+(X^2)*e15+(X^5)*d89+(X^8+X^4+X)*b_9_*a_9_+(X^7+X^3+1)*b_9_*a_8_+(X^9+X^6)*b_9_*a_7_+(X^8+X^5)*b_9_*a_6_+(X^7+X^4)*b_9_*a_5_+(X^6+X^3)*b_9_*a_4_+(X^5+X^2)*b_9_*a_3_+(X^4+X)*b_9_*a_2_+(X^3+1)*b_9_*a_1_+(X^9)*b_9_*a_0_+(X^7+X^3+1)*b_8_*a_9_+(X^9+X^6)*b_8_*a_8_+(X^8+X^5)*b_8_*a_7_+(X^7+X^4)*b_8_*a_6_+(X^6+X^3)*b_8_*a_5_+(X^5+X^2)*b_8_*a_4_+(X^4+X)*b_8_*a_3_+(X^3+1)*b_8_*a_2_+(X^9)*b_8_*a_1_+(X^8)*b_8_*a_0_+(X^9+X^6)*b_7_*a_9_+(X^8+X^5)*b_7_*a_8_+(X^7+X^4)*b_7_*a_7_+(X^6+X^3)*b_7_*a_6_+(X^5+X^2)*b_7_*a_5_+(X^4+X)*b_7_*a_4_+(X^3+1)*b_7_*a_3_+(X^9)*b_7_*a_2_+(X^8)*b_7_*a_1_+(X^7)*b_7_*a_0_+(X^8+X^5)*b_6_*a_9_+(X^7+X^4)*b_6_*a_8_+(X^6+X^3)*b_6_*a_7_+(X^5+X^2)*b_6_*a_6_+(X^4+X)*b_6_*a_5_+(X^3+1)*b_6_*a_4_+(X^9)*b_6_*a_3_+(X^8)*b_6_*a_2_+(X^7)*b_6_*a_1_+(X^6)*b_6_*a_0_+(X^7+X^4)*b_5_*a_9_+(X^6+X^3)*b_5_*a_8_+(X^5+X^2)*b_5_*a_7_+(X^4+X)*b_5_*a_6_+(X^3+1)*b_5_*a_5_+(X^9)*b_5_*a_4_+(X^8)*b_5_*a_3_+(X^7)*b_5_*a_2_+(X^6)*b_5_*a_1_+(X^5)*b_5_*a_0_+(X^6+X^3)*b_4_*a_9_+(X^5+X^2)*b_4_*a_8_+(X^4+X)*b_4_*a_7_+(X^3+1)*b_4_*a_6_+(X^9)*b_4_*a_5_+(X^8)*b_4_*a_4_+(X^7)*b_4_*a_3_+(X^6)*b_4_*a_2_+(X^5)*b_4_*a_1_+(X^4)*b_4_*a_0_+(X^5+X^2)*b_3_*a_9_+(X^4+X)*b_3_*a_8_+(X^3+1)*b_3_*a_7_+(X^9)*b_3_*a_6_+(X^8)*b_3_*a_5_+(X^7)*b_3_*a_4_+(X^6)*b_3_*a_3_+(X^5)*b_3_*a_2_+(X^4)*b_3_*a_1_+(X^3)*b_3_*a_0_+(X^4+X)*b_2_*a_9_+(X^3+1)*b_2_*a_8_+(X^9)*b_2_*a_7_+(X^8)*b_2_*a_6_+(X^7)*b_2_*a_5_+(X^6)*b_2_*a_4_+(X^5)*b_2_*a_3_+(X^4)*b_2_*a_2_+(X^3)*b_2_*a_1_+(X^2)*b_2_*a_0_+(X^3+1)*b_1_*a_9_+(X^9)*b_1_*a_8_+(X^8)*b_1_*a_7_+(X^7)*b_1_*a_6_+(X^6)*b_1_*a_5_+(X^5)*b_1_*a_4_+(X^4)*b_1_*a_3_+(X^3)*b_1_*a_2_+(X^2)*b_1_*a_1_+(X)*b_1_*a_0_+(X^9)*b_0_*a_9_+(X^8)*b_0_*a_8_+(X^7)*b_0_*a_7_+(X^6)*b_0_*a_6_+(X^5)*b_0_*a_5_+(X^4)*b_0_*a_4_+(X^3)*b_0_*a_3_+(X^2)*b_0_*a_2_+(X)*b_0_*a_1_+b_0_*a_0_
+quotient (X^3)
+quotient is a constant
+// ** J2 is no standard basis
+solution for P is  b_9_*a_4_+b_9_*a_1_+b_8_*a_5_+b_8_*a_2_+b_7_*a_6_+b_7_*a_3_+b_6_*a_4_+b_5_*a_5_+b_4_*a_6_+b_3_*a_7_+b_3_*a_0_+b_2_*a_8_+b_2_*a_1_+b_1_*a_9_+b_1_*a_2_+b_0_*a_3_
+Auf Wiedersehen.
+	Command being timed: "Singular Mas10.sing"
+	User time (seconds): 0.28
+	System time (seconds): 0.00
+	Percent of CPU this job got: 100%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.28
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 19128
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 3687
+	Voluntary context switches: 1
+	Involuntary context switches: 2
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 0
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+                     SINGULAR                                 /
+ A Computer Algebra System for Polynomial Computations       /   version 4.0.3
+                                                           0<
+ by: W. Decker, G.-M. Greuel, G. Pfister, H. Schoenemann     \   Jan 2016
+FB Mathematik der Universitaet, D-67653 Kaiserslautern        \  Debian 4.0.3+ds-1
+// ** loaded multivariate_burg.lib 
+// ** library multivariate_burg.lib has old format. This format is still accepted,
+// ** but for functionality you may wish to change to the new
+// ** format. Please refer to the manual for further information.
+// ** loaded /usr/bin/../share/singular/LIB/control.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/matrix.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/nctools.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/general.lib (4.0.0.1,Jan_2014)
+// ** loaded /usr/bin/../share/singular/LIB/random.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/ring.lib (4.0.2.2,Jan_2016)
+// ** loaded /usr/bin/../share/singular/LIB/inout.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/primdec.lib (4.0.2.0,Apr_2015)
+// ** loaded /usr/bin/../share/singular/LIB/absfact.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/triang.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/elim.lib (4.0.0.1,Jan_2014)
+// ** loaded /usr/bin/../share/singular/LIB/poly.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/homolog.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/deform.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/sing.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/linalg.lib (4.0.0.0,Jun_2013)
+// ** _ is no standard basis
+// ** j0 is no standard basis
+dividend- (X^3)*h0+(X^9)*g17+(X^9)*g16+(X^8)*g15+(X^8)*g14+(X^7)*g13+(X^7)*g12+(X^6)*g11+(X^6)*g10+(X^5)*g9+(X^5)*g8+(X^4)*g7+(X^4)*g6+(X^3)*g5+(X^2)*g2+(X)*g1+g0+(X^4)*f17+(X)*f5+f2+(X^2)*e15+(X^5)*d89+(X^8+X^4+X)*b_9_*a_9_+(X^7+X^3+1)*b_9_*a_8_+(X^9+X^6)*b_9_*a_7_+(X^8+X^5)*b_9_*a_6_+(X^7+X^4)*b_9_*a_5_+(X^6+X^3)*b_9_*a_4_+(X^5+X^2)*b_9_*a_3_+(X^4+X)*b_9_*a_2_+(X^3+1)*b_9_*a_1_+(X^9)*b_9_*a_0_+(X^7+X^3+1)*b_8_*a_9_+(X^9+X^6)*b_8_*a_8_+(X^8+X^5)*b_8_*a_7_+(X^7+X^4)*b_8_*a_6_+(X^6+X^3)*b_8_*a_5_+(X^5+X^2)*b_8_*a_4_+(X^4+X)*b_8_*a_3_+(X^3+1)*b_8_*a_2_+(X^9)*b_8_*a_1_+(X^8)*b_8_*a_0_+(X^9+X^6)*b_7_*a_9_+(X^8+X^5)*b_7_*a_8_+(X^7+X^4)*b_7_*a_7_+(X^6+X^3)*b_7_*a_6_+(X^5+X^2)*b_7_*a_5_+(X^4+X)*b_7_*a_4_+(X^3+1)*b_7_*a_3_+(X^9)*b_7_*a_2_+(X^8)*b_7_*a_1_+(X^7)*b_7_*a_0_+(X^8+X^5)*b_6_*a_9_+(X^7+X^4)*b_6_*a_8_+(X^6+X^3)*b_6_*a_7_+(X^5+X^2)*b_6_*a_6_+(X^4+X)*b_6_*a_5_+(X^3+1)*b_6_*a_4_+(X^9)*b_6_*a_3_+(X^8)*b_6_*a_2_+(X^7)*b_6_*a_1_+(X^6)*b_6_*a_0_+(X^7+X^4)*b_5_*a_9_+(X^6+X^3)*b_5_*a_8_+(X^5+X^2)*b_5_*a_7_+(X^4+X)*b_5_*a_6_+(X^3+1)*b_5_*a_5_+(X^9)*b_5_*a_4_+(X^8)*b_5_*a_3_+(X^7)*b_5_*a_2_+(X^6)*b_5_*a_1_+(X^5)*b_5_*a_0_+(X^6+X^3)*b_4_*a_9_+(X^5+X^2)*b_4_*a_8_+(X^4+X)*b_4_*a_7_+(X^3+1)*b_4_*a_6_+(X^9)*b_4_*a_5_+(X^8)*b_4_*a_4_+(X^7)*b_4_*a_3_+(X^6)*b_4_*a_2_+(X^5)*b_4_*a_1_+(X^4)*b_4_*a_0_+(X^5+X^2)*b_3_*a_9_+(X^4+X)*b_3_*a_8_+(X^3+1)*b_3_*a_7_+(X^9)*b_3_*a_6_+(X^8)*b_3_*a_5_+(X^7)*b_3_*a_4_+(X^6)*b_3_*a_3_+(X^5)*b_3_*a_2_+(X^4)*b_3_*a_1_+(X^3)*b_3_*a_0_+(X^4+X)*b_2_*a_9_+(X^3+1)*b_2_*a_8_+(X^9)*b_2_*a_7_+(X^8)*b_2_*a_6_+(X^7)*b_2_*a_5_+(X^6)*b_2_*a_4_+(X^5)*b_2_*a_3_+(X^4)*b_2_*a_2_+(X^3)*b_2_*a_1_+(X^2)*b_2_*a_0_+(X^3+1)*b_1_*a_9_+(X^9)*b_1_*a_8_+(X^8)*b_1_*a_7_+(X^7)*b_1_*a_6_+(X^6)*b_1_*a_5_+(X^5)*b_1_*a_4_+(X^4)*b_1_*a_3_+(X^3)*b_1_*a_2_+(X^2)*b_1_*a_1_+(X)*b_1_*a_0_+(X^9)*b_0_*a_9_+(X^8)*b_0_*a_8_+(X^7)*b_0_*a_7_+(X^6)*b_0_*a_6_+(X^5)*b_0_*a_5_+(X^4)*b_0_*a_4_+(X^3)*b_0_*a_3_+(X^2)*b_0_*a_2_+(X)*b_0_*a_1_+b_0_*a_0_
+quotient- (X^3)
+divisor- h0
+residue- (X^9)*g17+(X^9)*g16+(X^8)*g15+(X^8)*g14+(X^7)*g13+(X^7)*g12+(X^6)*g11+(X^6)*g10+(X^5)*g9+(X^5)*g8+(X^4)*g7+(X^4)*g6+(X^3)*g5+(X^2)*g2+(X)*g1+g0+(X^4)*f17+(X)*f5+f2+(X^2)*e15+(X^5)*d89+(X^8+X^4+X)*b_9_*a_9_+(X^7+X^3+1)*b_9_*a_8_+(X^9+X^6)*b_9_*a_7_+(X^8+X^5)*b_9_*a_6_+(X^7+X^4)*b_9_*a_5_+(X^6+X^3)*b_9_*a_4_+(X^5+X^2)*b_9_*a_3_+(X^4+X)*b_9_*a_2_+(X^3+1)*b_9_*a_1_+(X^9)*b_9_*a_0_+(X^7+X^3+1)*b_8_*a_9_+(X^9+X^6)*b_8_*a_8_+(X^8+X^5)*b_8_*a_7_+(X^7+X^4)*b_8_*a_6_+(X^6+X^3)*b_8_*a_5_+(X^5+X^2)*b_8_*a_4_+(X^4+X)*b_8_*a_3_+(X^3+1)*b_8_*a_2_+(X^9)*b_8_*a_1_+(X^8)*b_8_*a_0_+(X^9+X^6)*b_7_*a_9_+(X^8+X^5)*b_7_*a_8_+(X^7+X^4)*b_7_*a_7_+(X^6+X^3)*b_7_*a_6_+(X^5+X^2)*b_7_*a_5_+(X^4+X)*b_7_*a_4_+(X^3+1)*b_7_*a_3_+(X^9)*b_7_*a_2_+(X^8)*b_7_*a_1_+(X^7)*b_7_*a_0_+(X^8+X^5)*b_6_*a_9_+(X^7+X^4)*b_6_*a_8_+(X^6+X^3)*b_6_*a_7_+(X^5+X^2)*b_6_*a_6_+(X^4+X)*b_6_*a_5_+(X^3+1)*b_6_*a_4_+(X^9)*b_6_*a_3_+(X^8)*b_6_*a_2_+(X^7)*b_6_*a_1_+(X^6)*b_6_*a_0_+(X^7+X^4)*b_5_*a_9_+(X^6+X^3)*b_5_*a_8_+(X^5+X^2)*b_5_*a_7_+(X^4+X)*b_5_*a_6_+(X^3+1)*b_5_*a_5_+(X^9)*b_5_*a_4_+(X^8)*b_5_*a_3_+(X^7)*b_5_*a_2_+(X^6)*b_5_*a_1_+(X^5)*b_5_*a_0_+(X^6+X^3)*b_4_*a_9_+(X^5+X^2)*b_4_*a_8_+(X^4+X)*b_4_*a_7_+(X^3+1)*b_4_*a_6_+(X^9)*b_4_*a_5_+(X^8)*b_4_*a_4_+(X^7)*b_4_*a_3_+(X^6)*b_4_*a_2_+(X^5)*b_4_*a_1_+(X^4)*b_4_*a_0_+(X^5+X^2)*b_3_*a_9_+(X^4+X)*b_3_*a_8_+(X^3+1)*b_3_*a_7_+(X^9)*b_3_*a_6_+(X^8)*b_3_*a_5_+(X^7)*b_3_*a_4_+(X^6)*b_3_*a_3_+(X^5)*b_3_*a_2_+(X^4)*b_3_*a_1_+(X^3)*b_3_*a_0_+(X^4+X)*b_2_*a_9_+(X^3+1)*b_2_*a_8_+(X^9)*b_2_*a_7_+(X^8)*b_2_*a_6_+(X^7)*b_2_*a_5_+(X^6)*b_2_*a_4_+(X^5)*b_2_*a_3_+(X^4)*b_2_*a_2_+(X^3)*b_2_*a_1_+(X^2)*b_2_*a_0_+(X^3+1)*b_1_*a_9_+(X^9)*b_1_*a_8_+(X^8)*b_1_*a_7_+(X^7)*b_1_*a_6_+(X^6)*b_1_*a_5_+(X^5)*b_1_*a_4_+(X^4)*b_1_*a_3_+(X^3)*b_1_*a_2_+(X^2)*b_1_*a_1_+(X)*b_1_*a_0_+(X^9)*b_0_*a_9_+(X^8)*b_0_*a_8_+(X^7)*b_0_*a_7_+(X^6)*b_0_*a_6_+(X^5)*b_0_*a_5_+(X^4)*b_0_*a_4_+(X^3)*b_0_*a_3_+(X^2)*b_0_*a_2_+(X)*b_0_*a_1_+b_0_*a_0_
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+remainder (X^9)*g17+(X^9)*g16+(X^8)*g15+(X^8)*g14+(X^7)*g13+(X^7)*g12+(X^6)*g11+(X^6)*g10+(X^5)*g9+(X^5)*g8+(X^4)*g7+(X^4)*g6+(X^3)*g5+(X^2)*g2+(X)*g1+g0+(X^4)*f17+(X)*f5+f2+(X^2)*e15+(X^5)*d89+(X^8+X^4+X)*b_9_*a_9_+(X^7+X^3+1)*b_9_*a_8_+(X^9+X^6)*b_9_*a_7_+(X^8+X^5)*b_9_*a_6_+(X^7+X^4)*b_9_*a_5_+(X^6+X^3)*b_9_*a_4_+(X^5+X^2)*b_9_*a_3_+(X^4+X)*b_9_*a_2_+(X^3+1)*b_9_*a_1_+(X^9)*b_9_*a_0_+(X^7+X^3+1)*b_8_*a_9_+(X^9+X^6)*b_8_*a_8_+(X^8+X^5)*b_8_*a_7_+(X^7+X^4)*b_8_*a_6_+(X^6+X^3)*b_8_*a_5_+(X^5+X^2)*b_8_*a_4_+(X^4+X)*b_8_*a_3_+(X^3+1)*b_8_*a_2_+(X^9)*b_8_*a_1_+(X^8)*b_8_*a_0_+(X^9+X^6)*b_7_*a_9_+(X^8+X^5)*b_7_*a_8_+(X^7+X^4)*b_7_*a_7_+(X^6+X^3)*b_7_*a_6_+(X^5+X^2)*b_7_*a_5_+(X^4+X)*b_7_*a_4_+(X^3+1)*b_7_*a_3_+(X^9)*b_7_*a_2_+(X^8)*b_7_*a_1_+(X^7)*b_7_*a_0_+(X^8+X^5)*b_6_*a_9_+(X^7+X^4)*b_6_*a_8_+(X^6+X^3)*b_6_*a_7_+(X^5+X^2)*b_6_*a_6_+(X^4+X)*b_6_*a_5_+(X^3+1)*b_6_*a_4_+(X^9)*b_6_*a_3_+(X^8)*b_6_*a_2_+(X^7)*b_6_*a_1_+(X^6)*b_6_*a_0_+(X^7+X^4)*b_5_*a_9_+(X^6+X^3)*b_5_*a_8_+(X^5+X^2)*b_5_*a_7_+(X^4+X)*b_5_*a_6_+(X^3+1)*b_5_*a_5_+(X^9)*b_5_*a_4_+(X^8)*b_5_*a_3_+(X^7)*b_5_*a_2_+(X^6)*b_5_*a_1_+(X^5)*b_5_*a_0_+(X^6+X^3)*b_4_*a_9_+(X^5+X^2)*b_4_*a_8_+(X^4+X)*b_4_*a_7_+(X^3+1)*b_4_*a_6_+(X^9)*b_4_*a_5_+(X^8)*b_4_*a_4_+(X^7)*b_4_*a_3_+(X^6)*b_4_*a_2_+(X^5)*b_4_*a_1_+(X^4)*b_4_*a_0_+(X^5+X^2)*b_3_*a_9_+(X^4+X)*b_3_*a_8_+(X^3+1)*b_3_*a_7_+(X^9)*b_3_*a_6_+(X^8)*b_3_*a_5_+(X^7)*b_3_*a_4_+(X^6)*b_3_*a_3_+(X^5)*b_3_*a_2_+(X^4)*b_3_*a_1_+(X^3)*b_3_*a_0_+(X^4+X)*b_2_*a_9_+(X^3+1)*b_2_*a_8_+(X^9)*b_2_*a_7_+(X^8)*b_2_*a_6_+(X^7)*b_2_*a_5_+(X^6)*b_2_*a_4_+(X^5)*b_2_*a_3_+(X^4)*b_2_*a_2_+(X^3)*b_2_*a_1_+(X^2)*b_2_*a_0_+(X^3+1)*b_1_*a_9_+(X^9)*b_1_*a_8_+(X^8)*b_1_*a_7_+(X^7)*b_1_*a_6_+(X^6)*b_1_*a_5_+(X^5)*b_1_*a_4_+(X^4)*b_1_*a_3_+(X^3)*b_1_*a_2_+(X^2)*b_1_*a_1_+(X)*b_1_*a_0_+(X^9)*b_0_*a_9_+(X^8)*b_0_*a_8_+(X^7)*b_0_*a_7_+(X^6)*b_0_*a_6_+(X^5)*b_0_*a_5_+(X^4)*b_0_*a_4_+(X^3)*b_0_*a_3_+(X^2)*b_0_*a_2_+(X)*b_0_*a_1_+b_0_*a_0_
+quotient (X^3)
+quotient is a constant
+// ** J2 is no standard basis
+solution for P is  b_9_*a_4_+b_9_*a_1_+b_8_*a_5_+b_8_*a_2_+b_7_*a_6_+b_7_*a_3_+b_6_*a_4_+b_5_*a_5_+b_4_*a_6_+b_3_*a_7_+b_3_*a_0_+b_2_*a_8_+b_2_*a_1_+b_1_*a_9_+b_1_*a_2_+b_0_*a_3_
+Auf Wiedersehen.
+	Command being timed: "Singular Mas10.sing"
+	User time (seconds): 0.29
+	System time (seconds): 0.00
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.29
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 18256
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 3937
+	Voluntary context switches: 1
+	Involuntary context switches: 47
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 0
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+                     SINGULAR                                 /
+ A Computer Algebra System for Polynomial Computations       /   version 4.0.3
+                                                           0<
+ by: W. Decker, G.-M. Greuel, G. Pfister, H. Schoenemann     \   Jan 2016
+FB Mathematik der Universitaet, D-67653 Kaiserslautern        \  Debian 4.0.3+ds-1
+// ** loaded multivariate_burg.lib 
+// ** library multivariate_burg.lib has old format. This format is still accepted,
+// ** but for functionality you may wish to change to the new
+// ** format. Please refer to the manual for further information.
+// ** loaded /usr/bin/../share/singular/LIB/control.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/matrix.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/nctools.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/general.lib (4.0.0.1,Jan_2014)
+// ** loaded /usr/bin/../share/singular/LIB/random.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/ring.lib (4.0.2.2,Jan_2016)
+// ** loaded /usr/bin/../share/singular/LIB/inout.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/primdec.lib (4.0.2.0,Apr_2015)
+// ** loaded /usr/bin/../share/singular/LIB/absfact.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/triang.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/elim.lib (4.0.0.1,Jan_2014)
+// ** loaded /usr/bin/../share/singular/LIB/poly.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/homolog.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/deform.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/sing.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/linalg.lib (4.0.0.0,Jun_2013)
+// ** _ is no standard basis
+// ** j0 is no standard basis
+dividend- (X^3)*f8+(X^2)*f7+(X^2)*f6+(X)*f5+(X)*f4+(X)*f3+f2+f1+f0+(X^9)*e70+(X^9)*e69+(X^9)*e68+(X^9)*e67+(X^9)*e66+(X^9)*e65+(X^8)*e64+(X^8)*e63+(X^8)*e62+(X^8)*e61+(X^8)*e60+(X^8)*e59+(X^8)*e58+(X^7)*e57+(X^7)*e56+(X^7)*e55+(X^7)*e54+(X^7)*e53+(X^7)*e52+(X^7)*e51+(X^6)*e50+(X^6)*e49+(X^6)*e48+(X^6)*e47+(X^6)*e46+(X^6)*e45+(X^6)*e44+(X^6)*e43+(X^5)*e42+(X^5)*e41+(X^5)*e40+(X^5)*e39+(X^5)*e38+(X^5)*e37+(X^5)*e36+(X^5)*e35+(X^4)*e34+(X^4)*e33+(X^4)*e32+(X^4)*e31+(X^4)*e30+(X^4)*e29+(X^4)*e28+(X^4)*e27+(X^4)*e26+(X^3)*e25+(X^3)*e24+(X^3)*e23+(X^3)*e22+(X^3)*e21+(X^3)*e20+(X^3)*e19+(X^3)*e18+(X^2)*e15+(X^9)*d147+(X^7)*d120+(X^5)*d89+(X^4)*d72+(X^3)*d53+(X^8+X^4+X)*b_9_*a_9_+(X^7+X^3+1)*b_9_*a_8_+(X^9+X^6)*b_9_*a_7_+(X^8+X^5)*b_9_*a_6_+(X^7+X^4)*b_9_*a_5_+(X^6+X^3)*b_9_*a_4_+(X^5+X^2)*b_9_*a_3_+(X^4+X)*b_9_*a_2_+(X^3+1)*b_9_*a_1_+(X^9)*b_9_*a_0_+(X^7+X^3+1)*b_8_*a_9_+(X^9+X^6)*b_8_*a_8_+(X^8+X^5)*b_8_*a_7_+(X^7+X^4)*b_8_*a_6_+(X^6+X^3)*b_8_*a_5_+(X^5+X^2)*b_8_*a_4_+(X^4+X)*b_8_*a_3_+(X^3+1)*b_8_*a_2_+(X^9)*b_8_*a_1_+(X^8)*b_8_*a_0_+(X^9+X^6)*b_7_*a_9_+(X^8+X^5)*b_7_*a_8_+(X^7+X^4)*b_7_*a_7_+(X^6+X^3)*b_7_*a_6_+(X^5+X^2)*b_7_*a_5_+(X^4+X)*b_7_*a_4_+(X^3+1)*b_7_*a_3_+(X^9)*b_7_*a_2_+(X^8)*b_7_*a_1_+(X^7)*b_7_*a_0_+(X^8+X^5)*b_6_*a_9_+(X^7+X^4)*b_6_*a_8_+(X^6+X^3)*b_6_*a_7_+(X^5+X^2)*b_6_*a_6_+(X^4+X)*b_6_*a_5_+(X^3+1)*b_6_*a_4_+(X^9)*b_6_*a_3_+(X^8)*b_6_*a_2_+(X^7)*b_6_*a_1_+(X^6)*b_6_*a_0_+(X^7+X^4)*b_5_*a_9_+(X^6+X^3)*b_5_*a_8_+(X^5+X^2)*b_5_*a_7_+(X^4+X)*b_5_*a_6_+(X^3+1)*b_5_*a_5_+(X^9)*b_5_*a_4_+(X^8)*b_5_*a_3_+(X^7)*b_5_*a_2_+(X^6)*b_5_*a_1_+(X^5)*b_5_*a_0_+(X^6+X^3)*b_4_*a_9_+(X^5+X^2)*b_4_*a_8_+(X^4+X)*b_4_*a_7_+(X^3+1)*b_4_*a_6_+(X^9)*b_4_*a_5_+(X^8)*b_4_*a_4_+(X^7)*b_4_*a_3_+(X^6)*b_4_*a_2_+(X^5)*b_4_*a_1_+(X^4)*b_4_*a_0_+(X^5+X^2)*b_3_*a_9_+(X^4+X)*b_3_*a_8_+(X^3+1)*b_3_*a_7_+(X^9)*b_3_*a_6_+(X^8)*b_3_*a_5_+(X^7)*b_3_*a_4_+(X^6)*b_3_*a_3_+(X^5)*b_3_*a_2_+(X^4)*b_3_*a_1_+(X^3)*b_3_*a_0_+(X^4+X)*b_2_*a_9_+(X^3+1)*b_2_*a_8_+(X^9)*b_2_*a_7_+(X^8)*b_2_*a_6_+(X^7)*b_2_*a_5_+(X^6)*b_2_*a_4_+(X^5)*b_2_*a_3_+(X^4)*b_2_*a_2_+(X^3)*b_2_*a_1_+(X^2)*b_2_*a_0_+(X^3+1)*b_1_*a_9_+(X^9)*b_1_*a_8_+(X^8)*b_1_*a_7_+(X^7)*b_1_*a_6_+(X^6)*b_1_*a_5_+(X^5)*b_1_*a_4_+(X^4)*b_1_*a_3_+(X^3)*b_1_*a_2_+(X^2)*b_1_*a_1_+(X)*b_1_*a_0_+(X^9)*b_0_*a_9_+(X^8)*b_0_*a_8_+(X^7)*b_0_*a_7_+(X^6)*b_0_*a_6_+(X^5)*b_0_*a_5_+(X^4)*b_0_*a_4_+(X^3)*b_0_*a_3_+(X^2)*b_0_*a_2_+(X)*b_0_*a_1_+b_0_*a_0_
+quotient- (X^3)
+divisor- f8
+residue- (X^2)*f7+(X^2)*f6+(X)*f5+(X)*f4+(X)*f3+f2+f1+f0+(X^9)*e70+(X^9)*e69+(X^9)*e68+(X^9)*e67+(X^9)*e66+(X^9)*e65+(X^8)*e64+(X^8)*e63+(X^8)*e62+(X^8)*e61+(X^8)*e60+(X^8)*e59+(X^8)*e58+(X^7)*e57+(X^7)*e56+(X^7)*e55+(X^7)*e54+(X^7)*e53+(X^7)*e52+(X^7)*e51+(X^6)*e50+(X^6)*e49+(X^6)*e48+(X^6)*e47+(X^6)*e46+(X^6)*e45+(X^6)*e44+(X^6)*e43+(X^5)*e42+(X^5)*e41+(X^5)*e40+(X^5)*e39+(X^5)*e38+(X^5)*e37+(X^5)*e36+(X^5)*e35+(X^4)*e34+(X^4)*e33+(X^4)*e32+(X^4)*e31+(X^4)*e30+(X^4)*e29+(X^4)*e28+(X^4)*e27+(X^4)*e26+(X^3)*e25+(X^3)*e24+(X^3)*e23+(X^3)*e22+(X^3)*e21+(X^3)*e20+(X^3)*e19+(X^3)*e18+(X^2)*e15+(X^9)*d147+(X^7)*d120+(X^5)*d89+(X^4)*d72+(X^3)*d53+(X^8+X^4+X)*b_9_*a_9_+(X^7+X^3+1)*b_9_*a_8_+(X^9+X^6)*b_9_*a_7_+(X^8+X^5)*b_9_*a_6_+(X^7+X^4)*b_9_*a_5_+(X^6+X^3)*b_9_*a_4_+(X^5+X^2)*b_9_*a_3_+(X^4+X)*b_9_*a_2_+(X^3+1)*b_9_*a_1_+(X^9)*b_9_*a_0_+(X^7+X^3+1)*b_8_*a_9_+(X^9+X^6)*b_8_*a_8_+(X^8+X^5)*b_8_*a_7_+(X^7+X^4)*b_8_*a_6_+(X^6+X^3)*b_8_*a_5_+(X^5+X^2)*b_8_*a_4_+(X^4+X)*b_8_*a_3_+(X^3+1)*b_8_*a_2_+(X^9)*b_8_*a_1_+(X^8)*b_8_*a_0_+(X^9+X^6)*b_7_*a_9_+(X^8+X^5)*b_7_*a_8_+(X^7+X^4)*b_7_*a_7_+(X^6+X^3)*b_7_*a_6_+(X^5+X^2)*b_7_*a_5_+(X^4+X)*b_7_*a_4_+(X^3+1)*b_7_*a_3_+(X^9)*b_7_*a_2_+(X^8)*b_7_*a_1_+(X^7)*b_7_*a_0_+(X^8+X^5)*b_6_*a_9_+(X^7+X^4)*b_6_*a_8_+(X^6+X^3)*b_6_*a_7_+(X^5+X^2)*b_6_*a_6_+(X^4+X)*b_6_*a_5_+(X^3+1)*b_6_*a_4_+(X^9)*b_6_*a_3_+(X^8)*b_6_*a_2_+(X^7)*b_6_*a_1_+(X^6)*b_6_*a_0_+(X^7+X^4)*b_5_*a_9_+(X^6+X^3)*b_5_*a_8_+(X^5+X^2)*b_5_*a_7_+(X^4+X)*b_5_*a_6_+(X^3+1)*b_5_*a_5_+(X^9)*b_5_*a_4_+(X^8)*b_5_*a_3_+(X^7)*b_5_*a_2_+(X^6)*b_5_*a_1_+(X^5)*b_5_*a_0_+(X^6+X^3)*b_4_*a_9_+(X^5+X^2)*b_4_*a_8_+(X^4+X)*b_4_*a_7_+(X^3+1)*b_4_*a_6_+(X^9)*b_4_*a_5_+(X^8)*b_4_*a_4_+(X^7)*b_4_*a_3_+(X^6)*b_4_*a_2_+(X^5)*b_4_*a_1_+(X^4)*b_4_*a_0_+(X^5+X^2)*b_3_*a_9_+(X^4+X)*b_3_*a_8_+(X^3+1)*b_3_*a_7_+(X^9)*b_3_*a_6_+(X^8)*b_3_*a_5_+(X^7)*b_3_*a_4_+(X^6)*b_3_*a_3_+(X^5)*b_3_*a_2_+(X^4)*b_3_*a_1_+(X^3)*b_3_*a_0_+(X^4+X)*b_2_*a_9_+(X^3+1)*b_2_*a_8_+(X^9)*b_2_*a_7_+(X^8)*b_2_*a_6_+(X^7)*b_2_*a_5_+(X^6)*b_2_*a_4_+(X^5)*b_2_*a_3_+(X^4)*b_2_*a_2_+(X^3)*b_2_*a_1_+(X^2)*b_2_*a_0_+(X^3+1)*b_1_*a_9_+(X^9)*b_1_*a_8_+(X^8)*b_1_*a_7_+(X^7)*b_1_*a_6_+(X^6)*b_1_*a_5_+(X^5)*b_1_*a_4_+(X^4)*b_1_*a_3_+(X^3)*b_1_*a_2_+(X^2)*b_1_*a_1_+(X)*b_1_*a_0_+(X^9)*b_0_*a_9_+(X^8)*b_0_*a_8_+(X^7)*b_0_*a_7_+(X^6)*b_0_*a_6_+(X^5)*b_0_*a_5_+(X^4)*b_0_*a_4_+(X^3)*b_0_*a_3_+(X^2)*b_0_*a_2_+(X)*b_0_*a_1_+b_0_*a_0_
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+remainder (X^2)*f7+(X^2)*f6+(X)*f5+(X)*f4+(X)*f3+f2+f1+f0+(X^9)*e70+(X^9)*e69+(X^9)*e68+(X^9)*e67+(X^9)*e66+(X^9)*e65+(X^8)*e64+(X^8)*e63+(X^8)*e62+(X^8)*e61+(X^8)*e60+(X^8)*e59+(X^8)*e58+(X^7)*e57+(X^7)*e56+(X^7)*e55+(X^7)*e54+(X^7)*e53+(X^7)*e52+(X^7)*e51+(X^6)*e50+(X^6)*e49+(X^6)*e48+(X^6)*e47+(X^6)*e46+(X^6)*e45+(X^6)*e44+(X^6)*e43+(X^5)*e42+(X^5)*e41+(X^5)*e40+(X^5)*e39+(X^5)*e38+(X^5)*e37+(X^5)*e36+(X^5)*e35+(X^4)*e34+(X^4)*e33+(X^4)*e32+(X^4)*e31+(X^4)*e30+(X^4)*e29+(X^4)*e28+(X^4)*e27+(X^4)*e26+(X^3)*e25+(X^3)*e24+(X^3)*e23+(X^3)*e22+(X^3)*e21+(X^3)*e20+(X^3)*e19+(X^3)*e18+(X^2)*e15+(X^9)*d147+(X^7)*d120+(X^5)*d89+(X^4)*d72+(X^3)*d53+(X^8+X^4+X)*b_9_*a_9_+(X^7+X^3+1)*b_9_*a_8_+(X^9+X^6)*b_9_*a_7_+(X^8+X^5)*b_9_*a_6_+(X^7+X^4)*b_9_*a_5_+(X^6+X^3)*b_9_*a_4_+(X^5+X^2)*b_9_*a_3_+(X^4+X)*b_9_*a_2_+(X^3+1)*b_9_*a_1_+(X^9)*b_9_*a_0_+(X^7+X^3+1)*b_8_*a_9_+(X^9+X^6)*b_8_*a_8_+(X^8+X^5)*b_8_*a_7_+(X^7+X^4)*b_8_*a_6_+(X^6+X^3)*b_8_*a_5_+(X^5+X^2)*b_8_*a_4_+(X^4+X)*b_8_*a_3_+(X^3+1)*b_8_*a_2_+(X^9)*b_8_*a_1_+(X^8)*b_8_*a_0_+(X^9+X^6)*b_7_*a_9_+(X^8+X^5)*b_7_*a_8_+(X^7+X^4)*b_7_*a_7_+(X^6+X^3)*b_7_*a_6_+(X^5+X^2)*b_7_*a_5_+(X^4+X)*b_7_*a_4_+(X^3+1)*b_7_*a_3_+(X^9)*b_7_*a_2_+(X^8)*b_7_*a_1_+(X^7)*b_7_*a_0_+(X^8+X^5)*b_6_*a_9_+(X^7+X^4)*b_6_*a_8_+(X^6+X^3)*b_6_*a_7_+(X^5+X^2)*b_6_*a_6_+(X^4+X)*b_6_*a_5_+(X^3+1)*b_6_*a_4_+(X^9)*b_6_*a_3_+(X^8)*b_6_*a_2_+(X^7)*b_6_*a_1_+(X^6)*b_6_*a_0_+(X^7+X^4)*b_5_*a_9_+(X^6+X^3)*b_5_*a_8_+(X^5+X^2)*b_5_*a_7_+(X^4+X)*b_5_*a_6_+(X^3+1)*b_5_*a_5_+(X^9)*b_5_*a_4_+(X^8)*b_5_*a_3_+(X^7)*b_5_*a_2_+(X^6)*b_5_*a_1_+(X^5)*b_5_*a_0_+(X^6+X^3)*b_4_*a_9_+(X^5+X^2)*b_4_*a_8_+(X^4+X)*b_4_*a_7_+(X^3+1)*b_4_*a_6_+(X^9)*b_4_*a_5_+(X^8)*b_4_*a_4_+(X^7)*b_4_*a_3_+(X^6)*b_4_*a_2_+(X^5)*b_4_*a_1_+(X^4)*b_4_*a_0_+(X^5+X^2)*b_3_*a_9_+(X^4+X)*b_3_*a_8_+(X^3+1)*b_3_*a_7_+(X^9)*b_3_*a_6_+(X^8)*b_3_*a_5_+(X^7)*b_3_*a_4_+(X^6)*b_3_*a_3_+(X^5)*b_3_*a_2_+(X^4)*b_3_*a_1_+(X^3)*b_3_*a_0_+(X^4+X)*b_2_*a_9_+(X^3+1)*b_2_*a_8_+(X^9)*b_2_*a_7_+(X^8)*b_2_*a_6_+(X^7)*b_2_*a_5_+(X^6)*b_2_*a_4_+(X^5)*b_2_*a_3_+(X^4)*b_2_*a_2_+(X^3)*b_2_*a_1_+(X^2)*b_2_*a_0_+(X^3+1)*b_1_*a_9_+(X^9)*b_1_*a_8_+(X^8)*b_1_*a_7_+(X^7)*b_1_*a_6_+(X^6)*b_1_*a_5_+(X^5)*b_1_*a_4_+(X^4)*b_1_*a_3_+(X^3)*b_1_*a_2_+(X^2)*b_1_*a_1_+(X)*b_1_*a_0_+(X^9)*b_0_*a_9_+(X^8)*b_0_*a_8_+(X^7)*b_0_*a_7_+(X^6)*b_0_*a_6_+(X^5)*b_0_*a_5_+(X^4)*b_0_*a_4_+(X^3)*b_0_*a_3_+(X^2)*b_0_*a_2_+(X)*b_0_*a_1_+b_0_*a_0_
+quotient (X^3)
+quotient is a constant
+// ** J2 is no standard basis
+solution for P is  b_3_*a_0_+b_2_*a_1_+b_1_*a_2_+b_0_*a_3_
+Auf Wiedersehen.
+	Command being timed: "Singular Mas10.sing"
+	User time (seconds): 0.32
+	System time (seconds): 0.00
+	Percent of CPU this job got: 100%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.33
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 18144
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 3868
+	Voluntary context switches: 1
+	Involuntary context switches: 3
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 0
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+                     SINGULAR                                 /
+ A Computer Algebra System for Polynomial Computations       /   version 4.0.3
+                                                           0<
+ by: W. Decker, G.-M. Greuel, G. Pfister, H. Schoenemann     \   Jan 2016
+FB Mathematik der Universitaet, D-67653 Kaiserslautern        \  Debian 4.0.3+ds-1
+// ** loaded multivariate_burg.lib 
+// ** library multivariate_burg.lib has old format. This format is still accepted,
+// ** but for functionality you may wish to change to the new
+// ** format. Please refer to the manual for further information.
+// ** loaded /usr/bin/../share/singular/LIB/control.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/matrix.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/nctools.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/general.lib (4.0.0.1,Jan_2014)
+// ** loaded /usr/bin/../share/singular/LIB/random.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/ring.lib (4.0.2.2,Jan_2016)
+// ** loaded /usr/bin/../share/singular/LIB/inout.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/primdec.lib (4.0.2.0,Apr_2015)
+// ** loaded /usr/bin/../share/singular/LIB/absfact.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/triang.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/elim.lib (4.0.0.1,Jan_2014)
+// ** loaded /usr/bin/../share/singular/LIB/poly.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/homolog.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/deform.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/sing.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/linalg.lib (4.0.0.0,Jun_2013)
+// ** _ is no standard basis
+// ** j0 is no standard basis
+dividend- (X^4)*d60+(X^4)*d59+(X^4)*d58+(X^4)*d57+(X^4)*d56+(X^4)*d55+(X^4)*d54+(X^3)*d53+(X^3)*d52+(X^3)*d51+(X^3)*d50+(X^3)*d49+(X^3)*d48+(X^3)*d47+(X^3)*d46+(X^3)*d45+(X^3)*d44+(X^3)*d43+(X^3)*d42+(X^3)*d41+(X^3)*d40+(X^3)*d39+(X^3)*d38+(X^3)*d37+(X^3)*d36+(X^3)*d35+(X^3)*d34+(X^3)*d33+(X^2)*d32+(X^2)*d31+(X^2)*d30+(X^2)*d29+(X^2)*d28+(X^2)*d27+(X^2)*d26+(X^2)*d25+(X^2)*d24+(X^2)*d23+(X)*d22+(X)*d21+(X)*d20+(X)*d19+(X)*d18+(X)*d17+(X)*d16+(X)*d15+(X)*d14+(X)*d13+(X)*d12+d11+d10+d9+d8+d7+d6+d5+d4+d3+d2+d1+d0+(X)*b_9_*a_9_+(X^3+1)*b_9_*a_8_+(X^3)*b_9_*a_4_+(X^2)*b_9_*a_3_+(X^4+X)*b_9_*a_2_+(X^3+1)*b_9_*a_1_+(X^3+1)*b_8_*a_9_+(X^3)*b_8_*a_5_+(X^2)*b_8_*a_4_+(X^4+X)*b_8_*a_3_+(X^3+1)*b_8_*a_2_+(X^3)*b_7_*a_6_+(X^2)*b_7_*a_5_+(X)*b_7_*a_4_+(X^3+1)*b_7_*a_3_+(X^3)*b_6_*a_7_+(X^2)*b_6_*a_6_+(X)*b_6_*a_5_+(X^3+1)*b_6_*a_4_+(X^3)*b_5_*a_8_+(X^2)*b_5_*a_7_+(X)*b_5_*a_6_+(X^3+1)*b_5_*a_5_+(X^3)*b_4_*a_9_+(X^2)*b_4_*a_8_+(X)*b_4_*a_7_+(X^3+1)*b_4_*a_6_+(X^4)*b_4_*a_0_+(X^2)*b_3_*a_9_+(X)*b_3_*a_8_+(X^3+1)*b_3_*a_7_+(X^4)*b_3_*a_1_+(X^3)*b_3_*a_0_+(X)*b_2_*a_9_+(X^3+1)*b_2_*a_8_+(X^4)*b_2_*a_2_+(X^3)*b_2_*a_1_+(X^2)*b_2_*a_0_+(X^3+1)*b_1_*a_9_+(X^4)*b_1_*a_3_+(X^3)*b_1_*a_2_+(X^2)*b_1_*a_1_+(X)*b_1_*a_0_+(X^4)*b_0_*a_4_+(X^3)*b_0_*a_3_+(X^2)*b_0_*a_2_+(X)*b_0_*a_1_+b_0_*a_0_
+quotient- (X^4)
+divisor- d60
+residue- (X^4)*d59+(X^4)*d58+(X^4)*d57+(X^4)*d56+(X^4)*d55+(X^4)*d54+(X^3)*d53+(X^3)*d52+(X^3)*d51+(X^3)*d50+(X^3)*d49+(X^3)*d48+(X^3)*d47+(X^3)*d46+(X^3)*d45+(X^3)*d44+(X^3)*d43+(X^3)*d42+(X^3)*d41+(X^3)*d40+(X^3)*d39+(X^3)*d38+(X^3)*d37+(X^3)*d36+(X^3)*d35+(X^3)*d34+(X^3)*d33+(X^2)*d32+(X^2)*d31+(X^2)*d30+(X^2)*d29+(X^2)*d28+(X^2)*d27+(X^2)*d26+(X^2)*d25+(X^2)*d24+(X^2)*d23+(X)*d22+(X)*d21+(X)*d20+(X)*d19+(X)*d18+(X)*d17+(X)*d16+(X)*d15+(X)*d14+(X)*d13+(X)*d12+d11+d10+d9+d8+d7+d6+d5+d4+d3+d2+d1+d0+(X)*b_9_*a_9_+(X^3+1)*b_9_*a_8_+(X^3)*b_9_*a_4_+(X^2)*b_9_*a_3_+(X^4+X)*b_9_*a_2_+(X^3+1)*b_9_*a_1_+(X^3+1)*b_8_*a_9_+(X^3)*b_8_*a_5_+(X^2)*b_8_*a_4_+(X^4+X)*b_8_*a_3_+(X^3+1)*b_8_*a_2_+(X^3)*b_7_*a_6_+(X^2)*b_7_*a_5_+(X)*b_7_*a_4_+(X^3+1)*b_7_*a_3_+(X^3)*b_6_*a_7_+(X^2)*b_6_*a_6_+(X)*b_6_*a_5_+(X^3+1)*b_6_*a_4_+(X^3)*b_5_*a_8_+(X^2)*b_5_*a_7_+(X)*b_5_*a_6_+(X^3+1)*b_5_*a_5_+(X^3)*b_4_*a_9_+(X^2)*b_4_*a_8_+(X)*b_4_*a_7_+(X^3+1)*b_4_*a_6_+(X^4)*b_4_*a_0_+(X^2)*b_3_*a_9_+(X)*b_3_*a_8_+(X^3+1)*b_3_*a_7_+(X^4)*b_3_*a_1_+(X^3)*b_3_*a_0_+(X)*b_2_*a_9_+(X^3+1)*b_2_*a_8_+(X^4)*b_2_*a_2_+(X^3)*b_2_*a_1_+(X^2)*b_2_*a_0_+(X^3+1)*b_1_*a_9_+(X^4)*b_1_*a_3_+(X^3)*b_1_*a_2_+(X^2)*b_1_*a_1_+(X)*b_1_*a_0_+(X^4)*b_0_*a_4_+(X^3)*b_0_*a_3_+(X^2)*b_0_*a_2_+(X)*b_0_*a_1_+b_0_*a_0_
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+// ** j0 is no standard basis
+remainder (X^4)*d59+(X^4)*d58+(X^4)*d57+(X^4)*d56+(X^4)*d55+(X^4)*d54+(X^3)*d53+(X^3)*d52+(X^3)*d51+(X^3)*d50+(X^3)*d49+(X^3)*d48+(X^3)*d47+(X^3)*d46+(X^3)*d45+(X^3)*d44+(X^3)*d43+(X^3)*d42+(X^3)*d41+(X^3)*d40+(X^3)*d39+(X^3)*d38+(X^3)*d37+(X^3)*d36+(X^3)*d35+(X^3)*d34+(X^3)*d33+(X^2)*d32+(X^2)*d31+(X^2)*d30+(X^2)*d29+(X^2)*d28+(X^2)*d27+(X^2)*d26+(X^2)*d25+(X^2)*d24+(X^2)*d23+(X)*d22+(X)*d21+(X)*d20+(X)*d19+(X)*d18+(X)*d17+(X)*d16+(X)*d15+(X)*d14+(X)*d13+(X)*d12+d11+d10+d9+d8+d7+d6+d5+d4+d3+d2+d1+d0+(X)*b_9_*a_9_+(X^3+1)*b_9_*a_8_+(X^3)*b_9_*a_4_+(X^2)*b_9_*a_3_+(X^4+X)*b_9_*a_2_+(X^3+1)*b_9_*a_1_+(X^3+1)*b_8_*a_9_+(X^3)*b_8_*a_5_+(X^2)*b_8_*a_4_+(X^4+X)*b_8_*a_3_+(X^3+1)*b_8_*a_2_+(X^3)*b_7_*a_6_+(X^2)*b_7_*a_5_+(X)*b_7_*a_4_+(X^3+1)*b_7_*a_3_+(X^3)*b_6_*a_7_+(X^2)*b_6_*a_6_+(X)*b_6_*a_5_+(X^3+1)*b_6_*a_4_+(X^3)*b_5_*a_8_+(X^2)*b_5_*a_7_+(X)*b_5_*a_6_+(X^3+1)*b_5_*a_5_+(X^3)*b_4_*a_9_+(X^2)*b_4_*a_8_+(X)*b_4_*a_7_+(X^3+1)*b_4_*a_6_+(X^4)*b_4_*a_0_+(X^2)*b_3_*a_9_+(X)*b_3_*a_8_+(X^3+1)*b_3_*a_7_+(X^4)*b_3_*a_1_+(X^3)*b_3_*a_0_+(X)*b_2_*a_9_+(X^3+1)*b_2_*a_8_+(X^4)*b_2_*a_2_+(X^3)*b_2_*a_1_+(X^2)*b_2_*a_0_+(X^3+1)*b_1_*a_9_+(X^4)*b_1_*a_3_+(X^3)*b_1_*a_2_+(X^2)*b_1_*a_1_+(X)*b_1_*a_0_+(X^4)*b_0_*a_4_+(X^3)*b_0_*a_3_+(X^2)*b_0_*a_2_+(X)*b_0_*a_1_+b_0_*a_0_
+quotient (X^4)
+quotient is a constant
+// ** J2 is no standard basis
+solution for P is  b_8_*a_3_
+Auf Wiedersehen.
+	Command being timed: "Singular Mas10.sing"
+	User time (seconds): 0.34
+	System time (seconds): 0.00
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.34
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 19920
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 3887
+	Voluntary context switches: 1
+	Involuntary context switches: 1
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 0
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

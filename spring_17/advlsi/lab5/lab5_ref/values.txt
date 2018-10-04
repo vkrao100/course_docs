@@ -1,0 +1,193 @@
+All times mentioned in verilog test bench simulation are in pico seconds.
+
+***************************************************************************************************
+******* pipeline 1 tcl test bench*************
+# Buffering depth:          4
+# Forward Latency Delay:    8000 ps
+# Backward Latency Delay:   0
+# Max Cycle Time:           10000 ps
+# 
+# 107,500 ps
+# 
+# Buffering depth:          4
+# Forward Latency Delay:    8000 ps
+# Backward Latency Delay:   32000 ps
+# Max Cycle Time:           10000 ps
+# 
+# Run Time:                 243,500 ps
+
+******* pipeline 1 verilog test bench***********
+# Buffering depth:              4
+# Forward Latency Delay:        8000
+# Backward Latency Delay:       0 
+# Max Cycle Time:               10000
+
+# 107500
+
+# Buffering depth:              4
+# Forward Latency Delay:        8000
+# Backward Latency Delay:       32000 
+# Max Cycle Time:               10000
+# Run Time:                     243500
+
+***************************************************************************************************
+******* pipeline 2 tcl test bench**************
+# Buffering depth:          2
+# Forward Latency Delay:    8000 ps
+# Backward Latency Delay:   0
+# Max Cycle Time:           10000 ps
+# 
+# 89,500 ps
+# 
+# Buffering depth:          2
+# Forward Latency Delay:    8000 ps
+# Backward Latency Delay:   12000 ps
+# Max Cycle Time:           10000 ps
+# 
+# Run Time:                 157,500 ps
+
+******* pipeline 2 verilog test bench***********
+# Buffering depth:              2
+# Forward Latency Delay:        8000
+# Backward Latency Delay:       0 
+# Max Cycle Time:               10000
+
+# 89500
+
+# Buffering depth:              2
+# Forward Latency Delay:        8000
+# Backward Latency Delay:       12000 
+# Max Cycle Time:               10000
+# Run Time:                     157500
+***************************************************************************************************
+******* pipeline 3 tcl test bench***************
+# Buffering depth:          3
+# Forward Latency Delay:    8000 ps
+# Backward Latency Delay:   0
+# Max Cycle Time:           10000 ps
+# 
+# 
+# 97,500 ps
+# 
+# Buffering depth:          3
+# Forward Latency Delay:    8000 ps
+# Backward Latency Delay:   22000 ps
+# Max Cycle Time:           10000 ps
+# 
+# Run Time:                 193,500 ps
+
+******* pipeline 3 verilog test bench***********
+
+# Buffering depth:               3
+# Forward Latency Delay:         8000
+# Backward Latency Delay:        0 
+# Max Cycle Time:                10000
+
+# 97500
+
+# Buffering depth:               3
+# Forward Latency Delay:         8000
+# Backward Latency Delay:        22000 
+# Max Cycle Time:                10000
+# Run Time:                      193500
+
+
+
+***************************************************************************************************
+******* pipeline 4 tcl test bench***************
+# Buffering depth:          4
+# Forward Latency Delay:    8500 ps
+# Backward Latency Delay:   0
+# Max Cycle Time:           10500 ps
+# 
+# 110 ns
+# 
+# Buffering depth:          4
+# Forward Latency Delay:    8500 ps
+# Backward Latency Delay:   32000 ps
+# Max Cycle Time:           10500 ps
+# 
+# Run Time:                 246,500 ps
+
+******* pipeline 4 verilog test bench***********
+# Buffering depth:              4
+# Forward Latency Delay:        8500
+# Backward Latency Delay:       0 
+# Max Cycle Time:               10500
+
+# 110000
+
+# Buffering depth:              4
+# Forward Latency Delay:        8500
+# Backward Latency Delay:       32000 
+# Max Cycle Time:               10500
+# Run Time:                     246500
+
+
+***************************************************************************************************
+******* pipeline 5 tcl test bench***********
+# Buffering depth:          2
+# Forward Latency Delay:    8500 ps
+# Backward Latency Delay:   0
+# Max Cycle Time:           10000 ps
+# 
+# 90 ns
+# 
+# Buffering depth:          2
+# Forward Latency Delay:    8500 ps
+# Backward Latency Delay:   12000 ps
+# Max Cycle Time:           10000 ps
+# 
+# Run Time:                 158,500 ps
+
+
+******* pipeline 5 verilog test bench***********
+# Buffering depth:              2
+# Forward Latency Delay:        8500
+# Backward Latency Delay:       0 
+# Max Cycle Time:               10000
+
+# 90000
+
+# Buffering depth:              2
+# Forward Latency Delay:        8500
+# Backward Latency Delay:       12000 
+# Max Cycle Time:               10000
+# Run Time:                     158500
+
+***************************************************************************************************
+******* pipeline 6 tcl test bench***********
+ 
+# Buffering depth:          3
+# Forward Latency Delay:    8500 ps
+# Backward Latency Delay:   0
+# Max Cycle Time:           10500 ps
+# 
+# 100 ns
+# 
+# Buffering depth:          3
+# Forward Latency Delay:    8500 ps
+# Backward Latency Delay:   22500 ps
+# Max Cycle Time:           10500 ps
+# 
+# Run Time:                 197 ns
+
+******* pipeline 6 verilog test bench***********
+
+# Buffering depth:              3
+# Forward Latency Delay:        8500
+# Backward Latency Delay:       0 
+# Max Cycle Time:               10500
+
+# 100000
+
+# Buffering depth:              3
+# Forward Latency Delay:        8500
+# Backward Latency Delay:       22500 
+# Max Cycle Time:               10500
+# Run Time:                     197000
+
+
+
+*********************************************************************************************************
+*********************************************************************************************************

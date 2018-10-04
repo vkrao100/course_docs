@@ -1,0 +1,54 @@
+C:/Users/vikas/Documents/course_docs/spring_18/ECE_6750/HW3/adder_ckt/4_1_bit_adder/4_1_bit_adder_core.vhdl {1 {vcom -work work -2002 -explicit -stats=none C:/Users/vikas/Documents/course_docs/spring_18/ECE_6750/HW3/adder_ckt/4_1_bit_adder/4_1_bit_adder_core.vhdl
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Loading package MATH_REAL
+-- Loading package nondeterminism
+-- Loading package handshake
+-- Compiling entity Four_OneBitAdder_dualrail_core
+-- Compiling architecture structure of Four_OneBitAdder_dualrail_core
+
+} {} {}} C:/Users/vikas/Documents/course_docs/spring_18/ECE_6750/HW2/adder_ckt/handshake.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/vikas/Documents/course_docs/spring_18/ECE_6750/HW2/adder_ckt/handshake.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package MATH_REAL
+-- Loading package std_logic_arith
+-- Loading package nondeterminism
+-- Compiling package handshake
+-- Compiling package body handshake
+-- Loading package handshake
+
+} {} {}} C:/Users/vikas/Documents/course_docs/spring_18/ECE_6750/HW2/adder_ckt/nondeterminism.vhd {2 {vcom -work work -2002 -explicit -stats=none C:/Users/vikas/Documents/course_docs/spring_18/ECE_6750/HW2/adder_ckt/nondeterminism.vhd
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package MATH_REAL
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Compiling package nondeterminism
+** Warning: C:/Users/vikas/Documents/course_docs/spring_18/ECE_6750/HW2/adder_ckt/nondeterminism.vhd(9): (vcom-1236) Shared variables must be of a protected type.
+
+** Warning: C:/Users/vikas/Documents/course_docs/spring_18/ECE_6750/HW2/adder_ckt/nondeterminism.vhd(10): (vcom-1236) Shared variables must be of a protected type.
+
+-- Compiling package body nondeterminism
+-- Loading package nondeterminism
+
+} {} {}} C:/Users/vikas/Documents/course_docs/spring_18/ECE_6750/HW3/adder_ckt/4_1_bit_adder/4_1_bit_adder_top.vhdl {1 {vcom -work work -2002 -explicit -stats=none C:/Users/vikas/Documents/course_docs/spring_18/ECE_6750/HW3/adder_ckt/4_1_bit_adder/4_1_bit_adder_top.vhdl
+Model Technology ModelSim PE Student Edition vcom 10.4a Compiler 2015.03 Apr  7 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Loading package MATH_REAL
+-- Loading package nondeterminism
+-- Loading package handshake
+-- Compiling entity Four_OneBitAdder_dualrail_top
+-- Compiling architecture structure of Four_OneBitAdder_dualrail_top
+
+} {} {}}

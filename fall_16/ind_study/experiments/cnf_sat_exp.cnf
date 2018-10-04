@@ -1,0 +1,18 @@
+c cnf-sat file for equivalence check of two circuits
+p cnf 7 16
+-3 -1 0
+3 1 0
+-4 3 0
+-4 2 0
+4 -3 -2 0
+4 1 -5 0
+-4 5 0
+-1 5 0
+1 2 -6 0
+-1 6 0
+-2 6 0
+-5 -6 -7 0
+5 6 -7 0
+5 -6 7 0
+7 0
+-5 6 7 0

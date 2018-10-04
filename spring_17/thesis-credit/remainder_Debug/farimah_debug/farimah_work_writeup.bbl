@@ -1,0 +1,22 @@
+\begin{thebibliography}{1}
+
+\bibitem{farimah:2016}
+F.~Farahmandi and P.~Mishra.
+\newblock {A}utomated {T}est {G}eneration for {D}ebugging {A}rithmetic
+  {C}ircuits.
+\newblock In {\em Design, Automation Test in Europe Conference Exhibition
+  (DATE)}, 2016.
+
+\bibitem{maciej:2015:2}
+S.~Ghandali, C.~Yu, D.~Liu, W.~Brown, and M.~Ciesielski.
+\newblock {L}ogic {D}ebugging of {A}rithmetic {C}ircuits.
+\newblock In {\em IEEE Computer Society Annual Symposium on VLSI}, 2015.
+
+\bibitem{lv}
+J.~Lv, P.~Kalla, and F.~Enescu.
+\newblock {E}fficient {G}r\"obner {B}asis {R}eductions for {F}ormal
+  {V}erification of {G}alois {F}ield {M}ultipliers.
+\newblock In {\em Design, Automation Test in Europe Conference Exhibition
+  (DATE)}, 2012.
+
+\end{thebibliography}

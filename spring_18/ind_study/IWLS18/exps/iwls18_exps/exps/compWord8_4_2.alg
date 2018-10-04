@@ -1,0 +1,8 @@
+AA,BB,A0,B0,A1,B1,CC,A,B;
+AA,BB,A0,B0,A1,B1,CC,A,B;
+X^8+X^4+X^3+X^2+1;
+AA*BB+CC;
+AA+A0+X*A1, 
+BB+B0+X*B1, 
+A0+X*A1+A, 
+B0+X*B1+B;

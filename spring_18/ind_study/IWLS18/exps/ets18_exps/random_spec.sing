@@ -1,0 +1,54 @@
+ring r = (2, x), (z,z1,z2,d0,e0,e2,e1,a,b,c) ,lp;
+
+minpoly = x^2 + x + 1;
+
+poly spec = z + ac + a + b + bc + c;
+
+poly f7 = z + z1*z2;
+poly f5 = z1 + e0*d0 + e0 + d0;
+poly f6 = z2 + d0 + e2;
+poly f4 = d0 + c*e1;
+poly f3 = e2 + c + 1;
+poly f2 = e1 + bc + b + c;
+poly f1 = e0 + a + b;
+
+poly f1_b = e0 + a*b;
+
+poly Z = z^2 -z ;
+poly z_2 = z2^2 -z2 ;
+poly z_1 = z1^2 -z1 ;
+poly d_0 = d0^2 -d0 ;
+poly e_0 = e0^2 -e0 ;
+poly e_1 = e1^2 -e1 ;
+poly e_2 = e2^2 -e2 ;
+
+poly a_0 = a^2 - a;
+poly b_0 = b^2 - b;
+poly c_0 = c^2 - c;
+
+ideal J0 = a_0, b_0, c_0, d_0, e_0, e_1, e_2, z_2, z_1, Z;
+
+ideal JCI = f1,f2,f3,f4,f5,f6,f7;
+ideal JC = JCI + J0;
+
+ideal JBI = f1_b,f2,f3,f4,f5,f6,f7;
+ideal JB = JBI + J0;
+
+//list GR = groebner(JC+JB);
+//"GB of the given ideals",GR;
+//list R1 = groebner(radical(JC));
+//"radical of I - groebner(radical(JC))", R1;
+//list R2 = groebner(radical(JB));
+//"radical of J - groebner(radical(JB))", R2;
+//list C1 = groebner(radical(JC)*radical(JB));
+//"product of radicals- condition 1- groebner(radical(JC)*radical(JB))",C1;
+//list C2 = groebner(radical(JC*JB));
+//"radical of products- condition 2- groebner(radical(JC*JB))", C2;
+list C3 = groebner(radical(radical(JC)*radical(JB)));
+"radical of product of radicals- condition 3 - groebner(radical(radical(JC)*radical(JB)))", C3;
+list C4 = groebner(intersect(JC, JB));
+"intersection of radical ideals - groebner(intersect(JC, JB))", C4;
+list C5 = groebner(intersect(JCI, JBI)+J0);
+"intersection of non-radical ideals + vanishing polynomials - groebner(intersect(JCI, JBI)+ J0)", C5;
+list C6 = groebner(groebner(JC*JB)+J0);
+"product of non-radical ideals + vanishing polynomials - groebner((JCI*JBI)+ J0)", C6;

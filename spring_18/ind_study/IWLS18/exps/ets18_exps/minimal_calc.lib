@@ -1,0 +1,30 @@
+/*procedure to implement minimal calculation
+
+Author - Vikas Rao
+Date   - 09-29-2016
+
+*/
+
+proc minimal_calc(list grob)
+{
+   int i = 1;
+   int j = 0;
+   poly t;
+   for(i=1;i<=size(grob); i=i+1)
+   {  
+      if(leadcoef(grob[i]) != 1)
+      {  
+         grob[i] = grob[i] / leadcoef(grob[i]);
+      }
+      for(j=i+1;j<=size(grob); j=j+1)
+      {
+         t = leadmonom(grob[j])/leadmonom(grob[i]);
+         if((leadmonom(grob[j]) - t * leadmonom(grob[i])) == 0)
+         {
+            grob = delete(grob,2);
+            j = i;
+         }
+      }
+   }
+   return(grob);
+}  

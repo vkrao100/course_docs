@@ -1,0 +1,31 @@
+Title - Debug and Rectification of Arithmetic Circuits
+
+Formal verification of digital circuits checks whether
+a gate-level circuit correctly implements a
+given specification model. While there has been a lot 
+of success in proving correctness of the circuit or 
+detecting the presence of bugs, the problem 
+of debugging and rectification has only just begun to be addressed. 
+Analogous to Engineering Change Order(ECO), the solution 
+lies in the crossroads of verification, test for stuck-at 
+faults, and logic synthesis. In this regard, while
+contemporary techniques work well for control-dominated
+applications (random logic circuits), they are infeasible for 
+arithmetic circuits and hence remain an unsolved problem. 
+
+Drawing inspiration from the above areas and from
+algebraic domain, I am investigating the use of 
+computer algebra techniques in aiding the debug
+and rectification of arithmetic circuits.
+Primarily, the approach needs to discover techniques 
+to check for rectifiability at particular locations, 
+subsequently devise methods to synthesize rectification 
+functions at these locations. A challenging aspect,  
+which has real world implications and needs additional 
+focus is the synthesis side of the rectification formulation. 
+With the vast solution space of rectification functions, 
+there arises a need to formulate synthesis techniques resulting 
+in a solution with minimal topological changes.
+In conclusion, the overall objective of my approach is to discover 
+a new paradigm for post-verification 
+debugging and rectification of faulty arithmetic circuits.

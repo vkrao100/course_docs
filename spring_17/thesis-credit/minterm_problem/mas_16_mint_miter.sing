@@ -1,0 +1,5 @@
+//LIB "grobner_calc.lib";
+LIB "primdec.lib";
+ring r = (2, x), (t,a,b,c), lp;
+ideal J = t*a*b*c+1,t*(ab+bc+ac+a+b+c+1)+1;
+primdecGTZ(J);

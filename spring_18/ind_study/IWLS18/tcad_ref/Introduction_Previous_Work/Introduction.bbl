@@ -1,0 +1,56 @@
+\begin{thebibliography}{1}
+
+\bibitem{polybori}
+Michael Brickenstein and Alexander Dreyer.
+\newblock Polybori: A framework for gröbner-basis computations with boolean
+  polynomials.
+\newblock {\em Journal of Symbolic Computation}, 44(9):1326 -- 1345, 2009.
+\newblock Effective Methods in Algebraic Geometry.
+
+\bibitem{maciej:2015}
+M.~Ciesielski, C.~Yu, W.~Brown, D.~Liu, and A.~Rossi.
+\newblock Verification of gate-level arithmetic circuits by function
+  extraction.
+\newblock In {\em 2015 52nd ACM/EDAC/IEEE Design Automation Conference (DAC)},
+  pages 1--6, June 2015.
+
+\bibitem{farahmandi:2015}
+Farimah Farahmandi and Bijan Alizadeh.
+\newblock Groebner basis based formal verification of large arithmetic circuits
+  using gaussian elimination and cone-based polynomial extraction.
+\newblock {\em Microprocess. Microsyst.}, 39(2):83--96, mar 2015.
+
+\bibitem{lv}
+J.~Lv, P.~Kalla, and F.~Enescu.
+\newblock Efficient gr\"obner basis reductions for formal verification of
+  galois field multipliers.
+\newblock In {\em Design, Automation Test in Europe Conference Exhibition
+  (DATE), 2012}, pages 899--904, March 2012.
+
+\bibitem{minato:zbdd}
+Shin-ichi Minato.
+\newblock Zero-suppressed bdds for set manipulation in combinatorial problems.
+\newblock In {\em Proceedings of the 30th International Design Automation
+  Conference}, DAC '93, pages 272--277, New York, NY, USA, 1993. ACM.
+
+\bibitem{minato:unatecube}
+Shin-ichi Minato.
+\newblock Calculation of unate cube set algebra using zero-suppressed bdds.
+\newblock In {\em Proceedings of the 31st Annual Design Automation Conference},
+  DAC '94, pages 420--424, New York, NY, USA, 1994. ACM.
+
+\bibitem{tim}
+T.~Pruss, P.~Kalla, and F.~Enescu.
+\newblock Equivalence verification of large galois field arithmetic circuits
+  using word-level abstraction via {G}r\"obner bases.
+\newblock In {\em Design Automation Conference (DAC), 2014 51st ACM/EDAC/IEEE},
+  pages 1--6, June 2014.
+
+\bibitem{rolf:2016}
+A.~Sayed-Ahmed, D.~Große, U.~Kühne, M.~Soeken, and R.~Drechsler.
+\newblock Formal verification of integer multipliers by combining gr\"obner
+  basis with logic reduction.
+\newblock In {\em 2016 Design, Automation Test in Europe Conference Exhibition
+  (DATE)}, pages 1048--1053, March 2016.
+
+\end{thebibliography}

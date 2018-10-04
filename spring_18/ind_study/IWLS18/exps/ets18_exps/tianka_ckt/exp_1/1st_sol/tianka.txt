@@ -1,0 +1,20 @@
+4
+a b c e_s0 e_i0 e_s1 e_i1 e_s2 e_i2 d_s0 d_i0 d_i1 d_i2 z_s1 z_i1 z_s2 z_i2 z_s z_i z x_1 x_2 x_3 x_4 
+x(e_s0, a, b) 
+x(e_i0, a, b) 
+o(e_s1, b, c) 
+o(e_i1, b, c) 
+n(e_s2, c, c) 
+n(e_i2, c, c) 
+a(d_s0, e_s1, c)
+m(d_i1, e_i1, x_1, x_2) 
+m(d_i2, e_i1, x_3, x_4) 
+m(d_i0, c, d_i1, d_i2) 
+o(z_s1, e_s0, d_s0) 
+o(z_i1, e_i0, d_i0) 
+x(z_s2, d_s0, e_s2) 
+x(z_i2, d_i0, e_i2) 
+a(z_s, z_s1, z_s2)
+a(z_i, z_i1, z_i2)
+x(z, z_s, z_i)
+t z

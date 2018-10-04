@@ -1,0 +1,36 @@
+Files
+-----
+  README:     this file
+  LICENSE:    license agreement
+  ARITH_module.vhd:  arithmetic module in VHDL
+  ARITH_module.v:    arithmetic module in Verilog-HDL
+  ARITH_mult_dc.v:   arithmetic module in Verilog-HDL, which is optimized for 
+                     Design Compiler (Synopsys, Inc.) using GTECH Library.
+
+  "ARITH_module.vhd", "ARITH_module.v", and "ARITH_module_dc.v" contain 
+  the same content with different file formats.
+
+  Each HDL file contains the design information (top module name and 
+  user-defined specification) in the header.
+
+
+Tips
+----
+  The generated description is optimized to implement the hardware algorithm.  
+  So, "logic optimization" is not always effective for improving the circuit 
+  performance.  In the case of Design Compiler, you should use the option
+  "-only_design_rule" to obtain better results.
+
+  Command example on dc_shell
+    > compile -only_design_rule
+
+
+Contact us
+----------
+  ARITH research group (arith@aoki.ecei.tohoku.ac.jp)
+
+  Aoki Laboratory
+  Graduate School of Information Sciences
+  Tohoku University
+
+  http://www.aoki.ecei.tohoku.ac.jp/arith/

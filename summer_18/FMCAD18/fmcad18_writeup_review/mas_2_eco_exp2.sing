@@ -1,0 +1,140 @@
+//LIB "multivariate_burg.lib";
+LIB "primdec.lib";
+LIB "control.lib";
+LIB "linalg.lib";
+
+ring r = (2, x), (Z, A, B, z_0, z_1, r_0, e_0, e_1, e_2, e_3, s_5, s_4, s_3, s_2, s_1, s_0, a_0, a_1, b_1, b_0), lp; 
+//elimination order
+//ring r = (2, x), (Z, A, B, z_0, z_1, r_0, e_0, e_1, e_2, e_3, s_0, s_1, s_2, s_4, s_5, a_0, a_1, b_1, s_3, b_0), lp; 
+
+minpoly = x^2 + x + 1;
+
+proc xorgate(poly g, poly h)
+{
+	return(g+h);
+}
+
+proc andgate(poly g, poly h)
+{
+	return(g*h);
+}
+
+//circuit -  2 bit mastrovito multiplier poly's
+//correct implementation
+poly f1 = Z + z_0 + z_1*x;
+poly f2 = A + a_0 + a_1*x;
+poly f3 = B + b_0 + b_1*x;
+poly f4 = z_0 + xorgate(s_0,e_0);
+poly f5 = z_1 + xorgate(e_0,r_0);
+poly f6 = r_0 + xorgate(e_1,s_5);
+poly f7 = e_0 + s_1*e_2;
+poly f8 = e_1 + s_2*e_2;
+poly f9 = e_2 + xorgate(e_3,s_4);
+poly f10 = e_3 + b_0 + s_3; //b_0*s_3;
+//poly f10 = e_3 + a_1*b_1*b_0+a_1*b_1;
+//poly f10 = e_3 + b_1*b_0 + b_1 + 1;
+//poly f10 = e_3 + b_0 + a_1 + 1;
+poly f11 = s_0 + a_0*b_0;
+poly f12 = s_1 + a_1*b_1;
+poly f13 = s_2 + a_1*b_0;
+poly f14 = s_3 + a_0 + b_0 + a_0*b_0;
+poly f15 = s_4 + b_0 + 1;
+poly f16 = s_5 + a_0*b_1;
+
+
+
+//vanishing polynomials
+poly f17 = a_0^2 - a_0;
+poly f18 = a_1^2 - a_1;
+poly f19 = b_0^2 - b_0;
+poly f20 = b_1^2 - b_1;
+/*poly f21 = s_0^2 - s_0;
+poly f22 = s_1^2 - s_1;
+poly f23 = s_2^2 - s_2;
+poly f24 = s_3^2 - s_3;
+poly f25 = s_4^2 - s_4;
+poly f26 = s_5^2 - s_5;
+poly f27 = r_0^2 - r_0;
+poly f28 = z_0^2 - z_0;
+poly f29 = z_1^2 - z_1;
+poly f30 = e_0^2 - e_0;
+poly f31 = e_1^2 - e_1;
+poly f32 = e_2^2 - e_2;
+poly f33 = e_3^2 - e_3;
+
+poly f34 = Z^4 - Z;
+poly f35 = A^4 - A;
+poly f36 = B^4 - B;*/
+
+//word level spec
+poly spec = Z + A*B;
+
+ideal J = f1,f2,f3,f4,f5,f6,f7,f8,f9, f10, f11,f12,f13,f14,f15,f16;
+//create the ideal of vanishing polynomials
+//ideal J0 = f17,f18,f19,f20,f21,f22,f23,f24,f25,f26,f27,f28,f29,f30,f31,f32,f33,f34,f35,f36;
+ideal J0 = f17,f18,f19,f20;
+
+reduce(spec, J+J0);
+exit(1);
+
+//split the ideals
+ideal J2 = f1,f2,f3,f4,f5,f6,f7,f8,f9;
+list J2l = f1,f2,f3,f4,f5,f6,f7,f8,f9,lead(f10);
+ideal J1 = f11,f12,f13,f14,f15,f16;
+
+reduce(spec,J1+J2+f10+J0);
+
+poly uc = lead(f10);
+poly quo;
+poly rem;
+poly prem;
+
+prem = reduce(spec,J2);
+
+rem, quo = multivariate_burg(prem,lead(uc),J0); 
+
+"remainder",rem;
+"quotient",quo;
+
+ideal dec = variables(quo);
+ideal JCp = quo,J1;
+if (size(dec)>=1)
+{
+	"quotient is not a constant";
+	ideal JG = slimgb(JCp);
+	matrix V = lift(JG,rem);
+	matrix Vt = transpose(V);
+	Vt;
+	matrix U = lift(JCp,JG);
+	U;
+	poly sol;
+	int i;
+	for(i=1;i<=size(JG);i++)
+	{
+		sol = sol + (Vt[1,i]*U[1,i]);
+	}
+}
+else
+{	
+	"quotient is a constant";
+	if (quo != 1)
+	{
+		matrix quoi = inverse(quo);
+	}
+	else
+	{
+		matrix quoi = 1;
+	}
+	poly irem   = quoi[1,1]*rem;
+	poly sol    = reduce(irem,J1+J0);
+}
+
+"solution for P is ",sol; 
+
+//P = b_0;
+//quo = (x+1)*s_1+(x)*s_2;
+
+//ideal colon = quotient((J1+J0),quo);
+//"colon",colon;
+
+//quit;

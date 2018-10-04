@@ -1,0 +1,124 @@
+.model Mast_4.eqn
+.inputs a_0_ a_1_ a_2_ a_3_ b_0_ b_1_ b_2_ b_3_ x_1_ x_2_ x_3_ x_4_
+.outputs z_0_ z_1_ z_2_ z_3_
+.names f0 f1 z_0_
+01 1
+10 1
+.names d11 f2 z_1_
+01 1
+10 1
+.names e5 e6 z_2_
+01 1
+10 1
+.names e11 g0 z_3_
+01 1
+10 1
+.names a_0_ b_0_ d0
+11 1
+.names a_1_ b_3_ d1
+11 1
+.names a_2_ b_2_ d2
+11 1
+.names a_3_ b_1_ d3
+11 1
+.names a_2_ b_3_ d4
+11 1
+.names a_3_ b_2_ d5
+11 1
+.names a_3_ b_3_ d6
+11 1
+.names a_0_ b_1_ d7
+11 1
+.names a_1_ b_0_ d8
+11 1
+.names a_2_ b_3_ d9
+11 1
+.names a_3_ b_2_ d10
+11 1
+.names a_3_ b_3_ d11
+11 1
+.names a_0_ b_2_ d12
+11 1
+.names a_1_ b_1_ d13
+11 1
+.names a_2_ b_0_ d14
+11 1
+.names a_3_ b_3_ d15
+11 1
+.names a_0_ b_3_ d16
+11 1
+.names a_1_ b_2_ d17
+11 1
+.names a_2_ b_1_ d18
+11 1
+.names a_3_ b_0_ d19
+11 1
+.names a_1_ b_3_ d20
+11 1
+.names a_2_ b_2_ d21
+11 1
+.names a_3_ b_1_ d22
+11 1
+.names a_2_ b_3_ d23
+11 1
+.names a_3_ b_2_ d24
+11 1
+.names a_3_ b_3_ d25
+11 1
+.names d0 d1 e0
+01 1
+10 1
+.names d2 d3 e1
+01 1
+10 1
+.names d4 d5 e2
+01 1
+10 1
+.names d7 d8 e3
+01 1
+10 1
+.names d9 d10 e4
+01 1
+10 1
+.names d12 d13 e5
+01 1
+10 1
+.names d14 d15 e6
+01 1
+10 1
+.names d16 d17 e7
+01 1
+10 1
+.names d18 d19 e8
+01 1
+10 1
+.names d20 d21 e9
+01 1
+10 1
+.names d22 d23 e10
+01 1
+10 1
+.names d24 d25 e11
+01 1
+10 1
+.names e0 e1 f0
+01 1
+10 1
+.names d6 e2 f1
+01 1
+10 1
+.names e3 e4 f2
+01 1
+10 1
+.names e7 e8 f3
+01 1
+10 1
+.names e9 e10 f4
+01 1
+10 1
+.names f4 f3 x_1_ x_2_ x_3_ x_4_ g0
+001--- 1
+01-1-- 1
+10--1- 1
+11---1 1
+.end

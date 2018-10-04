@@ -1,0 +1,30 @@
+\begin{thebibliography}{1}
+
+\bibitem{polybori}
+Michael Brickenstein and Alexander Dreyer.
+\newblock Polybori: A framework for gröbner-basis computations with boolean
+  polynomials.
+\newblock {\em Journal of Symbolic Computation}, 44(9):1326 -- 1345, 2009.
+\newblock Effective Methods in Algebraic Geometry.
+
+\bibitem{Buchberger:1976}
+B.~Buchberger.
+\newblock A theoretical basis for the reduction of polynomials to canonical
+  forms.
+\newblock {\em SIGSAM Bull.}, 10(3):19--29, August 1976.
+
+\bibitem{lv}
+J.~Lv, P.~Kalla, and F.~Enescu.
+\newblock Efficient gr\"obner basis reductions for formal verification of
+  galois field multipliers.
+\newblock In {\em Design, Automation Test in Europe Conference Exhibition
+  (DATE), 2012}, pages 899--904, March 2012.
+
+\bibitem{rolf:2016}
+A.~Sayed-Ahmed, D.~Große, U.~Kühne, M.~Soeken, and R.~Drechsler.
+\newblock Formal verification of integer multipliers by combining gr\"obner
+  basis with logic reduction.
+\newblock In {\em 2016 Design, Automation Test in Europe Conference Exhibition
+  (DATE)}, pages 1048--1053, March 2016.
+
+\end{thebibliography}

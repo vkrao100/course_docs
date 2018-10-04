@@ -1,0 +1,32 @@
+LIB "teachstd.lib";
+//ring r = 2, (a, b, c, x0, x1, x2, f, y0, y1, y2, y3, y4, g, t), dp;
+ring r = 2, (t, f, g, y3, y4, y5, x0, x1, x2, x3, y0, y1, y2, a, b, c), lp;
+
+// spec
+poly f1 = x0 + a*b;
+poly f2 = x1 + a*c;
+poly f3 = x2 + b*c;
+poly f4 = f + x0 + x1 + x2 + x0*x1 + x0*x2 + x1*x2 + x1*x2*x0;
+
+// implementation
+poly f5 = y0 + a*b;
+poly f6 = y1 + b*c;
+poly f7 = y2 + a*c;
+poly f8 = y3 + y0 + y1 + y2 + y0*y1 + y0*y2 + y1*y2 + y0*y1*y2;
+// added minterm
+poly f9 = y4 + abc; 
+//XOR gate
+poly f10 = g + y4 + y3 + y5;
+poly f11 = t*(f - g) + 1;
+//poly f11 = f + g + 1;
+
+poly f12 = a^2 - a;
+poly f13 = b^2 - b;
+poly f14 = c^2 - c;
+poly f15 = t^2 - t;
+
+// f16 is the second minterm changed
+poly f16 = y5 + (1+a)*(1+b)*(1+c);
+ideal J = f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12, f13, f14, f15, f16;
+
+//ideal I = f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f12, f13, f14; 

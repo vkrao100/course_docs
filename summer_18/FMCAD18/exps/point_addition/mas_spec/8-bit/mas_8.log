@@ -1,0 +1,932 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2017.11.30)  3 APR 2018 19:28
+entering extended mode
+**C:/Users/vikas/Documents/course_docs/spring_18/ind_study/ICCAD18/exps/iccad18
+_exps/mas_spec/8-bit/mas_8.sing
+
+(C:/Users/vikas/Documents/course_docs/spring_18/ind_study/ICCAD18/exps/iccad18_
+exps/mas_spec/8-bit/mas_8.sing
+LaTeX2e <2017-04-15>
+Babel <3.15> and hyphenation patterns for 75 language(s) loaded.
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1 L
+     IB "multivariate_burg.lib";
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no L in font nullfont!
+Missing character: There is no I in font nullfont!
+Missing character: There is no B in font nullfont!
+Missing character: There is no " in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no v in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no e in font nullfont!
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1 LIB "multivariate_
+                      burg.lib";
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 1.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 1.
+! Double subscript.
+l.4 ring R = (2,X),(Z, A, B, z_7_
+                                 , z_6_, z_5_, z_4_, z_3_, z_2_, z_1_, z_0_,...
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.4 ring R = (2,X),(Z, A, B, z_7_, z_6_
+                                       , z_5_, z_4_, z_3_, z_2_, z_1_, z_0_,...
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.4 ring R = (2,X),(Z, A, B, z_7_, z_6_, z_5_
+                                             , z_4_, z_3_, z_2_, z_1_, z_0_,...
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.4 ... R = (2,X),(Z, A, B, z_7_, z_6_, z_5_, z_4_
+                                                  , z_3_, z_2_, z_1_, z_0_, ...
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.4 ...2,X),(Z, A, B, z_7_, z_6_, z_5_, z_4_, z_3_
+                                                  , z_2_, z_1_, z_0_, h5, h4...
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.4 ...Z, A, B, z_7_, z_6_, z_5_, z_4_, z_3_, z_2_
+                                                  , z_1_, z_0_, h5, h4, h3, ...
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.4 ...B, z_7_, z_6_, z_5_, z_4_, z_3_, z_2_, z_1_
+                                                  , z_0_, h5, h4, h3, h2, h1...
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.4 ..._, z_6_, z_5_, z_4_, z_3_, z_2_, z_1_, z_0_
+                                                  , h5, h4, h3, h2, h1, h0, ...
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.4 ...9, d8, d7, d6, d5, d4, d3, d2, d1, d0, b_7_
+                                                  , b_6_, b_5_, b_4_, b_3_, ...
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.4 ... d7, d6, d5, d4, d3, d2, d1, d0, b_7_, b_6_
+                                                  , b_5_, b_4_, b_3_, b_2_, ...
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.4 ...6, d5, d4, d3, d2, d1, d0, b_7_, b_6_, b_5_
+                                                  , b_4_, b_3_, b_2_, b_1_, ...
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.4 ... d4, d3, d2, d1, d0, b_7_, b_6_, b_5_, b_4_
+                                                  , b_3_, b_2_, b_1_, b_0_, ...
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.4 ...3, d2, d1, d0, b_7_, b_6_, b_5_, b_4_, b_3_
+                                                  , b_2_, b_1_, b_0_, a_7_, ...
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.4 ... d1, d0, b_7_, b_6_, b_5_, b_4_, b_3_, b_2_
+                                                  , b_1_, b_0_, a_7_, a_6_, ...
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.4 ...0, b_7_, b_6_, b_5_, b_4_, b_3_, b_2_, b_1_
+                                                  , b_0_, a_7_, a_6_, a_5_, ...
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.4 ..._, b_6_, b_5_, b_4_, b_3_, b_2_, b_1_, b_0_
+                                                  , a_7_, a_6_, a_5_, a_4_, ...
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.4 ..._, b_5_, b_4_, b_3_, b_2_, b_1_, b_0_, a_7_
+                                                  , a_6_, a_5_, a_4_, a_3_, ...
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.4 ..._, b_4_, b_3_, b_2_, b_1_, b_0_, a_7_, a_6_
+                                                  , a_5_, a_4_, a_3_, a_2_, ...
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.4 ..._, b_3_, b_2_, b_1_, b_0_, a_7_, a_6_, a_5_
+                                                  , a_4_, a_3_, a_2_, a_1_, ...
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.4 ..._, b_2_, b_1_, b_0_, a_7_, a_6_, a_5_, a_4_
+                                                  , a_3_, a_2_, a_1_, a_0_),lp;
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.4 ..._, b_1_, b_0_, a_7_, a_6_, a_5_, a_4_, a_3_
+                                                  , a_2_, a_1_, a_0_),lp;
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.4 ..._, b_0_, a_7_, a_6_, a_5_, a_4_, a_3_, a_2_
+                                                  , a_1_, a_0_),lp;
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.4 ..._, a_7_, a_6_, a_5_, a_4_, a_3_, a_2_, a_1_
+                                                  , a_0_),lp;
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.4 ..._, a_6_, a_5_, a_4_, a_3_, a_2_, a_1_, a_0_
+                                                  ),lp;
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.5 
+    
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 1--5
+[]
+ []
+
+
+Overfull \hbox (234.64304pt too wide) in paragraph at lines 1--5
+[]\OML/cmm/m/it/10 urg:lib\OT1/cmr/m/n/10 "; \OML/cmm/m/it/10 LIB\OT1/cmr/m/n/1
+0 "\OML/cmm/m/it/10 control:lib\OT1/cmr/m/n/10 "; \OML/cmm/m/it/10 LIB\OT1/cmr/
+m/n/10 "\OML/cmm/m/it/10 linalg:lib\OT1/cmr/m/n/10 "; \OML/cmm/m/it/10 ringR \O
+T1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (5967.92091pt too wide) in paragraph at lines 1--5
+\OT1/cmr/m/n/10 (2\OML/cmm/m/it/10 ; X\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; \OT1/
+cmr/m/n/10 (\OML/cmm/m/it/10 Z; A; B; z[][]z[][]z[][]z[][]z[][]z[][]z[][]z[][]h
+\OT1/cmr/m/n/10 5\OML/cmm/m/it/10 ; h\OT1/cmr/m/n/10 4\OML/cmm/m/it/10 ; h\OT1/
+cmr/m/n/10 3\OML/cmm/m/it/10 ; h\OT1/cmr/m/n/10 2\OML/cmm/m/it/10 ; h\OT1/cmr/m
+/n/10 1\OML/cmm/m/it/10 ; h\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 ; g\OT1/cmr/m/n/10
+ 17\OML/cmm/m/it/10 ; g\OT1/cmr/m/n/10 16\OML/cmm/m/it/10 ; g\OT1/cmr/m/n/10 15
+\OML/cmm/m/it/10 ; g\OT1/cmr/m/n/10 14\OML/cmm/m/it/10 ; g\OT1/cmr/m/n/10 13\OM
+L/cmm/m/it/10 ; g\OT1/cmr/m/n/10 12\OML/cmm/m/it/10 ; g\OT1/cmr/m/n/10 11\OML/c
+mm/m/it/10 ; g\OT1/cmr/m/n/10 10\OML/cmm/m/it/10 ; g\OT1/cmr/m/n/10 9\OML/cmm/m
+/it/10 ; g\OT1/cmr/m/n/10 8\OML/cmm/m/it/10 ; g\OT1/cmr/m/n/10 7\OML/cmm/m/it/1
+0 ; g\OT1/cmr/m/n/10 6\OML/cmm/m/it/10 ; g\OT1/cmr/m/n/10 5\OML/cmm/m/it/10 ; g
+\OT1/cmr/m/n/10 4\OML/cmm/m/it/10 ; g\OT1/cmr/m/n/10 3\OML/cmm/m/it/10 ; g\OT1/
+cmr/m/n/10 2\OML/cmm/m/it/10 ; g\OT1/cmr/m/n/10 1\OML/cmm/m/it/10 ; g\OT1/cmr/m
+/n/10 0\OML/cmm/m/it/10 ; f\OT1/cmr/m/n/10 36\OML/cmm/m/it/10 ; f\OT1/cmr/m/n/1
+0 35\OML/cmm/m/it/10 ; f\OT1/cmr/m/n/10 34\OML/cmm/m/it/10 ; f\OT1/cmr/m/n/10 3
+3\OML/cmm/m/it/10 ; f\OT1/cmr/m/n/10 32\OML/cmm/m/it/10 ; f\OT1/cmr/m/n/10 31\O
+ML/cmm/m/it/10 ; f\OT1/cmr/m/n/10 30\OML/cmm/m/it/10 ; f\OT1/cmr/m/n/10 29\OML/
+cmm/m/it/10 ; f\OT1/cmr/m/n/10 28\OML/cmm/m/it/10 ; f\OT1/cmr/m/n/10 27\OML/cmm
+/m/it/10 ; f\OT1/cmr/m/n/10 26\OML/cmm/m/it/10 ; f\OT1/cmr/m/n/10 25\OML/cmm/m/
+it/10 ; f\OT1/cmr/m/n/10 24\OML/cmm/m/it/10 ; f\OT1/cmr/m/n/10 23\OML/cmm/m/it/
+10 ; f\OT1/cmr/m/n/10 22\OML/cmm/m/it/10 ; f\OT1/cmr/m/n/10 21\OML/cmm/m/it/10 
+; f\OT1/cmr/m/n/10 20\OML/cmm/m/it/10 ; f\OT1/cmr/m/n/10 19\OML/cmm/m/it/10 ; f
+\OT1/cmr/m/n/10 18\OML/cmm/m/it/10 ; f\OT1/cmr/m/n/10 17\OML/cmm/m/it/10 ; f\OT
+1/cmr/m/n/10 16\OML/cmm/m/it/10 ; f\OT1/cmr/m/n/10 15\OML/cmm/m/it/10 ; f\OT1/c
+mr/m/n/10 14\OML/cmm/m/it/10 ; f\OT1/cmr/m/n/10 13\OML/cmm/m/it/10 ; f\OT1/cmr/
+m/n/10 12\OML/cmm/m/it/10 ; f\OT1/cmr/m/n/10 11\OML/cmm/m/it/10 ; f\OT1/cmr/m/n
+/10 10\OML/cmm/m/it/10 ; f\OT1/cmr/m/n/10 9\OML/cmm/m/it/10 ; f\OT1/cmr/m/n/10 
+8\OML/cmm/m/it/10 ; f\OT1/cmr/m/n/10 7\OML/cmm/m/it/10 ; f\OT1/cmr/m/n/10 6\OML
+/cmm/m/it/10 ; f\OT1/cmr/m/n/10 5\OML/cmm/m/it/10 ; f\OT1/cmr/m/n/10 4\OML/cmm/
+m/it/10 ; f\OT1/cmr/m/n/10 3\OML/cmm/m/it/10 ; f\OT1/cmr/m/n/10 2\OML/cmm/m/it/
+10 ; f\OT1/cmr/m/n/10 1\OML/cmm/m/it/10 ; f\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 ; 
+e\OT1/cmr/m/n/10 72\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/10 71\OML/cmm/m/it/10 ; e\O
+T1/cmr/m/n/10 70\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/10 69\OML/cmm/m/it/10 ; e\OT1/
+cmr/m/n/10 68\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/10 67\OML/cmm/m/it/10 ; e\OT1/cmr
+/m/n/10 66\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/10 65\OML/cmm/m/it/10 ; e\OT1/cmr/m/
+n/10 64\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/10 63\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/1
+0 62\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/10 61\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/10 6
+0\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/10 59\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/10 58\O
+ML/cmm/m/it/10 ; e\OT1/cmr/m/n/10 57\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/10 56\OML/
+cmm/m/it/10 ; e\OT1/cmr/m/n/10 55\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/10 54\OML/cmm
+/m/it/10 ; e\OT1/cmr/m/n/10 53\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/10 52\OML/cmm/m/
+it/10 ; e\OT1/cmr/m/n/10 51\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/10 50\OML/cmm/m/it/
+10 ; e\OT1/cmr/m/n/10 49\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/10 48\OML/cmm/m/it/10 
+; e\OT1/cmr/m/n/10 47\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/10 46\OML/cmm/m/it/10 ; e
+\OT1/cmr/m/n/10 45\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/10 44\OML/cmm/m/it/10 ; e\OT
+1/cmr/m/n/10 43\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/10 42\OML/cmm/m/it/10 ; e\OT1/c
+mr/m/n/10 41\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/10 40\OML/cmm/m/it/10 ; e\OT1/cmr/
+m/n/10 39\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/10 38\OML/cmm/m/it/10 ; e\OT1/cmr/m/n
+/10 37\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/10 36\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/10
+ 35\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/10 34\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/10 33
+\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/10 32\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/10 31\OM
+L/cmm/m/it/10 ; e\OT1/cmr/m/n/10 30\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/10 29\OML/c
+mm/m/it/10 ; e\OT1/cmr/m/n/10 28\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/10 27\OML/cmm/
+m/it/10 ; e\OT1/cmr/m/n/10 26\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/10 25\OML/cmm/m/i
+t/10 ; e\OT1/cmr/m/n/10 24\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/10 23\OML/cmm/m/it/1
+0 ; e\OT1/cmr/m/n/10 22\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/10 21\OML/cmm/m/it/10 ;
+ e\OT1/cmr/m/n/10 20\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/10 19\OML/cmm/m/it/10 ; e\
+OT1/cmr/m/n/10 18\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/10 17\OML/cmm/m/it/10 ; e\OT1
+/cmr/m/n/10 16\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/10 15\OML/cmm/m/it/10 ; e\OT1/cm
+r/m/n/10 14\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/10 13\OML/cmm/m/it/10 ; e\OT1/cmr/m
+/n/10 12\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/10 11\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/
+10 10\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/10 9\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/10 8
+\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/10 7\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/10 6\OML/
+cmm/m/it/10 ; e\OT1/cmr/m/n/10 5\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/10 4\OML/cmm/m
+/it/10 ; e\OT1/cmr/m/n/10 3\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/10 2\OML/cmm/m/it/1
+0 ; e\OT1/cmr/m/n/10 1\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 ; d
+\OT1/cmr/m/n/10 149\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 148\OML/cmm/m/it/10 ; d\
+OT1/cmr/m/n/10 147\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 146\OML/cmm/m/it/10 ; d\O
+T1/cmr/m/n/10 145\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 144\OML/cmm/m/it/10 ; d\OT
+1/cmr/m/n/10 143\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 142\OML/cmm/m/it/10 ; d\OT1
+/cmr/m/n/10 141\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 140\OML/cmm/m/it/10 ; d\OT1/
+cmr/m/n/10 139\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 138\OML/cmm/m/it/10 ; d\OT1/c
+mr/m/n/10 137\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 136\OML/cmm/m/it/10 ; d\OT1/cm
+r/m/n/10 135\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 134\OML/cmm/m/it/10 ; d\OT1/cmr
+/m/n/10 133\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 132\OML/cmm/m/it/10 ; d\OT1/cmr/
+m/n/10 131\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 130\OML/cmm/m/it/10 ; d\OT1/cmr/m
+/n/10 129\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 128\OML/cmm/m/it/10 ; d\OT1/cmr/m/
+n/10 127\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 126\OML/cmm/m/it/10 ; d\OT1/cmr/m/n
+/10 125\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 124\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/
+10 123\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 122\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/1
+0 121\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 120\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10
+ 119\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 118\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 
+117\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 116\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 1
+15\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 114\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 11
+3\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 112\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 111
+\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 110\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 109\
+OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 108\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 107\O
+ML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 106\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 105\OM
+L/cmm/m/it/10 ; d\OT1/cmr/m/n/10 104\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 103\OML
+/cmm/m/it/10 ; d\OT1/cmr/m/n/10 102\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 101\OML/
+cmm/m/it/10 ; d\OT1/cmr/m/n/10 100\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 99\OML/cm
+m/m/it/10 ; d\OT1/cmr/m/n/10 98\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 97\OML/cmm/m
+/it/10 ; d\OT1/cmr/m/n/10 96\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 95\OML/cmm/m/it
+/10 ; d\OT1/cmr/m/n/10 94\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 93\OML/cmm/m/it/10
+ ; d\OT1/cmr/m/n/10 92\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 91\OML/cmm/m/it/10 ; 
+d\OT1/cmr/m/n/10 90\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 89\OML/cmm/m/it/10 ; d\O
+T1/cmr/m/n/10 88\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 87\OML/cmm/m/it/10 ; d\OT1/
+cmr/m/n/10 86\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 85\OML/cmm/m/it/10 ; d\OT1/cmr
+/m/n/10 84\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 83\OML/cmm/m/it/10 ; d\OT1/cmr/m/
+n/10 82\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 81\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/1
+0 80\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 79\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 7
+8\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 77\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 76\O
+ML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 75\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 74\OML/
+cmm/m/it/10 ; d\OT1/cmr/m/n/10 73\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 72\OML/cmm
+/m/it/10 ; d\OT1/cmr/m/n/10 71\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 70\OML/cmm/m/
+it/10 ; d\OT1/cmr/m/n/10 69\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 68\OML/cmm/m/it/
+10 ; d\OT1/cmr/m/n/10 67\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 66\OML/cmm/m/it/10 
+; d\OT1/cmr/m/n/10 65\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 64\OML/cmm/m/it/10 ; d
+\OT1/cmr/m/n/10 63\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 62\OML/cmm/m/it/10 ; d\OT
+1/cmr/m/n/10 61\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 60\OML/cmm/m/it/10 ; d\OT1/c
+mr/m/n/10 59\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 58\OML/cmm/m/it/10 ; d\OT1/cmr/
+m/n/10 57\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 56\OML/cmm/m/it/10 ; d\OT1/cmr/m/n
+/10 55\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 54\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10
+ 53\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 52\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 51
+\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 50\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 49\OM
+L/cmm/m/it/10 ; d\OT1/cmr/m/n/10 48\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 47\OML/c
+mm/m/it/10 ; d\OT1/cmr/m/n/10 46\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 45\OML/cmm/
+m/it/10 ; d\OT1/cmr/m/n/10 44\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 43\OML/cmm/m/i
+t/10 ; d\OT1/cmr/m/n/10 42\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 41\OML/cmm/m/it/1
+0 ; d\OT1/cmr/m/n/10 40\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 39\OML/cmm/m/it/10 ;
+ d\OT1/cmr/m/n/10 38\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 37\OML/cmm/m/it/10 ; d\
+OT1/cmr/m/n/10 36\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 35\OML/cmm/m/it/10 ; d\OT1
+/cmr/m/n/10 34\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 33\OML/cmm/m/it/10 ; d\OT1/cm
+r/m/n/10 32\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 31\OML/cmm/m/it/10 ; d\OT1/cmr/m
+/n/10 30\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 29\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/
+10 28\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 27\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 
+26\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 25\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 24\
+OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 23\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 22\OML
+/cmm/m/it/10 ; d\OT1/cmr/m/n/10 21\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 20\OML/cm
+m/m/it/10 ; d\OT1/cmr/m/n/10 19\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 18\OML/cmm/m
+/it/10 ; d\OT1/cmr/m/n/10 17\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 16\OML/cmm/m/it
+/10 ; d\OT1/cmr/m/n/10 15\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 14\OML/cmm/m/it/10
+ ; d\OT1/cmr/m/n/10 13\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 12\OML/cmm/m/it/10 ; 
+d\OT1/cmr/m/n/10 11\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 10\OML/cmm/m/it/10 ; d\O
+T1/cmr/m/n/10 9\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 8\OML/cmm/m/it/10 ; d\OT1/cm
+r/m/n/10 7\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 6\OML/cmm/m/it/10 ; d\OT1/cmr/m/n
+/10 5\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 4\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 3
+\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 2\OML/cmm/m/it/10 ; d\OT1/cmr/m/n/10 1\OML/
+cmm/m/it/10 ; d\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 ; b[][]b[][]b[][]b[][]b[][]b[]
+[]b[][]b[][]a[][]a[][]a[][]a[][]a[][]a[][]a[][]a[][]; lp\OT1/cmr/m/n/10 ;$ 
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.6 m
+     inpoly = X^8+X^4+X^3+X^2+1;
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no m in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no y in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no X in font nullfont!
+! Missing $ inserted.
+<inserted text> 
+                $
+l.6 minpoly = X^
+                8+X^4+X^3+X^2+1;
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.7 
+    
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 6--7
+[]
+ []
+
+
+Overfull \hbox (12.26393pt too wide) in paragraph at lines 6--7
+[] \OT1/cmr/m/n/10 +
+ []
+
+
+Overfull \hbox (21.33336pt too wide) in paragraph at lines 6--7
+\OML/cmm/m/it/10 X[] \OT1/cmr/m/n/10 +
+ []
+
+
+Overfull \hbox (21.33336pt too wide) in paragraph at lines 6--7
+\OML/cmm/m/it/10 X[] \OT1/cmr/m/n/10 +
+ []
+
+
+Overfull \hbox (21.33336pt too wide) in paragraph at lines 6--7
+\OML/cmm/m/it/10 X[] \OT1/cmr/m/n/10 +
+ []
+
+
+Overfull \hbox (7.7778pt too wide) in paragraph at lines 6--7
+\OT1/cmr/m/n/10 1;$ 
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.8 i
+     deal J1 =
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no i in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no J in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no + in font nullfont!
+Missing character: There is no a in font nullfont!
+! Missing $ inserted.
+<inserted text> 
+                $
+l.9 d0 + a_
+           0_*b_0_,
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Double subscript.
+l.9 d0 + a_0_
+             *b_0_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.9 d0 + a_0_*b_0_
+                  ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.10 d2 + a_2_
+              *b_6_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.10 d2 + a_2_*b_6_
+                   ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.11 d3 + a_3_
+              *b_5_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.11 d3 + a_3_*b_5_
+                   ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.12 d4 + a_4_
+              *b_4_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.12 d4 + a_4_*b_4_
+                   ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.13 d5 + a_5_
+              *b_3_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.13 d5 + a_5_*b_3_
+                   ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.14 d6 + a_6_
+              *b_2_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.14 d6 + a_6_*b_2_
+                   ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.15 d7 + a_7_
+              *b_1_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.15 d7 + a_7_*b_1_
+                   ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.16 d8 + a_5_
+              *b_7_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.16 d8 + a_5_*b_7_
+                   ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.17 d9 + a_6_
+              *b_6_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.17 d9 + a_6_*b_6_
+                   ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.18 d10 + a_7_
+               *b_5_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.18 d10 + a_7_*b_5_
+                    ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.19 d11 + a_6_
+               *b_7_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.19 d11 + a_6_*b_7_
+                    ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.20 d12 + a_7_
+               *b_6_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.20 d12 + a_7_*b_6_
+                    ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.21 d13 + a_7_
+               *b_7_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.21 d13 + a_7_*b_7_
+                    ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.22 d14 + a_0_
+               *b_1_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.22 d14 + a_0_*b_1_
+                    ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.23 d15 + a_1_
+               *b_0_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.23 d15 + a_1_*b_0_
+                    ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.24 d16 + a_2_
+               *b_7_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.24 d16 + a_2_*b_7_
+                    ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.25 d17 + a_3_
+               *b_6_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.25 d17 + a_3_*b_6_
+                    ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.26 d18 + a_4_
+               *b_5_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.26 d18 + a_4_*b_5_
+                    ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.27 d19 + a_5_
+               *b_4_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.27 d19 + a_5_*b_4_
+                    ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.28 d20 + a_6_
+               *b_3_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.28 d20 + a_6_*b_3_
+                    ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.29 d21 + a_7_
+               *b_2_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.29 d21 + a_7_*b_2_
+                    ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.30 d22 + a_6_
+               *b_7_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.30 d22 + a_6_*b_7_
+                    ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.31 d23 + a_7_
+               *b_6_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.31 d23 + a_7_*b_6_
+                    ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.32 d24 + a_7_
+               *b_7_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.32 d24 + a_7_*b_7_
+                    ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.33 d25 + a_0_
+               *b_2_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.33 d25 + a_0_*b_2_
+                    ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.34 d26 + a_1_
+               *b_1_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.34 d26 + a_1_*b_1_
+                    ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.35 d27 + a_2_
+               *b_0_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.35 d27 + a_2_*b_0_
+                    ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.36 d28 + a_1_
+               *b_7_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.36 d28 + a_1_*b_7_
+                    ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.37 d29 + a_2_
+               *b_6_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.37 d29 + a_2_*b_6_
+                    ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.38 d30 + a_3_
+               *b_5_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.38 d30 + a_3_*b_5_
+                    ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.39 d31 + a_4_
+               *b_4_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.39 d31 + a_4_*b_4_
+                    ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.40 d32 + a_5_
+               *b_3_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.40 d32 + a_5_*b_3_
+                    ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.41 d33 + a_6_
+               *b_2_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.41 d33 + a_6_*b_2_
+                    ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.42 d34 + a_7_
+               *b_1_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.42 d34 + a_7_*b_1_
+                    ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.43 d35 + a_3_
+               *b_7_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.43 d35 + a_3_*b_7_
+                    ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.44 d36 + a_4_
+               *b_6_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.44 d36 + a_4_*b_6_
+                    ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.45 d37 + a_5_
+               *b_5_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.45 d37 + a_5_*b_5_
+                    ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.46 d38 + a_6_
+               *b_4_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.46 d38 + a_6_*b_4_
+                    ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.47 d39 + a_7_
+               *b_3_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.47 d39 + a_7_*b_3_
+                    ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.48 d40 + a_5_
+               *b_7_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.48 d40 + a_5_*b_7_
+                    ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.49 d41 + a_6_
+               *b_6_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.49 d41 + a_6_*b_6_
+                    ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.50 d42 + a_7_
+               *b_5_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.50 d42 + a_7_*b_5_
+                    ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.51 d43 + a_6_
+               *b_7_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.51 d43 + a_6_*b_7_
+                    ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.52 d44 + a_7_
+               *b_6_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.52 d44 + a_7_*b_6_
+                    ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.53 d45 + a_0_
+               *b_3_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.53 d45 + a_0_*b_3_
+                    ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.54 d46 + a_1_
+               *b_2_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.54 d46 + a_1_*b_2_
+                    ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.55 d47 + a_2_
+               *b_1_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.55 d47 + a_2_*b_1_
+                    ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.56 d48 + a_3_
+               *b_0_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.56 d48 + a_3_*b_0_
+                    ,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.57 d49 + a_1_
+               *b_7_,
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Double subscript.
+l.57 d49 + a_1_*b_7_
+                    ,
+(That makes 100 errors; please try again.) 
+Here is how much of TeX's memory you used:
+ 12 strings out of 493312
+ 700 string characters out of 3138898
+ 58761 words of memory out of 3000000
+ 3657 multiletter control sequences out of 15000+200000
+ 3640 words of font info for 14 fonts, out of 3000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 18i,1n,12p,1708b,56s stack positions out of 5000i,500n,10000p,200000b,50000s
+
+!  ==> Fatal error occurred, no output PDF file produced!

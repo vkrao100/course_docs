@@ -1,0 +1,91 @@
+                     SINGULAR                                 /
+ A Computer Algebra System for Polynomial Computations       /   version 4.0.3
+                                                           0<
+ by: W. Decker, G.-M. Greuel, G. Pfister, H. Schoenemann     \   Jan 2016
+FB Mathematik der Universitaet, D-67653 Kaiserslautern        \  Debian 4.0.3+ds-1
+// ** loaded multivariate_burg.lib 
+// ** library multivariate_burg.lib has old format. This format is still accepted,
+// ** but for functionality you may wish to change to the new
+// ** format. Please refer to the manual for further information.
+// ** loaded /usr/bin/../share/singular/LIB/control.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/matrix.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/nctools.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/general.lib (4.0.0.1,Jan_2014)
+// ** loaded /usr/bin/../share/singular/LIB/random.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/ring.lib (4.0.2.2,Jan_2016)
+// ** loaded /usr/bin/../share/singular/LIB/inout.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/primdec.lib (4.0.2.0,Apr_2015)
+// ** loaded /usr/bin/../share/singular/LIB/absfact.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/triang.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/elim.lib (4.0.0.1,Jan_2014)
+// ** loaded /usr/bin/../share/singular/LIB/poly.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/homolog.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/deform.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/sing.lib (4.0.0.0,Jun_2013)
+// ** loaded /usr/bin/../share/singular/LIB/linalg.lib (4.0.0.0,Jun_2013)
+   ? too many ring variables(61354), max is 32767
+   ? cannot make ring
+   ? error occurred in or before to_vkr/test_unroll_99.sing line 34: `a16, a15, a14, a13, a12, a11, a10, a9, a8, a7, a6, a5, a4, a3, a2, a1, a0),lp;`
+   ? expected ring-expression. type 'help ring;'
+   ? no ring active
+   ? error occurred in or before to_vkr/test_unroll_99.sing line 36: `minpoly = X^99 + X^7 + X^5 + X^4 +1;`
+   ? ...parse error
+   ? error occurred in or before to_vkr/test_unroll_99.sing line 28644: `n27712 + n27711 + n27414;`
+   ? wrong type declaration. type 'help ideal;'
+   ? ...parse error
+   ? error occurred in or before to_vkr/test_unroll_99.sing line 61197: `Rs98 + ns31920;`
+   ? wrong type declaration. type 'help ideal;'
+   ? ...parse error
+   ? error occurred in or before to_vkr/test_unroll_99.sing line 61398: `b0^2 - b0;`
+   ? wrong type declaration. type 'help ideal;'
+   ? ...parse error
+   ? error occurred in or before to_vkr/test_unroll_99.sing line 61400: `poly uc = n27714 + n27713 + n27416;`
+   ? wrong type declaration. type 'help poly;'
+   ? ...parse error
+   ? error occurred in or before to_vkr/test_unroll_99.sing line 61402: `poly spec = (R-Rs);`
+   ? wrong type declaration. type 'help poly;'
+   ? ...parse error
+   ? error occurred in or before to_vkr/test_unroll_99.sing line 61404: `poly quo;`
+   ? wrong type declaration. type 'help poly;'
+   ? ...parse error
+   ? error occurred in or before to_vkr/test_unroll_99.sing line 61405: `poly rem;`
+   ? wrong type declaration. type 'help poly;'
+   ? ...parse error
+   ? error occurred in or before to_vkr/test_unroll_99.sing line 61407: `poly prem = reduce(spec,J2+J0);`
+   ? wrong type declaration. type 'help poly;'
+   ? `rem` is undefined
+   ? error occurred in or before to_vkr/test_unroll_99.sing line 61409: `rem, quo = multivariate_burg(prem,lead(uc),J0); `
+remainder `rem`
+quotient `quo`
+   ? ...parse error
+   ? error occurred in or before to_vkr/test_unroll_99.sing line 61414: `ideal dec = variables(quo);`
+   ? wrong type declaration. type 'help ideal;'
+   ? ...parse error
+   ? error occurred in or before to_vkr/test_unroll_99.sing line 61415: `ideal JCp = quo,J1;`
+   ? wrong type declaration. type 'help ideal;'
+   ? `dec` is not defined
+   ? error occurred in or before to_vkr/test_unroll_99.sing line 61446: `"solution for P is ",sol;`
+> Auf Wiedersehen.
+	Command being timed: "Singular to_vkr/test_unroll_99.sing"
+	User time (seconds): 4.59
+	System time (seconds): 0.00
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:04.59
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 10980
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1361
+	Voluntary context switches: 1
+	Involuntary context switches: 12
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 0
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

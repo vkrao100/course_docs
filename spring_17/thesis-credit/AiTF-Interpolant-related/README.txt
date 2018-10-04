@@ -1,0 +1,33 @@
+In this directory, I have put together the following manuscripts:
+
+1. craig-interpolant-JSL.pdf
+The original paper on Interpolants, by W. Craig. I think the last
+theorem is what interpolation is about. Written in Greek and Latin.
+
+2. pudlak-preprint.pdf
+This is a  version of Pudlak's publication "Lower Bounds
+for Resolution and Cutting-Plane Proofs and Monotone Computations, The
+Journal of Symbolic Logic, Vol. 62, No. 3 (Sep., 1997), pp. 981-998".
+
+The first 2 sections tell us that Interpolants can also be used as
+tools to analyze proof complexity! 
+
+3. CAV03_mcmillan_interpolation_based_mc.pdf
+This is the paper that introduced interpolants to our community. The
+first 2 sections tell us what interpolants are and how to compute
+them. Sec 3 onwards tells us how to use them as over-approximate image
+operators in model checking.
+
+4. mishchenko_iccad14_interpolate.pdf
+This is one of the papers that shows how interpolants are used in
+circuit synthesis. Just FYI.
+
+5. TalkUpsala1511-jakob.pdf
+Proof complexity and SAT -- slides from Jakob Nordstrom
+
+6. ccf-core-2017-proposal.pdf
+This is a NSF proposal that I and Florian submitted last November. It
+is on word-level verification, and Interpolants are only a part of the
+whole thing, like in Sec V. Aditya should probably go through this,
+should be a quick and easy read.
+

@@ -1,0 +1,69 @@
+LIB "multivariate_burg.lib";
+LIB "control.lib";
+LIB "linalg.lib";
+ring r = 2, (z,z2,z1,d0,e2,e1,e0,a,b,c) ,lp;
+//ring r = 2, (z,z2,z1,e2,e0,a,b,d0,e1,c) ,lp;
+
+poly spec = z + ac + a + b + bc + c;
+
+poly f1 = z + z1*z2;
+poly f2 = z2 + d0 + e2;
+poly f3 = z1 + e0*d0 + e0 + d0;
+poly f4 = d0 + e1*c; // unknown gate
+poly f5 = e2 + c + 1;
+poly f6 = e1 + bc + b + c;
+poly f7 = e0 + a + b;
+
+poly d_0 = d0^2 -d0 ;
+poly e_0 = e0^2 -e0 ;
+poly e_1 = e1^2 -e1 ;
+poly e_2 = e2^2 -e2 ;
+
+poly a_0 = a^2 - a;
+poly b_0 = b^2 - b;
+poly c_0 = c^2 - c;
+
+ideal J0 = a_0, b_0, c_0, d_0, e_0, e_1, e_2;
+
+//rem;
+ideal J1 = f1,f2,f3;
+ideal J2 = f5,f6,f7;
+poly uc = f4;
+
+reduce(spec,J1+J2+uc+J0);
+
+poly quo;
+poly rem;
+
+poly prem = reduce(spec,J1+J0);
+
+rem, quo = multivariate_burg(prem,lead(uc),J0); 
+
+"remainder",rem;
+"quotient",quo;
+
+ideal dec = variables(quo);
+ideal JCp = quo,J2,J0;
+
+if (size(dec)>=1)
+{
+	"quotient is not a constant";
+	poly sol    = reduce(rem,J2);
+	if (sol ==0)
+	{
+		matrix T3 = lift(rem,groebner(JCp));
+		sol = T3[1,1];
+	}
+}
+else
+{	
+	"quotient is a constant";
+	matrix quoi = inverse(quo);
+	poly irem   = quoi[1,1]*rem;
+	poly sol    = reduce(irem,J2);
+}
+
+"solution for P is ",sol;
+
+ideal colon = quotient((J2+J0),quo);
+"colon",colon;

@@ -1,0 +1,733 @@
+.model Mast_8.eqn
+.inputs a_0_ a_1_ a_2_ a_3_ a_4_ a_5_ a_6_ a_7_ b_0_ b_1_ b_2_ b_3_ b_4_ b_5_ \
+b_6_ b_7_ x_1_ x_2_ x_3_ x_4_
+.outputs z_0_ z_1_ z_2_ z_3_ z_4_ z_5_ z_6_ z_7_
+.names g0 g1 z_0_
+01 1
+10 1
+.names f5 g2 z_1_
+01 1
+10 1
+.names f10 h0 z_2_
+01 1
+10 1
+.names g7 h1 z_3_
+01 1
+10 1
+.names g10 h2 z_4_
+01 1
+10 1
+.names g13 h3 z_5_
+01 1
+10 1
+.names f32 h4 z_6_
+01 1
+10 1
+.names d149 h5 z_7_
+01 1
+10 1
+.names a_0_ b_0_ d0
+11 1
+.names a_1_ b_7_ d1
+11 1
+.names a_2_ b_6_ d2
+11 1
+.names a_3_ b_5_ d3
+11 1
+.names a_4_ b_4_ d4
+11 1
+.names a_5_ b_3_ d5
+11 1
+.names a_6_ b_2_ d6
+11 1
+.names a_7_ b_1_ d7
+11 1
+.names a_5_ b_7_ d8
+11 1
+.names a_6_ b_6_ d9
+11 1
+.names a_7_ b_5_ d10
+11 1
+.names a_6_ b_7_ d11
+11 1
+.names a_7_ b_6_ d12
+11 1
+.names a_7_ b_7_ d13
+11 1
+.names a_0_ b_1_ d14
+11 1
+.names a_1_ b_0_ d15
+11 1
+.names a_2_ b_7_ d16
+11 1
+.names a_3_ b_6_ d17
+11 1
+.names a_4_ b_5_ d18
+11 1
+.names a_5_ b_4_ d19
+11 1
+.names a_6_ b_3_ d20
+11 1
+.names a_7_ b_2_ d21
+11 1
+.names a_6_ b_7_ d22
+11 1
+.names a_7_ b_6_ d23
+11 1
+.names a_7_ b_7_ d24
+11 1
+.names a_0_ b_2_ d25
+11 1
+.names a_1_ b_1_ d26
+11 1
+.names a_2_ b_0_ d27
+11 1
+.names a_1_ b_7_ d28
+11 1
+.names a_2_ b_6_ d29
+11 1
+.names a_3_ b_5_ d30
+11 1
+.names a_4_ b_4_ d31
+11 1
+.names a_5_ b_3_ d32
+11 1
+.names a_6_ b_2_ d33
+11 1
+.names a_7_ b_1_ d34
+11 1
+.names a_3_ b_7_ d35
+11 1
+.names a_4_ b_6_ d36
+11 1
+.names a_5_ b_5_ d37
+11 1
+.names a_6_ b_4_ d38
+11 1
+.names a_7_ b_3_ d39
+11 1
+.names a_5_ b_7_ d40
+11 1
+.names a_6_ b_6_ d41
+11 1
+.names a_7_ b_5_ d42
+11 1
+.names a_6_ b_7_ d43
+11 1
+.names a_7_ b_6_ d44
+11 1
+.names a_0_ b_3_ d45
+11 1
+.names a_1_ b_2_ d46
+11 1
+.names a_2_ b_1_ d47
+11 1
+.names a_3_ b_0_ d48
+11 1
+.names a_1_ b_7_ d49
+11 1
+.names a_2_ b_6_ d50
+11 1
+.names a_3_ b_5_ d51
+11 1
+.names a_4_ b_4_ d52
+11 1
+.names a_5_ b_3_ d53
+11 1
+.names a_6_ b_2_ d54
+11 1
+.names a_7_ b_1_ d55
+11 1
+.names a_2_ b_7_ d56
+11 1
+.names a_3_ b_6_ d57
+11 1
+.names a_4_ b_5_ d58
+11 1
+.names a_5_ b_4_ d59
+11 1
+.names a_6_ b_3_ d60
+11 1
+.names a_7_ b_2_ d61
+11 1
+.names a_4_ b_7_ d62
+11 1
+.names a_5_ b_6_ d63
+11 1
+.names a_6_ b_5_ d64
+11 1
+.names a_7_ b_4_ d65
+11 1
+.names a_5_ b_7_ d66
+11 1
+.names a_6_ b_6_ d67
+11 1
+.names a_7_ b_5_ d68
+11 1
+.names a_0_ b_4_ d69
+11 1
+.names a_1_ b_3_ d70
+11 1
+.names a_2_ b_2_ d71
+11 1
+.names a_3_ b_1_ d72
+11 1
+.names a_4_ b_0_ d73
+11 1
+.names a_1_ b_7_ d74
+11 1
+.names a_2_ b_6_ d75
+11 1
+.names a_3_ b_5_ d76
+11 1
+.names a_4_ b_4_ d77
+11 1
+.names a_5_ b_3_ d78
+11 1
+.names a_6_ b_2_ d79
+11 1
+.names a_7_ b_1_ d80
+11 1
+.names a_2_ b_7_ d81
+11 1
+.names a_3_ b_6_ d82
+11 1
+.names a_4_ b_5_ d83
+11 1
+.names a_5_ b_4_ d84
+11 1
+.names a_6_ b_3_ d85
+11 1
+.names a_7_ b_2_ d86
+11 1
+.names a_3_ b_7_ d87
+11 1
+.names a_4_ b_6_ d88
+11 1
+.names a_5_ b_5_ d89
+11 1
+.names a_6_ b_4_ d90
+11 1
+.names a_7_ b_3_ d91
+11 1
+.names a_7_ b_7_ d92
+11 1
+.names a_0_ b_5_ d93
+11 1
+.names a_1_ b_4_ d94
+11 1
+.names a_2_ b_3_ d95
+11 1
+.names a_3_ b_2_ d96
+11 1
+.names a_4_ b_1_ d97
+11 1
+.names a_5_ b_0_ d98
+11 1
+.names a_2_ b_7_ d99
+11 1
+.names a_3_ b_6_ d100
+11 1
+.names a_4_ b_5_ d101
+11 1
+.names a_5_ b_4_ d102
+11 1
+.names a_6_ b_3_ d103
+11 1
+.names a_7_ b_2_ d104
+11 1
+.names a_3_ b_7_ d105
+11 1
+.names a_4_ b_6_ d106
+11 1
+.names a_5_ b_5_ d107
+11 1
+.names a_6_ b_4_ d108
+11 1
+.names a_7_ b_3_ d109
+11 1
+.names a_4_ b_7_ d110
+11 1
+.names a_5_ b_6_ d111
+11 1
+.names a_6_ b_5_ d112
+11 1
+.names a_7_ b_4_ d113
+11 1
+.names a_0_ b_6_ d114
+11 1
+.names a_1_ b_5_ d115
+11 1
+.names a_2_ b_4_ d116
+11 1
+.names a_3_ b_3_ d117
+11 1
+.names a_4_ b_2_ d118
+11 1
+.names a_5_ b_1_ d119
+11 1
+.names a_6_ b_0_ d120
+11 1
+.names a_3_ b_7_ d121
+11 1
+.names a_4_ b_6_ d122
+11 1
+.names a_5_ b_5_ d123
+11 1
+.names a_6_ b_4_ d124
+11 1
+.names a_7_ b_3_ d125
+11 1
+.names a_4_ b_7_ d126
+11 1
+.names a_5_ b_6_ d127
+11 1
+.names a_6_ b_5_ d128
+11 1
+.names a_7_ b_4_ d129
+11 1
+.names a_5_ b_7_ d130
+11 1
+.names a_6_ b_6_ d131
+11 1
+.names a_7_ b_5_ d132
+11 1
+.names a_0_ b_7_ d133
+11 1
+.names a_1_ b_6_ d134
+11 1
+.names a_2_ b_5_ d135
+11 1
+.names a_3_ b_4_ d136
+11 1
+.names a_4_ b_3_ d137
+11 1
+.names a_5_ b_2_ d138
+11 1
+.names a_6_ b_1_ d139
+11 1
+.names a_7_ b_0_ d140
+11 1
+.names a_4_ b_7_ d141
+11 1
+.names a_5_ b_6_ d142
+11 1
+.names a_6_ b_5_ d143
+11 1
+.names a_7_ b_4_ d144
+11 1
+.names a_5_ b_7_ d145
+11 1
+.names a_6_ b_6_ d146
+11 1
+.names a_7_ b_5_ d147
+11 1
+.names a_6_ b_7_ d148
+11 1
+.names a_7_ b_6_ d149
+11 1
+.names d0 d1 e0
+01 1
+10 1
+.names d2 d3 e1
+01 1
+10 1
+.names d4 d5 e2
+01 1
+10 1
+.names d6 d7 e3
+01 1
+10 1
+.names d8 d9 e4
+01 1
+10 1
+.names d10 d11 e5
+01 1
+10 1
+.names d12 d13 e6
+01 1
+10 1
+.names d14 d15 e7
+01 1
+10 1
+.names d16 d17 e8
+01 1
+10 1
+.names d18 d19 e9
+01 1
+10 1
+.names d20 d21 e10
+01 1
+10 1
+.names d22 d23 e11
+01 1
+10 1
+.names d25 d26 e12
+01 1
+10 1
+.names d27 d28 e13
+01 1
+10 1
+.names d29 d30 e14
+01 1
+10 1
+.names d31 d32 e15
+01 1
+10 1
+.names d33 d34 e16
+01 1
+10 1
+.names d35 d36 e17
+01 1
+10 1
+.names d37 d38 e18
+01 1
+10 1
+.names d39 d40 e19
+01 1
+10 1
+.names d41 d42 e20
+01 1
+10 1
+.names d43 d44 e21
+01 1
+10 1
+.names d45 d46 e22
+01 1
+10 1
+.names d47 d48 e23
+01 1
+10 1
+.names d49 d50 e24
+01 1
+10 1
+.names d51 d52 e25
+01 1
+10 1
+.names d53 d54 e26
+01 1
+10 1
+.names d55 d56 e27
+01 1
+10 1
+.names d57 d58 e28
+01 1
+10 1
+.names d59 d60 e29
+01 1
+10 1
+.names d61 d62 e30
+01 1
+10 1
+.names d63 d64 e31
+01 1
+10 1
+.names d65 d66 e32
+01 1
+10 1
+.names d67 d68 e33
+01 1
+10 1
+.names d69 d70 e34
+01 1
+10 1
+.names d71 d72 e35
+01 1
+10 1
+.names d73 d74 e36
+01 1
+10 1
+.names d75 d76 e37
+01 1
+10 1
+.names d77 d78 e38
+01 1
+10 1
+.names d79 d80 e39
+01 1
+10 1
+.names d81 d82 e40
+01 1
+10 1
+.names d83 d84 e41
+01 1
+10 1
+.names d85 d86 e42
+01 1
+10 1
+.names d87 d88 e43
+01 1
+10 1
+.names d89 d90 e44
+01 1
+10 1
+.names d91 d92 e45
+01 1
+10 1
+.names d93 d94 e46
+01 1
+10 1
+.names d95 d96 e47
+01 1
+10 1
+.names d97 d98 e48
+01 1
+10 1
+.names d99 d100 e49
+01 1
+10 1
+.names d101 d102 e50
+01 1
+10 1
+.names d103 d104 e51
+01 1
+10 1
+.names d105 d106 e52
+01 1
+10 1
+.names d107 d108 e53
+01 1
+10 1
+.names d109 d110 e54
+01 1
+10 1
+.names d111 d112 e55
+01 1
+10 1
+.names d114 d115 e56
+01 1
+10 1
+.names d116 d117 e57
+01 1
+10 1
+.names d118 d119 e58
+01 1
+10 1
+.names d120 d121 e59
+01 1
+10 1
+.names d122 d123 e60
+01 1
+10 1
+.names d124 d125 e61
+01 1
+10 1
+.names d126 d127 e62
+01 1
+10 1
+.names d128 d129 e63
+01 1
+10 1
+.names d130 d131 e64
+01 1
+10 1
+.names d133 d134 e65
+01 1
+10 1
+.names d135 d136 e66
+01 1
+10 1
+.names d137 d138 e67
+01 1
+10 1
+.names d139 d140 e68
+01 1
+10 1
+.names d141 d142 e69
+01 1
+10 1
+.names d143 d144 e70
+01 1
+10 1
+.names d145 d146 e71
+01 1
+10 1
+.names d147 d148 e72
+01 1
+10 1
+.names e0 e1 f0
+01 1
+10 1
+.names e2 e3 f1
+01 1
+10 1
+.names e4 e5 f2
+01 1
+10 1
+.names e7 e8 f3
+01 1
+10 1
+.names e9 e10 f4
+01 1
+10 1
+.names d24 e11 f5
+01 1
+10 1
+.names e12 e13 f6
+01 1
+10 1
+.names e14 e15 f7
+01 1
+10 1
+.names e16 e17 f8
+01 1
+10 1
+.names e18 e19 f9
+01 1
+10 1
+.names e20 e21 f10
+01 1
+10 1
+.names e22 e23 f11
+01 1
+10 1
+.names e24 e25 f12
+01 1
+10 1
+.names e26 e27 f13
+01 1
+10 1
+.names e28 e29 f14
+01 1
+10 1
+.names e30 e31 f15
+01 1
+10 1
+.names e32 e33 f16
+01 1
+10 1
+.names e34 e35 f17
+01 1
+10 1
+.names e36 e37 f18
+01 1
+10 1
+.names e38 e39 f19
+01 1
+10 1
+.names e40 e41 f20
+01 1
+10 1
+.names e42 e43 f21
+01 1
+10 1
+.names e44 e45 f22
+01 1
+10 1
+.names e46 e47 f23
+01 1
+10 1
+.names e48 e49 f24
+01 1
+10 1
+.names e50 e51 f25
+01 1
+10 1
+.names e52 e53 f26
+01 1
+10 1
+.names e54 e55 f27
+01 1
+10 1
+.names e56 e57 f28
+01 1
+10 1
+.names e58 e59 f29
+01 1
+10 1
+.names e60 e61 f30
+01 1
+10 1
+.names e62 e63 f31
+01 1
+10 1
+.names d132 e64 f32
+01 1
+10 1
+.names e65 e66 f33
+01 1
+10 1
+.names e67 e68 f34
+01 1
+10 1
+.names e69 e70 f35
+01 1
+10 1
+.names e71 e72 f36
+01 1
+10 1
+.names f0 f1 g0
+01 1
+10 1
+.names e6 f2 g1
+01 1
+10 1
+.names f3 f4 g2
+01 1
+10 1
+.names f6 f7 g3
+01 1
+10 1
+.names f8 f9 g4
+01 1
+10 1
+.names f11 f12 g5
+01 1
+10 1
+.names f13 f14 g6
+01 1
+10 1
+.names f15 f16 g7
+01 1
+10 1
+.names f17 f18 g8
+01 1
+10 1
+.names f19 f20 g9
+01 1
+10 1
+.names f21 f22 g10
+01 1
+10 1
+.names f23 f24 g11
+01 1
+10 1
+.names f25 f26 g12
+01 1
+10 1
+.names d113 f27 g13
+01 1
+10 1
+.names f28 f29 g14
+01 1
+10 1
+.names f30 f31 g15
+01 1
+10 1
+.names f33 f34 g16
+01 1
+10 1
+.names f35 f36 g17
+01 1
+10 1
+.names g3 g4 h0
+01 1
+10 1
+.names g5 g6 h1
+01 1
+10 1
+.names g8 g9 h2
+01 1
+10 1
+.names g11 g12 h3
+01 1
+10 1
+.names g14 g15 h4
+01 1
+10 1
+.names g17 g16 x_1_ x_2_ x_3_ x_4_ h5
+001--- 1
+01-1-- 1
+10--1- 1
+11---1 1
+.end

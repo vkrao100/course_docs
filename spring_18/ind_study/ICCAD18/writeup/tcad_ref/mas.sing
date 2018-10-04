@@ -1,0 +1,12 @@
+ring r = 2, (z_0, z_1, r_0, c_0, c_3, c_1, c_2, a_0, a_1, b_0, b_1), lp;
+
+poly f1 = c_0 + a_0*b_0;
+poly f2 = c_1 + a_0*b_1;
+poly f3 = c_2 + a_1*b_0;
+poly f4 = c_3 + a_1*b_1;
+poly f5 = r_0 + c_1 + c_2;
+poly f6 = z_0 + c_0 + c_3;
+poly f7 = z_1 + r_0 + c_3;
+
+ideal I = f1, f2, f3, f4, f5, f6, f7;
+

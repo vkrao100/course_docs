@@ -1,0 +1,26 @@
+\begin{abstract}
+ 
+
+A rudimentary problem in post-verification debugging of digital circuits
+ is identifying a potential single fix rectification point and applying a correction. 
+ Traditional debugging techniques involve incremental 
+ SAT-solving or simulation based validation, while most of the modern
+ debugging approaches use concepts from symbolic computer algebra. 
+ Due to their bit-blasting nature, the conventional methods have been 
+ shown to be exceedingly resource intensive for complex arithmetic 
+ circuits, whereas the existing symbolic computer algebra debugging techniques 
+ fail to arrive at a conclusive solution on non-standard circuit implementations. 
+ To overcome these limitations, this paper presents an automated debugging 
+ technique using concepts from 
+ symbolic computer algebra to diagnose a multi-error logic circuit for a possible 
+ single fix rectification. Starting from an equivalence checking setup modeled as 
+ a polynomial ideal membership test in commutative algebra, we analyze the ideal 
+ membership residue to identify potential single fix rectifiable locations. Once the 
+ possible rectification nets have been identified, we use nullstellensatz principles 
+ to verify if indeed a single fix rectification can be applied at any of these locations.
+ If a single fix rectification exists, we model the net as an unknown component 
+ and formulate the correction as a quantification procedure. 
+ We demonstrate the efficacy of our approach through experiments performed
+ on various finite field arithmetic circuits.  
+ 
+\end{abstract}

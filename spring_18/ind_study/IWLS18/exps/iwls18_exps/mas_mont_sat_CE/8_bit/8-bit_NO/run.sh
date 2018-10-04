@@ -1,0 +1,1 @@
+/usr/bin/time -v python eqn2cnf.py Mas*.eqn MontFlat*.eqn > until_last.log 2>&1

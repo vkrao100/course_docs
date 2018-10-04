@@ -1,0 +1,3 @@
+2016-11-14 17:12:40,477 - DEBUG - This is a log message.
+2016-11-14 17:13:40,057 - DEBUG - This is a log message.
+2016-11-14 17:18:57,025 - DEBUG - This is a log message.

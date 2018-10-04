@@ -1,0 +1,38 @@
+\section{Experimental Results}
+
+When you complete your project, your results should compare like
+this. If not, all of you will fail the course. As shown in Table
+\ref{tab:ourmas}, both {\sc Singular} and our 
+$F4$ approach can verify the correctness of up to 
+$163$-bit Mastrovito multipliers -- corresponding to the practical
+NIST-specified Galois field ${\mathbb{F}}_{2^{163}}$.  However, our
+$F4$-style approach is almost $2.5X$ faster. 
+
+\begin{table}[htb!]
+\begin{center}
+\caption{ Runtime for verifying bug-free and buggy Mastrovito
+  multipliers using our approach. TO = timeout of 10hrs. Time is given
+  in seconds.}  
+\label{tab:ourmas}
+\begin{tabular}{|c||c|c|c|c|c|c|} \hline 
+Operand size $k$: & 32 &  64 & 96 & 128  &160 &163\\
+\hline
+\#variables   &$1155$ 		&$4355$ 	&$9603$ 	&$16899$ 	&$26243$ 	&$27224$ \\
+\hline
+\#polynomials &$1091$ 		&$4227$ 	&$9411$ 	&$16643$ 	&$25923$ 	&$26989$ \\
+\hline
+\#terms        &$7169$ 	&$28673$ 	&$64513$ 	&$114689$ 	&$179201$ 	&$185984$ \\
+\hline
+\hline
+Bug-free (Singular) &$1.41$ 		&$112.13$ 	&$758.82$ 	&$3054$ 	&$9361$ 	&$16170$ \\
+\hline
+Bug-free ($F_4$) &$0.83$ 		&$39.23$ 	&$243.16$ 	&$1138$ 	&$3496$ 	&$6537$ \\
+\hline \hline
+Bugs (Singular) &$1.43$		&$114.86$ 	&$788.65$ 	&$3061$  	&$9384$ 	&$16368$\\
+\hline
+Bugs ($F_4$)  &$0.84$		&$40.01$ 	&$249.84$ 	&$1152$  	&$3530$ 	&$6592$\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+

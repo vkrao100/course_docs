@@ -1,0 +1,91 @@
+This is BibTeX, Version 0.99d (TeX Live 2017)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: IWLS18.aux
+The style file: IEEEtran.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: vikas.bib
+Database file #2: utkarsh.bib
+Repeated entry---line 127 of file utkarsh.bib
+ : @inproceedings{lv
+ :                  ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 847 of file utkarsh.bib
+ : @misc{DGPS_410
+ :               ,
+I'm skipping whatever remains of this entry
+Database file #3: tim.bib
+Repeated entry---line 430 of file tim.bib
+ : @article{acar:1998
+ :                   ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 838 of file tim.bib
+ : @book{gb_book
+ :              ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 854 of file tim.bib
+ : @book{ideals:book
+ :                  ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1060 of file tim.bib
+ : @inproceedings{lv:tcad2013
+ :                           ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1528 of file tim.bib
+ : @article{wu:2002
+ :                 ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1775 of file tim.bib
+ : @inproceedings{Knezevic:2008
+ :                             ,
+I'm skipping whatever remains of this entry
+-- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+
+Done.
+You've used 18 entries,
+            4087 wiz_defined-function locations,
+            914 strings with 10460 characters,
+and the built_in function-call counts, 9600 in all, are:
+= -- 700
+> -- 249
+< -- 29
++ -- 126
+- -- 53
+* -- 430
+:= -- 1525
+add.period$ -- 36
+call.type$ -- 18
+change.case$ -- 16
+chr.to.int$ -- 69
+cite$ -- 18
+duplicate$ -- 759
+empty$ -- 943
+format.name$ -- 67
+if$ -- 2228
+int.to.chr$ -- 0
+int.to.str$ -- 18
+missing$ -- 150
+newline$ -- 77
+num.names$ -- 18
+pop$ -- 408
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 2
+skip$ -- 758
+stack$ -- 0
+substring$ -- 177
+swap$ -- 478
+text.length$ -- 6
+text.prefix$ -- 0
+top$ -- 5
+type$ -- 18
+warning$ -- 0
+while$ -- 27
+width$ -- 20
+write$ -- 171
+(There were 8 error messages)

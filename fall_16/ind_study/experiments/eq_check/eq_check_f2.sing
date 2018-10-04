@@ -1,0 +1,84 @@
+ring r = (2, ga), (t, F_1, F_2, A, B, cfout, sf_1, sf_0, i_7, i_6, i_5, c_i, i_4, i_0, i_3, i_2, i_1, chout, sh_0, sh_1, c_i3, c_i4, h_2, c_ih, c_i2, c_i1, h_1, a_0, b_0, a_1, b_1, c_0), lp; 
+
+minpoly = ga^6 + ga^4 + ga^3 + ga + 1;
+
+number al = ga^21;
+number be = ga^9;
+
+ideal J = 
+
+//circuit 1 - Full adder normal
+A + a_0 + a_1*al,
+B + b_0 + b_1*al,
+i_0 + a_0 + b_0,
+i_1 + b_0*c_0,
+i_2 + a_0*c_0,
+i_3 + b_0*a_0,
+c_i + i_1 + i_2 + i_3 + i_1*i_2 + i_1*i_3 + i_3*i_2 + i_1*i_2*i_3,
+i_4 + a_1 + b_1,   
+i_5 + b_1*c_i,
+i_6 + a_1*c_i,
+i_7 + a_1*b_1,
+cfout + i_5 + i_6 + i_7 + i_5*i_6 + i_5*i_7 + i_7*i_6 + i_5*i_6*i_7,
+sf_0 + i_0 + c_0,
+// XOR gate replaced by OR
+//sf_0 + i_0 + c_0 + i_0*c_0,
+sf_1 + i_4 + c_i,
+sf_1 + i_4*c_i,
+F_1 + sf_0 + sf_1*be + cfout*be^2,
+
+//circuit 2 - Full adder using two half adders
+h_1 + a_0 + b_0,
+c_i1 + a_0*b_0,
+sh_0 + h_1 + c_0,
+//bug - XOR replaced by AND
+//sh_0 + h_1*c_0,
+c_i2 + c_0*h_1,
+c_ih + c_i1 + c_i2 + c_i1*c_i2,
+h_2 + a_1 + b_1,
+c_i3 + a_1*b_1,
+sh_1 + h_2 + c_ih,
+c_i4 + c_ih*h_2,
+chout + c_i3 + c_i4 + c_i3*c_i4,
+
+F_2 + sh_0 + sh_1*be + chout*be^2,
+
+//miter - t is a free variable
+t*(F_1 - F_2)-1;
+
+ideal J0 =
+A^4 - A,
+B^4 - B,
+F_1^8 - F_1,
+F_2^8 - F_2,
+//t^4 - t,
+t^2 - t,
+a_0^2 - a_0,
+a_1^2 - a_1,
+b_0^2 - b_0,
+b_1^2 - b_1,
+c_0^2 - c_0,
+i_0^2 - i_0,
+i_1^2 - i_1,
+i_2^2 - i_2,
+i_3^2 - i_3,
+i_4^2 - i_4,
+i_5^2 - i_5,
+i_6^2 - i_6,
+i_7^2 - i_7,
+c_i^2 - c_i,
+sf_0^2 - sf_0,
+sf_1^2 - sf_1,
+cfout^2 - cfout,
+h_1^2 - h_1,
+h_2^2 - h_2,
+c_i1^2 - c_i1,
+c_i2^2 - c_i2,
+c_i3^2 - c_i3,
+c_i4^2 - c_i4,
+c_ih^2 - c_ih,
+sh_0^2 - sh_0,
+sh_1^2 - sh_1,
+chout^2 - chout;
+
+groebner(J+J0);

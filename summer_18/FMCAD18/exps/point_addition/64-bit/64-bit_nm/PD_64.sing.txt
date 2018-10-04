@@ -1,0 +1,70 @@
+                     SINGULAR                                 /
+ A Computer Algebra System for Polynomial Computations       /   version 3-1-6
+                                                           0<
+ by: W. Decker, G.-M. Greuel, G. Pfister, H. Schoenemann     \   Dec 2012
+FB Mathematik der Universitaet, D-67653 Kaiserslautern        \
+// ** loaded /usr/share/Singular/LIB/linalg.lib (13733,2010-12-06)
+// ** loaded /usr/share/Singular/LIB/general.lib (14191,2011-05-04)
+// ** loaded /usr/share/Singular/LIB/poly.lib (14852,2012-04-30)
+// ** loaded /usr/share/Singular/LIB/inout.lib (13499,2010-10-15)
+// ** loaded /usr/share/Singular/LIB/elim.lib (14661,2012-03-05)
+// ** loaded /usr/share/Singular/LIB/ring.lib (15322,2012-10-12)
+// ** loaded /usr/share/Singular/LIB/primdec.lib (14732,2012-03-30)
+// ** loaded /usr/share/Singular/LIB/absfact.lib (14191,2011-05-04)
+// ** loaded /usr/share/Singular/LIB/triang.lib (13499,2010-10-15)
+// ** loaded /usr/share/Singular/LIB/random.lib (14661,2012-03-05)
+// ** loaded /usr/share/Singular/LIB/matrix.lib (13658,2010-11-16)
+// ** loaded /usr/share/Singular/LIB/nctools.lib (14246,2011-05-26)
+// ** loaded /usr/share/Singular/LIB/dmodapp.lib (14998,2012-06-15)
+// ** loaded /usr/share/Singular/LIB/sing.lib (14840,2012-04-20)
+// ** loaded /usr/share/Singular/LIB/qhmoduli.lib (14203,2011-05-05)
+// ** loaded /usr/share/Singular/LIB/rinvar.lib (13499,2010-10-15)
+// ** loaded /usr/share/Singular/LIB/zeroset.lib (13499,2010-10-15)
+// ** loaded /usr/share/Singular/LIB/primitiv.lib (13499,2010-10-15)
+// ** loaded /usr/share/Singular/LIB/presolve.lib (14203,2011-05-05)
+// ** loaded /usr/share/Singular/LIB/gkdim.lib (12235,2009-11-03)
+// ** loaded /usr/share/Singular/LIB/dmod.lib (14426,2011-11-11)
+// ** loaded /usr/share/Singular/LIB/control.lib (13733,2010-12-06)
+// ** loaded /usr/share/Singular/LIB/homolog.lib (14661,2012-03-05)
+// ** loaded /usr/share/Singular/LIB/deform.lib (13499,2010-10-15)
+// ** loaded /usr/share/Singular/LIB/gmssing.lib (14194,2011-05-04)
+// ** loaded /usr/share/Singular/LIB/bfun.lib (14203,2011-05-05)
+// ** loaded my_proc.lib 
+// ** loaded /usr/share/Singular/LIB/teachstd.lib (13499,2010-10-15)
+// ** loaded /usr/share/Singular/LIB/normaliz.lib (14195,2011-05-04)
+// ** loaded /usr/share/Singular/LIB/crypto.lib (14306,2011-06-27)
+circuit doesn't implement specification, attempting rectification
+time for verification 4555589
+time for identifying rectifiable nets 0
+checking for rectification at d_td_6285_
+time for rectification check until the correction net 8740149
+Circuit Rectifiable at location d_td_6285_
+quotient is a constant
+solution for P is c_51_*b_35_+c_51_*b_34_+c_50_*b_58_+c_50_*b_56_+c_50_*b_45_+c_50_*b_43_+c_50_*b_13_+c_49_*b_36_+c_49_*b_35_+c_48_*b_59_+c_48_*b_57_+c_48_*b_46_+c_48_*b_44_+c_48_*b_14_+c_47_*b_37_+c_47_*b_36_+c_46_*b_60_+c_46_*b_58_+c_46_*b_47_+c_46_*b_45_+c_46_*b_15_+c_45_*b_38_+c_45_*b_37_+c_44_*b_61_+c_44_*b_59_+c_44_*b_48_+c_44_*b_46_+c_44_*b_16_+c_43_*b_39_+c_43_*b_38_+c_42_*b_62_+c_42_*b_60_+c_42_*b_49_+c_42_*b_47_+c_42_*b_17_+c_41_*b_40_+c_41_*b_39_+c_40_*b_63_+c_40_*b_61_+c_40_*b_50_+c_40_*b_48_+c_40_*b_18_+c_39_*b_41_+c_39_*b_40_+c_38_*b_62_+c_38_*b_51_+c_38_*b_49_+c_38_*b_19_+c_37_*b_42_+c_37_*b_41_+c_36_*b_63_+c_36_*b_52_+c_36_*b_50_+c_36_*b_20_+c_35_*b_43_+c_35_*b_42_+c_34_*b_53_+c_34_*b_51_+c_34_*b_21_+c_33_*b_44_+c_33_*b_43_+c_32_*b_54_+c_32_*b_52_+c_32_*b_22_+c_31_*b_45_+c_31_*b_44_+c_30_*b_55_+c_30_*b_53_+c_30_*b_23_+c_29_*b_46_+c_29_*b_45_+c_28_*b_56_+c_28_*b_54_+c_28_*b_24_+c_27_*b_47_+c_27_*b_46_+c_26_*b_57_+c_26_*b_55_+c_26_*b_25_+c_25_*b_48_+c_25_*b_47_+c_24_*b_58_+c_24_*b_56_+c_24_*b_26_+c_23_*b_49_+c_23_*b_48_+c_22_*b_59_+c_22_*b_57_+c_22_*b_27_+c_21_*b_50_+c_21_*b_49_+c_20_*b_60_+c_20_*b_58_+c_20_*b_28_+b_63_*za_42_+b_63_*za_41_+b_63_*za_40_+b_63_*za_39_+b_62_*za_43_+b_62_*za_42_+b_62_*za_41_+b_62_*za_40_+b_61_*za_44_+b_61_*za_43_+b_61_*za_42_+b_61_*za_41_+b_60_*za_63_+b_60_*za_61_+b_60_*za_45_+b_60_*za_44_+b_60_*za_43_+b_60_*za_42_+b_60_*za_32_+b_59_*za_46_+b_59_*za_45_+b_59_*za_44_+b_59_*za_43_+b_59_*za_33_+b_59_*za_32_+b_58_*za_63_+b_58_*za_61_+b_58_*za_47_+b_58_*za_46_+b_58_*za_45_+b_58_*za_44_+b_58_*za_34_+b_58_*za_33_+b_58_*za_32_+b_57_*za_46_+b_57_*za_45_+b_57_*za_35_+b_57_*za_34_+b_57_*za_33_+b_57_*za_32_+b_56_*za_47_+b_56_*za_46_+b_56_*za_36_+b_56_*za_35_+b_56_*za_34_+b_56_*za_33_+b_55_*za_37_+b_55_*za_36_+b_55_*za_35_+b_55_*za_34_+b_54_*za_38_+b_54_*za_37_+b_54_*za_36_+b_54_*za_35_+b_53_*za_39_+b_53_*za_38_+b_53_*za_37_+b_53_*za_36_+b_52_*za_40_+b_52_*za_39_+b_52_*za_38_+b_52_*za_37_+b_51_*za_41_+b_51_*za_40_+b_51_*za_39_+b_51_*za_38_+b_50_*za_55_+b_50_*za_53_+b_50_*za_41_+b_50_*za_39_+b_50_*za_10_+b_49_*za_56_+b_49_*za_55_+b_49_*za_54_+b_49_*za_53_+b_49_*za_11_+b_49_*za_10_+b_48_*za_57_+b_48_*za_56_+b_48_*za_55_+b_48_*za_54_+b_48_*za_12_+b_48_*za_11_+b_47_*za_58_+b_47_*za_57_+b_47_*za_56_+b_47_*za_55_+b_47_*za_13_+b_47_*za_12_+b_46_*za_59_+b_46_*za_58_+b_46_*za_57_+b_46_*za_56_+b_46_*za_14_+b_46_*za_13_+b_45_*za_60_+b_45_*za_59_+b_45_*za_58_+b_45_*za_57_+b_45_*za_15_+b_45_*za_14_+b_44_*za_61_+b_44_*za_60_+b_44_*za_59_+b_44_*za_58_+b_44_*za_48_+b_44_*za_47_+b_44_*za_16_+b_44_*za_15_+b_43_*za_62_+b_43_*za_61_+b_43_*za_60_+b_43_*za_59_+b_43_*za_49_+b_43_*za_48_+b_43_*za_17_+b_43_*za_16_+b_42_*za_63_+b_42_*za_62_+b_42_*za_61_+b_42_*za_60_+b_42_*za_50_+b_42_*za_49_+b_42_*za_48_+b_42_*za_47_+b_42_*za_18_+b_42_*za_17_+b_41_*za_63_+b_41_*za_62_+b_41_*za_61_+b_41_*za_51_+b_41_*za_50_+b_41_*za_49_+b_41_*za_48_+b_41_*za_19_+b_41_*za_18_+b_40_*za_63_+b_40_*za_62_+b_40_*za_52_+b_40_*za_51_+b_40_*za_50_+b_40_*za_49_+b_40_*za_20_+b_40_*za_19_+b_39_*za_63_+b_39_*za_53_+b_39_*za_52_+b_39_*za_51_+b_39_*za_50_+b_39_*za_21_+b_39_*za_20_+b_38_*za_54_+b_38_*za_53_+b_38_*za_52_+b_38_*za_51_+b_38_*za_22_+b_38_*za_21_+b_37_*za_55_+b_37_*za_54_+b_37_*za_53_+b_37_*za_52_+b_37_*za_23_+b_37_*za_22_+b_36_*za_56_+b_36_*za_55_+b_36_*za_54_+b_36_*za_53_+b_36_*za_24_+b_36_*za_23_+b_35_*za_57_+b_35_*za_56_+b_35_*za_55_+b_35_*za_54_+b_35_*za_25_+b_35_*za_24_+b_34_*za_57_+b_34_*za_55_+b_34_*za_25_+b_28_*za_63_+b_28_*za_61_+b_28_*za_32_+b_27_*za_33_+b_27_*za_32_+b_26_*za_34_+b_26_*za_33_+b_25_*za_35_+b_25_*za_34_+b_24_*za_36_+b_24_*za_35_+b_23_*za_37_+b_23_*za_36_+b_22_*za_38_+b_22_*za_37_+b_21_*za_39_+b_21_*za_38_+b_20_*za_40_+b_20_*za_39_+b_19_*za_41_+b_19_*za_40_+b_18_*za_42_+b_18_*za_41_+b_17_*za_43_+b_17_*za_42_+b_16_*za_44_+b_16_*za_43_+b_15_*za_45_+b_15_*za_44_+b_14_*za_46_+b_14_*za_45_+b_13_*za_47_+b_13_*za_46_
+time for identifying solution using UC 5623276
+applying correction to circuit at d_td_6285_ with solution c_51_*b_35_+c_51_*b_34_+c_50_*b_58_+c_50_*b_56_+c_50_*b_45_+c_50_*b_43_+c_50_*b_13_+c_49_*b_36_+c_49_*b_35_+c_48_*b_59_+c_48_*b_57_+c_48_*b_46_+c_48_*b_44_+c_48_*b_14_+c_47_*b_37_+c_47_*b_36_+c_46_*b_60_+c_46_*b_58_+c_46_*b_47_+c_46_*b_45_+c_46_*b_15_+c_45_*b_38_+c_45_*b_37_+c_44_*b_61_+c_44_*b_59_+c_44_*b_48_+c_44_*b_46_+c_44_*b_16_+c_43_*b_39_+c_43_*b_38_+c_42_*b_62_+c_42_*b_60_+c_42_*b_49_+c_42_*b_47_+c_42_*b_17_+c_41_*b_40_+c_41_*b_39_+c_40_*b_63_+c_40_*b_61_+c_40_*b_50_+c_40_*b_48_+c_40_*b_18_+c_39_*b_41_+c_39_*b_40_+c_38_*b_62_+c_38_*b_51_+c_38_*b_49_+c_38_*b_19_+c_37_*b_42_+c_37_*b_41_+c_36_*b_63_+c_36_*b_52_+c_36_*b_50_+c_36_*b_20_+c_35_*b_43_+c_35_*b_42_+c_34_*b_53_+c_34_*b_51_+c_34_*b_21_+c_33_*b_44_+c_33_*b_43_+c_32_*b_54_+c_32_*b_52_+c_32_*b_22_+c_31_*b_45_+c_31_*b_44_+c_30_*b_55_+c_30_*b_53_+c_30_*b_23_+c_29_*b_46_+c_29_*b_45_+c_28_*b_56_+c_28_*b_54_+c_28_*b_24_+c_27_*b_47_+c_27_*b_46_+c_26_*b_57_+c_26_*b_55_+c_26_*b_25_+c_25_*b_48_+c_25_*b_47_+c_24_*b_58_+c_24_*b_56_+c_24_*b_26_+c_23_*b_49_+c_23_*b_48_+c_22_*b_59_+c_22_*b_57_+c_22_*b_27_+c_21_*b_50_+c_21_*b_49_+c_20_*b_60_+c_20_*b_58_+c_20_*b_28_+b_63_*za_42_+b_63_*za_41_+b_63_*za_40_+b_63_*za_39_+b_62_*za_43_+b_62_*za_42_+b_62_*za_41_+b_62_*za_40_+b_61_*za_44_+b_61_*za_43_+b_61_*za_42_+b_61_*za_41_+b_60_*za_63_+b_60_*za_61_+b_60_*za_45_+b_60_*za_44_+b_60_*za_43_+b_60_*za_42_+b_60_*za_32_+b_59_*za_46_+b_59_*za_45_+b_59_*za_44_+b_59_*za_43_+b_59_*za_33_+b_59_*za_32_+b_58_*za_63_+b_58_*za_61_+b_58_*za_47_+b_58_*za_46_+b_58_*za_45_+b_58_*za_44_+b_58_*za_34_+b_58_*za_33_+b_58_*za_32_+b_57_*za_46_+b_57_*za_45_+b_57_*za_35_+b_57_*za_34_+b_57_*za_33_+b_57_*za_32_+b_56_*za_47_+b_56_*za_46_+b_56_*za_36_+b_56_*za_35_+b_56_*za_34_+b_56_*za_33_+b_55_*za_37_+b_55_*za_36_+b_55_*za_35_+b_55_*za_34_+b_54_*za_38_+b_54_*za_37_+b_54_*za_36_+b_54_*za_35_+b_53_*za_39_+b_53_*za_38_+b_53_*za_37_+b_53_*za_36_+b_52_*za_40_+b_52_*za_39_+b_52_*za_38_+b_52_*za_37_+b_51_*za_41_+b_51_*za_40_+b_51_*za_39_+b_51_*za_38_+b_50_*za_55_+b_50_*za_53_+b_50_*za_41_+b_50_*za_39_+b_50_*za_10_+b_49_*za_56_+b_49_*za_55_+b_49_*za_54_+b_49_*za_53_+b_49_*za_11_+b_49_*za_10_+b_48_*za_57_+b_48_*za_56_+b_48_*za_55_+b_48_*za_54_+b_48_*za_12_+b_48_*za_11_+b_47_*za_58_+b_47_*za_57_+b_47_*za_56_+b_47_*za_55_+b_47_*za_13_+b_47_*za_12_+b_46_*za_59_+b_46_*za_58_+b_46_*za_57_+b_46_*za_56_+b_46_*za_14_+b_46_*za_13_+b_45_*za_60_+b_45_*za_59_+b_45_*za_58_+b_45_*za_57_+b_45_*za_15_+b_45_*za_14_+b_44_*za_61_+b_44_*za_60_+b_44_*za_59_+b_44_*za_58_+b_44_*za_48_+b_44_*za_47_+b_44_*za_16_+b_44_*za_15_+b_43_*za_62_+b_43_*za_61_+b_43_*za_60_+b_43_*za_59_+b_43_*za_49_+b_43_*za_48_+b_43_*za_17_+b_43_*za_16_+b_42_*za_63_+b_42_*za_62_+b_42_*za_61_+b_42_*za_60_+b_42_*za_50_+b_42_*za_49_+b_42_*za_48_+b_42_*za_47_+b_42_*za_18_+b_42_*za_17_+b_41_*za_63_+b_41_*za_62_+b_41_*za_61_+b_41_*za_51_+b_41_*za_50_+b_41_*za_49_+b_41_*za_48_+b_41_*za_19_+b_41_*za_18_+b_40_*za_63_+b_40_*za_62_+b_40_*za_52_+b_40_*za_51_+b_40_*za_50_+b_40_*za_49_+b_40_*za_20_+b_40_*za_19_+b_39_*za_63_+b_39_*za_53_+b_39_*za_52_+b_39_*za_51_+b_39_*za_50_+b_39_*za_21_+b_39_*za_20_+b_38_*za_54_+b_38_*za_53_+b_38_*za_52_+b_38_*za_51_+b_38_*za_22_+b_38_*za_21_+b_37_*za_55_+b_37_*za_54_+b_37_*za_53_+b_37_*za_52_+b_37_*za_23_+b_37_*za_22_+b_36_*za_56_+b_36_*za_55_+b_36_*za_54_+b_36_*za_53_+b_36_*za_24_+b_36_*za_23_+b_35_*za_57_+b_35_*za_56_+b_35_*za_55_+b_35_*za_54_+b_35_*za_25_+b_35_*za_24_+b_34_*za_57_+b_34_*za_55_+b_34_*za_25_+b_28_*za_63_+b_28_*za_61_+b_28_*za_32_+b_27_*za_33_+b_27_*za_32_+b_26_*za_34_+b_26_*za_33_+b_25_*za_35_+b_25_*za_34_+b_24_*za_36_+b_24_*za_35_+b_23_*za_37_+b_23_*za_36_+b_22_*za_38_+b_22_*za_37_+b_21_*za_39_+b_21_*za_38_+b_20_*za_40_+b_20_*za_39_+b_19_*za_41_+b_19_*za_40_+b_18_*za_42_+b_18_*za_41_+b_17_*za_43_+b_17_*za_42_+b_16_*za_44_+b_16_*za_43_+b_15_*za_45_+b_15_*za_44_+b_14_*za_46_+b_14_*za_45_+b_13_*za_47_+b_13_*za_46_ :remainder after reduction is 0
+end of computations 16954469
+Auf Wiedersehen.
+	Command being timed: "Singular point_addition/64-bit/64-bit_nm/PD_64.sing --no-warn"
+	User time (seconds): 16061.78
+	System time (seconds): 892.98
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 4:42:35
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 13180340
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 20
+	Minor (reclaiming a frame) page faults: 1222599271
+	Voluntary context switches: 85
+	Involuntary context switches: 17678
+	Swaps: 0
+	File system inputs: 8432
+	File system outputs: 0
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

@@ -1,0 +1,24 @@
+LIB "primdec.lib";
+ring r = (2, a), (x,y), lp; 
+
+minpoly = a^2 + a + 1;
+
+//ideal I
+poly f1 = x2y + 1;
+//poly f2 = x + 1;
+//ideal J
+poly f3 = y2 + 1;
+//poly f4 = x + 1;
+//vanishing poly's
+poly f5 = x4 + x;
+poly f6 = y4 + y;
+
+ideal I = f1;
+ideal I0 = f5, f6;
+ideal J = f3;
+ideal IJ = f1, f3;
+
+list GR = groebner(I+I0);
+"GB of the given ideals",GR;
+list Q1 = quotient(I0,I);
+"quotient of ideals when intersecting- I0:I - quotient(I0,I)",Q1;

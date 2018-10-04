@@ -1,0 +1,80 @@
+LIB "primdec.lib";
+ring r = (2, x), (Z, A, B, z_0, z_1, r_0, s_0, s_3, s_1, s_2, a_0, b_0, a_1, b_1), lp; 
+
+minpoly = x^2 + x + 1;
+
+proc xorgate(poly g, poly h)
+{
+	return(g+h);
+}
+
+poly rr = (x)*a_0*b_1+(x)*a_0+(x)*b_1;
+poly fbp2  = a_1*b_1+a_1+b_1+1;
+poly fbp4  = b_0*b_1+b_0+b_1+1;
+poly fbp6  = a_0*a_1+a_0+a_1+1;
+poly fbp7  = a_0*b_0+a_0+b_0+1;
+poly fbp9  = s_3+a_1+b_1+1;
+poly fbp12 = s_0+a_0+b_0+1;
+poly fbp18 = Z+(x)*r_0+s_0+(x+1)*s_3;
+poly fbp19 = A^2*B+(x+1)*A^2+A*B^2+(x+1)*A*B+(x+1)*B^2+1;
+poly fbp20 = Z+(x+1)*A^4*B^3+(x)*A^4*B^2+A^4*B+(x)*A^3*B^3+A^3*B^2+(x+1)*A^3*B+A^2*B^3+(x+1)*A^2*B^2+(x)*A^2*B+A^2+B^2+(x);
+
+ideal bp = fbp2, fbp4, fbp6, fbp7;//, fbp9, fbp12, fbp18; 
+
+//circuit -  2 bit mastrovito multiplier poly's
+//correct implementation
+poly f1 = A + a_0 + a_1*x;
+poly f2 = B + b_0 + b_1*x;
+poly f3 = s_0 + a_0*b_0;
+poly f4 = s_1 + a_0*b_1;
+poly f5 = s_2 + a_1*b_0;
+poly f6 = s_3 + a_1*b_1;
+poly f7 = r_0 + xorgate(s_1,s_2);
+poly f8 = z_0 + xorgate(s_0,s_3);
+poly f9 = z_1 + xorgate(r_0,s_3);
+poly f9c = z_1 + xorgate(r_0,s_3) + rr;
+
+//buggy implementation
+//introducing bug - AND gate instead of XOR gate
+//poly fb7 = r_0 + s_1*s_2;
+poly fb4 = s_1 + a_0+b_1;
+//vanishing polynomials
+poly f10 = A^4 - A;
+poly f11 = B^4 - B;
+poly f12 = Z^4 - Z;
+
+poly f13 = a_0^2 - a_0;
+poly f14 = a_1^2 - a_1;
+poly f15 = b_0^2 - b_0;
+poly f16 = b_1^2 - b_1;
+
+poly f17 = s_0^2 - s_0;
+poly f18 = s_1^2 - s_1;
+poly f19 = s_2^2 - s_2;
+poly f20 = s_3^2 - s_3;
+
+poly f21 = r_0^2 - r_0;
+
+poly f22 = z_0^2 - z_0;
+poly f23 = z_1^2 - z_1;
+
+poly f24= Z + z_0 + z_1*x;
+
+//word level spec
+poly spec = Z + A*B;
+
+ideal J0 = f10,f11,f12,f13,f14,f15,f16,f17,f18,f19,20,f21,f22,f23;
+
+//list of polynomials for GB calculation
+ideal CI  = f1, f2, f3, fb4, f5, f6, f7, f8, f9c, f10, f11, f12, f13, f14, f15, f16, f17, f18, f19, f20, f21, f22, f23, f24;
+//ideal CI  = f1, f2, f3, f4, f5, f6, f7, f8, f9;
+ideal BI  = f1, f2, f3, fb4, f5, f6, f7, f8, f9, f10, f11, f12, f13, f14, f15, f16, f17, f18, f19, f20, f21, f22, f23, f24;
+//ideal BI  = f1, f2, f3, f4, f5, f6, fb7, f8, f9;
+
+//buggy points - i/o relation
+//Z+(x+1)*A^3*B+(x)*A^3+A^2*B^2+(x)*A^2*B+(x+1)*A^2+A*B^3+(x)*A*B^2+(x)*A*B+(x)*B^4+(x+1)*B^2+(x)
+// rr = (x)*a_0*b_0*a_1*b_1+(x)*a_0*b_1+(x)*b_0*a_1
+
+//CI relation
+
+//BI relation

@@ -1,0 +1,94 @@
+Snooping-Based Cache Coherence (50 points)
+Consider a symmetric shared-memory multiprocessor (3 processors sharing a bus) implementing a snooping cache coherence protocol such as the one discussed in class. For each of the events below, explain the coherence protocol steps (does the cache flag a hit/miss, what request is placed on the bus, who responds, is a writeback required, etc.) and mention the eventual state of the data block in the caches of each of the 3 processors. Assume that the caches are direct-mapped and that each cache line only stores one word and that words X and Y map to the same cache line in each cache (in other words, X and Y cannot both be in the cache at the same time). At the start, X and Y are not in any of the three caches.
+
+P1: Write X 
+P2: Write X 
+P3: Read X 
+P2: Read X 
+P3: Write X 
+P3: Read Y 
+P2: Write Y 
+
+Directory-Based Cache Coherence (50 points)
+Consider the same sequence of memory accesses as above. Assume that 4 processors are connected with a point-to-point interconnect and implement distributed shared memory with a directory-based cache coherence protocol. For the above sequence of instructions, what are the total number of interconnect message transfers while implementing a write invalidate protocol? For each instruction, list the messages that must be sent on the network and the state of the line in the caches and in the directory. Assume that a message can include some control information as well as an address and cache line. Also assume that the home nodes for memory locations X and Y are both associated with processor P4. Assume that X and Y are not in any of the caches at the start of the sequence, the caches are direct-mapped, each cache line only stores one word, and words X and Y map to the same cache line in each cache (X and Y cannot co-exist in a cache at any time).
+
+Q1.
+
+Event          P1     P2     P3     Actions 
+--------------------------------------------------------------------------
+Initial        Inv    Inv    Inv 
+
+P1: Read X    Sh-X    Inv    Inv    Rd-miss; Rd-request; Memory responds.
+
+P2: Write X    Inv   Exc-X   Inv    Wrt-miss; Wrt-request; Memory responds;
+                                    Others invalidate themselves.
+
+P3: Read X     Inv   Sh-X    Sh-X   Rd-miss; Rd-request; P2 responds;
+				    Memory writeback happens.
+
+P3: Write X    Inv    Inv   Exc-X   Permission-miss; upgrade request;
+                                    No response required.
+ 
+P1: Write X   Exc-X   Inv    Inv    Write-miss; Write-request; P3 responds;
+				    No memory writeback required.
+
+P3: Write Y   Exc-X   Inv   Exc-Y   Write-miss; Write-request; Memory responds.
+
+P1: Read Y    Sh-Y    Inv    Sh-Y   Rd-miss; Rd-request; P3 responds;
+                                    Memory writeback of Y happens.
+				    Dirty copy of X is evicted from P1 and
+				    also written back to memory.
+
+
+For the fifth transaction above, it's also ok to not pass the modified block
+from P3 to P1 since we are assuming a cache block with a single word.
+
+
+Q2.
+
+For a directory-based write invalidate protocol:
+Each message is within <..>
+
+Event          P1     P2     P3     DIR        Actions 
+--------------------------------------------------------------------------
+
+Initial        Inv    Inv    Inv 
+
+P1: Read X    Sh-X    Inv    Inv    X: Sh: 1   Rd-miss; <Rd-request to DIR>;
+                                    Y: -       <DIR responds.>
+
+P2: Write X    Inv   Exc-X   Inv    X: Ex: 2   Wr-miss; <Wr-request to DIR>;
+                                    Y: -       <DIR sends INV to P1>;
+				               <P1 sends ACK to DIR>;
+					       <DIR sends data/perms to P2>.
+
+P3: Read X     Inv   Sh-X   Sh-X    X: Sh: 2,3 Rd-miss; <Rd-req to DIR>;
+				    Y: -       <DIR fwds request to P2>;
+				    	       <P2 sends data to Dir>;
+					       Dir performs writeback of X;
+				    	       <Dir fwds data to P3>.
+
+P3: Write X    Inv    Inv  Exc-X    X: Ex: 3   Perms-miss; <upgrade-req to DIR>;
+				    Y: -       <DIR sends INV to P2>;
+				               <P2 sends ACK to dir>;
+					       <Dir grants perms to P3>.
+				    
+P1: Write X   Exc-X   Inv    Inv    X: Ex: 1   Wr-miss; <Wrt-req to DIR>;
+				    Y: -       <DIR fwds request to P3>;
+				    	       <P3 sends data to Dir>;
+					       <Dir fwds data to P1>.
+
+P3: Write Y   Exc-X   Inv  Exc-Y    X: Ex: 1   Wrt-miss; <Rd-req to DIR>;
+				    Y: Ex: 3   <DIR sends data to P3>.
+
+P1: Read Y    Sh-Y    Inv   Sh-Y    X: -       Rd-miss; <Rd-req to DIR>;
+				    Y: Sh: 1,3 <Dir fwds request to P3>;
+				               <P3 sends data to Dir>;
+					       Dir performs writeback of Y;
+					       <Dir sends data to P1>;
+					       <P1 evicts X and sends to Dir>;
+					       Dir performs writeback of X.
+				    
+There are 25 messages on the network.
+
+

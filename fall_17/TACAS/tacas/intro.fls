@@ -1,0 +1,8 @@
+PWD D:/Latex_Files/TACAS_18/tacas
+INPUT c:/texlive/2016/texmf.cnf
+INPUT c:/texlive/2016/texmf-dist/web2c/texmf.cnf
+INPUT c:/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt
+INPUT d:/Latex_Files/TACAS_18/tacas/intro.tex
+OUTPUT D:\Latex_Files\TACAS_18\tacas/intro.log
+INPUT c:/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map
+INPUT c:/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm

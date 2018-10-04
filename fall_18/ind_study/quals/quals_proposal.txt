@@ -1,0 +1,52 @@
+Vikas Rao is a third-year graduate student (pre-candidacy PhD student) in the ECE
+department at the University of Utah. He joined the program in Fall 2016, and he is
+exploring research topics in design automation and design verification of digital VLSI
+systems. He has completed some coursework in VLSI design, computer architecture,
+formal hardware verification, and Algorithms. Verification of sequential circuits remains to be a topic of all time. With increasing
+size of new integrated circuits, sequential circuit designers may face much more complicated
+problems on logic errors, unexpected delays and failures on critical path. This
+dissertation addresses the problem of sequential circuit verification at the word-level and
+is based on concepts derived from algebraic geometry.
+Analyzing the sequential circuits at word level is an efficient way of abstraction,
+which may lower the complexity of verification by efficient representation of the statespace.
+We manage to model the verification properties and the gate-level sequential
+circuit implementations over Galois fields of the type F2k by means of polynomial ideals
+and their canonical representations — Gr¨obner bases — at the level of k-bit words.
+Subsequently, techniques from algebraic geometry can be used to reason about the statespace
+on high-level. In algebraic geometry, “bad” states are modeled as varieties while
+whole system is described using polynomial ideals. Without actually solving the system,
+the states in state space can be investigated by manipulating these ideals.
+We propose to apply these techniques to traverse a finite state machine (FSM) for
+reachability analysis at the word-level, and also to implicitly unroll sequential arithmetic
+circuits to verify their function. Moreover, as unsatisfiable (UNSAT) cores play an
+important role in modern abstraction-refinement techniques for verification, we propose
+to investigate a word-level analogue of the UNSAT core problem using the Gr¨obner basis
+algorithm. The dissertation will not only derive new algorithms and techniques, but will
+also consider efficient CAD implementations to target sequential equivalence and model
+checking problems. 
+checks whether or not a gate-level circuit correctly implements a
+given specification model. In cases where this equivalence
+check fails – the presence of a bug is detected – it is required
+to: i) debug the circuit, ii) identify a set of nets (signals)
+where the circuit might be rectified, and iii) compute the
+corresponding rectification functions at those locations. This
+paper addresses the problem of post-verification debugging
+and correction (rectification) of finite field arithmetic circuits.
+The specification model and the circuit implementation may
+differ at any number of inputs. We present techniques that
+determine whether the circuit can be rectified at one particular
+net (gate output) – i.e. we address single-fix rectification.
+Starting from an equivalence checking setup modeled as
+a polynomial ideal membership test, we analyze the ideal
+membership residue to identify potential single-fix rectification
+locations. Subsequently, we use Nullstellensatz principles to
+ascertain if indeed a single-fix rectification can be applied at
+any of these locations. If a single-fix rectification exists, we
+derive a rectification function by modeling it as the synthesis
+of an unknown component problem. Our approach is based
+upon the Gr¨obner basis algorithm, which we use both as a
+decision procedure (for rectification test) as well as a quantification
+procedure (for computing a rectification function).
+Experiments are performed over various finite field arithmetic
+circuits that demonstrate the efficacy of our approach, whereas
+SAT-based approaches are infeasible.

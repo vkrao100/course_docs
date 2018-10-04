@@ -1,0 +1,70 @@
+                     SINGULAR                                 /
+ A Computer Algebra System for Polynomial Computations       /   version 3-1-6
+                                                           0<
+ by: W. Decker, G.-M. Greuel, G. Pfister, H. Schoenemann     \   Dec 2012
+FB Mathematik der Universitaet, D-67653 Kaiserslautern        \
+// ** loaded /usr/share/Singular/LIB/linalg.lib (13733,2010-12-06)
+// ** loaded /usr/share/Singular/LIB/general.lib (14191,2011-05-04)
+// ** loaded /usr/share/Singular/LIB/poly.lib (14852,2012-04-30)
+// ** loaded /usr/share/Singular/LIB/inout.lib (13499,2010-10-15)
+// ** loaded /usr/share/Singular/LIB/elim.lib (14661,2012-03-05)
+// ** loaded /usr/share/Singular/LIB/ring.lib (15322,2012-10-12)
+// ** loaded /usr/share/Singular/LIB/primdec.lib (14732,2012-03-30)
+// ** loaded /usr/share/Singular/LIB/absfact.lib (14191,2011-05-04)
+// ** loaded /usr/share/Singular/LIB/triang.lib (13499,2010-10-15)
+// ** loaded /usr/share/Singular/LIB/random.lib (14661,2012-03-05)
+// ** loaded /usr/share/Singular/LIB/matrix.lib (13658,2010-11-16)
+// ** loaded /usr/share/Singular/LIB/nctools.lib (14246,2011-05-26)
+// ** loaded /usr/share/Singular/LIB/dmodapp.lib (14998,2012-06-15)
+// ** loaded /usr/share/Singular/LIB/sing.lib (14840,2012-04-20)
+// ** loaded /usr/share/Singular/LIB/qhmoduli.lib (14203,2011-05-05)
+// ** loaded /usr/share/Singular/LIB/rinvar.lib (13499,2010-10-15)
+// ** loaded /usr/share/Singular/LIB/zeroset.lib (13499,2010-10-15)
+// ** loaded /usr/share/Singular/LIB/primitiv.lib (13499,2010-10-15)
+// ** loaded /usr/share/Singular/LIB/presolve.lib (14203,2011-05-05)
+// ** loaded /usr/share/Singular/LIB/gkdim.lib (12235,2009-11-03)
+// ** loaded /usr/share/Singular/LIB/dmod.lib (14426,2011-11-11)
+// ** loaded /usr/share/Singular/LIB/control.lib (13733,2010-12-06)
+// ** loaded /usr/share/Singular/LIB/homolog.lib (14661,2012-03-05)
+// ** loaded /usr/share/Singular/LIB/deform.lib (13499,2010-10-15)
+// ** loaded /usr/share/Singular/LIB/gmssing.lib (14194,2011-05-04)
+// ** loaded /usr/share/Singular/LIB/bfun.lib (14203,2011-05-05)
+// ** loaded my_proc.lib 
+// ** loaded /usr/share/Singular/LIB/teachstd.lib (13499,2010-10-15)
+// ** loaded /usr/share/Singular/LIB/normaliz.lib (14195,2011-05-04)
+// ** loaded /usr/share/Singular/LIB/crypto.lib (14306,2011-06-27)
+circuit doesn't implement specification, attempting rectification
+time for verification 38807
+time for identifying rectifiable nets 0
+checking for rectification at d_td_727_
+time for rectification check until the correction net 110909
+Circuit Rectifiable at location d_td_727_
+quotient is a constant
+solution for P is c_18_*b_27_+c_18_*b_24_+c_18_*b_8_+c_17_*b_22_+c_17_*b_21_+c_17_*b_18_+c_16_*b_28_+c_16_*b_25_+c_16_*b_9_+c_15_*b_23_+c_15_*b_22_+c_15_*b_19_+b_28_*za_21_+b_28_*za_20_+b_28_*za_17_+b_27_*za_22_+b_27_*za_21_+b_27_*za_18_+b_25_*za_21_+b_25_*za_20_+b_25_*za_17_+b_24_*za_22_+b_24_*za_21_+b_24_*za_18_+b_23_*za_26_+b_23_*za_23_+b_23_*za_7_+b_22_*za_27_+b_22_*za_26_+b_22_*za_24_+b_22_*za_23_+b_22_*za_8_+b_22_*za_7_+b_21_*za_27_+b_21_*za_24_+b_21_*za_8_+b_19_*za_26_+b_19_*za_23_+b_19_*za_7_+b_18_*za_27_+b_18_*za_24_+b_18_*za_8_+b_9_*za_21_+b_9_*za_20_+b_9_*za_17_+b_8_*za_22_+b_8_*za_21_+b_8_*za_18_
+time for identifying solution using UC 22851
+applying correction to circuit at d_td_727_ with solution c_18_*b_27_+c_18_*b_24_+c_18_*b_8_+c_17_*b_22_+c_17_*b_21_+c_17_*b_18_+c_16_*b_28_+c_16_*b_25_+c_16_*b_9_+c_15_*b_23_+c_15_*b_22_+c_15_*b_19_+b_28_*za_21_+b_28_*za_20_+b_28_*za_17_+b_27_*za_22_+b_27_*za_21_+b_27_*za_18_+b_25_*za_21_+b_25_*za_20_+b_25_*za_17_+b_24_*za_22_+b_24_*za_21_+b_24_*za_18_+b_23_*za_26_+b_23_*za_23_+b_23_*za_7_+b_22_*za_27_+b_22_*za_26_+b_22_*za_24_+b_22_*za_23_+b_22_*za_8_+b_22_*za_7_+b_21_*za_27_+b_21_*za_24_+b_21_*za_8_+b_19_*za_26_+b_19_*za_23_+b_19_*za_7_+b_18_*za_27_+b_18_*za_24_+b_18_*za_8_+b_9_*za_21_+b_9_*za_20_+b_9_*za_17_+b_8_*za_22_+b_8_*za_21_+b_8_*za_18_ :remainder after reduction is 0
+end of computations 177122
+Auf Wiedersehen.
+	Command being timed: "Singular point_addition/32-bit/32-bit_nm/PD_32.sing --no-warn"
+	User time (seconds): 176.35
+	System time (seconds): 0.85
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 2:57.22
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 744888
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1104491
+	Voluntary context switches: 3
+	Involuntary context switches: 331
+	Swaps: 0
+	File system inputs: 328
+	File system outputs: 0
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

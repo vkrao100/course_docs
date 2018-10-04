@@ -1,0 +1,47 @@
+Q1. Could you pick any topological ordering? in other words, is the
+RTTO the only ordering that yields a GB?  what prevents you evaluate
+the technique in more designs?  what limits this technique to be
+applicable on other designs (if any)? 
+
+A1. The imposition of RTTO renders the set of polynomials (for the
+gates of the circuit) itself a GB. If we pick arbitrary topological
+orders to represent the polynomials, then this set may NOT constitute
+a GB.  In that case we will have to use the computationally expensive
+Buchberger's algorithm to "compute" a GB. Also, RTTO imposes a special
+structure on the ZBDD, allowing for quick look-up of lm(f), tail(f)
+(IF/ELSE pointers of the top node f) in algorithms 1 and 2. This
+feature will also be lost with other orderings.  
+
+The polynomial algebra model is not suitable for random logic
+(synthesized) circuits, where AIG-based reduction make 
+verification efficient. This model is beneficial for custom
+designed arithmetic circuits, where AIGs/SAT fail.
+
+We applied our technique to integer arithmetic circuits,
+which showed an exponential increase in time. Performing detailed
+analysis of a 7x7 multiplier reveals that, when reducing the 13th bit
+(MSB) and the 12 bit of this circuit, the maximum number of monomials
+encountered are 429,889 and 897,955 respectively. However, the
+modulo-2 sum (XOR) of these ZBDDs contains only 789,604 monomials
+(during the modulo-2 sum common monomials cancel out) as opposed to
+1,327,844(=429,889+897,955). This modulo-2 sum indicates that reducing
+all the outputs simultaneously results in monomials that can cancel
+each other. The experiment suggests that for integer arithmetic
+multipliers, integrating the implicit data structure with a
+word-level representation of the output bitvector can yield significantly
+better results. 
+
+Q2. How do you explain that your approach performs significantly worse
+than previous work for several instances of Montgomery Flat
+Multipliers (Table II) [and do you see a way to overcome this]? 
+
+A2. In our experiments in Table II (ZR), the time presented also
+includes the time to generate the dot files for the remainder (for
+debugging) of each output bit and printing the size of the ZBDDs. This
+requires traversal of ZBDDs. However, when we switch off this
+debugging, the run time for MontFlat163 and MontFlat409 is 8,373 and
+17,612 seconds respectively; which is actually *faster* than the time
+taken by PolyBori. Unfortunately, this was an oversight by us in
+reporting the computation time.  Our approach also does not have
+capacity limitations; on larger circuits previous approaches either
+timeout or encounter a memory explosion.

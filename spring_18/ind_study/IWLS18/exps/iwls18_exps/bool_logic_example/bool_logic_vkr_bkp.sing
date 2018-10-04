@@ -1,0 +1,138 @@
+LIB "my_proc.lib";
+ring r = (2,X),(t,Z,Zs,z0,z1,z2,x1,x2,y0,x0,w0,w1,u0,u1,u2,a,b,c,A),lp;
+//ring r = (2,X),(t,Z,Zs,A,z0,z1,z2,x1,x2,y0,x0,w0,w1,u0,u1,u2,a,b,c),lp;
+
+minpoly = X^3+X+1;
+
+proc orgate(poly g,poly h)
+{
+	return(g+h+g*h);
+}
+
+proc xorgate(poly g,poly h)
+{
+	return(g+h);
+}
+
+proc invgate(poly g)
+{
+	return(1+g);
+}
+
+proc andgate(poly g,poly h)
+{
+	return(g*h);
+}
+
+poly specz0 = z0 + orgate(a,b);
+poly specz1 = z1 + orgate(a,b);
+poly specz2 = z2 + orgate(c,orgate(a,b));
+
+//circuit implementation
+
+poly f1 = x1 + orgate(a,b);
+poly f2 = u0 + invgate(b);
+poly f3 = u1 + orgate(a,c);
+poly f4 = u2 + invgate(c);
+poly f5 = w0 + andgate(u0,a);
+poly f6 = w1 + andgate(u1,c);
+poly f7 = x0 + xorgate(u2,w1);
+//poly f8 = y0 + andgate(x0,w0);
+//poly f8 = y0 + orgate(x0,w0); //introduced a bug
+//poly f8 = y0 + (X^2+X+1)*a*b+(X^2+X+1)*a+(X^2+X+1)*b+(X^2+X+1); //corr
+//poly f8 = y0 + A^6+(X^2)*A^5+(X^2+X)*A^4+(X^2+1)*A^3+(X)*A^2+(X+1)*A+(X^2+X)+1; //corr
+poly f8 = y0+1; //corr
+poly f9 = x2 + orgate(x1,y0);
+poly f10 = z0 + x1;
+poly f11 = z1 + x2;
+poly f12 = z2 + orgate(x2,c);
+poly f13 = Z + z0 + z1*X + z2*X^2;
+poly f14 = A + a + b*X + c*X^2;
+
+//vanishing polynomials
+poly u_0 = u0^2 -u0;
+poly u_1 = u1^2 -u1;
+poly u_2 = u2^2 -u2;
+poly w_0 = w0^2 -w0;
+poly w_1 = w1^2 -w1;
+poly x_0 = x0^2 -x0;
+poly x_1 = x1^2 -x1;
+poly x_2 = x2^2 -x2;
+poly y_0 = y0^2 -y0;
+poly z_1 = z1^2 -z1;
+poly z_2 = z2^2 -z2;
+poly z_0 = z0^2 -z0;
+poly Z_0 = Z^8 - Z;
+poly Zs_0 = Zs^8 - Zs;
+poly A_0 = A^8 - A;
+poly t_0 = t^8 - t;
+
+poly a_0 = a^2 - a;
+poly b_0 = b^2 - b;
+poly c_0 = c^2 - c;
+
+poly spec = Zs+(X^2)*A^7+(X^2+X+1)*A^6+A^5+(X^2)*A^4+(X^2+X)*A^3+(X^2+1)*A^2+(X)*A;
+
+poly miter = t*(Zs-Z)-1;
+
+ideal J0 = a_0, b_0, c_0, u_0, u_1, u_2, w_0, w_1, x_0, x_1, x_2, y_0, z_0, z_1, z_2,Z_0,A_0,t_0,Zs_0;
+
+//ideal J0_PI = a_0, b_0, c_0, A_0;
+//ideal J0_PI = a_0, b_0, c_0;
+ideal J0_PI = A_0;
+
+ideal ckt_imp = f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12,f13,f14,spec,miter;
+ckt_imp = ckt_imp+J0;
+
+if(groebner(ckt_imp) != 1)
+{
+	"The circuit implementation doesn't match the spec";
+}
+else 
+{
+	"The circuit correctly implements the spec";
+}
+
+//Checking if the circuit can be corrected at y0 (f8)
+ideal IL = f1,f2,f3,f4,f5,f6,f7,f9,f10,f11,f12,f13,f14,spec,miter;
+poly f = y0;
+IL = (IL+f)+J0;
+
+ideal IH = f1,f2,f3,f4,f5,f6,f7,f9,f10,f11,f12,f13,f14,spec,miter;
+f = y0+1;
+IH = (IH+f)+J0;
+
+//list V = t,Z,Zs,z0,z1,z2,x1,x2,y0,x0,w0,w1,u0,u1,u2;
+//list V = t,Z,Zs,A,z0,z1,z2,x1,x2,y0,x0,w0,w1,u0,u1,u2;
+list V = t,Z,Zs,z0,z1,z2,x1,x2,y0,x0,w0,w1,u0,u1,u2,a,b,c;
+ideal gl = inter_JS(IL,V,J0);//+J0_PI;
+ideal gh = inter_JS(IH,V,J0);//+J0_PI;
+
+if(groebner(gl+gh) == 1)
+{
+	"The circuit can be corrected at this location";
+}
+else
+{
+	"The circuit can't be corrected at this location"
+}
+ideal gdc = reduce(quotient(J0_PI,gh+J0_PI),J0_PI)+0; 
+ideal JD = quotient(gdc+J0_PI,gl+J0_PI);
+
+//list XC = a,b,c,A;
+//list XC = a,b,c;
+/* can't work for Fq
+list XC = A;
+list sm = comp_sm(JD, XC, size(V));
+if(size(sm) == 0)
+{
+	"Only one solution possible <==> gl";
+}
+else
+{
+	"No. of SM = ", size(sm);
+	"No. of solutions possible = ", size(sm)^2;
+}
+*/
+
+//poly fff = A^6+(X^2)*A^5+(X^2+X)*A^4+(X^2+1)*A^3+(X)*A^2+(X+1)*A+(X^2+X+1)

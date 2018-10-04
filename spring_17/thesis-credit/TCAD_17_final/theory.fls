@@ -1,0 +1,13 @@
+PWD D:/Latex_Write_Ups/2017/TCAD_17_Submission
+INPUT c:/texlive/2016/texmf.cnf
+INPUT c:/texlive/2016/texmf-dist/web2c/texmf.cnf
+INPUT c:/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt
+INPUT d:/Latex_Write_Ups/2017/TCAD_17_Submission/theory.tex
+OUTPUT D:\Latex_Write_Ups\2017\TCAD_17_Submission/theory.log
+INPUT c:/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map
+INPUT c:/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
+OUTPUT D:\Latex_Write_Ups\2017\TCAD_17_Submission/theory.pdf
+INPUT c:/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map
+INPUT c:/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
+INPUT c:/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmti7.tfm
+INPUT c:/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmti7.tfm

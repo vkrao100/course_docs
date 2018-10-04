@@ -1,0 +1,111 @@
+LIB "multivariate_burg.lib";
+LIB "control.lib";
+LIB "linalg.lib";
+ring r = (2,X), (D, ZA, B, C, d_3_, d_td_17_, d_td_16_, d_td_15_, d_td_14_, d_td_13_, d_td_12_, d_td_11_, d_td_10_, d_2_, d_td_9_, d_td_8_, d_1_, d_td_7_, d_td_6_, d_td_5_, d_0_, d_td_4_, d_td_3_, d_td_2_, d_td_1_, d_td_0_, d_tc_15_, d_tc_14_, d_tc_13_, d_tc_12_, d_tc_11_, d_tc_10_, d_tc_9_, d_tc_8_, d_tc_7_, d_tc_6_, d_tc_5_, d_tc_4_, d_tc_3_, d_tc_2_, d_tc_1_, d_tc_0_, dk_3_, dk_2_, dk_1_, dk_0_, d_tb_0_, dj_3_, dj_2_, dj_1_, dj_0_, di_3_, di_2_, di_1_, d_ta_0_, di_0_, c_3_, c_2_, c_1_, c_0_, b_3_, b_2_, b_1_, b_0_, za_3_, za_2_, za_1_, za_0_),lp;
+
+minpoly = X^4+X^3+1;
+
+ideal J1 = 
+D+d_0_+d_1_*X+d_2_*X^2+d_3_*X^3,
+ZA+za_0_+za_1_*X+za_2_*X^2+za_3_*X^3,
+C+c_0_+c_1_*X+c_2_*X^2+c_3_*X^3,
+B+b_0_+b_1_*X+b_2_*X^2+b_3_*X^3,
+d_3_+d_td_16_+d_td_17_,
+d_td_17_+d_td_14_+d_td_15_,
+d_td_16_+d_td_12_+d_td_13_,
+d_td_15_+d_td_10_+d_td_11_,
+d_td_14_+d_tc_7_+d_tc_6_,
+d_td_13_+d_tc_9_+d_tc_8_,
+d_td_12_+d_tc_11_+d_tc_10_,
+d_td_11_+d_tc_13_+d_tc_12_,
+d_td_10_+d_tc_15_+d_tc_14_,
+d_2_+d_td_8_+d_td_9_,
+d_td_9_+d_tc_4_+d_tc_3_,
+d_td_8_+d_tc_15_+d_tc_5_,
+d_1_+d_td_6_+d_td_7_,
+d_td_7_+d_tc_1_+d_td_5_,
+d_td_6_+d_tc_13_+d_tc_2_,
+d_td_5_+d_tc_15_+d_tc_14_,
+d_0_+d_td_3_+d_td_4_,
+d_td_4_+d_td_1_+d_td_2_,
+d_td_3_+d_tc_0_+d_td_0_,
+d_td_2_+d_tc_11_+d_tc_10_,
+d_td_1_+d_tc_13_+d_tc_12_,
+d_td_0_+d_tc_15_+d_tc_14_,
+d_tc_15_+dk_3_*dj_3_,
+d_tc_14_+dk_3_*dj_2_,
+d_tc_13_+dk_2_*dj_3_,
+d_tc_12_+dk_3_*dj_1_,
+d_tc_11_+dk_2_*dj_2_,
+d_tc_10_+dk_1_*dj_3_,
+d_tc_9_+dk_3_*dj_0_,
+d_tc_8_+dk_2_*dj_1_,
+d_tc_7_+dk_1_*dj_2_,
+d_tc_6_+dk_0_*dj_3_,
+d_tc_5_+dk_2_*dj_0_,
+d_tc_4_+dk_1_*dj_1_,
+d_tc_3_+dk_0_*dj_2_,
+d_tc_2_+dk_1_*dj_0_,
+d_tc_1_+dk_0_*dj_1_,
+d_tc_0_+dk_0_*dj_0_;
+poly uc = dk_3_+b_3_+b_2_;
+ideal J2 = 
+dk_2_+b_3_+b_1_,
+dk_1_+b_3_,
+dk_0_+b_0_+d_tb_0_,
+d_tb_0_+b_3_+b_2_,
+dj_3_+di_3_+c_3_,
+dj_2_+di_2_+c_2_,
+dj_1_+di_1_+c_1_,
+dj_0_+di_0_+c_0_,
+di_3_+za_2_+za_1_,
+di_2_+za_3_,
+di_1_+za_0_+d_ta_0_,
+d_ta_0_+za_3_+za_2_,
+di_0_+za_3_+za_2_;
+
+ideal J0=
+za_0_^2 - za_0_,
+za_1_^2 - za_1_,
+za_2_^2 - za_2_,
+za_3_^2 - za_3_,
+b_0_^2 - b_0_,
+b_1_^2 - b_1_,
+b_2_^2 - b_2_,
+b_3_^2 - b_3_,
+c_0_^2 - c_0_,
+c_1_^2 - c_1_,
+c_2_^2 - c_2_,
+c_3_^2 - c_3_;
+
+poly spec = D+(X)*ZA^2*B^2+B^2*C;
+
+poly quo;
+poly rem;
+
+poly prem = reduce(spec,J1+J0);
+
+rem, quo = multivariate_burg(prem,lead(uc),J0); 
+
+"remainder",rem;
+"quotient",quo;
+
+ideal dec = variables(quo);
+ideal JCp = quo,J2;
+
+if (size(dec)>=1)
+{
+	"quotient is not a constant";
+	matrix T3 = lift(JCp+J0,rem);
+	poly sol  = T3[1,1];
+	//poly sol = reduce(rem,J2);
+}
+else
+{	
+	"quotient is a constant";
+	matrix quoi = inverse(quo);
+	poly irem   = quoi[1,1]*rem;
+	poly sol    = reduce(irem,J2);
+}
+
+"solution for P is ",sol; quit;

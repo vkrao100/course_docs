@@ -1,0 +1,47 @@
+Consistency Models (40 points)
+For the multi-threaded program below, what are all the valid outputs (printed value of A) for a sequentially consistent execution of the program? Before these threads start executing, A and B are both initialized to zero. Assume that each line of code below corresponds to one assembly instruction.
+
+Thread 1 
+B = 10; 
+A = 30; 
+
+Thread 2 
+if (B-A > 5) 
+then A = A + B; 
+print A; 
+
+What are possible valid outputs if the code in each thread is encapsulated within lock and unlock statements as shown below (again assuming a sequentially consistent processor)?
+
+Thread 1 
+lock(L1); 
+B = 10; 
+A = 30; 
+unlock(L1); 
+
+Thread 2 
+lock(L1); 
+if (B-A > 5) 
+then A = A + B; 
+print A; 
+unlock(L1); 
+
+Consistency Models (20 points)
+As a programmer, how can you (largely) escape dealing with a processor's consistency model?
+
+Synchronization (20 points)
+Consider the code below that acquires a lock and updates a counter value. Can you come up with a more efficient version of this code that uses the concept of optimistic concurrency?
+
+lockit: LL R1, 0(R2) 
+BNEZ R1, lockit 
+DADDUI R1, R0, #1 
+SC R1, 0(R2) 
+BEQZ R1, lockit 
+LD R3, 0(R4) 
+DADDUI R3, R3, #1 
+ST R3, 0(R4) 
+ST 0(R2), #0 
+
+Transactional Memory (20 points)
+How can a lazy-lazy transactional memory implementation cause starvation in some programs? How can this problem be alleviated?
+
+

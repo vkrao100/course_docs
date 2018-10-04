@@ -1,0 +1,93 @@
+\documentclass[a4paper, 11pt]{exam}
+\usepackage{titling}
+\newcommand{\subtitle}[1]{%
+  \posttitle{%
+    \par\end{center}
+    \begin{center}\large#1\end{center}
+    }%
+}
+
+\usepackage{url}
+\usepackage{amsmath,amsthm,enumitem,amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\renewcommand{\labelenumii}{\roman{enumii}}
+\usepackage{courier}
+
+
+\title{Homework Assignment 6}
+\subtitle{CS/ECE 6810: Computer Architecture \\
+April 11, 2018}
+
+\author{ \\
+\textbf{Main Memory}}
+\date{Due Date: April 18, 2018.\\
+(90 points)}
+
+\begin{document}
+\maketitle
+\begin{center}
+\fbox{\fbox{\parbox{5.9in}{\centering
+Important Notes:
+\begin{itemize}
+\item Solutions turned in must be your own. Please, mention references (if any) at the end of each question. Please refrain from cheating.
+\item All solutions must be accompanied by the equations used/logic/intermediate steps and assumptions. Writing only the final answer will receive \textbf{zero} credit.
+\item All units must be mentioned wherever required.
+\item Late submissions \textbf{(after 11:59 pm on 04/18/2018)} will not be accepted
+\item All submissions must be in PDF only. Scanned copies of handwritten solutions will not be accepted as a valid submission.
+\end{itemize}
+}}}
+\end{center}
+\vspace{0.2in}
+
+
+\begin{enumerate}
+ \item \textbf{Memory Scheduling Mechanisms (20 points): } For the following memory access pattern, estimate when each memory access completes for two different scheduling mechanisms: \textbf{open-page policy} and \textbf{close-page policy}. You are allowed to reorder requests already waiting in the memory controller. The access pattern only specifies the row being touched. All accesses are to the \textbf{same} bank. Assume that bus latencies are zero. Assume that the bank is already pre-charged at time 0. Assume that pre-charge takes 20 ns, loading a row buffer takes 20 ns, and cache line transfer to output pins also takes 20 ns.\newline
+
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+ \hline
+ \textbf{Row being accessed} & \textbf{Arrival time at} & \textbf{Open-page} & \textbf{Close-page} \\
+  & \textbf{memory controller} & & \\
+ \hline
+ X  & 10 ns &  & \\
+ \hline
+ X  & 70 ns &  & \\
+ \hline
+ Y  & 90 ns &  & \\
+ \hline
+ X  & 100 ns &  & \\
+ \hline
+ Y  & 180 ns &  & \\
+ \hline
+ \end{tabular}
+\end{center}
+
+ 
+\item \textbf{Memory System Design (20 points): } Modern systems have processors with four memory channels. Assume that a memory channel has 64 bits for data and 24 bits for address and command.
+Assume that a memory channel is connected to eight x8 memory chips. Consider a new memory system that shrinks the data bus of the memory channel to 32 bits. Assume that such a channel would be connected to four x8 memory chips. Mention \textbf{two pros} and \textbf{two cons} of the new memory system (Be very concise).\newline
+ 
+\item \textbf {Virtually Indexed Physically Tagged Cache (20 points): }  Assume that the OS uses a minimum page size of 4 KB. Assume that your L1 cache must be 8-way set-associative. If you're trying to correctly implement a virtually indexed physically tagged cache (with no additional support from the OS), what is the largest L1 cache that you can design? \newline
+
+
+\item \textbf {DRAM Control (10 points): } Express the latency of a memory load as a function of tRAS, tRP, tRCD, tCL in the following situations:
+
+ \begin{enumerate}
+ \item  The correct row is already placed in the row buffer
+ \item  Another row is already placed in the row buffer.
+ \end{enumerate}
+
+\item \textbf {DRAM Control Tasks – Request Scheduling (20 points): }  Find the total number of commands sent by an in-order command scheduler for the given sequence of memory addresses for reads, using the following address mapping scheme:
+
+\hspace{20pt} Address = row(12):bank(3):rank(1):channel(0):column(16)\newline
+\hspace{20pt} Assume that all banks are initially precharged.
+
+\center Addresses: \newline
+00040108\newline
+01040101\newline
+00161804\newline
+01040104\newline
+
+\end{enumerate}
+\end{document}

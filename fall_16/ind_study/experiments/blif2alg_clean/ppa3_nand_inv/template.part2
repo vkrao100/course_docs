@@ -1,0 +1,15 @@
+
+link l=":w tmp.poly";
+int i=1;
+string s=string(I[i])+",";
+write(l,s);
+
+for(i=2;i<size(I);i=i+1)
+{
+	s = string(I[i])+",";
+	write(l,s);
+}
+s = string(I[i])+";";
+write(l,s);
+close(l);
+quit;

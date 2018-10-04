@@ -1,0 +1,37 @@
+Read Chapter 5
+
+Complete Problem 5.1.
+
+REQUIRED CHECKPOINT DUE FEBRUARY 23rd: turn-in your answer to CANVAS to Problem 5.1 to ensure you are on the right track.
+
+Complete Problem 5.2.
+• Your code should read covering problems in the following format:
+
+.rows 5
+.cols 5
+.names x1 x2 x3 x4 x5 
+1 1 - - -
+1 0 0 1 -
+- 1 1 - 1
+- - - 0 1
+- - 1 1 -
+.e
+
+The output should be the list of variables that got assigned to one. For this example, that would be:
+
+x1 x3
+
+You are free to use any programming language you like as long as you provide instructions on how to compile and run your code.
+
+This problem should be turned electronically using canvas.
+
+Here are some other example files:
+simple.txtPreview the document
+branch.txtPreview the document
+statemin.txtPreview the document
+Complete Problem 5.5.
+
+Note: you are welcome to use your BCP solver for this problem.
+
+Complete Problem 5.7.1.
+Note: you are welcome to use your BCP solver for this problem.

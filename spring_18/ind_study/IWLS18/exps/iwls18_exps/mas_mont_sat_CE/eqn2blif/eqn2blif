@@ -1,0 +1,15 @@
+#!/bin/bash
+
+#
+# eqn2blif
+#
+# Usage: /eqn2blif filename.eqn
+# 
+# Converts an eqn file to a blif using sis
+#
+
+tmpFile="`mktemp`"
+noExt=${1%.*}
+echo "read_eqn ${noExt}.eqn;write_blif ${noExt}.blif;quit;">${tmpFile}
+./sis < ${tmpFile} > /dev/null
+rm -f ${tmpFile}

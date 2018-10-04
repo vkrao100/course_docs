@@ -1,0 +1,1 @@
+/usr/bin/time -v Singular Mas10.sing 2>&1 | tee -a log.txt

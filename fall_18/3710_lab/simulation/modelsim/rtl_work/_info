@@ -1,0 +1,53 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/intelFPGA_lite/18.0/quartus/3710_lab/simulation/modelsim
+vhexTo7Seg
+Z1 !s110 1532733703
+!i10b 1
+!s100 7GlOZVR2oPA^bMAUYDS6^0
+IiIH1IIUbY==M@zYI?PGGP1
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1532731791
+8C:/intelFPGA_lite/18.0/quartus/3710_lab/hexTo7Seg.v
+FC:/intelFPGA_lite/18.0/quartus/3710_lab/hexTo7Seg.v
+L0 1
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z4 !s108 1532733703.000000
+!s107 C:/intelFPGA_lite/18.0/quartus/3710_lab/hexTo7Seg.v|
+!s90 -reportprogress|300|-work|work|C:/intelFPGA_lite/18.0/quartus/3710_lab/hexTo7Seg.v|
+!i113 1
+Z5 o-work work
+Z6 tCvgOpt 0
+nhex@to7@seg
+vstimulus
+R1
+!i10b 1
+!s100 UOk0E@9SjL?]bf8>7SlAS0
+IO][fY0<IGX716=aa3T^D<1
+R2
+R0
+w1532731799
+8C:/intelFPGA_lite/18.0/quartus/3710_lab/tb_hexTo7Seg.v
+FC:/intelFPGA_lite/18.0/quartus/3710_lab/tb_hexTo7Seg.v
+L0 2
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/intelFPGA_lite/18.0/quartus/3710_lab/tb_hexTo7Seg.v|
+!s90 -reportprogress|300|-work|work|C:/intelFPGA_lite/18.0/quartus/3710_lab/tb_hexTo7Seg.v|
+!i113 1
+R5
+R6

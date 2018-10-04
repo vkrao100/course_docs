@@ -1,0 +1,6 @@
+ring r = (2, x), (a), lp; 
+
+minpoly = x^2 + x + 1;
+number ga;
+
+(x+ga^21)*(x+ga^42)*(x+ga^84)*(x+ga^168)*(x+ga^336)*(x+ga^772);

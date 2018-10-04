@@ -1,0 +1,169 @@
+# Benchmark "mas_3eqn" written by ABC on Thu Sep 20 15:02:14 2018
+.model mas_3eqn
+.inputs a_0_ a_1_ a_2_ b_0_ b_1_ b_2_
+.outputs z_0_ z_1_ z_2_
+.names a_0_ b_0_ n10
+11 1
+.names a_2_ b_1_ n11
+11 1
+.names a_0_ b_0_ n12
+00 1
+.names n11 n12 n13
+00 1
+.names b_2_ n13 n14
+10 1
+.names a_2_ b_2_ n15
+00 1
+.names n14 n15 n16
+00 1
+.names n10 n16 n17
+10 1
+.names n11 n14 n18
+01 1
+.names b_1_ b_2_ n19
+01 1
+.names b_1_ b_2_ n20
+10 1
+.names n19 n20 n21
+00 1
+.names a_2_ n21 n22
+11 1
+.names n12 n15 n23
+00 1
+.names n10 n23 n24
+01 1
+.names n22 n24 n25
+01 1
+.names n18 n25 n26
+00 1
+.names n17 n26 n27
+01 1
+.names a_1_ n27 n28
+10 1
+.names a_1_ b_1_ n29
+11 1
+.names a_0_ a_2_ n30
+01 1
+.names b_0_ n30 n31
+01 1
+.names n29 n31 n32
+11 1
+.names a_2_ n10 n33
+11 1
+.names n10 n11 n34
+00 1
+.names a_1_ n33 n35
+00 1
+.names n34 n35 n36
+01 1
+.names n32 n36 n37
+00 1
+.names n28 n37 z_0_
+01 0
+.names a_0_ b_2_ n39
+00 1
+.names a_0_ n21 n40
+11 1
+.names n39 n40 n41
+00 1
+.names a_1_ n41 n42
+10 1
+.names a_0_ a_1_ n43
+10 1
+.names b_1_ n43 n44
+11 1
+.names a_2_ n44 n45
+00 1
+.names n42 n45 n46
+01 1
+.names a_0_ n21 n47
+00 1
+.names a_1_ n47 n48
+00 1
+.names a_0_ n29 n49
+01 1
+.names n48 n49 n50
+00 1
+.names b_2_ n40 n51
+11 1
+.names a_2_ n51 n52
+10 1
+.names n50 n52 n53
+01 1
+.names n46 n53 n54
+00 1
+.names b_0_ n54 n55
+10 1
+.names a_0_ a_2_ n56
+10 1
+.names n30 n56 n57
+00 1
+.names n43 n57 n58
+00 1
+.names b_2_ n58 n59
+00 1
+.names a_1_ a_2_ n60
+10 1
+.names a_0_ n60 n61
+01 1
+.names b_2_ n43 n62
+10 1
+.names n61 n62 n63
+01 1
+.names b_1_ n63 n64
+10 1
+.names n59 n64 n65
+01 1
+.names a_1_ a_2_ n66
+01 1
+.names n60 n66 n67
+00 1
+.names n19 n67 n68
+10 1
+.names b_0_ n68 n69
+00 1
+.names n65 n69 n70
+01 1
+.names n55 n70 z_1_
+00 1
+.names b_0_ n30 n72
+11 1
+.names b_2_ n72 n73
+10 1
+.names b_2_ n56 n74
+00 1
+.names n31 n74 n75
+01 1
+.names n29 n73 n76
+10 1
+.names n75 n76 n77
+01 1
+.names n10 n57 n78
+01 1
+.names b_1_ n78 n79
+10 1
+.names b_1_ n33 n80
+00 1
+.names a_1_ n80 n81
+10 1
+.names n79 n81 n82
+01 1
+.names n39 n56 n83
+00 1
+.names n23 n29 n84
+10 1
+.names n83 n84 n85
+01 1
+.names n33 n44 n86
+11 1
+.names n19 n31 n87
+11 1
+.names n86 n87 n88
+00 1
+.names n85 n88 n89
+01 1
+.names n77 n89 n90
+01 1
+.names n82 n90 z_2_
+01 0
+.end

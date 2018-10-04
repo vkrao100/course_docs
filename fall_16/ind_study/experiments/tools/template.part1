@@ -1,0 +1,49 @@
+LIB "teachstd.lib";
+
+proc or2(poly f, poly g)
+{
+    return (f+g+f*g);
+}
+
+proc or3(poly f1, poly f2, poly f3)
+{
+    poly g = or2(f1,f2);
+    g = or2(g,f3);
+    return (1+g);
+}
+
+proc or4(poly f1, poly f2, poly f3, poly f4)
+{
+    poly g = or2(f1,f2);
+    g = or2(g,f3);
+    g = or2(g,f4);
+    return (1+g);
+}
+
+proc or5(poly f1, poly f2, poly f3, poly f4,poly f5)
+{
+    poly g = or2(f1,f2);
+    g = or2(g,f3);
+    g = or2(g,f4);
+    g = or2(g,f5);
+    return (1+g);
+}
+
+proc relative_prime(ideal I)
+{
+  int i;
+  int n;
+  for(i=2; i<= size(I); i=i+1)
+  {
+    if(gcd(lead(I[i-1]),lead(I[i])) != 1)
+    {
+	"Repeating: Poly #",i-1,": ",I[i-1]," AND ",I[i];
+	n = i-1;
+    }
+  }
+  return(n);
+}
+
+
+ring rr = 2, (DUMMY_VARLIST), lp;
+

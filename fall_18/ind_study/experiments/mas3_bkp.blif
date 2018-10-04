@@ -1,0 +1,56 @@
+# Benchmark "mas3_tim" written by ABC on Thu Sep 20 15:36:21 2018
+.model mas3_tim
+.inputs a_0_ a_1_ a_2_ b_0_ b_1_ b_2_
+.outputs z_0_ z_1_ z_2_
+.names a_0_ b_0_ d0
+11 1
+.names a_1_ b_2_ d1
+11 1
+.names a_2_ b_1_ d2
+11 1
+.names a_0_ b_1_ d3
+11 1
+.names a_1_ b_0_ d4
+11 1
+.names a_1_ b_2_ d5
+11 1
+.names a_2_ b_1_ d6
+11 1
+.names a_2_ b_2_ d7
+11 1
+.names a_0_ b_2_ d8
+11 1
+.names a_1_ b_1_ d9
+11 1
+.names a_2_ b_0_ d10
+11 1
+.names a_2_ b_2_ d11
+11 1
+.names d0 d1 e0
+01 1
+10 1
+.names d3 d4 e1
+01 1
+10 1
+.names d5 d6 e2
+01 1
+10 1
+.names d8 d9 e3
+01 1
+10 1
+.names d10 d11 e4
+01 1
+10 1
+.names d2 e0 z_0_
+01 1
+10 1
+.names e1 e2 f0
+01 1
+10 1
+.names e3 e4 z_2_
+01 1
+10 1
+.names f0 d7 z_1_
+01 1
+10 1
+.end

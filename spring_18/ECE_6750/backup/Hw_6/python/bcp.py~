@@ -1,0 +1,4 @@
+import utility
+
+utility.parse("example.txt")
+

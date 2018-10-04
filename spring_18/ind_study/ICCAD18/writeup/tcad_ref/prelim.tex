@@ -1,0 +1,354 @@
+\section{Preliminaries: Notation and Background}
+\label{sec:prelim}
+
+\subsection{Computer Algebra}
+This section provides a brief description of the fundamental concepts of
+ commutative algebra including polynomial rings, polynomial division, ideals, 
+ Gr\"obner basis and their application in verification of circuits.
+
+% i.e., $G = GB(J) \Leftrightarrow\  \forall f \in J : f \neq 0 \ \exists g_i \in G :
+%lm(g_i)\mid lm(f)$. 
+
+\par Let $\B =\{0,1\}$ denote the Boolean domain, $\F_2$ the finite field
+of 2 elements ($\B \equiv \F_2$), and $R = \F_2[x_1, \dots, x_n]$
+denote the  polynomial ring over variables $x_1, \dots, x_n$ with
+coefficients in $\F_2$.  
+%Since $\Fkk$ is a $k$-dimensional extension of $\F_2$, we
+%have that $\Fkk \supset \F_2$ and all $\Fkk (k \geq 1)$ are of
+%characteristic 2. 
+Operations in $\F_2$ are performed $\pmod{ 2}$, so $-1=+1$ in
+$\F_2$. We will use $+ ,\cdot$ to denote addition and multiplication in
+$R$, and $\vee, \wedge$ and $\oplus$ to denote Boolean OR, AND and XOR
+operations, respectively. 
+
+A polynomial $f \in R$ is written as a finite sum of terms 
+$f = c_1 X_1 +  c_2 X_2 + \dots + c_t X_t$.  Here $c_1, \dots, c_t$
+are coefficients and $X_1, \dots, X_t$ are monomials, i.e. power
+products of the type $x_1^{e_{1}}\cdot x_2^{e_{2}}\cdots x_n^{e_{n}}$, 
+$e_i \in \Z_{\geq  0}$. To systematically manipulate the
+polynomials, a monomial order $>$ (also called a term order) is
+imposed on the ring such that  $X_1 >X_2 > \dots >  X_t$.  Subject to
+$>$, $lt(f) = c_1 X_1, ~lm(f) = X_1, ~lc(f) = c_1$, are the {\it
+  leading   term}, {\it   leading monomial} and {\it   leading
+  coefficient} of $f$, respectively. 
+ We also denote tail($f$) = $f - lt(f) = c_2X_2 + \dots + c_t X_t$. 
+   In this work, we are mostly  
+concerned with terms ordered lexicographically ({\it lex}).
+
+\begin{Definition}
+Let $f = c_1 X_1 + \dots + c_t X_t$ be a polynomial in
+$\F_2[x_1,\dots,x_n]$ such that the coefficients $c_i \in \{0, 1\}$,
+and monomials $X = x_1^{e_{1}}\cdot x_2^{e_{2}}\cdots x_n^{e_{n}}, e_i
+\in \{0,1\}$. 
+Then $f$ is called a {\bf Boolean polynomial}. For Boolean polynomials
+$lt(f) = lm(f)$. 
+\end{Definition}
+
+A gate-level circuit can be modeled with Boolean polynomials, where
+every Boolean logic gate operator is mapped from $\B$ to a polynomial
+function over ${\mathbb{F}}_2$: 
+
+{\small
+\begin{equation}
+\label{b2poly}
+\begin{split}
+z ~ =  ~ \neg a ~ & \rightarrow ~ z+a+1 \pmod 2  \\
+z ~ =  ~ a \wedge b ~ & \rightarrow ~ z+a\cdot b \pmod 2\\
+z ~ =  ~ a \vee b ~ & \rightarrow ~ z+a+b+a\cdot b \pmod 2 \\
+z ~ =  ~ a \oplus b ~ & \rightarrow ~ z+a+b \pmod 2 
+\end{split}
+\end{equation}
+}
+
+% Using this mapping a Boolean function, say $z = a \vee b$,  
+% can be written as the boolean polynomial, $f:z + a\cdot b + a + b$. 
+% The solutions to $f = 0$ provide the valid enumerations of  the output and input variables.
+%  In this case, $f$ is 0, when $(z,a,b) = \{000,110,101,111\}$  
+
+{\bf Polynomial Reduction via division:} Let $f, g$ be polynomials. If $lt(f)$ is divisible by
+$lt(g)$, then we say that $f$ {\it is reducible to} $r$ modulo $g$,
+denoted $f \stackrel{g}{\textstyle\longrightarrow} r$, where $r = f - {lt(f)   \over
+  lt(g)} \cdot g$. Similarly, $f$ can be {\it reduced 
+w.r.t. a set of polynomials}  $F = \{f_1, \dots, f_s\}$ to obtain a
+remainder $r$. This reduction is denoted as $f \stackrel{F} {\textstyle
+  \longrightarrow}_+ r$, and the remainder $r$ has the property that
+no term in $r$ is divisible by the leading term of any polynomial
+$f_i$ in $F$. Algorithm~\ref{algo:mv_reduce} shows the step-by-step procedure to perform this 
+classical reduction.  
+
+\begin{algorithm}[H]
+ \caption{Multivariate Reduction of $f$ by $F=\{f_1,\dots,f_s\}$}
+ \label{algo:mv_reduce}
+ \begin{algorithmic}[1]
+ % \Procedure{$multi\_variate\_division$}{$f, f_1, \dots, f_s \in \F[x_1, \dots, x_n], f_i\neq 0$}
+ \Procedure{$multi\_variate\_division$}{$f, \{f_1, \dots, f_s\}, f_i\neq 0$}
+ % \ENSURE $u_1,\dots, u_s, r$ s.t. $f = \sum f_i u_i+r$ where $r$ is
+ % reduced w.r.t. $F = \{f_1,\dots, f_s\}$ and max($lp(u_1)lp(f_1), \dots, lp(u_s)lp(f_s), lp(r)$) = $lp(f)$
+ \State $u_i \gets 0; ~r \gets 0, ~h \gets f $ 
+ \While {  $h \neq 0$ }
+ \If{ $\exists i$ s.t. $lm(f_i) ~|~ lm(h)$}
+ \State choose $i$ least s.t. $lm(f_i) ~|~ lm(h)$
+ \State $u_i = u_i + \frac{lt(h)}{lt(f_i)}$
+ \State $h = h - \frac{lt(h)}{lt(f_i)} f_i$
+ \Else
+ \State $r = r+ lt(h)$
+ \State $h = h - lt(h)$
+ \EndIf
+ \EndWhile
+ \State \Return $(\{u_1,\dots,u_s\} , r)$
+ \EndProcedure
+ \end{algorithmic}
+ \end{algorithm}
+
+The algorithm initializes $h$ with the polynomial $f$ and cancels its leading term by some 
+polynomial $f_i$. If the leading term $lt(h)$ cannot be canceled by any $lt(f_i)$, then it is added to the 
+final remainder $r$ and process is repeated until all the terms in $h$ are analyzed. 
+
+{\bf Polynomial Ideals:} Given a set of polynomials $F = \{f_1, \dots, f_s\}\in \mathbb{F}_2[x_1,\dots, x_n]$, denote the ideal
+$J$ generated by $F$ as $J = \langle F \rangle = \langle f_1, \dots, f_s \rangle =
+\{\sum_{i=1}^{s} h_i\cdot f_i: ~h_i \in R\}.$ The ideal $J$ may have
+many different generators, i.e. it is possible to have 
+$J = \langle f_1, \dots, f_s\rangle = \langle g_1, \dots, g_t \rangle
+= \dots = \langle h_1,\dots, h_r\rangle$. A \Grobner basis $G$ of ideal
+$J$ is one such set of polynomials $G = GB(J) = \{g_1, \dots, g_t\}$
+that is a canonical representation of the ideal. 
+
+\begin{Definition}
+\label{def:gb}
+$\bf{\left[Gr\ddot{o}bner\ Basis\right]}$ \cite{gb_book}: 
+For a monomial ordering $>$, a set  of non-zero polynomials $G =
+\{g_1,g_2,\cdots,g_t\}$ contained in an ideal $J$, is called a
+Gr\"{o}bner basis of $J$ iff 
+$\forall f \in J$, $f\neq 0$, there exists $i \in \{1,\cdots, t\}$ such
+that $lm(g_i)$ divides $lm(f)$.
+% i.e., $G = GB(J) \Leftrightarrow\  \forall f \in J : f \neq 0 \ \exists g_i \in G :
+%lm(g_i)\mid lm(f)$. 
+
+\end{Definition}
+
+\par Gr\"obner basis $G$ of an ideal $J = \langle f_1,\dots,f_s\rangle$ is computed using the Buchberger's algorithm~\cite{buchberger_thesis}. 
+The algorithm initializes the set $G$ with the given generators of $J$ $i.e.$ $\{f_1,\dots,f_s\}$.
+The algorithm is based on the computation of $Spoly$ of pairwise combination of polynomials 
+in $G$ using the following formula,
+\begin{equation}
+\label{spoly}
+\begin{split}
+Spoly(f_i,f_j) = \frac{L}{lt(f)}\cdot f - \frac{L}{lt(g)}\cdot f
+\end{split}
+\end{equation}
+where $L = LCM(f_i,f_j)$. The $Spoly$ is then reduced $w.r.t.$ the polynomials
+ in $G$: $Spoly \stackrel{G} {\textstyle \longrightarrow}_+ h$. If $h$ is non-zero, it is added to $G$. The algorithm terminates when  
+there are no new non-zero $h$ generated from the set $G$. The idea of the $Spoly$ reductions is to 
+cancel leading terms of polynomials $\{f_i,f_j\}$ to obtain polynomials with new leading terms which 
+provide additional information regarding the basis.
+
+\begin{Definition}\label{lemma:gbr}
+$\bf{\left[Gr\ddot{o}bner\ Basis\ Reduction\right]}$ \cite{gb_book}: Let
+  $G=\{g_1,\dots,g_t\}$ be a \Grobner basis of ideal $J$, and let $f$
+  be another polynomial.  Then the remainder $r$ obtained by reduction
+  of $f$ modulo $G$, denoted $f\xrightarrow{G}_+r$, is called the
+  {\bf \Grobner basis reduction (GBR)} of $f$. Moreover, the remainder $r$
+  so obtained by GBR of $f$ is a \underline{canonical expression modulo $G$}. 
+\end{Definition}
+
+%% The \Grobner basis
+%% also provides a decision procedure for ideal membership: To test if
+%% any polynomial $f \in J$, we compute $G = 
+%% GB(J)$ and check if $f \xrightarrow{G}_+ 0$? 
+
+%The canonicity of $r$ can be exploited to equivalence check
+%Boolean functions and logic circuits. 
+
+
+%{Verification Formulation}
+
+\begin{Proposition}\label{prop:verif}
+Given a circuit $C$, we can represent all the gates using (Boolean)
+polynomials $F = \{f_1, \dots, f_s\}$ in $\F_2[x_1,\dots,x_n]$ by
+means of Eqn. (\ref{b2poly}), s.t. ideal $J  = \langle F \rangle$. Let
+$z_i, ~i = 0,\dots,{k-1}$ denote the $k$-bit primary output variables
+of the circuit.  Compute a \Grobner basis $G = GB(J) =
+\{g_1,\dots,g_t\}$ for the polynomials of the circuit, and perform the
+GBR $z_i\xrightarrow{G}_+ r_i$ for all $0\leq i
+<k$. Then all $r_i$'s are a canonical representation and can be used
+for formal verification/equivalence checking.
+\end{Proposition}
+
+This verification  requires the computation of a \Grobner basis. The Buchberger's
+algorithm for computation of Gr\"obner basis has  high complexity ($2^{(O(n))}$ in our setting). The
+work of \cite{lv:tcad2013} showed that the GB computation
+can be avoided.
+
+\begin{Definition}\label{prod_criteria}
+$\bf{\left[Product \ Criterion\right]}$ \cite{productc:1979}: For two polynomials $f_i,f_j$ 
+in any polynomial ring $R$, if the equality 
+$lt(f_i)\cdot lt(f_j) = LCM(lt(f_i),lt(f_j))$ holds, then $Spoly(f_i,f_j) \xrightarrow{G}_+ 0$. 
+\end{Definition}
+ 
+
+Using this criterion we can say that when the leading terms of all polynomials in the basis 
+$F = \{f_1, \dots, f_s\}$ are relatively prime, then $F$ is already a
+\Grobner basis ($F = GB(J)$). For a combinational
+circuit $C$, a term order $>$ can be derived by analyzing the circuit
+topology which ensures this property is true \cite{wienand:cav08}
+\cite{lv:tcad2013}:  
+
+\begin{Proposition} \label{prop:top-order}
+(From \cite{lv:tcad2013}) Let $C$ be any arbitrary combinational
+  circuit. Let $\{x_1, \dots, x_n\}$ denote the set of all variables
+  (signals) in $C$. Starting from the primary outputs, perform
+  a {\it reverse topological traversal} of the circuit and order the
+  variables such that $x_i > x_j$ if $x_i$ appears earlier in the
+  reverse topological order. Impose a lex term order $>$ to represent each
+  gate as a polynomial $f_i$, s.t. $f_i = x_i + tail(f_i)$. Then the set of all polynomials  $\{f_1, \dots, 
+  f_s\}$ forms a Gr\"obner basis G, as $lt(f_i)=x_i$ and $lt(f_j)=x_j$ for
+  $i\neq j$ are relatively prime. This term order $>$ is called the
+  {\bf Reverse Topological Term Order (RTTO)}.
+\end{Proposition}
+
+Subsequently, by imposing RTTO on the polynomials of the circuit, the
+explosive GB computation is avoided, and verification is performed by
+the canonical GB-reduction: $z_i \xrightarrow{G}_+r_i$. 
+
+% \vspace{-0.1in}
+\begin{figure}[!h]
+\begin{minipage}[t]{3.25in}
+% \vspace{0pt}
+\centerline{
+%\includegraphics[scale=0.3]{../figures/2bitmultiplier.eps}
+\includegraphics[scale=0.5]{2bitmultiplier_gates.pdf}
+}
+\caption{\small A 2-bit modulo Multiplier circuit. 
+% The gate $\otimes$ is an
+%   AND-gate, and $\oplus$ is an XOR-gate; i.e. $\times, +$ modulo 2,
+%   respectively.
+  } 
+\label{fig:mul2bit}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{3.25in}
+\vspace{0pt}
+%{\small
+\begin{align*}
+f_1: c_0+a_0 \cdot b_0, \ lm=c_0; ~~~f_2: c_1+a_0 \cdot b_1, \ lm=c_1 \nonumber \\
+f_3: c_2+a_1 \cdot b_0, \ lm=c_2; ~~~f_4: c_3+a_1 \cdot b_1, \ lm=c_3 \nonumber \\
+f_5: r_0+c_1 + c_2 , \ lm=r_0; ~~~f_6: z_0+c_0 + c_3, \ lm=z_0\nonumber
+\end{align*}
+\vspace{-0.35in}
+\begin{center}
+$f_7: z_1+r_0 + c_3, \ lm=z_1$ % \nonumber 
+\end{center}
+%}
+\caption{\small {Polynomials of the circuit under RTTO constitute a GB.
+}} 
+\label{fig:rel_prime_lt}
+\end{minipage}
+
+\end{figure}
+
+\vspace{-0.1in}
+\begin{Example}
+\label{ex1}
+{\bf Demonstration of the approach:} Consider the circuit given in
+Fig. \ref{fig:mul2bit}. 
+%Perform a ``reverse topological traversal'' of the circuit. 
+Impose RTTO on the circuit. The primary outputs $z_0, z_1$ are both at
+level-0, variables $r_0, c_0, c_3$ are at level-1, ~$c_1, c_2$ are at
+level-2, and the primary inputs $a_0, a_1, b_0, b_1$ are at
+level-3. Order the variables $\{z_0 > z_1\} > \{r_0 > c_0 > c_3\} >
+\{c_1 > c_2\} > \{a_0 > a_1 > b_0 > b_1\}$. Using this variable order,
+we impose a {\it lex} term order on the monomials. Then all the
+polynomials extracted from the circuit have relatively prime leading
+terms, as shown in Fig. \ref{fig:rel_prime_lt}, and $F = \{f_1, \dots,
+f_7\}$ forms a GB. 
+
+Then the GBRs $z_1\xrightarrow{F}_+ a_0\cdot b_0 + a_1\cdot b_1$ and
+$z_0\xrightarrow{F}_+a_0\cdot b_1+a_1\cdot b_0 + a_1\cdot b_1$ are
+canonical expressions of the output bits. 
+\end{Example}
+
+\subsection{Unate Cube Sets \& Boolean Polynomials}
+
+A Boolean {\it variable}
+represents a dimension of the Boolean space $\B^n$, a {\it literal}
+is an instance of a variable $x_i$ or its 
+complement $\neg x_i$. A {\it cube} is a product of literals
+which denotes a set of points in the Boolean space. A {\it cube set}
+consists of a number of cubes, each of which is a combination of
+literals. {\it Unate cube sets} allow the use of only positive
+literals, not negative/complemented literals. Each cube in a unate
+cube set represents a combination, and each literal represents an
+object selected in the combination.
+
+When cube sets are used to represent Boolean functions, they are
+usually {\it binate} cube sets containing negative literals. In binate
+cube sets, literals $x_i$ and $\neg x_i$ represent $x_i = 1$ and $x_i = 0$,
+respectively; while the absence of a literal implies a {\it don't
+  care.} In unate cube sets, literal $x_i$ implies $x_i = 1$ whereas
+its absence implies $x_i = 0$. For example, the cube set $\{a,
+bc\}$ represents $(abc): \{111, 110, 101, 100, 011\}$ in the binate
+cube set representation, whereas it represents $(abc): \{100, 011\}$
+in the unate cube set representation.
+
+Each monomial of a Boolean polynomial can be viewed as a unate cube --
+a product of positive literals -- and a Boolean polynomial as a unate
+cube set. Then the GBR $z_i\xrightarrow{G}_+ r_i$ can be interpreted
+as algebra over unate cube sets, resembling a classical logic
+synthesis problem, as shown below. Let us (re)consider the one-step
+division for Boolean polynomials: $f\xrightarrow{g} r$. This division
+is implemented as:  
+
+{\small
+\begin{equation}
+\label{logic_syn}
+\begin{split}
+f \xrightarrow{g} r ~  = & ~ f - {{lt(f)} \over {lt(g)}} \cdot g ~ =  ~ f - {{lm(f)} \over {lm(g)}} \cdot g \\
+= & ~ f + {{lm(f)} \over {lm(g)}} \cdot g ~ =  ~ f \oplus {{lm(f)} \over {lm(g)}} \wedge g
+\end{split}
+\end{equation}
+}
+
+% $$f \xrightarrow{g} r  = f - {{lt(f)} \over {lt(g)}} \cdot g 
+% = ~ f - {{lm(f)} \over {lm(g)}} \cdot g; ~~(\text{coeff. 0,1;}
+% ~lt(f)=lm(f))
+% $$
+
+% $$= f + {{lm(f)} \over {lm(g)}} \cdot g = f \oplus {{lm(f)} \over
+%   {lm(g)}} \wedge g \label{eqns:reduce1}
+% $$
+
+We can replace $lt(f)$ with $lm(f)$ as coefficients are either 0 or 1. Notice that ${{lm(f)} \over {lm(g)}}$ is a unate product of
+literals. i.e. a unate cube. The $\oplus$ operation cancels common
+cubes from $f$ and ${{lm(f)} \over {lm(g)}}\cdot g$. 
+
+\subsection{Zero Suppressed Binary Decision Diagrams (ZBDDs)}
+
+% A Binary Decision Diagram is a directed graph with two terminal nodes 0 and 1. 
+% Each node in the diagram has two edges, solid edge (1-edge) and dotted edge (0-edge). 
+A ZBDD~\cite{zbdd} can be obtained from a BDD by eliminating all the nodes whose 1-edge points to 0 terminal 
+node and by sharing all the isomorphic sub-graphs for two nodes. Given the order of the variables, a ZBDD represents a 
+Boolean function canonically.  
+
+\begin{figure}[hbt]
+\centering
+\includegraphics[scale=1]{Preliminaries-Theory/r1_clean.pdf}
+\caption{ZBDD for the polynomial $r_1 = yd + y + d$.}
+\label{r1}
+\end{figure}
+
+In \cite{zbdd_unate} {\it Minato} demonstrated that ZBDDs are an efficient
+data-structure for implicit manipulation (algebra) of unate cube
+sets. Fig.~\ref{r1} is a ZBDD for the unate cube set $\{yd,y,d\}$ with the variable order 
+$y > d$. The paths beginning from the root node $y$ and terminating in the 1-terminal node 
+are the cubes of the set. A variable is in a cube if its 1-edge is in the path and is not 
+in the cube if its 0-edge is in the path. The ZBDD can also be interpreted as a polynomial $r_1 = yd + y +d$ where 
+the monomials can obtained the same way we obtain the cubes for the equivalent set. 
+
+Based on the above discussion, we will: i) model GBR as the
+algebra of unate cube sets; ii) use ZBDDs as the implicit
+data-structure for this GBR; and iii) devise efficient implementation
+of the GBR by exploiting the special structure imposed by RTTO on the
+ZBDD graph.  For details on the use of unate cube set algebra in classical logic
+synthesis, and its implementation on ZBDDs, we refer the reader to
+\cite{zbdd} \cite{zbdd_unate}. 
+

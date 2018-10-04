@@ -1,0 +1,17 @@
+@Article{ted_tcomp,
+  author = 	 {Ciesielski, M. and Kalla, P. and Askar, S.},
+  title = 	 {{T}aylor {E}xpansion {D}iagrams: {A} {C}anonical
+                  {R}epresentation for {V}erification of {D}ata-{F}low
+                  {D}esigns},  
+  journal = 	 {IEEE Transactions on Computers},
+  year = 	 {2006},
+  OPTkey = 	 {},
+  volume = 	 {55},
+  number = 	 {9},
+  pages = 	 {1188-1201},
+  OPTmonth = 	 {},
+  OPTnote = 	 {},
+  OPTannote = 	 {}
+}
+
+

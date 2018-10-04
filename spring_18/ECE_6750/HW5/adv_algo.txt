@@ -1,0 +1,22 @@
+Week	Topic(s) to be covered	Links/Resources
+| Review of basic algorithmic paradigms |	
+Aug 23	Overview of course	Slides Lecture 1, Lecture 2
+Aug 30	Recurrences, divide and conquer, dynamic programming	Chapter (Links to an external site.)Links to an external site. from Dasgupta et al. Slides Lecture 3, Lecture 4 Link: FFT based multiplication (Links to an external site.)Links to an external site.
+Sep 6	Iterative algorithms -- greedy, gradient descent	Slides Lecture 5Preview the document, Lecture 6Preview the document
+Sep 13	Limits of efficient algorithms (NP hardness); Approximation	Slides Lecture 7Preview the document, Lecture 8. Here are some notes (Links to an external site.)Links to an external site. on the sorting lower bound, and a (rather elementary but fun) note on NP completeness (Links to an external site.)Links to an external site..
+| Graphs and algorithms on graphs|	Slides for Lecture 9Preview the document (Reductions between problems)
+Sep 20	Introduction to graph algorithms; Storing graphs, DFS, BFS	Slides Lecture 10Preview the document (Notes (Links to an external site.)Links to an external site. on graphs, representation, search. See also this Chapter (Links to an external site.)Links to an external site. for basics like connected components.)
+Sep 27	Shortest paths, spanning trees	Slides for Lecture 11Preview the document, Lecture 12Preview the document (See also Chapter (Links to an external site.)Links to an external site. from Dasgupta et al.) Dijkstra's original paper (Links to an external site.)Links to an external site. (also contains a min spanning tree algorithm!)
+Oct 2	Flows, matchings, cuts	Slides for Lecture 13Preview the document, Lecture 14Preview the document.
+| Randomization in algorithms |	
+Oct 18	Max-flow Min-cut theorem, Intro to randomized algorithms	Slides for Lecture 15Preview the document, Lecture 16Preview the document
+Oct 25	Hashing (balls and bins), concentration bounds	Slides for Lecture 17Preview the document, Lecture 18Preview the document. Notes on hashing (Links to an external site.)Links to an external site., concentration inequalities (Links to an external site.)Links to an external site., balls and bins (Links to an external site.)Links to an external site.
+Nov 1	Streaming algorithms; Intro to Linear programming (casting problems as optimization)	
+Notes (Links to an external site.)Links to an external site. on hashing to reals. Dantzig's comments (Links to an external site.)Links to an external site. on Linear Programming. Slides for Lecture 19Preview the document, Lecture 20Preview the document.
+
+Nov 8	Linear programming (LP), Integrality, Rounding	Goemans' lecture notes on linear programming (Links to an external site.)Links to an external site., and the ellipsoid algorithm (Links to an external site.)Links to an external site. (very well written). Slides for Lecture 21Preview the document, Lecture 22Preview the document.
+Nov 15	Rounding LP solutions, duality	Slides for Lecture 23Preview the document, Lecture 24Preview the document. Another good set of notes (Links to an external site.)Links to an external site. on LP and duality.
+| Miscellaneous topics |	
+Nov 22	Applications of duality -- Max flow min-cut, review of LP	Slides for Lecture 25Preview the document. Lecture notes (Links to an external site.)Links to an external site. on the Max-flow min-cut theorem via duality.
+Nov 29	Algorithms under uncertainty: Experts; Online algorithms: renting skis and hiring secretaries	Slides for Lecture 26Preview the document and Lecture 27Preview the document. Survey  (Links to an external site.)Links to an external site.on "experts". Papers on the liar problem (link1 (Links to an external site.)Links to an external site., link2 (Links to an external site.)Links to an external site.), and notes  (Links to an external site.)Links to an external site.and survey (Links to an external site.)Links to an external site. on error correcting codes.
+Dec 6	Course review, prep for final	

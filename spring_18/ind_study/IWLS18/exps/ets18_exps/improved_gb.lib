@@ -1,0 +1,61 @@
+/*procedure to calculate improved grobner bases 
+  by adding product and criterion.
+
+Author - Vikas Rao
+Date   - 10-22-2016
+
+*/
+
+LIB "syzygy_helper.lib";
+LIB "spoly_calc.lib";
+
+proc improved_gb(list l)
+{
+   list G = l;
+   int t = size(l);
+   int ot = t;
+   list B;
+   list k;
+   list k1;
+   int dec;
+   int i,j;
+   int c = 0;
+   poly sp, spd;
+
+   for (int i=1;i<=size(G); i=i+1)
+   {
+      for (int j=1;j<=size(G);j=j+1)
+      {
+         if((i!=j) and (i<j))
+         {
+            k= G[i], G[j];
+            B = insert(B,k);
+         }
+      }
+   } 
+   
+   while(size(B) != 0)
+   {  
+      list sub1    = B[1];
+      dec, c, G, B = syzygy_helper(sub1, B, G, spd, ot, c);
+      if (dec == 0)
+      { 
+         sp  = spoly_calc(sub1[1], sub1[2]);
+         spd = multivariate_division(sp, G);
+         if (spd != 0)
+         {  
+	    t = t+1;
+            c = 1;
+            int ss = size(G);
+            for (i=1;i<=ss;i=i+1)
+            {  
+	       k1 = G[i], spd;
+               B  = insert(B, k1);
+            }
+            G = insert(G, spd);
+         }
+      }
+      B = delete(B,1);   
+   }
+   return(G);
+}

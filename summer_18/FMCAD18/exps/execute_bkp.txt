@@ -1,0 +1,80 @@
+##mas vs spec files
+#mas_spec/9-bit/9-bit_NI/mast_9_mont.sing
+#mas_spec/9-bit/9-bit_NM/mast_9_mont.sing
+#mas_spec/9-bit/9-bit_NOO/mast_9_mont.sing
+#mas_spec/10-bit/10-bit_ni/Mas10.sing
+#mas_spec/10-bit/10-bit_nm/Mas10.sing
+#mas_spec/10-bit/10-bit_no/Mas10.sing
+#mas_spec/11-bit/11-bit_ni/Mas11.sing
+#mas_spec/11-bit/11-bit_nm/Mas11.sing
+#mas_spec/11-bit/11-bit_no/Mas11.sing
+#mas_spec/12-bit/12-bit_ni/Mas12.sing
+#mas_spec/12-bit/12-bit_nm/Mas12.sing 
+#mas_spec/12-bit/12-bit_no/Mas12.sing 
+#mas_spec/13-bit/13-bit_ni/Mas13.sing
+#mas_spec/13-bit/13-bit_nm/Mas13.sing
+#mas_spec/13-bit/13-bit_no/Mas13.sing 
+#mas_spec/16-bit/16-ni/mas_16.sing
+#mas_spec/16-bit/16-nm/mas_16.sing
+#mas_spec/16-bit/16-no/mas_16.sing
+#mas_spec/32-bit/32-ni/mas_spec_32.sing
+#mas_spec/32-bit/32-nm/mas_spec_32.sing
+#mas_spec/32-bit/32-no/mas_spec_32.sing
+#mas_spec/64-bit/64-ni/mas_spec_64.sing
+#mas_spec/64-bit/64-nm/mas_spec_64.sing
+#mas_spec/64-bit/64-no/mas_spec_64.sing
+#mas_spec/128-bit/mas_spec_128.sing //no bug
+#mas_spec/163-bit/Mas163.sing //no bug
+#mas_spec/192-bit/Mas192.sing //no bug
+#mas_spec/283-bit/Mas283.sing //no bug
+#mas_spec/409-bit/Mas409.sing //no bug 
+
+#mas vs mont
+#mas_mont/9-bit/9-bit_NI/mast_9_mont.sing
+#mas_mont/9-bit/9-bit_NM/mast_9_mont.sing
+#mas_mont/9-bit/9-bit_NOO/mast_9_mont.sing
+mas_mont/10-bit/10-bit_ni/Mas10.sing
+mas_mont/10-bit/10-bit_nm/Mas10.sing
+mas_mont/10-bit/10-bit_no/Mas10.sing
+mas_mont/11-bit/11-bit_ni/Mas11.sing
+mas_mont/11-bit/11-bit_nm/Mas11.sing
+mas_mont/11-bit/11-bit_no/Mas11.sing
+mas_mont/12-bit/12-bit_ni/Mas12.sing
+mas_mont/12-bit/12-bit_nm/Mas12.sing
+mas_mont/12-bit/12-bit_no/Mas12.sing
+mas_mont/13-bit/13-bit_ni/Mas13.sing
+mas_mont/13-bit/13-bit_nm/Mas13.sing
+mas_mont/13-bit/13-bit_no/Mas13.sing
+mas_mont/16-bit/16-bit_ni/mas_mont_16.sing
+mas_mont/16-bit/16-bit_nm/mas_mont_16.sing
+mas_mont/16-bit/16-bit_no/mas_mont_16.sing
+mas_mont/32-bit/32-bit_ni/mas_mont_32.sing
+mas_mont/32-bit/32-bit_nm/mas_mont_32.sing
+mas_mont/32-bit/32-bit_no/mas_mont_32.sing
+#mas_mont/64-bit/mas_mont_64.sing
+#mas_mont/128-bit/mas_mont_128.sing //no bug
+#mas_mont/163-bit/mas_mont_163.sing //no bug
+#mas_mont/192-bit/mas_mont_192.sing //no bug
+#mas_mont/283-bit/mas_mont_283.sing //no bug
+#mas_mont/409-bit/mas_mont_409.sing //no bug
+
+#//barret files
+#barret/2-bit/barret2.sing  //no bug
+#barret/8-bit/barret8.sing  //no bug
+#barret/16-bit/barret16.sing  //no bug
+#barret/32-bit/barret32.sing  //no bug
+#barret/64-bit/barret64.sing  //no bug
+#barret/96-bit/barret96.sing  //no bug
+#barret/128-bit/barret128.sing  //no bug
+#barret/163-bit/barret163.sing  //no bug
+
+###point addition files
+#point_addition/32-bit/PD_32.sing //no bug
+#point_addition/64-bit/PD_64.sing
+#point_addition/128-bit/PD_128.sing //no bug
+#point_addition/163-bit/PD_163.sing //no bug
+#point_addition/192-bit/PD_192.sing //no bug
+#point_addition/233-bit/PD_233.sing //no bug
+#point_addition/283-bit/PD_283.sing //no bug
+#point_addition/409-bit/PD_409.sing //no bug
+

@@ -1,0 +1,52 @@
+\begin{abstract}
+
+  Resolving an unknown component is a fundamental problem encountered
+  in logic synthesis for engineering change orders, post-verification
+  debugging and automatic correction of digital circuits. Contemporary
+  techniques rely on iterative/incremental application of SAT solving
+  and Craig interpolation to realize the functionality of (or resolve)
+  the unknown components. While these techniques have achieved some
+  success for control-dominated applications (random logic circuits),
+  they are infeasible in resolving the unknown components in
+  arithmetic circuits. This paper describes an algebraic approach to
+  resolve the functionality of an unknown component in an arithmetic
+  circuit so that the circuit implementation matches a given
+  specification. Our approach is formulated as a polynomial ideal
+  membership test. We go on to pose the problem as a synthesis
+  challenge and explore the solution space of the unknown component
+  using concepts from quotient of ideals. We propose a \Grobner basis
+  based algorithm for a systematic, goal driven search for
+  implementable solutions. The paper presents results on some
+  preliminary experiments performed over various arithmetic circuits
+  to compare the efficiency of our approach against recent methods.   
+
+
+% Automatic bug correction is a tedious and resource intensive process. 
+%% Automatic correction of unknown components in a given circuit is a
+%% resource intensive process. Recent developments in realizing the
+%% functionality implemented by these unknown gates rely on incremental
+%% SAT solving. Despite using state-of-the-art SAT solvers, these
+%% approaches fail to verify multipliers beyond 12-bits and hence are
+%% infeasible in a practical setting. The current formal datapath
+%% verification methods which utilize symbolic computer algebra concepts,
+%% rely heavily on textbook structure of the circuits to realize an
+%% unknown component, and hence are not scalable. These approaches model
+%% circuit as a set of polynomials over integer rings, and use function
+%% extraction, simulation, and term rewriting using coefficient
+%% computation to arrive at a solution. The approach is not complete in
+%% the sense that the procedure cannot be extended to random logic
+%% circuits and finite field circuits due to ambiguities in coefficient
+%% computation. The approach also fails to verify circuits when redundant
+%% gates are introduced in the design. To overcome all these limitations,
+%% this paper describes a formal approach using finite field theory to
+%% automatically realize the function implemented by an unknown
+%% component, and verify the same. The paper introduces theory on
+%% resolving a single unknown component using ideal membership testing
+%% and \Grobner basis based reduction. We go onto pose the problem as a
+%% synthesis challenge and extend the solution space of the unknown
+%% component using concepts from quotient of ideals. Since the solution
+%% space is not unique, we will also discuss a systematic, goal driven
+%% search for simple implementable solutions. The paper presents results
+%% on some preliminary experiments performed over various arithmetic
+%% circuits to compare efficiency of our approach against recent methods.  
+\end{abstract}

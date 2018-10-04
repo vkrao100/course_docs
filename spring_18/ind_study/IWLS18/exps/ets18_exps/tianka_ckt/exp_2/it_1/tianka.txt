@@ -1,0 +1,18 @@
+1
+a b c e_s0 e_s1 e_s2 d_s0 z_s1 z_s2 z_s t_0 t_1 t_2 t_3 t_4 t_5 z_i z x_1 x_2 x_3 x_4 x_5 x_6 x_7 x_8
+x(e_s0, a, b) 
+o(e_s1, b, c) 
+n(e_s2, c, c) 
+a(d_s0, e_s1, c)
+o(z_s1, e_s0, d_s0) 
+x(z_s2, d_s0, e_s2) 
+a(z_s, z_s1, z_s2)
+m(t_0, a, x_1, x_2) 
+m(t_1, a, x_3, x_4) 
+m(t_2, a, x_5, x_6)
+m(t_3, a, x_7, x_8)
+m(t_4, b, t_0, t_1)
+m(t_5, b, t_2, t_3)
+m(z_i, c, t_4, t_5)
+x(z, z_s, z_i)
+t z

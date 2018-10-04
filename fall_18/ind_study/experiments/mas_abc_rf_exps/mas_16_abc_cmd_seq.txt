@@ -1,0 +1,18 @@
+abc 01> read_blif mas_16.blif 
+abc 02> strash
+abc 03> fraig
+abc 04> ps
+mas_16.eqn                    : i/o =   32/   16  lat =    0  and =   1981  lev = 15
+abc 04> resyn
+abc 07> resyn2
+abc 11> resyn3
+abc 15> ps           
+mas_16.eqn                    : i/o =   32/   16  lat =    0  and =   1813  lev = 15
+abc 15> read_library cadence.genlib
+Entered genlib library with 4 gates from file "cadence.genlib".
+abc 15> map
+abc 16> resyn
+abc 19> resyn2
+abc 23> resyn3
+abc 27> ps
+mas_16.eqn                    : i/o =   32/   16  lat =    0  and =   1741  lev = 15

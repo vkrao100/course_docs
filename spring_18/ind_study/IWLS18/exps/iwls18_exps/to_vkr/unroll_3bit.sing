@@ -1,0 +1,101 @@
+LIB "multivariate_burg.lib";
+LIB "control.lib";
+LIB "linalg.lib";
+ring r = (2,X), (R, Rs, A, B, R2, R1, R0, Rs2, Rs1, Rs0, ns25, ns24, R0, ns26, ns17, ns16, ns32, ns31, ns23, ns22, ns15, ns14, ns30, ns21, ns13, ns29, ns28, ns27, ns20, ns19, ns18, ns12, ns11, ns10, n22, n20, n18, n29, n27, n21, n19, n14, n13, n25, n24, n23, n17, n16, n15, n12, n11, n10, b2, b1, b0, a2, a1, a0),lp;
+
+minpoly = X^2 + X + 1;
+
+ideal J2 = 
+n10 + a1 + a0,
+n11 + a0 + a1,
+n12 + a1 * b0,
+n15 + a0 + a2,
+n16 + a2 + a0,
+n17 + a0 * b2,
+n23 + a2 + a1,
+n24 + a1 + a2,
+n25 + a2 * b1,
+n13 + n10 * b2,
+n14 + n11 * b1,
+n19 + n15 * b1,
+n21 + n16 * b0;
+
+ideal J1 = 
+n29 + n24 * b2,
+n18 + n17 + n14,
+n20 + n19 + n12,
+n22 + n21 + n13,
+R0 + n29 + n20,
+R1 + n25 + n22,
+R2 + n27 + n18,
+ns10 + a2 * b2,
+ns11 + a2 + a0,
+ns12 + b2 + b0,
+ns18 + a1 * b1,
+ns19 + a1 + a2,
+ns20 + b1 + b2,
+ns27 + a0 * b0,
+ns28 + a0 + a1,
+ns29 + b0 + b1,
+ns13 + ns11 * ns12,
+ns21 + ns19 * ns20,
+ns30 + ns28 * ns29,
+ns14 + ns10 + ns13,
+ns15 + ns13,
+ns22 + ns18 + ns21,
+ns23 + ns21,
+ns31 + ns27 + ns30,
+ns32 + ns30,
+ns16 + ns14,
+ns17 + ns15,
+ns26 + ns23,
+Rs0 + ns26 + ns31,
+ns24 + ns17 + ns22,
+ns25 + ns16,
+Rs1 + ns24,
+Rs2 + ns25 + ns32,
+A + a0*X^0 + a1*X^1 + a2*X^2,
+B + b0*X^0 + b1*X^1 + b2*X^2,
+R + R0*X^0 + R1*X^1 + R2*X^2,
+Rs + Rs0*X^0 + Rs1*X^1 + Rs2*X^2;
+
+ideal J0 =
+a0^2 + a0,
+a1^2 + a1,
+b0^2 + b0,
+b1^2 + b1;
+
+poly uc = n27 + n23 * b0;
+
+poly spec = (R-Rs);
+
+reduce(spec,groebner(J1+J0));
+
+poly quo;
+poly rem;
+
+poly prem = reduce(spec,J1+J0);
+
+rem, quo = multivariate_burg(prem,lead(uc),J0); 
+
+"remainder",rem;
+"quotient",quo;
+
+ideal dec = variables(quo);
+ideal JCp = quo,J2;
+
+if (size(dec)>=1)
+{
+	"quotient is not a constant";
+	matrix T3 = lift(JCp+J0,rem);
+	poly sol  = T3[1,1];
+}
+else
+{	
+	"quotient is a constant";
+	matrix quoi = inverse(quo);
+	poly irem   = quoi[1,1]*rem;
+	poly sol    = reduce(irem,J2);
+}
+
+"solution for P is ",sol;

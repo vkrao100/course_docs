@@ -1,0 +1,13 @@
+#//barret files
+barret/8-bit/8-bit_ni/barret8.sing 
+barret/8-bit/8-bit_nm/barret8.sing 
+barret/8-bit/8-bit_no/barret8.sing  
+barret/16-bit/16-bit_ni/barret16.sing  
+barret/16-bit/16-bit_nm/barret16.sing
+barret/16-bit/16-bit_no/barret16.sing
+barret/32-bit/32-bit_ni/barret32.sing  
+barret/32-bit/32-bit_nm/barret32.sing 
+barret/32-bit/32-bit_no/barret32.sing 
+barret/64-bit/64-bit_ni/barret64.sing
+barret/64-bit/64-bit_nm/barret64.sing 
+barret/64-bit/64-bit_no/barret64.sing   

@@ -1,0 +1,130 @@
+\documentclass[2pt]{article}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{svg}
+\usepackage{color}
+\usepackage{soul}
+\usepackage{xcolor}
+\usepackage{amsthm}
+\usepackage{float}
+\usepackage{sectsty}
+\usepackage{amsbsy}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{diagbox}
+\usepackage{bm}
+\usepackage{hhline}
+\usepackage{graphicx}
+\usepackage{helvet}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{subfig}
+\usepackage{comment}
+\usepackage{mathtools}
+
+\newtheorem{Algorithm}{Algorithm}[section]
+\newtheorem{Definition}{Definition}[section]
+\newtheorem{Example}{Example}[section]
+\newtheorem{Proposition}{Proposition}[section]
+\newtheorem{Lemma}{Lemma}[section]
+\newtheorem{Theorem}{Theorem}[section]
+\newtheorem{Corollary}{Corollary}[section]
+\newtheorem{Proof}{Proof}
+
+\newcommand{\B}{{\mathbb{B}}}
+\newcommand{\Z}{{\mathbb{Z}}}
+\newcommand{\R}{{\mathbb{R}}}
+\newcommand{\Q}{{\mathbb{Q}}}
+\newcommand{\N}{{\mathbb{N}}}
+\newcommand{\C}{{\mathbb{C}}}
+\newcommand{\Zn}{{\mathbb{Z}}_{n}}
+\newcommand{\Zp}{{\mathbb{Z}}_{p}}
+\newcommand{\F}{{\mathbb{F}}}
+\newcommand{\Fbar}{{\overline{\mathbb{F}}}}
+\newcommand{\Fq}{{\mathbb{F}}_{q}}
+\newcommand{\Jc}{J_c}
+\newcommand{\Jz}{J_0}
+\newcommand{\Jb}{J_b}
+\newcommand{\Jt}{J_2}
+\newcommand{\al}{\alpha}
+\newcommand{\Joz}{J_1 + J_0}
+\newcommand{\Jtz}{J_2 + J_0}
+\newcommand{\Fqbar}{{\overline{{\mathbb{F}}_q}}}
+\newcommand{\Fkk}{{\mathbb{F}}_{2^k}}
+\newcommand{\Zkk}{{\mathbb{Z}}_{2^k}}
+\newcommand{\Fkkx}[1][x]{\ensuremath{\mathbb{F}}_{2^k}[#1]\xspace}
+\newcommand{\Grobner}{Gr\"{o}bner\xspace}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+
+\newcommand{\idealj}{{J = \langle f_1,f_2 \dots, f_s\rangle}}
+\newcommand{\idealg}{{J = \langle g_1, \dots, g_t\rangle}}
+\newcommand{\vfqj}{{V_{\Fq}(J)}}
+\newcommand{\vfqjo}{{V_{\Fq}(J_0)}}
+\newcommand{\vfbqj}{{V_{\overline{\Fq}}(J)}}
+\newcommand{\vfbqjo}{{V_{\overline{\Fq}}(J_0)}}
+\newcommand{\vfbqjjo}{{V_{\overline{\Fq}}(J+J_0)}}
+\newcommand{\vfkkj}{{V_{\Fkk}(J)}}
+% \newcommand{\v}{\vee}
+\newcommand{\acf}{\bar{F}_q}
+\newcommand{\Vacf}{V_{\bar{F}_q}}
+
+\sectionfont{\small}
+
+\title{{R}ectification of {A}rithmetic {C}ircuits using {C}omputer {A}lgebra {T}echniques}
+\author{Vikas Rao\\
+Department of  Electrical and Computer Eng.\\
+University of Utah\\Vikas.k.rao@utah.edu }
+\date{}
+\begin{document}
+
+\maketitle
+Formal verification of Arithmetic circuits checks whether 
+or not a gate-level circuit correctly implements a
+given specification model. In cases where this equivalence
+check fails – the presence of a bug is detected. Subsequently, it is required
+to: i) debug the circuit, ii) identify a set of nets (signals)
+where the circuit might be rectified, and iii) compute the
+corresponding rectification functions at those locations. As a preliminary work, 
+I addressed the problem of debugging
+and correction (rectification) in finite field arithmetic circuits\cite{vkrao:fmcad18}.
+I presented techniques that
+determine whether the circuit can be rectified at one particular
+net (gate output) – i.e. a single-fix rectification issue is addressed.
+Starting from an equivalence checking setup modeled as
+a polynomial ideal membership test, I analyzed the ideal
+membership residue to identify potential single-fix rectification
+locations. Subsequently, Nullstellensatz principles were used to
+ascertain if indeed a single-fix rectification can be applied at
+any of these locations. If a single-fix rectification exists, a
+rectification function is derived by modeling it as the synthesis
+of an unknown component problem\cite{vkrao:iwls18}.  
+
+% It takes considerable amount of time for verification and
+% rectification check when the bug is close to the output. My eventual goal is
+% to work on further improving the experiments by employing
+% better data structures, and devising better
+% heuristics to perform rectification check. 
+As part of my future work, I intend to deep-dive into the theory of
+permissible functions to explore the synthesis side of the 
+problem in finding a more deterministic solution from the given solution space.
+There is also a need for further investigation on 
+how the current procedure can be extended to cover integer 
+arithmetic circuits. Further research also needs to address 
+exploring the current approach for the case of multi-fix rectification. 
+
+% Since the techniques from computer algebra such as
+% Grobner basis are considered both decision and quantification procedure, 
+% there is a need for investigation on how to integrate 
+% these concepts with the modus operandi of synthesis.
+
+\bibliographystyle{ieeetr}
+\bibliography{vikas}
+
+\end{document}

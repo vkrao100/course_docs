@@ -1,0 +1,12 @@
+The program has been implemented in python
+1. The bcp algorithm is implemented in the functions.py file which includes all the necessary functions as described in the algorithm.
+2. The top-most function that invokes the bcp algorithm is implemented in the top.py
+3. utility functions like parsing the input file, printing the matrix are implemented in utility.py
+
+4. The program can be run via the shell script ./run.sh as
+	./run.sh <input_file.txt>
+	e.g.
+	./run.sh simple.txt
+
+5. The program was writtem on a machine with the python version 2.7.6. Please check that your python version has the module "copy" 
+6. Also the parser is very basic so an extra space can give erroneous result.

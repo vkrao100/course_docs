@@ -1,0 +1,100 @@
+//LIB "multivariate_division.lib";
+//LIB "minimal_calc.lib";
+//LIB "bases_reduce.lib";
+
+ring r = (2, x), (t, Z_1, Z, A, B, z_0, z_1, z_2, s_0, s_1, s_2, s_3, s_4, c_6, c_5, c_4, c_3, c_2, c_1, c_0, a_0, b_0, a_1, b_1, a_2, b_2), lp; 
+
+minpoly = x^3 + x + 1;
+
+proc orgate(poly g, poly h)
+{
+	//return(g+h+g*h);
+	return(g+h);
+}
+
+//list J = 
+ideal J = 
+
+//circuit -  3 bit mastrovito multiplier
+A + a_0 + a_1*x + a_2*x^2,
+B + b_0 + b_1*x + b_2*x^2,
+s_0 + a_0*b_0,
+c_0 + a_1*b_0,
+c_1 + a_0*b_1,
+//s_1 + c_0 + c_1,
+//c_2 + a_2 + b_0,
+//c_3 + a_0 + b_2,
+//c_4 + a_1 + b_1,
+//s_2 + c_2 + c_3 + c_4,
+//c_5 + a_2 + b_1,
+//c_6 + a_1 + b_2,
+//s_3 + c_5 + c_6,
+s_1 + orgate(c_0,c_1),
+c_2 + orgate(a_2,b_0),
+c_3 + orgate(a_0,b_2),
+c_4 + orgate(a_1,b_1),
+s_2 + orgate(orgate(c_2,c_3),c_4),
+c_5 + orgate(a_2,b_1),
+c_6 + orgate(a_1,b_2),
+s_3 + orgate(c_5,c_6),
+s_4 + a_2*b_2,
+z_0 + orgate(s_0,s_3),
+z_1 + orgate(orgate(s_1,s_3),s_4),
+z_2 + orgate(s_2,s_4),
+Z + z_0 + z_1*x + z_2*x^2,
+
+//circuit- 3 bit multiplier specification polynomial
+Z_1 - A*B,
+t*(Z_1 - Z)-1;
+
+ideal J0 =
+//list J0 =
+A^8 - A,
+B^8 - B,
+Z_1^8 - Z_1,
+Z^8 - Z,
+
+t^2 - t,
+
+a_0^2 - a_0,
+a_1^2 - a_1,
+a_2^2 - a_2,
+b_0^2 - b_0,
+b_1^2 - b_1,
+b_2^2 - b_2,
+
+c_0^2 - c_0,
+c_1^2 - c_1,
+c_2^2 - c_2,
+c_3^2 - c_3,
+c_4^2 - c_4,
+c_5^2 - c_5,
+c_6^2 - c_6,
+
+s_0^2 - s_0,
+s_1^2 - s_1,
+s_2^2 - s_2,
+s_3^2 - s_3,
+s_4^2 - s_4,
+
+z_0^2 - z_0,
+z_1^2 - z_1,
+z_2^2 - z_2;
+
+//list ho = J + J0;
+ideal ho = J + J0;
+//list gb, mi, red;
+ideal gb, mi, red;
+gb = groebner(ho);
+string grobner  = "grobner for given polynomials:";
+grobner, gb;
+
+//mi  = minimal_calc(gb);
+//string minimal  = "minimal for given polynomials:";
+//minimal, mi;
+
+//red = bases_reduce(mi);
+//string reduced  = "reduced minimals for given polynomials:";
+//reduced, red;
+
+//slimgb(J+J0);

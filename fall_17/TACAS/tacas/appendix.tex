@@ -1,0 +1,101 @@
+\begin{center}
+{\Large \bf Appendix: Omitted Proofs}
+\end{center}
+
+
+\par \noindent {\bf Proof of Theorem \ref{thm:smallest}.} 
+\begin{proof}
+Let $J_I \subseteq \Fq[C]$ be any another ideal-interpolant $\neq
+J_S$. We show that $\Vc(J_S) \subseteq \Vc(J_I)$. For $\Vc(J_I)$
+to be an interpolant it must satisfy 
+\begin{align*}
+\Vabc(J_A) \subseteq \Vabc(J_I)
+\end{align*}
+which is equivalent to 
+\begin{align*}
+I(\Vabc(J_A)) &\supseteq I(\Vabc(J_I)) \\
+\implies J_A &\supseteq J_I  
+\end{align*}
+due to Theorem \ref{thm:strong-ns}.
+%% as $J_I$ is radical so $I(\Vabc(J_I)) = J_I)$. 
+As the generators of $J_I$ only contain polynomials in $C$-variables,
+this relation also holds for the following
+\begin{align*}
+J_A \cap \Fq[C] &\supseteq J_I \\
+\implies J_S &\supseteq J_I \\
+\implies \Vc(J_S) &\subseteq \Vc(J_I).
+\end{align*} 
+
+
+
+\end{proof}
+
+\par \noindent {\bf Proof of Theorem \ref{thm:large}.} 
+
+
+\begin{proof} 
+We first prove that the interpolant computed by
+complementing $\Vc(J'_L)$  as $\Fq^C - \Vc(J'_L)$ is indeed a valid
+interpolant. As $J'_L$ is the elimination ideal computed from $J_B$,
+$\Vbc(J'_L) \supseteq \Vbc(J_B)$. This in turn implies that the
+complement of $V(J'_L)$ cannot intersect with $V(J_B)$ at any
+point. This proves condition 2 for $\Fq^C - \Vc(J'_L)$ to be a
+valid interpolant.  
+
+For condition 1, we need to prove that
+\begin{align*}
+\Vac(J_A) \subseteq \Fq^A \times (\Fq^C - \Vc(J'_L))
+\end{align*}
+This can be restated as
+\begin{align*}
+\Vac(J_A) \cap \Fq^A \times \Vc(J'_L) = \emptyset
+\end{align*}
+Let us assume (by contradiction) that there exists a common point 
+$(\mathbf{a},\mathbf{c})$ in $\Vac(J_A)$ and $\Fq^A \times
+V_C(J'_L)$. As the projection $Pr_B(\Vbc(J_B))$ on the
+$C$-variables is equal to  the variety of the elimination ideal
+$\Vc(J'_L)$, a point $(\mathbf{c}) \in \Vc(J'_L)$ can be  extended to
+some point $(\mathbf{b},\mathbf{c})$ in $\Vbc(J_B)$. This implies that
+the point $(\mathbf{a},\mathbf{b},\mathbf{c})$ is a common point in
+$\Vabc(J_A)$ and $\Vabc(J_B)$, which is a contradiction to our initial
+assumption. Therefore condition 1 of Def. \ref{def:int} is satisfied
+too and $\Fq^C - \Vc(J'_L)$ is indeed an interpolant. 
+
+\par \noindent Next we prove that $\Fq^C - \Vc(J'_L)$ is the largest
+interpolant. Consider an arbitrary ideal-interpolant $J_I$. We want to
+prove $\Vc(J_I) \subseteq \Fq^C - \Vc(J'_L)$, or equivalently to prove
+$\Vc(J_I) \cap \Vc(J'_L) = \emptyset$. Let us assume (by contradiction) 
+that there exists a common point $(\mathbf{c})$ in $\Vc(J_I)$ and
+$\Vc(J'_L)$. As $J'_L$ is the elimination ideal of $J_B$, this point
+can be extended to some point $(\mathbf{b},\mathbf{c})$  
+in $\Vbc(J_B)$. This in turn implies that $(\mathbf{b},\mathbf{c})$ is
+a common point in  $\Vbc(J_B)$ and $\Fq^B \times \Vc(J_I)$. This is a
+contradiction as an interpolant cannot intersect with the variety of
+$J_B$. Hence, $\Fq^C - \Vc(J'_L)$ is the largest interpolant and it
+contains all other interpolants.
+
+\end{proof}
+
+
+\par \noindent {\bf Proof of Lemma \ref{noofinter}.} 
+\begin{proof}
+The smallest and the largest interpolants are $\Vc(J_S)$ and $\Vc(J_L)$,
+respectively. The set difference $\Vc(J_L) - \Vc(J_S)$ is also a
+variety of some ideal $J_D$, which can be computed as
+$J_D=(J_L:J_S)$. By selecting different subsets of $\Vc(J_D)$ and
+adding them to $\Vc(J_S)$, we can generate all the 
+interpolants. Consider, 
+\begin{align*}
+\label{eqn:pwsetjd}
+\binom{|\Vc(J_D)|}{0} + \binom{|\Vc(J_D)|}{1} + \cdots + \binom{|\Vc(J_D)|}{|\Vc(J_D)|} = 2^{|\Vc(J_D)|}
+\end{align*}
+where the term $\binom{|\Vc(J_D)|}{0}$ denotes that no point is selected from $\Vc(J_D)$ and results in 
+$\Vc(J_S)$ as the ideal-interpolant. On the other hand, the term $\binom{|\Vc(J_D)|}{|\Vc(J_D)|}$ is equivalent 
+to selecting  all the points from $\Vc(J_D)$ and results in $J_L$ as 
+the ideal-interpolant. So the number of interpolants is equal to
+$2^{|\Vc(J_D)|}$. Theorem \ref{thm:count} further tells us that the 
+cardinality of a variety of an ideal is equal to the number of
+standard monomials of that ideal, therefore, number of interpolants $=
+2^{|SM(J_D)|}$.  
+
+\end{proof}

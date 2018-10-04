@@ -1,0 +1,31 @@
+LIB "control.lib";
+LIB "multivariate_burg.lib";
+ring r = 32003,(y,x),lp;
+
+poly f1 = x2y-y+x;
+poly f2 = xy2-x;
+poly f3 = -y2 + xy + x2;
+poly f5 = x3 + y -2x;
+
+ideal J = f1,f2;
+list G = f1,f3,f5;
+
+poly f = x4y - 2x5 + 2x2y2 -2x3y - 2x4 - 2y3 + 4xy2 - 3x2y + 2x3 -y + 2x;
+
+ideal J0i = 0;
+
+poly rem = multivariate_burg(f,G,J0i);
+
+matrix T = lift(J,f);
+T;
+
+matrix T1 = lift(J,G);
+T1;
+
+//x<y
+//T[1,1]=-2x3y+3x2y2-2x2y-3xy+2y2+1
+//T[2,1]=2x4-3x3y+2x3-2x2+xy-1
+
+//y<x
+//T[1,1]=-2y3x+2y2x4+2y2x3+2y2-2yx3-2yx2-yx-2x4-2x3+3x2+1
+//T[2,1]=2y2x2-2y2-2yx5-2yx4+2yx3+2yx2+x2-1

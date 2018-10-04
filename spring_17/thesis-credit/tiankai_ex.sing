@@ -1,0 +1,35 @@
+ring r = 2, (z,z1,z2,e0,e2,a,b,d0,e1,c) ,lp;
+
+poly spec = z + ac + a + b + bc + c;
+
+poly f7 = z + z1*z2;
+poly f5 = z1 + e0*d0 + e0 + d0;
+poly f6 = z2 + d0 + e2;
+poly f4 = d0 + c*e1;
+poly f3 = e2 + c + 1;
+poly f2 = e1 + bc + b + c;
+poly f1 = e0 + a + b;
+
+poly f1_b = e0 + a*b;
+
+poly d_0 = d0^2 -d0 ;
+poly e_0 = e0^2 -e0 ;
+poly e_1 = e1^2 -e1 ;
+poly e_2 = e2^2 -e2 ;
+
+poly a_0 = a^2 - a;
+poly b_0 = b^2 - b;
+poly c_0 = c^2 - c;
+
+ideal J0 = a_0, b_0, c_0, d_0, e_0, e_1, e_2;
+
+//correct ideal
+ideal JC = f1,fc2,f3,f4,f5,f6,f7;
+JC = JC + J0;
+
+//buggy ideal
+ideal JB = f1_b,f2,f3,f4,f5,f6,f7;
+JB = JB + J0;
+
+//ideal for detecting unknown component f4(d0,e1,c)
+ideal gsu = f1, f2, f3, f5, f6, f7, spec, J0;

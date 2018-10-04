@@ -1,0 +1,98 @@
+command list - 
+ideal temp = groebner(BI);
+temp;
+poly rr = a_0*b_0*a_1*b_1*x + a_0*b_1*x + a_1*b_0*x;
+rr;
+ideal qu = quotient(BI,rr);qu;
+qu = groebner(qu);
+qu;
+reduce((s_0+(x+1)*s_3+x*r_0+(a_0+a_1*x)*(b_0+b_1*x)),qu);
+reduce((s_0+(x+1)*s_3+x*s_1*s_2+(a_0+a_1*x)*(b_0+b_1*x)),qu);
+reduce((a_0*a_1*b_0*b_1*x+(b_0*a_1*x)+(a_0*b_1*x)),qu);
+> temp;
+temp[1]=b_1^2+b_1
+temp[2]=a_1^2+a_1
+temp[3]=b_0^2+b_0
+temp[4]=a_0^2+a_0
+temp[5]=s_3+a_1*b_1
+temp[6]=s_2+b_0*a_1
+temp[7]=s_1+a_0*b_1
+temp[8]=s_0+a_0*b_0
+temp[9]=r_0+s_1*s_2
+temp[10]=z_1+r_0+s_3
+temp[11]=z_0+s_0+s_3
+temp[12]=B+b_0+(x)*b_1
+temp[13]=A+a_0+(x)*a_1
+temp[14]=Z+z_0+(x)*z_1
+> poly rr = a_0*b_0*a_1*b_1*x + a_0*b_1*x + a_1*b_0*x;
+> rr;
+(x)*a_0*b_0*a_1*b_1+(x)*a_0*b_1+(x)*b_0*a_1
+> ideal qu = quotient(BI,rr);qu;
+qu[1]=b_1^2+b_1
+qu[2]=a_1*b_1+a_1+b_1+1
+qu[3]=a_1^2+a_1
+qu[4]=b_0*b_1+b_0+b_1+1
+qu[5]=b_0^2+b_0
+qu[6]=a_0*a_1+a_0+a_1+1
+qu[7]=a_0*b_0+a_0+b_0+1
+qu[8]=a_0^2+a_0
+qu[9]=s_3+a_1+b_1+1
+qu[10]=s_2+b_0*a_1
+qu[11]=s_1+a_0*b_1
+qu[12]=s_0+a_0+b_0+1
+qu[13]=r_0+s_1*s_2
+qu[14]=z_1+r_0+s_3
+qu[15]=z_0+s_0+s_3
+qu[16]=B+b_0+(x)*b_1
+qu[17]=A+a_0+(x)*a_1
+qu[18]=Z+(x)*r_0+s_0+(x+1)*s_3
+> ideal qu = groebner(qu);
+// ** redefining qu **
+> qu;
+qu[1]=0
+> ideal qu = quotient(BI,rr);qu;
+// ** redefining qu **
+qu[1]=b_1^2+b_1
+qu[2]=a_1*b_1+a_1+b_1+1
+qu[3]=a_1^2+a_1
+qu[4]=b_0*b_1+b_0+b_1+1
+qu[5]=b_0^2+b_0
+qu[6]=a_0*a_1+a_0+a_1+1
+qu[7]=a_0*b_0+a_0+b_0+1
+qu[8]=a_0^2+a_0
+qu[9]=s_3+a_1+b_1+1
+qu[10]=s_2+b_0*a_1
+qu[11]=s_1+a_0*b_1
+qu[12]=s_0+a_0+b_0+1
+qu[13]=r_0+s_1*s_2
+qu[14]=z_1+r_0+s_3
+qu[15]=z_0+s_0+s_3
+qu[16]=B+b_0+(x)*b_1
+qu[17]=A+a_0+(x)*a_1
+qu[18]=Z+(x)*r_0+s_0+(x+1)*s_3
+> qu = groebner(qu);
+> qu;
+qu[1]=b_1^2+b_1
+qu[2]=a_1*b_1+a_1+b_1+1
+qu[3]=a_1^2+a_1
+qu[4]=b_0*b_1+b_0+b_1+1
+qu[5]=b_0^2+b_0
+qu[6]=a_0*a_1+a_0+a_1+1
+qu[7]=a_0*b_0+a_0+b_0+1
+qu[8]=a_0^2+a_0
+qu[9]=s_3+a_1+b_1+1
+qu[10]=s_2+b_0*a_1
+qu[11]=s_1+a_0*b_1
+qu[12]=s_0+a_0+b_0+1
+qu[13]=r_0+s_1*s_2
+qu[14]=z_1+r_0+s_3
+qu[15]=z_0+s_0+s_3
+qu[16]=B+b_0+(x)*b_1
+qu[17]=A+a_0+(x)*a_1
+qu[18]=Z+(x)*r_0+s_0+(x+1)*s_3
+> reduce((s_0+(x+1)*s_3+x*r_0+(a_0+a_1*x)*(b_0+b_1*x)),qu);
+(x)
+> reduce((s_0+(x+1)*s_3+x*s_1*s_2+(a_0+a_1*x)*(b_0+b_1*x)),qu);
+(x)
+> reduce((a_0*a_1*b_0*b_1*x+(b_0*a_1*x)+(a_0*b_1*x)),qu);
+(x)

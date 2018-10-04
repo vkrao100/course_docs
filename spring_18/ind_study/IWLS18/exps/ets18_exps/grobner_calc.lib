@@ -1,0 +1,194 @@
+/*procedure to calculate grobner bases
+
+Author - Vikas Rao
+Date   - 10-03-2016
+
+*/
+
+LIB "spoly_calc.lib";
+LIB "multivariate_division.lib";
+LIB "syzygy_helper.lib";
+
+proc grobner_calc(list l)
+
+grobner
+{
+	poly r;
+	int i,j;
+	list q;  
+	list G = l;
+	list GG; 
+	int nSpoly = 0;
+	int nz_rem = 0; 
+
+	while(size(G) != size(GG))
+	{
+		GG = G; 
+		nSpoly++;
+		for(i = 1; i<= size(GG); i++)
+		{
+			for(j = i; j<= size(GG); j++)
+			{
+				if( GG[i] != GG[j])
+				{
+					r = multivariate_division(spoly_calc(GG[i], GG[j]), GG);
+					"executing in outer loop", nSpoly;
+					if( r != 0 )
+					{
+						G[size(G)+1] = r; 
+						nz_rem++;
+						"executing in inner loop", nSpoly;
+					}
+				}
+			}
+		}		
+	}
+       //"number of spoly is given as", nSpoly;
+       //"number of S poly with non-zero remainders is given as", nz_rem;
+	return (G); 
+}
+
+/*procedure to implement bases reduction
+
+Author - Vikas Rao
+Date   - 09-29-2016
+
+*/
+
+proc bases_reduce(list minimal)
+{
+	list reduced; 
+	int isDiv;
+	int i,j;
+	for(i=1; i<= size(minimal); i++)
+	{
+		isDiv = 0;
+		for(j = 1; j<= size(minimal); j++)
+		{
+			if( i != j)
+			{
+         			if((leadmonom(minimal[j]) - (leadmonom(minimal[j])/leadmonom(minimal[i])) * leadmonom(minimal[i])) == 0)
+				{
+					isDiv = 1; 	
+				} 
+			}	
+		}
+		if(isDiv == 0)
+		{
+			reduced[size(reduced)+1] = minimal[i];	
+		}
+	}
+	return (reduced); 
+}
+
+proc reduced_grobner(list reduced)
+{
+	list temp1 = reduced;
+	list temp2;
+	poly temp3;
+	list red;
+	int k = 1;
+	temp2 = delete(temp1,1);
+	for(int i=1; i<=size(temp1); i=i+1)
+	{
+		temp3 = multivariate_division(temp1[i], temp2);
+		red = insert(red, temp3);
+		if (i == size(temp1))
+		{
+			break;
+		}
+		temp2 = delete(temp2, i);
+		temp2 = insert(temp2, temp3);
+	}
+	return(red);
+}
+
+/*procedure to implement minimal calculation
+
+Author - Vikas Rao
+Date   - 09-29-2016
+
+*/
+
+proc minimal_calc(list grob)
+{
+   int i = 1;
+   int j = 0;
+   poly t;
+   for(i=1;i<=size(grob); i=i+1)
+   {  
+      if(leadcoef(grob[i]) != 1)
+      {  
+         grob[i] = grob[i] / leadcoef(grob[i]);
+      }
+      for(j=i+1;j<=size(grob); j=j+1)
+      {
+         t = leadmonom(grob[j])/leadmonom(grob[i]);
+         if((leadmonom(grob[j]) - t * leadmonom(grob[i])) == 0)
+         {
+            grob = delete(grob,2);
+            j = i;
+         }
+      }
+   }
+   return(grob);
+}  
+
+/*procedure to calculate improved grobner bases 
+  by adding product and criterion.
+
+Author - Vikas Rao
+Date   - 10-22-2016
+
+*/
+
+proc improved_gb(list l)
+{
+   list G = l;
+   int t = size(l);
+   int ot = t;
+   list B;
+   list k;
+   list k1;
+   int dec;
+   int i,j;
+   int c = 0;
+   poly sp, spd;
+
+   for (int i=1;i<=size(G); i=i+1)
+   {
+      for (int j=1;j<=size(G);j=j+1)
+      {
+         if((i!=j) and (i<j))
+         {
+            k= G[i], G[j];
+            B = insert(B,k);
+         }
+      }
+   } 
+   
+   while(size(B) != 0)
+   {  
+      list sub1    = B[1];
+      dec, c, G, B = syzygy_helper(sub1, B, G, spd, ot, c);
+      if (dec == 0)
+      { 
+         sp  = spoly_calc(sub1[1], sub1[2]);
+         spd = multivariate_division(sp, G);
+         if (spd != 0)
+         {  
+	    t = t+1;
+            c = 1;
+            int ss = size(G);
+            for (i=1;i<=ss;i=i+1)
+            {  
+	       k1 = G[i], spd;
+               B  = insert(B, k1);
+            }
+            G = insert(G, spd);
+         }
+      }
+      B = delete(B,1);   
+   }
+   return(G);
+}

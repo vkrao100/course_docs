@@ -1,0 +1,157 @@
+LIB "my_proc.lib";
+ring R = (2,X),(t,Z,Zs,A,B,z_3_, z_1_, z_0_, g0, z_2_, f4, f3, f2, f1, f0, e11, e10, e9, e8, e7, e6, e5, e4, e3, e2, e1, e0, d25, d24, d23, d22, d21, d20, d19, d18, d17, d16, d15, d14, d13, d12, d11, d10, d9, d8, d7, d6, d5, d4, d3, d2, d1, d0, b_3_, b_2_, b_1_, b_0_, a_3_, a_2_, a_1_, a_0_),lp;
+
+rtimer=0;
+system("--ticks-per-sec",1000);
+int t0 = rtimer;
+
+minpoly = X^4+X^3+1;
+
+ideal J1 = 
+Z + z_0_*X^0 + z_1_*X^1 + z_2_*X^2 + z_3_*X^3,
+d0 + a_0_*b_0_,
+d1 + a_1_*b_3_,
+d2 + a_2_*b_2_,
+d3 + a_3_*b_1_,
+d4 + a_2_*b_3_,
+d5 + a_3_*b_2_,
+d6 + a_3_*b_3_,
+d7 + a_0_*b_1_,
+d8 + a_1_*b_0_,
+d9 + a_2_*b_3_,
+d10 + a_3_*b_2_,
+d11 + a_3_*b_3_,
+d12 + a_0_*b_2_,
+d13 + a_1_*b_1_,
+d14 + a_2_*b_0_,
+d15 + a_3_*b_3_,
+d16 + a_0_*b_3_,
+d17 + a_1_*b_2_,
+d18 + a_2_*b_1_,
+d19 + a_3_*b_0_,
+d20 + a_1_*b_3_,
+d21 + a_2_*b_2_,
+d22 + a_3_*b_1_,
+d23 + a_2_*b_3_,
+d24 + a_3_*b_2_,
+d25 + a_3_*b_3_,
+e0 + d0+d1,
+e1 + d2+d3,
+e2 + d4+d5,
+e3 + d7+d8,
+e4 + d9+d10,
+e5 + d12+d13,
+e6 + d14+d15,
+e7 + d16+d17,
+e8 + d18+d19,
+e9 + d20+d21,
+e10 + d22+d23,
+e11 + d24+d25,
+f0 + e0+e1,
+f1 + e2+d6,
+f2 + e3+e4,
+f3 + e7+e8,
+f4 + e9+e10,
+z_2_ + e5+e6,
+g0 + f3+f4,
+z_0_ + f0+f1,
+z_1_ + f2+d11,
+z_3_ + g0+e11,
+A + a_0_*X^0 + a_1_*X^1 + a_2_*X^2 + a_3_*X^3,
+B + b_0_*X^0 + b_1_*X^1 + b_2_*X^2 + b_3_*X^3;
+
+ideal J2 = 
+Zs + A*B;
+
+
+ideal J0 =
+// t^16 - t,
+b_3_^2 + b_3_,
+b_2_^2 + b_2_,
+b_1_^2 + b_1_,
+b_0_^2 + b_0_,
+a_3_^2 + a_3_,
+a_2_^2 + a_2_,
+a_1_^2 + a_1_,
+a_0_^2 + a_0_;
+
+// poly spec = Z+A*B;
+// poly miter = t*(Z-Zs)-1;
+// poly rf = e8;
+// ideal ckt_imp = J1 + J2 + J0;
+
+// int t1;
+// int ind_r = get_index(J1+J2, rf);
+// int ind_Z = get_index(J1+J2, Z);
+
+// ideal IL = ckt_imp + miter;
+// IL[ind_r] = rf;
+// ideal IH = ckt_imp + miter;
+// IH[ind_r] = rf+1;
+
+// poly sp0 = spoly(miter,IL[ind_Z]);
+// poly rsp0 = reduce(sp0,IL);
+// ideal EL = elm_PI(slimgb(rsp0+J0),4);
+// t1 = rtimer-t0;
+// "EL computed",t1;
+
+// t1 = rtimer;
+// poly sp1 = spoly(miter,IH[ind_Z]);
+// poly rsp1 = reduce(sp1,IH);
+// ideal EH = elm_PI(slimgb(rsp1+J0),4);
+// t1 = rtimer-t0;
+// "EH computed",t1;
+
+// write(":w safe/EL.ideal",EL);
+// write(":w safe/EH.ideal",EH);
+
+// ideal crp = slimgb(EL+EH);
+// if(crp == 1)
+// {
+// 	"Circuit Rectifiable at this location";	
+// }
+// else
+// {
+// 	"Circuit not rectifiable at this location";
+// }
+
+// "time here",rtimer-t0; 
+// t1 = rtimer;
+// ideal gdc = reduce(quotient(J0,EH+J0),J0)+0; 
+// t1 = rtimer-t1;
+// "gdc computed",t1;
+
+// t1 = rtimer;
+// ideal JD = quotient(gdc+J0,EL+J0);
+// t1 = rtimer-t1;
+// "JD computed",t1;
+
+// write(":w gdc.ideal",gdc);
+// write(":w JD.ideal",JD);
+
+
+
+
+// ideal gl = slimgb(IL);
+// ideal EL = elm_PI(gl,4);
+
+// ideal gh = slimgb(IH);
+// ideal EH = elm_PI(gh,4);
+
+// int t1;
+
+// t1 = rtimer-t0;
+// "EL,EH computed",t1;
+
+// write(":w EL.ideal",EL);
+// write(":w EH.ideal",EH);
+
+// ideal gdc = reduce(quotient(J0,EH+J0),J0)+0; 
+// ideal JD = quotient(gdc+J0,EL+J0);
+
+// write(":w gdc.ideal",gdc);
+// write(":w JD.ideal",JD);
+
+// t1 = rtimer-t0;
+// "gdc,JD computed",t1;
+// quit;

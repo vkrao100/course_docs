@@ -1,0 +1,57 @@
+LIB "multivariate_division.lib";
+
+ring r = 2, (t,zs,z,z1,z2,e0,e2,a,b,d0,e1,c,x1,x2,x3,x4) ,lp;
+
+proc invgate(poly g)
+{
+	return(1+g);
+}
+
+proc mux(poly g, poly h, poly i, poly j, poly k, poly l)
+{
+	return(i*invgate(g)*invgate(h) + j*invgate(g)*h + k*g*invgate(h) + l*g*h);
+}
+
+poly spec = zs + ac + a + b + bc + c;
+
+poly f7 = z + z1*z2;
+poly f5 = z1 + e0*d0 + e0 + d0;
+poly f6 = z2 + d0 + e2;
+poly f4 = d0 + c*e1;
+poly f3 = e2 + c + 1;
+poly f2 = e1 + bc + b + c;
+poly f1 = e0 + a + b;
+
+poly d_0 = d0^2 -d0 ;
+poly e_0 = e0^2 -e0 ;
+poly e_1 = e1^2 -e1 ;
+poly e_2 = e2^2 -e2 ;
+
+poly z_0 = z^2 - z;
+poly zs_0 = zs^2 - zs;
+poly a_0 = a^2 - a;
+poly b_0 = b^2 - b;
+poly c_0 = c^2 - c;
+poly x1_0 = x1^2 - x1;
+poly x2_0 = x2^2 - x2;
+poly x3_0 = x3^2 - x3;
+poly x4_0 = x4^2 - x4;
+
+list J0 = a_0, b_0, c_0, d_0, e_0, e_1, e_2, x1_0, x2_0, x3_0, x4_0, z_0, zs_0;
+ideal J0i = a_0, b_0, c_0, d_0, e_0, e_1, e_2, x1_0, x2_0, x3_0, x4_0, z_0, zs_0;
+
+ideal fm = t*(z-zs)-1;
+//correct ideal
+ideal JC = f1,f2,f3,f4,f5,f6,f7;
+JC = JC + J0;
+
+//ideal for detecting unknown component f4(d0,e1,c)
+ideal gsu = f1, f2, f3, f5, f6, f7, J0;
+
+list JCl = f7,f6,f5,f4;
+poly rem = multivariate_burg(spec,(JCl+J0i),J0);
+
+//ideal JCp = h4,f1,f2,f3;
+
+//matrix T3 = lift(JCp+J0i,ns);
+//T3;

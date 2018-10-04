@@ -1,0 +1,3 @@
+we are designing 32 bit parallel operations for every gate, it will blow up the area, this will not give us the low power or low area which we had discussed.
+do we need to design ROM for storing our initial hash values ? memory design - DRAM and ROM
+clarify the concept with ken

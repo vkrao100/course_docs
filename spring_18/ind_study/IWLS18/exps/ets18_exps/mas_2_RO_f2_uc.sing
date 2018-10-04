@@ -1,0 +1,67 @@
+LIB "primdec.lib";
+LIB "control.lib";
+LIB "multivariate_burg.lib";
+ring r = (2, x), (Z, A, B, z_0, z_1, r_0, s_0, s_3, s_1, s_2, a_0, a_1, b_0, b_1), lp; 
+//ring r = (2, x), (Z, A, B, z_0, z_1, r_0, s_0, s_1, s_2, a_0, b_0, s_3, a_1, b_1), lp; 
+
+minpoly = x^2 + x + 1;
+
+proc xorgate(poly g, poly h)
+{
+	return(g+h);
+}
+
+//circuit -  2 bit mastrovito multiplier poly's
+//correct implementation
+poly f1 = s_0 + a_0*b_0;
+poly f2 = s_3 + a_1*b_1;
+poly f3 = s_2 + a_1*b_0;
+poly f4 = s_1 + a_0*b_1;
+poly f5 = r_0 + xorgate(s_1,s_2);
+poly f6 = z_0 + xorgate(s_0,s_3);
+poly f7 = z_1 + xorgate(r_0,s_3);
+poly f8 = A + a_0 + a_1*x;
+poly f9 = B + b_0 + b_1*x;
+poly f10= Z + z_0 + z_1*x;
+
+//buggy implementation
+//introducing bug - AND gate instead of XOR gate
+poly fb7 = r_0 + s_1*s_2;
+
+//vanishing polynomials
+poly f11 = a_0^2 - a_0;
+poly f12 = a_1^2 - a_1;
+poly f13 = b_0^2 - b_0;
+poly f14 = b_1^2 - b_1;
+poly f15 = s_0^2 - s_0;
+poly f16 = s_1^2 - s_1;
+poly f17 = s_2^2 - s_2;
+poly f18 = s_3^2 - s_3;
+poly f19 = r_0^2 - r_0;
+poly f20 = z_0^2 - z_0;
+poly f21 = z_1^2 - z_1;
+
+poly f22 = Z^4 - Z;
+poly f23 = A^4 - A;
+poly f24 = B^4 - B;
+
+//word level spec
+poly spec = Z + A*B;
+
+ideal J0 = f11,f12,f13,f14,f15,f16,f17,f18,f19,f20,f21,f22,f23,f24;
+
+//list of polynomials for GB calculation
+ideal CI  = f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12, f13, f14, f15, f16, f17, f18, f19, f20, f21, f22, f23, f24;
+
+list do = f10,f8,f9,f7,f6,f5,f1,f2;
+
+poly rem = multivariate_burg(spec,do,J0);
+
+//poly ns = s_0+(x+1)*s_3+a_0*b_0+(x)*a_0*b_1+(x)*b_0*a_1+(x+1)*a_1*b_1;
+//poly h2 = (x)*a_0*b_1+(x)*b_0*a_1;
+
+//ideal Jd = h2,f3,f4;
+//list Jdl = h2,f3,f4;
+
+//matrix T = lift(Jd+J0,ns);
+//T;
